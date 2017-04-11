@@ -1,0 +1,2308 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CD121DF41E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */; };
+		CD121DF81E1040D7004F78E2 /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */; };
+		CD121DFA1E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */; };
+		CD121DFC1E106AC1004F78E2 /* UILabel+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFB1E106AC1004F78E2 /* UILabel+Sizing.swift */; };
+		CD121DFE1E115F03004F78E2 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
+		CD164C1C1E2B1A7A0062CBA5 /* TVServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD164C1B1E2B1A7A0062CBA5 /* TVServices.framework */; };
+		CD164C1F1E2B1A7A0062CBA5 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C1E1E2B1A7A0062CBA5 /* ServiceProvider.swift */; };
+		CD164C231E2B1A7A0062CBA5 /* BikeShareTopShelf.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD164C1A1E2B1A7A0062CBA5 /* BikeShareTopShelf.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CD164C281E2B1BC80062CBA5 /* BikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CA1E0ED8FE00C3C6CA /* BikeNetwork.swift */; };
+		CD164C291E2B1BCC0062CBA5 /* BikeNetworkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CC1E0ED93100C3C6CA /* BikeNetworkLocation.swift */; };
+		CD164C2A1E2B1BD00062CBA5 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CE1E0ED98200C3C6CA /* BikeStation.swift */; };
+		CD164C2B1E2B1BD90062CBA5 /* ExtensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA134A71E2A9392005542DE /* ExtensionConstants.swift */; };
+		CD164C2C1E2B1BE30062CBA5 /* MapBikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */; };
+		CD164C2D1E2B1BE70062CBA5 /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
+		CD164C2E1E2B1BF30062CBA5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */; };
+		CD164C2F1E2B1BF60062CBA5 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
+		CD164C301E2B1BFF0062CBA5 /* ClientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C21E0EBBED00C3C6CA /* ClientResponse.swift */; };
+		CD164C321E2B1D890062CBA5 /* ClosebyStationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C311E2B1D890062CBA5 /* ClosebyStationsClient.swift */; };
+		CD164C331E2B1EF20062CBA5 /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */; };
+		CD164C341E2B240A0062CBA5 /* UIColor+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C81E0ED8CD00C3C6CA /* UIColor+Application.swift */; };
+		CD164C351E2BC2020062CBA5 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
+		CD164C381E2BE3C90062CBA5 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C371E2BE3C90062CBA5 /* PinView.swift */; };
+		CD164C3A1E2BE3E60062CBA5 /* TopShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C391E2BE3E60062CBA5 /* TopShelfView.swift */; };
+		CD164C3B1E2BE5330062CBA5 /* UIFont+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */; };
+		CD164C3E1E2BEC650062CBA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD8C1B621E218056000F9A9D /* Assets.xcassets */; };
+		CD164C461E2C385D0062CBA5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C451E2C385D0062CBA5 /* AppDelegate.swift */; };
+		CD164C4A1E2C385D0062CBA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD164C491E2C385D0062CBA5 /* Assets.xcassets */; };
+		CD164C4D1E2C385D0062CBA5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD164C4B1E2C385D0062CBA5 /* Main.storyboard */; };
+		CD164C541E2C38F40062CBA5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD164C531E2C38F40062CBA5 /* MapKit.framework */; };
+		CD164C551E2C3A520062CBA5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */; };
+		CD164C561E2C3A5B0062CBA5 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
+		CD164C571E2C3A670062CBA5 /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
+		CD164C581E2C3A6C0062CBA5 /* MapBikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */; };
+		CD164C591E2C3A710062CBA5 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CE1E0ED98200C3C6CA /* BikeStation.swift */; };
+		CD164C5A1E2C3A760062CBA5 /* BikeNetworkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CC1E0ED93100C3C6CA /* BikeNetworkLocation.swift */; };
+		CD164C5B1E2C3A7B0062CBA5 /* BikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CA1E0ED8FE00C3C6CA /* BikeNetwork.swift */; };
+		CD164C5C1E2C3A8A0062CBA5 /* Deeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B871E218427000F9A9D /* Deeplink.swift */; };
+		CD164C5D1E2C3A960062CBA5 /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
+		CD164C5E1E2C3A9B0062CBA5 /* StationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C41E0EBE7700C3C6CA /* StationsClient.swift */; };
+		CD164C5F1E2C3A9F0062CBA5 /* ClientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C21E0EBBED00C3C6CA /* ClientResponse.swift */; };
+		CD164C621E2C3C5D0062CBA5 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */; };
+		CD164C641E2C3DBC0062CBA5 /* BaseMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C631E2C3DBC0062CBA5 /* BaseMapViewController.swift */; };
+		CD164C661E2C3DEA0062CBA5 /* BaseMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C651E2C3DEA0062CBA5 /* BaseMapViewController.swift */; };
+		CD164C671E2C3E390062CBA5 /* BaseMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C631E2C3DBC0062CBA5 /* BaseMapViewController.swift */; };
+		CD164C681E2C3F600062CBA5 /* UIColor+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C81E0ED8CD00C3C6CA /* UIColor+Application.swift */; };
+		CD164C6A1E2C42550062CBA5 /* MapViewController+macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C691E2C42550062CBA5 /* MapViewController+macOS.swift */; };
+		CD164C6C1E2C46F30062CBA5 /* BikeDetailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C6B1E2C46F30062CBA5 /* BikeDetailCalloutAccessoryView.swift */; };
+		CD164C6D1E2C47180062CBA5 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
+		CD164C6F1E2C47DC0062CBA5 /* BikeDetailAccessoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C6E1E2C47DC0062CBA5 /* BikeDetailAccessoryTableViewCell.swift */; };
+		CD164C701E2C487F0062CBA5 /* UIFont+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */; };
+		CD164C711E2C4E9F0062CBA5 /* UILabel+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFB1E106AC1004F78E2 /* UILabel+Sizing.swift */; };
+		CD164C731E2DC75E0062CBA5 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C721E2DC75E0062CBA5 /* WindowController.swift */; };
+		CD164C751E2F21730062CBA5 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C741E2F21730062CBA5 /* NetworkViewController.swift */; };
+		CD164C771E2F24E20062CBA5 /* NetworkTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C761E2F24E20062CBA5 /* NetworkTableCell.swift */; };
+		CD164C791E2F26420062CBA5 /* NSTableView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C781E2F26420062CBA5 /* NSTableView+Animations.swift */; };
+		CD164C7A1E33AF780062CBA5 /* StationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C41E0EBE7700C3C6CA /* StationsClient.swift */; };
+		CD164C801E33C3540062CBA5 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDEF3CFF1E1737110002063F /* NotificationCenter.framework */; };
+		CD164C851E33C3540062CBA5 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C841E33C3540062CBA5 /* TodayViewController.swift */; };
+		CD164C881E33C3540062CBA5 /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD164C861E33C3540062CBA5 /* TodayViewController.xib */; };
+		CD164C8C1E33C3540062CBA5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CD164C8A1E33C3540062CBA5 /* InfoPlist.strings */; };
+		CD164C8F1E33C3540062CBA5 /* BikeShareMacWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD164C7F1E33C3540062CBA5 /* BikeShareMacWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CD164C941E33C48F0062CBA5 /* ExtensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA134A71E2A9392005542DE /* ExtensionConstants.swift */; };
+		CD164C951E33C4A30062CBA5 /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
+		CD164C961E33C4A70062CBA5 /* MapBikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */; };
+		CD164C971E33C4AD0062CBA5 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CE1E0ED98200C3C6CA /* BikeStation.swift */; };
+		CD164C981E33C4B10062CBA5 /* BikeNetworkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CC1E0ED93100C3C6CA /* BikeNetworkLocation.swift */; };
+		CD164C991E33C4B60062CBA5 /* BikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CA1E0ED8FE00C3C6CA /* BikeNetwork.swift */; };
+		CD164C9A1E33C4C70062CBA5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */; };
+		CD164C9B1E33C4CB0062CBA5 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
+		CD164C9C1E33C5440062CBA5 /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
+		CD164C9D1E33C5480062CBA5 /* StationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C41E0EBE7700C3C6CA /* StationsClient.swift */; };
+		CD164C9E1E33C54C0062CBA5 /* ClientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C21E0EBBED00C3C6CA /* ClientResponse.swift */; };
+		CD164C9F1E33C5750062CBA5 /* UIColor+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C81E0ED8CD00C3C6CA /* UIColor+Application.swift */; };
+		CD164CA01E33C5830062CBA5 /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */; };
+		CD164CA11E33C58C0062CBA5 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
+		CD164CA21E33CA960062CBA5 /* NetworkTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C761E2F24E20062CBA5 /* NetworkTableCell.swift */; };
+		CD164CA31E33CF870062CBA5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD164C531E2C38F40062CBA5 /* MapKit.framework */; };
+		CD80AA4E1E624C9900C1E9B6 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
+		CD80AA4F1E624C9B00C1E9B6 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
+		CD80AA501E624CA000C1E9B6 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
+		CD80AA511E624CAB00C1E9B6 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
+		CD80AA521E624CAE00C1E9B6 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
+		CD80AA531E624CB800C1E9B6 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
+		CD80AA541E624CBD00C1E9B6 /* GBFSSystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */; };
+		CD80AA551E624CBE00C1E9B6 /* GBFSSystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */; };
+		CD80AA561E624CBF00C1E9B6 /* GBFSSystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */; };
+		CD80AA571E624CC000C1E9B6 /* GBFSSystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */; };
+		CD80AA581E624CC100C1E9B6 /* GBFSSystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */; };
+		CD80AA591E624CC200C1E9B6 /* GBFSSystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */; };
+		CD80AA5A1E624CC900C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20171E50E8930044D923 /* GBFSSystemPricingPlan.swift */; };
+		CD80AA5B1E624CCA00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20171E50E8930044D923 /* GBFSSystemPricingPlan.swift */; };
+		CD80AA5C1E624CCB00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20171E50E8930044D923 /* GBFSSystemPricingPlan.swift */; };
+		CD80AA5D1E624CCC00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20171E50E8930044D923 /* GBFSSystemPricingPlan.swift */; };
+		CD80AA5E1E624CCE00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20171E50E8930044D923 /* GBFSSystemPricingPlan.swift */; };
+		CD80AA5F1E624CCF00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20171E50E8930044D923 /* GBFSSystemPricingPlan.swift */; };
+		CD80AA601E624CD400C1E9B6 /* GBFSSystemAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC201F1E529E790044D923 /* GBFSSystemAlert.swift */; };
+		CD80AA611E624CD500C1E9B6 /* GBFSSystemAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC201F1E529E790044D923 /* GBFSSystemAlert.swift */; };
+		CD80AA621E624CD700C1E9B6 /* GBFSSystemAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC201F1E529E790044D923 /* GBFSSystemAlert.swift */; };
+		CD80AA631E624CD800C1E9B6 /* GBFSSystemAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC201F1E529E790044D923 /* GBFSSystemAlert.swift */; };
+		CD80AA641E624CDB00C1E9B6 /* GBFSSystemAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC201F1E529E790044D923 /* GBFSSystemAlert.swift */; };
+		CD80AA651E624CDC00C1E9B6 /* GBFSSystemAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC201F1E529E790044D923 /* GBFSSystemAlert.swift */; };
+		CD80AA661E624CE200C1E9B6 /* GBFSStationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20231E548F830044D923 /* GBFSStationInformation.swift */; };
+		CD80AA681E624CE300C1E9B6 /* GBFSStationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20231E548F830044D923 /* GBFSStationInformation.swift */; };
+		CD80AA691E624CE700C1E9B6 /* GBFSStationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20231E548F830044D923 /* GBFSStationInformation.swift */; };
+		CD80AA6A1E624CEA00C1E9B6 /* GBFSStationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20231E548F830044D923 /* GBFSStationInformation.swift */; };
+		CD80AA6B1E624CF000C1E9B6 /* GBFSStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */; };
+		CD80AA6D1E624CFF00C1E9B6 /* GBFSStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */; };
+		CD80AA6E1E624D0000C1E9B6 /* GBFSStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */; };
+		CD80AA6F1E624D0200C1E9B6 /* GBFSStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */; };
+		CD80AA701E624D1C00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */; };
+		CD80AA711E624D1D00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */; };
+		CD80AA721E624D1E00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */; };
+		CD80AA731E624D1F00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */; };
+		CD80AA741E624D2000C1E9B6 /* GBFSSystemInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */; };
+		CD80AA751E624D2200C1E9B6 /* GBFSSystemInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */; };
+		CD80AA761E624D2600C1E9B6 /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
+		CD80AA771E624D2700C1E9B6 /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
+		CD80AA781E624D2800C1E9B6 /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
+		CD80AA791E624D2900C1E9B6 /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
+		CD80AA7A1E624D2A00C1E9B6 /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
+		CD80AA7B1E624D2B00C1E9B6 /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
+		CD80AA7C1E624D2F00C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20191E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift */; };
+		CD80AA7D1E624D3000C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20191E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift */; };
+		CD80AA7E1E624D3100C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20191E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift */; };
+		CD80AA7F1E624D3300C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20191E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift */; };
+		CD80AA801E624D3400C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20191E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift */; };
+		CD80AA811E624D3500C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20191E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift */; };
+		CD80AA821E624D3A00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20211E52A3BB0044D923 /* GBFSSystemAlertClient.swift */; };
+		CD80AA831E624D3B00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20211E52A3BB0044D923 /* GBFSSystemAlertClient.swift */; };
+		CD80AA841E624D3C00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20211E52A3BB0044D923 /* GBFSSystemAlertClient.swift */; };
+		CD80AA851E624D3D00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20211E52A3BB0044D923 /* GBFSSystemAlertClient.swift */; };
+		CD80AA861E624D3E00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20211E52A3BB0044D923 /* GBFSSystemAlertClient.swift */; };
+		CD80AA871E624D3F00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20211E52A3BB0044D923 /* GBFSSystemAlertClient.swift */; };
+		CD80AA881E624D4500C1E9B6 /* GBFSStationInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20251E54929F0044D923 /* GBFSStationInformationClient.swift */; };
+		CD80AA891E624D4700C1E9B6 /* GBFSStationInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20251E54929F0044D923 /* GBFSStationInformationClient.swift */; };
+		CD80AA8A1E624D4800C1E9B6 /* GBFSStationInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20251E54929F0044D923 /* GBFSStationInformationClient.swift */; };
+		CD80AA8B1E624D4800C1E9B6 /* GBFSStationInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20251E54929F0044D923 /* GBFSStationInformationClient.swift */; };
+		CD80AA8C1E624D4E00C1E9B6 /* GBFSStationStatusClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */; };
+		CD80AA8D1E624D5000C1E9B6 /* GBFSStationStatusClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */; };
+		CD80AA8E1E624D5100C1E9B6 /* GBFSStationStatusClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */; };
+		CD80AA8F1E624D5100C1E9B6 /* GBFSStationStatusClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */; };
+		CD80AA901E625A3A00C1E9B6 /* NetworkSystemInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20111E4F69010044D923 /* NetworkSystemInformationTableViewController.swift */; };
+		CD80AA911E625A8300C1E9B6 /* SystemInfoTableViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20131E50D9AC0044D923 /* SystemInfoTableViewContent.swift */; };
+		CD80AA921E625AD600C1E9B6 /* PricingPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC201B1E512E6A0044D923 /* PricingPlanTableViewCell.swift */; };
+		CD80AA941E625D7E00C1E9B6 /* GBFSStationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20231E548F830044D923 /* GBFSStationInformation.swift */; };
+		CD80AA951E625D9A00C1E9B6 /* GBFSStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */; };
+		CD80AA981E626E9F00C1E9B6 /* NetworkInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80AA971E626E9F00C1E9B6 /* NetworkInformationViewController.swift */; };
+		CD80AA991E62702200C1E9B6 /* SystemInfoTableViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20131E50D9AC0044D923 /* SystemInfoTableViewContent.swift */; };
+		CD80AA9B1E62753300C1E9B6 /* InfoTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80AA9A1E62753300C1E9B6 /* InfoTableCellView.swift */; };
+		CD80AAA81E6BA7AC00C1E9B6 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C371E2BE3C90062CBA5 /* PinView.swift */; };
+		CD80AAA91E6BA7B500C1E9B6 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C371E2BE3C90062CBA5 /* PinView.swift */; };
+		CD80AAAB1E6BA81F00C1E9B6 /* MapKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80AAAA1E6BA81F00C1E9B6 /* MapKeyView.swift */; };
+		CD80AAAC1E6BA81F00C1E9B6 /* MapKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80AAAA1E6BA81F00C1E9B6 /* MapKeyView.swift */; };
+		CD80AAAE1E74727200C1E9B6 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80AAAD1E74727100C1E9B6 /* PinView.swift */; };
+		CD80AAB01E7472B900C1E9B6 /* MapKeyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD80AAAF1E7472B900C1E9B6 /* MapKeyView.swift */; };
+		CD8C1B5C1E218056000F9A9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B5B1E218056000F9A9D /* AppDelegate.swift */; };
+		CD8C1B611E218056000F9A9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD8C1B5F1E218056000F9A9D /* Main.storyboard */; };
+		CD8C1B631E218056000F9A9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD8C1B621E218056000F9A9D /* Assets.xcassets */; };
+		CD8C1B691E218062000F9A9D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD8C1B681E218062000F9A9D /* MapKit.framework */; };
+		CD8C1B6B1E218199000F9A9D /* NetworkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B31E0DBD9500C3C6CA /* NetworkTableViewController.swift */; };
+		CD8C1B6C1E21819E000F9A9D /* NetworkSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B21E0DBD9500C3C6CA /* NetworkSearchController.swift */; };
+		CD8C1B6D1E2181A7000F9A9D /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
+		CD8C1B6E1E2181AB000F9A9D /* MapBikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */; };
+		CD8C1B6F1E2181AF000F9A9D /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CE1E0ED98200C3C6CA /* BikeStation.swift */; };
+		CD8C1B701E2181B3000F9A9D /* BikeNetworkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CC1E0ED93100C3C6CA /* BikeNetworkLocation.swift */; };
+		CD8C1B711E2181B7000F9A9D /* BikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CA1E0ED8FE00C3C6CA /* BikeNetwork.swift */; };
+		CD8C1B721E2181BB000F9A9D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
+		CD8C1B731E2181C0000F9A9D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */; };
+		CD8C1B741E2181C3000F9A9D /* StationDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */; };
+		CD8C1B751E2181CF000F9A9D /* BikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B01E0DBD8300C3C6CA /* BikeTableViewCell.swift */; };
+		CD8C1B761E218209000F9A9D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */; };
+		CD8C1B771E218218000F9A9D /* BikeDetailAccessoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */; };
+		CD8C1B781E21821E000F9A9D /* BikeDetailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */; };
+		CD8C1B791E218224000F9A9D /* StationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF31E1301DE0002063F /* StationDetailViewController.swift */; };
+		CD8C1B7A1E218228000F9A9D /* StationsTableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B71E0DBDA800C3C6CA /* StationsTableViewContoller.swift */; };
+		CD8C1B7B1E21822D000F9A9D /* StationsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B61E0DBDA800C3C6CA /* StationsSearchController.swift */; };
+		CD8C1B7C1E2182FA000F9A9D /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
+		CD8C1B7D1E2182FE000F9A9D /* StationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C41E0EBE7700C3C6CA /* StationsClient.swift */; };
+		CD8C1B7E1E218302000F9A9D /* ClientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C21E0EBBED00C3C6CA /* ClientResponse.swift */; };
+		CD8C1B7F1E218306000F9A9D /* UITableViewController+Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BA1E0DBDB300C3C6CA /* UITableViewController+Diff.swift */; };
+		CD8C1B801E21830B000F9A9D /* UITableView+Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3D191E173B030002063F /* UITableView+Diff.swift */; };
+		CD8C1B811E21830F000F9A9D /* UIAlertController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C01E0EBAC300C3C6CA /* UIAlertController+Helper.swift */; };
+		CD8C1B821E218313000F9A9D /* UIColor+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C81E0ED8CD00C3C6CA /* UIColor+Application.swift */; };
+		CD8C1B831E218317000F9A9D /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */; };
+		CD8C1B841E21831B000F9A9D /* UILabel+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFB1E106AC1004F78E2 /* UILabel+Sizing.swift */; };
+		CD8C1B851E218320000F9A9D /* UITraitCollection+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF11E12FA110002063F /* UITraitCollection+Helper.swift */; };
+		CD8C1B861E218324000F9A9D /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
+		CD8C1B881E218427000F9A9D /* Deeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B871E218427000F9A9D /* Deeplink.swift */; };
+		CD8C1B891E218427000F9A9D /* Deeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B871E218427000F9A9D /* Deeplink.swift */; };
+		CD8C1B8B1E21BE73000F9A9D /* MenuSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */; };
+		CD8C1B8C1E21BEC9000F9A9D /* MenuSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */; };
+		CDA134821E2A8E57005542DE /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
+		CDA134831E2A8E5C005542DE /* MapBikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */; };
+		CDA134841E2A8E61005542DE /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CE1E0ED98200C3C6CA /* BikeStation.swift */; };
+		CDA134851E2A8E66005542DE /* BikeNetworkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CC1E0ED93100C3C6CA /* BikeNetworkLocation.swift */; };
+		CDA134861E2A8E6A005542DE /* BikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CA1E0ED8FE00C3C6CA /* BikeNetwork.swift */; };
+		CDA134871E2A8E71005542DE /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
+		CDA134881E2A8E75005542DE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */; };
+		CDA134891E2A8F0F005542DE /* BikeTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */; };
+		CDA1348A1E2A8F18005542DE /* BikeTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */; };
+		CDA1348B1E2A8F31005542DE /* UITableViewController+Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BA1E0DBDB300C3C6CA /* UITableViewController+Diff.swift */; };
+		CDA1348C1E2A8F35005542DE /* UITableView+Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3D191E173B030002063F /* UITableView+Diff.swift */; };
+		CDA1348E1E2A8F46005542DE /* UIAlertController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C01E0EBAC300C3C6CA /* UIAlertController+Helper.swift */; };
+		CDA1348F1E2A8F47005542DE /* UIAlertController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C01E0EBAC300C3C6CA /* UIAlertController+Helper.swift */; };
+		CDA134901E2A8F4C005542DE /* UIColor+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C81E0ED8CD00C3C6CA /* UIColor+Application.swift */; };
+		CDA134911E2A8F4F005542DE /* UIFont+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */; };
+		CDA134921E2A8F54005542DE /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */; };
+		CDA134931E2A8F59005542DE /* UILabel+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFB1E106AC1004F78E2 /* UILabel+Sizing.swift */; };
+		CDA134941E2A8F69005542DE /* UITraitCollection+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF11E12FA110002063F /* UITraitCollection+Helper.swift */; };
+		CDA134951E2A8F6F005542DE /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
+		CDA1349A1E2A8FAA005542DE /* StationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF31E1301DE0002063F /* StationDetailViewController.swift */; };
+		CDA1349B1E2A8FBA005542DE /* BikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B01E0DBD8300C3C6CA /* BikeTableViewCell.swift */; };
+		CDA1349C1E2A8FC0005542DE /* StationDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */; };
+		CDA1349D1E2A906D005542DE /* StationDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */; };
+		CDA1349E1E2A9089005542DE /* ClientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C21E0EBBED00C3C6CA /* ClientResponse.swift */; };
+		CDA1349F1E2A908D005542DE /* StationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C41E0EBE7700C3C6CA /* StationsClient.swift */; };
+		CDA134A01E2A9091005542DE /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
+		CDA134A21E2A9124005542DE /* StationDetailViewController+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */; };
+		CDA134A41E2A91F5005542DE /* StationDetailViewController+Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA134A31E2A91F5005542DE /* StationDetailViewController+Messages.swift */; };
+		CDA134A61E2A9346005542DE /* BikeStation+Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA134A51E2A9346005542DE /* BikeStation+Distance.swift */; };
+		CDA134A81E2A9392005542DE /* ExtensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA134A71E2A9392005542DE /* ExtensionConstants.swift */; };
+		CDA134A91E2A939C005542DE /* ExtensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA134A71E2A9392005542DE /* ExtensionConstants.swift */; };
+		CDA134AB1E2A9687005542DE /* MessagesNetworkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA134AA1E2A9687005542DE /* MessagesNetworkTableViewController.swift */; };
+		CDA134AD1E2A9C19005542DE /* MessagesStationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA134AC1E2A9C19005542DE /* MessagesStationsTableViewController.swift */; };
+		CDA134AE1E2AAE50005542DE /* Deeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B871E218427000F9A9D /* Deeplink.swift */; };
+		CDA1D2C61E22B632008B2AE8 /* UIFont+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */; };
+		CDA1D2C71E22B9A4008B2AE8 /* UIFont+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */; };
+		CDA1D2C81E22B9A7008B2AE8 /* UIFont+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */; };
+		CDA1D2CA1E230243008B2AE8 /* BikeTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */; };
+		CDEC200A1E4D4E8D0044D923 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
+		CDEC200C1E4D50250044D923 /* GBFSSystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */; };
+		CDEC200E1E4F61790044D923 /* GBFSSystemInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */; };
+		CDEC20121E4F69010044D923 /* NetworkSystemInformationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20111E4F69010044D923 /* NetworkSystemInformationTableViewController.swift */; };
+		CDEC20141E50D9AC0044D923 /* SystemInfoTableViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20131E50D9AC0044D923 /* SystemInfoTableViewContent.swift */; };
+		CDEC20161E50DD560044D923 /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
+		CDEC20181E50E8930044D923 /* GBFSSystemPricingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20171E50E8930044D923 /* GBFSSystemPricingPlan.swift */; };
+		CDEC201A1E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20191E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift */; };
+		CDEC201D1E512E6A0044D923 /* PricingPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC201B1E512E6A0044D923 /* PricingPlanTableViewCell.swift */; };
+		CDEC201E1E512E6A0044D923 /* PricingPlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDEC201C1E512E6A0044D923 /* PricingPlanTableViewCell.xib */; };
+		CDEC20201E529E790044D923 /* GBFSSystemAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC201F1E529E790044D923 /* GBFSSystemAlert.swift */; };
+		CDEC20221E52A3BB0044D923 /* GBFSSystemAlertClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20211E52A3BB0044D923 /* GBFSSystemAlertClient.swift */; };
+		CDEC20241E548F830044D923 /* GBFSStationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20231E548F830044D923 /* GBFSStationInformation.swift */; };
+		CDEC20261E54929F0044D923 /* GBFSStationInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20251E54929F0044D923 /* GBFSStationInformationClient.swift */; };
+		CDEF3CF21E12FA110002063F /* UITraitCollection+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF11E12FA110002063F /* UITraitCollection+Helper.swift */; };
+		CDEF3CF41E1301DE0002063F /* StationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF31E1301DE0002063F /* StationDetailViewController.swift */; };
+		CDEF3CF61E1311360002063F /* StationDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */; };
+		CDEF3CF91E1361AC0002063F /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
+		CDEF3D001E1737110002063F /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDEF3CFF1E1737110002063F /* NotificationCenter.framework */; };
+		CDEF3D031E1737110002063F /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3D021E1737110002063F /* TodayViewController.swift */; };
+		CDEF3D061E1737110002063F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDEF3D041E1737110002063F /* MainInterface.storyboard */; };
+		CDEF3D0A1E1737110002063F /* BikeShareWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CDEF3CFE1E1737110002063F /* BikeShareWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CDEF3D0F1E1737720002063F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */; };
+		CDEF3D101E17377C0002063F /* StationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C41E0EBE7700C3C6CA /* StationsClient.swift */; };
+		CDEF3D111E1737820002063F /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
+		CDEF3D121E17378B0002063F /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
+		CDEF3D131E1737910002063F /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CE1E0ED98200C3C6CA /* BikeStation.swift */; };
+		CDEF3D141E17379A0002063F /* BikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CA1E0ED8FE00C3C6CA /* BikeNetwork.swift */; };
+		CDEF3D151E1737A30002063F /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
+		CDEF3D161E1737AE0002063F /* ClientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C21E0EBBED00C3C6CA /* ClientResponse.swift */; };
+		CDEF3D1A1E173B030002063F /* UITableView+Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3D191E173B030002063F /* UITableView+Diff.swift */; };
+		CDEF3D1C1E1741AC0002063F /* BikeNetworkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CC1E0ED93100C3C6CA /* BikeNetworkLocation.swift */; };
+		CDEF3D1D1E1741D90002063F /* UIColor+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C81E0ED8CD00C3C6CA /* UIColor+Application.swift */; };
+		CDEF3D211E1985C40002063F /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
+		CDF347561E2A8BE800241A8A /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF347551E2A8BE800241A8A /* Messages.framework */; };
+		CDF347591E2A8BE800241A8A /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF347581E2A8BE800241A8A /* MessagesViewController.swift */; };
+		CDF3475C1E2A8BE800241A8A /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF3475A1E2A8BE800241A8A /* MainInterface.storyboard */; };
+		CDF3475E1E2A8BE800241A8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF3475D1E2A8BE800241A8A /* Assets.xcassets */; };
+		CDF347621E2A8BE800241A8A /* BikeShareMessages.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CDF347541E2A8BE800241A8A /* BikeShareMessages.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CDF347661E2A8C2F00241A8A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF6E7AC1E0DBC6600C3C6CA /* MapKit.framework */; };
+		CDF6E7981E0DBC3000C3C6CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7971E0DBC3000C3C6CA /* AppDelegate.swift */; };
+		CDF6E79F1E0DBC3000C3C6CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E79D1E0DBC3000C3C6CA /* Main.storyboard */; };
+		CDF6E7A11E0DBC3000C3C6CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
+		CDF6E7A41E0DBC3000C3C6CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A21E0DBC3000C3C6CA /* LaunchScreen.storyboard */; };
+		CDF6E7AD1E0DBC6600C3C6CA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF6E7AC1E0DBC6600C3C6CA /* MapKit.framework */; };
+		CDF6E7AF1E0DBD7700C3C6CA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */; };
+		CDF6E7B11E0DBD8300C3C6CA /* BikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B01E0DBD8300C3C6CA /* BikeTableViewCell.swift */; };
+		CDF6E7B41E0DBD9500C3C6CA /* NetworkSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B21E0DBD9500C3C6CA /* NetworkSearchController.swift */; };
+		CDF6E7B51E0DBD9500C3C6CA /* NetworkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B31E0DBD9500C3C6CA /* NetworkTableViewController.swift */; };
+		CDF6E7B81E0DBDA800C3C6CA /* StationsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B61E0DBDA800C3C6CA /* StationsSearchController.swift */; };
+		CDF6E7B91E0DBDA800C3C6CA /* StationsTableViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B71E0DBDA800C3C6CA /* StationsTableViewContoller.swift */; };
+		CDF6E7BB1E0DBDB300C3C6CA /* UITableViewController+Diff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BA1E0DBDB300C3C6CA /* UITableViewController+Diff.swift */; };
+		CDF6E7BD1E0DBF6200C3C6CA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */; };
+		CDF6E7BF1E0EB6FB00C3C6CA /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
+		CDF6E7C11E0EBAC300C3C6CA /* UIAlertController+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C01E0EBAC300C3C6CA /* UIAlertController+Helper.swift */; };
+		CDF6E7C31E0EBBED00C3C6CA /* ClientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C21E0EBBED00C3C6CA /* ClientResponse.swift */; };
+		CDF6E7C51E0EBE7700C3C6CA /* StationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C41E0EBE7700C3C6CA /* StationsClient.swift */; };
+		CDF6E7C91E0ED8CD00C3C6CA /* UIColor+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C81E0ED8CD00C3C6CA /* UIColor+Application.swift */; };
+		CDF6E7CB1E0ED8FE00C3C6CA /* BikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CA1E0ED8FE00C3C6CA /* BikeNetwork.swift */; };
+		CDF6E7CD1E0ED93100C3C6CA /* BikeNetworkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CC1E0ED93100C3C6CA /* BikeNetworkLocation.swift */; };
+		CDF6E7CF1E0ED98200C3C6CA /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CE1E0ED98200C3C6CA /* BikeStation.swift */; };
+		CDF6E7D11E0ED9FF00C3C6CA /* MapBikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */; };
+		CDF6E7D31E0EDA5F00C3C6CA /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
+		CDF6F5BA1E7D7BDA009CBD32 /* WidgetStationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6F5B91E7D7BDA009CBD32 /* WidgetStationClient.swift */; };
+		CDF6F5BB1E7D7F80009CBD32 /* WidgetStationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6F5B91E7D7BDA009CBD32 /* WidgetStationClient.swift */; };
+		CDF6F5BC1E7D7F85009CBD32 /* WidgetStationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6F5B91E7D7BDA009CBD32 /* WidgetStationClient.swift */; };
+		CDF6F5BE1E7DB46B009CBD32 /* BikeStationDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6F5BD1E7DB46B009CBD32 /* BikeStationDiff.swift */; };
+		CDF6F5BF1E7DB487009CBD32 /* BikeStationDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6F5BD1E7DB46B009CBD32 /* BikeStationDiff.swift */; };
+		CDF6F5C01E7DB488009CBD32 /* BikeStationDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6F5BD1E7DB46B009CBD32 /* BikeStationDiff.swift */; };
+		CDF6F5C21E7DFCAA009CBD32 /* StationDiffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6F5C11E7DFCAA009CBD32 /* StationDiffViewController.swift */; };
+		CDFBD70B1E3849A000C751D7 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CDFBD7091E3849A000C751D7 /* Interface.storyboard */; };
+		CDFBD70D1E3849A000C751D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFBD70C1E3849A000C751D7 /* Assets.xcassets */; };
+		CDFBD7141E3849A000C751D7 /* BikeShareWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CDFBD7131E3849A000C751D7 /* BikeShareWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CDFBD7191E3849A000C751D7 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD7181E3849A000C751D7 /* InterfaceController.swift */; };
+		CDFBD71B1E3849A000C751D7 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD71A1E3849A000C751D7 /* ExtensionDelegate.swift */; };
+		CDFBD71D1E3849A000C751D7 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD71C1E3849A000C751D7 /* ComplicationController.swift */; };
+		CDFBD71F1E3849A000C751D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDFBD71E1E3849A000C751D7 /* Assets.xcassets */; };
+		CDFBD7231E3849A000C751D7 /* BikeShareWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CDFBD7071E3849A000C751D7 /* BikeShareWatch.app */; };
+		CDFBD7301E3D2DB900C751D7 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD72F1E3D2DB900C751D7 /* WatchSessionManager.swift */; };
+		CDFBD7311E3D2DC900C751D7 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD72F1E3D2DB900C751D7 /* WatchSessionManager.swift */; };
+		CDFBD7331E3D2E6300C751D7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDFBD7321E3D2E6300C751D7 /* MapKit.framework */; };
+		CDFBD7361E3D2F3900C751D7 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
+		CDFBD7371E3D2F4400C751D7 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
+		CDFBD7381E3D2F4B00C751D7 /* ExtensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA134A71E2A9392005542DE /* ExtensionConstants.swift */; };
+		CDFBD73C1E3D30AD00C751D7 /* StationRowObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD73B1E3D30AD00C751D7 /* StationRowObject.swift */; };
+		CDFBD73D1E3D31D600C751D7 /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
+		CDFBD73E1E3D31DA00C751D7 /* MapBikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */; };
+		CDFBD73F1E3D31DE00C751D7 /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CE1E0ED98200C3C6CA /* BikeStation.swift */; };
+		CDFBD7401E3D31E200C751D7 /* BikeNetworkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CC1E0ED93100C3C6CA /* BikeNetworkLocation.swift */; };
+		CDFBD7411E3D31E500C751D7 /* BikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CA1E0ED8FE00C3C6CA /* BikeNetwork.swift */; };
+		CDFBD7421E3D31EC00C751D7 /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
+		CDFBD7431E3D31F000C751D7 /* StationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C41E0EBE7700C3C6CA /* StationsClient.swift */; };
+		CDFBD7441E3D31F900C751D7 /* ClientResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C21E0EBBED00C3C6CA /* ClientResponse.swift */; };
+		CDFBD7451E3D320700C751D7 /* ClosebyStationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C311E2B1D890062CBA5 /* ClosebyStationsClient.swift */; };
+		CDFBD7461E3D34F100C751D7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */; };
+		CDFBD7471E3D45E400C751D7 /* UIColor+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C81E0ED8CD00C3C6CA /* UIColor+Application.swift */; };
+		CDFBD7491E3D6ADA00C751D7 /* StationsInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD7481E3D6ADA00C751D7 /* StationsInterfaceController.swift */; };
+		CDFBD74B1E3ED0EB00C751D7 /* MapInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD74A1E3ED0EB00C751D7 /* MapInterfaceController.swift */; };
+		CDFED5D11E620F3000D5C4BF /* GBFSStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */; };
+		CDFED5D31E62132500D5C4BF /* GBFSStationStatusClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */; };
+		CDFED5D41E6214C900D5C4BF /* GBFSStationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20231E548F830044D923 /* GBFSStationInformation.swift */; };
+		CDFED5D51E6214CA00D5C4BF /* GBFSStationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20231E548F830044D923 /* GBFSStationInformation.swift */; };
+		CDFED5D61E6214D400D5C4BF /* GBFSStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */; };
+		CDFED5D71E6214D500D5C4BF /* GBFSStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */; };
+		CDFED5D81E6214DB00D5C4BF /* GBFSStationInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20251E54929F0044D923 /* GBFSStationInformationClient.swift */; };
+		CDFED5D91E6214DB00D5C4BF /* GBFSStationInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20251E54929F0044D923 /* GBFSStationInformationClient.swift */; };
+		CDFED5DA1E6214E200D5C4BF /* GBFSStationStatusClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */; };
+		CDFED5DB1E6214E300D5C4BF /* GBFSStationStatusClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CD164C211E2B1A7A0062CBA5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDF6E78C1E0DBC3000C3C6CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD164C191E2B1A7A0062CBA5;
+			remoteInfo = BikeShareTopShelf;
+		};
+		CD164C8D1E33C3540062CBA5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDF6E78C1E0DBC3000C3C6CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CD164C7E1E33C3540062CBA5;
+			remoteInfo = BikeShareMacWidget;
+		};
+		CDEF3D081E1737110002063F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDF6E78C1E0DBC3000C3C6CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDEF3CFD1E1737110002063F;
+			remoteInfo = BikeShareWidget;
+		};
+		CDF347601E2A8BE800241A8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDF6E78C1E0DBC3000C3C6CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDF347531E2A8BE800241A8A;
+			remoteInfo = BikeShareMessages;
+		};
+		CDFBD7151E3849A000C751D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDF6E78C1E0DBC3000C3C6CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDFBD7121E3849A000C751D7;
+			remoteInfo = "BikeShareWatch Extension";
+		};
+		CDFBD7211E3849A000C751D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CDF6E78C1E0DBC3000C3C6CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CDFBD7061E3849A000C751D7;
+			remoteInfo = BikeShareWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CD164C271E2B1A7A0062CBA5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CD164C231E2B1A7A0062CBA5 /* BikeShareTopShelf.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD164C931E33C3540062CBA5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CD164C8F1E33C3540062CBA5 /* BikeShareMacWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDEF3D0E1E1737110002063F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CDEF3D0A1E1737110002063F /* BikeShareWidget.appex in Embed App Extensions */,
+				CDF347621E2A8BE800241A8A /* BikeShareMessages.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDFBD7291E3849A000C751D7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CDFBD7141E3849A000C751D7 /* BikeShareWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDFBD72B1E3849A000C751D7 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				CDFBD7231E3849A000C751D7 /* BikeShareWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailAccessoryTableViewCell.swift; sourceTree = "<group>"; };
+		CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helper.swift"; sourceTree = "<group>"; };
+		CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailCalloutAccessoryView.swift; sourceTree = "<group>"; };
+		CD121DFB1E106AC1004F78E2 /* UILabel+Sizing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Sizing.swift"; sourceTree = "<group>"; };
+		CD121DFD1E115F03004F78E2 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		CD164C1A1E2B1A7A0062CBA5 /* BikeShareTopShelf.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BikeShareTopShelf.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD164C1B1E2B1A7A0062CBA5 /* TVServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVServices.framework; path = Library/Frameworks/TVServices.framework; sourceTree = DEVELOPER_DIR; };
+		CD164C1E1E2B1A7A0062CBA5 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		CD164C201E2B1A7A0062CBA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD164C311E2B1D890062CBA5 /* ClosebyStationsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosebyStationsClient.swift; sourceTree = "<group>"; };
+		CD164C361E2BCA2C0062CBA5 /* BikeShareTopShelf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeShareTopShelf.entitlements; sourceTree = "<group>"; };
+		CD164C371E2BE3C90062CBA5 /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
+		CD164C391E2BE3E60062CBA5 /* TopShelfView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopShelfView.swift; sourceTree = "<group>"; };
+		CD164C431E2C385D0062CBA5 /* BikeShareMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BikeShareMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD164C451E2C385D0062CBA5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CD164C491E2C385D0062CBA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD164C4C1E2C385D0062CBA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CD164C4E1E2C385D0062CBA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD164C521E2C387A0062CBA5 /* BikeShareMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeShareMac.entitlements; sourceTree = "<group>"; };
+		CD164C531E2C38F40062CBA5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		CD164C631E2C3DBC0062CBA5 /* BaseMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMapViewController.swift; sourceTree = "<group>"; };
+		CD164C651E2C3DEA0062CBA5 /* BaseMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMapViewController.swift; sourceTree = "<group>"; };
+		CD164C691E2C42550062CBA5 /* MapViewController+macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+macOS.swift"; sourceTree = "<group>"; };
+		CD164C6B1E2C46F30062CBA5 /* BikeDetailCalloutAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailCalloutAccessoryView.swift; sourceTree = "<group>"; };
+		CD164C6E1E2C47DC0062CBA5 /* BikeDetailAccessoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailAccessoryTableViewCell.swift; sourceTree = "<group>"; };
+		CD164C721E2DC75E0062CBA5 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		CD164C741E2F21730062CBA5 /* NetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
+		CD164C761E2F24E20062CBA5 /* NetworkTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTableCell.swift; sourceTree = "<group>"; };
+		CD164C781E2F26420062CBA5 /* NSTableView+Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTableView+Animations.swift"; sourceTree = "<group>"; };
+		CD164C7F1E33C3540062CBA5 /* BikeShareMacWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BikeShareMacWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD164C831E33C3540062CBA5 /* BikeShareMacWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeShareMacWidget.entitlements; sourceTree = "<group>"; };
+		CD164C841E33C3540062CBA5 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		CD164C871E33C3540062CBA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
+		CD164C891E33C3540062CBA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD164C8B1E33C3540062CBA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CD80AA971E626E9F00C1E9B6 /* NetworkInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkInformationViewController.swift; sourceTree = "<group>"; };
+		CD80AA9A1E62753300C1E9B6 /* InfoTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableCellView.swift; sourceTree = "<group>"; };
+		CD80AAAA1E6BA81F00C1E9B6 /* MapKeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapKeyView.swift; sourceTree = "<group>"; };
+		CD80AAAD1E74727100C1E9B6 /* PinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
+		CD80AAAF1E7472B900C1E9B6 /* MapKeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapKeyView.swift; sourceTree = "<group>"; };
+		CD8C1B591E218056000F9A9D /* BikeShareTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BikeShareTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD8C1B5B1E218056000F9A9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CD8C1B601E218056000F9A9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CD8C1B621E218056000F9A9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD8C1B641E218056000F9A9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD8C1B681E218062000F9A9D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.1.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		CD8C1B6A1E218069000F9A9D /* BikeShareTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeShareTV.entitlements; sourceTree = "<group>"; };
+		CD8C1B871E218427000F9A9D /* Deeplink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deeplink.swift; sourceTree = "<group>"; };
+		CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSplitViewController.swift; sourceTree = "<group>"; };
+		CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StationDetailViewController+Application.swift"; sourceTree = "<group>"; };
+		CDA134A31E2A91F5005542DE /* StationDetailViewController+Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StationDetailViewController+Messages.swift"; path = "../BikeShare/StationDetailViewController+Messages.swift"; sourceTree = "<group>"; };
+		CDA134A51E2A9346005542DE /* BikeStation+Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BikeStation+Distance.swift"; sourceTree = "<group>"; };
+		CDA134A71E2A9392005542DE /* ExtensionConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExtensionConstants.swift; path = ../BikeShareMessages/ExtensionConstants.swift; sourceTree = "<group>"; };
+		CDA134AA1E2A9687005542DE /* MessagesNetworkTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesNetworkTableViewController.swift; sourceTree = "<group>"; };
+		CDA134AC1E2A9C19005542DE /* MessagesStationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesStationsTableViewController.swift; sourceTree = "<group>"; };
+		CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Application.swift"; sourceTree = "<group>"; };
+		CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeTableFooterView.swift; sourceTree = "<group>"; };
+		CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSFeed.swift; sourceTree = "<group>"; };
+		CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemInformation.swift; sourceTree = "<group>"; };
+		CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemInformationClient.swift; sourceTree = "<group>"; };
+		CDEC20111E4F69010044D923 /* NetworkSystemInformationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSystemInformationTableViewController.swift; sourceTree = "<group>"; };
+		CDEC20131E50D9AC0044D923 /* SystemInfoTableViewContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemInfoTableViewContent.swift; sourceTree = "<group>"; };
+		CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSFeedClient.swift; sourceTree = "<group>"; };
+		CDEC20171E50E8930044D923 /* GBFSSystemPricingPlan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemPricingPlan.swift; sourceTree = "<group>"; };
+		CDEC20191E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemPricingPlanClient.swift; sourceTree = "<group>"; };
+		CDEC201B1E512E6A0044D923 /* PricingPlanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PricingPlanTableViewCell.swift; sourceTree = "<group>"; };
+		CDEC201C1E512E6A0044D923 /* PricingPlanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PricingPlanTableViewCell.xib; sourceTree = "<group>"; };
+		CDEC201F1E529E790044D923 /* GBFSSystemAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemAlert.swift; sourceTree = "<group>"; };
+		CDEC20211E52A3BB0044D923 /* GBFSSystemAlertClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemAlertClient.swift; sourceTree = "<group>"; };
+		CDEC20231E548F830044D923 /* GBFSStationInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSStationInformation.swift; sourceTree = "<group>"; };
+		CDEC20251E54929F0044D923 /* GBFSStationInformationClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSStationInformationClient.swift; sourceTree = "<group>"; };
+		CDEF3CF11E12FA110002063F /* UITraitCollection+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITraitCollection+Helper.swift"; sourceTree = "<group>"; };
+		CDEF3CF31E1301DE0002063F /* StationDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDetailViewController.swift; sourceTree = "<group>"; };
+		CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CDEF3CF71E1360EA0002063F /* BikeShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeShare.entitlements; sourceTree = "<group>"; };
+		CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Application.swift"; sourceTree = "<group>"; };
+		CDEF3CFE1E1737110002063F /* BikeShareWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BikeShareWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDEF3CFF1E1737110002063F /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		CDEF3D021E1737110002063F /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		CDEF3D051E1737110002063F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		CDEF3D071E1737110002063F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDEF3D191E173B030002063F /* UITableView+Diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Diff.swift"; sourceTree = "<group>"; };
+		CDEF3D1F1E174A7F0002063F /* BikeShareWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeShareWidget.entitlements; sourceTree = "<group>"; };
+		CDF347541E2A8BE800241A8A /* BikeShareMessages.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BikeShareMessages.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDF347551E2A8BE800241A8A /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
+		CDF347581E2A8BE800241A8A /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
+		CDF3475B1E2A8BE800241A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		CDF3475D1E2A8BE800241A8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CDF3475F1E2A8BE800241A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDF347671E2A8C3800241A8A /* BikeShareMessages.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeShareMessages.entitlements; sourceTree = "<group>"; };
+		CDF6E7941E0DBC3000C3C6CA /* BikeShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BikeShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDF6E7971E0DBC3000C3C6CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CDF6E79E1E0DBC3000C3C6CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CDF6E7A31E0DBC3000C3C6CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CDF6E7A51E0DBC3000C3C6CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDF6E7AC1E0DBC6600C3C6CA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CDF6E7B01E0DBD8300C3C6CA /* BikeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeTableViewCell.swift; sourceTree = "<group>"; };
+		CDF6E7B21E0DBD9500C3C6CA /* NetworkSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSearchController.swift; sourceTree = "<group>"; };
+		CDF6E7B31E0DBD9500C3C6CA /* NetworkTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkTableViewController.swift; sourceTree = "<group>"; };
+		CDF6E7B61E0DBDA800C3C6CA /* StationsSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsSearchController.swift; sourceTree = "<group>"; };
+		CDF6E7B71E0DBDA800C3C6CA /* StationsTableViewContoller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsTableViewContoller.swift; sourceTree = "<group>"; };
+		CDF6E7BA1E0DBDB300C3C6CA /* UITableViewController+Diff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewController+Diff.swift"; sourceTree = "<group>"; };
+		CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworksClient.swift; sourceTree = "<group>"; };
+		CDF6E7C01E0EBAC300C3C6CA /* UIAlertController+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Helper.swift"; sourceTree = "<group>"; };
+		CDF6E7C21E0EBBED00C3C6CA /* ClientResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientResponse.swift; sourceTree = "<group>"; };
+		CDF6E7C41E0EBE7700C3C6CA /* StationsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsClient.swift; sourceTree = "<group>"; };
+		CDF6E7C81E0ED8CD00C3C6CA /* UIColor+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Application.swift"; sourceTree = "<group>"; };
+		CDF6E7CA1E0ED8FE00C3C6CA /* BikeNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeNetwork.swift; sourceTree = "<group>"; };
+		CDF6E7CC1E0ED93100C3C6CA /* BikeNetworkLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeNetworkLocation.swift; sourceTree = "<group>"; };
+		CDF6E7CE1E0ED98200C3C6CA /* BikeStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStation.swift; sourceTree = "<group>"; };
+		CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapBikeNetwork.swift; sourceTree = "<group>"; };
+		CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapBikeStation.swift; sourceTree = "<group>"; };
+		CDF6F5B91E7D7BDA009CBD32 /* WidgetStationClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetStationClient.swift; sourceTree = "<group>"; };
+		CDF6F5BD1E7DB46B009CBD32 /* BikeStationDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationDiff.swift; sourceTree = "<group>"; };
+		CDF6F5C11E7DFCAA009CBD32 /* StationDiffViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDiffViewController.swift; sourceTree = "<group>"; };
+		CDFBD7071E3849A000C751D7 /* BikeShareWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BikeShareWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDFBD70A1E3849A000C751D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		CDFBD70C1E3849A000C751D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CDFBD70E1E3849A000C751D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDFBD7131E3849A000C751D7 /* BikeShareWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BikeShareWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDFBD7181E3849A000C751D7 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		CDFBD71A1E3849A000C751D7 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		CDFBD71C1E3849A000C751D7 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		CDFBD71E1E3849A000C751D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CDFBD7201E3849A000C751D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CDFBD72F1E3D2DB900C751D7 /* WatchSessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
+		CDFBD7321E3D2E6300C751D7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		CDFBD7341E3D2EF500C751D7 /* BikeShareWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "BikeShareWatch Extension.entitlements"; sourceTree = "<group>"; };
+		CDFBD7351E3D2F0100C751D7 /* BikeShareWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeShareWatch.entitlements; sourceTree = "<group>"; };
+		CDFBD73B1E3D30AD00C751D7 /* StationRowObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationRowObject.swift; sourceTree = "<group>"; };
+		CDFBD7481E3D6ADA00C751D7 /* StationsInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsInterfaceController.swift; sourceTree = "<group>"; };
+		CDFBD74A1E3ED0EB00C751D7 /* MapInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInterfaceController.swift; sourceTree = "<group>"; };
+		CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSStationStatus.swift; sourceTree = "<group>"; };
+		CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSStationStatusClient.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD164C171E2B1A7A0062CBA5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD164C1C1E2B1A7A0062CBA5 /* TVServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD164C401E2C385D0062CBA5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD164C541E2C38F40062CBA5 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD164C7C1E33C3540062CBA5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD164CA31E33CF870062CBA5 /* MapKit.framework in Frameworks */,
+				CD164C801E33C3540062CBA5 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD8C1B561E218056000F9A9D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD8C1B691E218062000F9A9D /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDEF3CFB1E1737110002063F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDEF3D001E1737110002063F /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDF347511E2A8BE800241A8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDF347661E2A8C2F00241A8A /* MapKit.framework in Frameworks */,
+				CDF347561E2A8BE800241A8A /* Messages.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDF6E7911E0DBC3000C3C6CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDF6E7AD1E0DBC6600C3C6CA /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDFBD7101E3849A000C751D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDFBD7331E3D2E6300C751D7 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CD164C1D1E2B1A7A0062CBA5 /* BikeShareTopShelf */ = {
+			isa = PBXGroup;
+			children = (
+				CD164C361E2BCA2C0062CBA5 /* BikeShareTopShelf.entitlements */,
+				CD164C1E1E2B1A7A0062CBA5 /* ServiceProvider.swift */,
+				CD164C371E2BE3C90062CBA5 /* PinView.swift */,
+				CD164C391E2BE3E60062CBA5 /* TopShelfView.swift */,
+				CD164C311E2B1D890062CBA5 /* ClosebyStationsClient.swift */,
+				CD164C201E2B1A7A0062CBA5 /* Info.plist */,
+			);
+			path = BikeShareTopShelf;
+			sourceTree = "<group>";
+		};
+		CD164C441E2C385D0062CBA5 /* BikeShareMac */ = {
+			isa = PBXGroup;
+			children = (
+				CD164C521E2C387A0062CBA5 /* BikeShareMac.entitlements */,
+				CD164C451E2C385D0062CBA5 /* AppDelegate.swift */,
+				CD164C721E2DC75E0062CBA5 /* WindowController.swift */,
+				CD164C651E2C3DEA0062CBA5 /* BaseMapViewController.swift */,
+				CD164C691E2C42550062CBA5 /* MapViewController+macOS.swift */,
+				CD164C741E2F21730062CBA5 /* NetworkViewController.swift */,
+				CD80AA971E626E9F00C1E9B6 /* NetworkInformationViewController.swift */,
+				CD164C761E2F24E20062CBA5 /* NetworkTableCell.swift */,
+				CD80AA9A1E62753300C1E9B6 /* InfoTableCellView.swift */,
+				CD164C781E2F26420062CBA5 /* NSTableView+Animations.swift */,
+				CD164C6B1E2C46F30062CBA5 /* BikeDetailCalloutAccessoryView.swift */,
+				CD164C6E1E2C47DC0062CBA5 /* BikeDetailAccessoryTableViewCell.swift */,
+				CD80AAAD1E74727100C1E9B6 /* PinView.swift */,
+				CD80AAAF1E7472B900C1E9B6 /* MapKeyView.swift */,
+				CD164C491E2C385D0062CBA5 /* Assets.xcassets */,
+				CD164C4B1E2C385D0062CBA5 /* Main.storyboard */,
+				CD164C4E1E2C385D0062CBA5 /* Info.plist */,
+			);
+			path = BikeShareMac;
+			sourceTree = "<group>";
+		};
+		CD164C811E33C3540062CBA5 /* BikeShareMacWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CD164C841E33C3540062CBA5 /* TodayViewController.swift */,
+				CD164C861E33C3540062CBA5 /* TodayViewController.xib */,
+				CD164C891E33C3540062CBA5 /* Info.plist */,
+				CD164C8A1E33C3540062CBA5 /* InfoPlist.strings */,
+				CD164C821E33C3540062CBA5 /* Supporting Files */,
+			);
+			path = BikeShareMacWidget;
+			sourceTree = "<group>";
+		};
+		CD164C821E33C3540062CBA5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CD164C831E33C3540062CBA5 /* BikeShareMacWidget.entitlements */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD8C1B5A1E218056000F9A9D /* BikeShareTV */ = {
+			isa = PBXGroup;
+			children = (
+				CD8C1B6A1E218069000F9A9D /* BikeShareTV.entitlements */,
+				CD8C1B5B1E218056000F9A9D /* AppDelegate.swift */,
+				CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */,
+				CD8C1B5F1E218056000F9A9D /* Main.storyboard */,
+				CD8C1B621E218056000F9A9D /* Assets.xcassets */,
+				CD8C1B641E218056000F9A9D /* Info.plist */,
+			);
+			path = BikeShareTV;
+			sourceTree = "<group>";
+		};
+		CDEF3D011E1737110002063F /* BikeShareWidget */ = {
+			isa = PBXGroup;
+			children = (
+				CDEF3D1F1E174A7F0002063F /* BikeShareWidget.entitlements */,
+				CDEF3D021E1737110002063F /* TodayViewController.swift */,
+				CDA134A71E2A9392005542DE /* ExtensionConstants.swift */,
+				CDEF3D041E1737110002063F /* MainInterface.storyboard */,
+				CDEF3D071E1737110002063F /* Info.plist */,
+			);
+			path = BikeShareWidget;
+			sourceTree = "<group>";
+		};
+		CDF347571E2A8BE800241A8A /* BikeShareMessages */ = {
+			isa = PBXGroup;
+			children = (
+				CDF347671E2A8C3800241A8A /* BikeShareMessages.entitlements */,
+				CDF347581E2A8BE800241A8A /* MessagesViewController.swift */,
+				CDA134AA1E2A9687005542DE /* MessagesNetworkTableViewController.swift */,
+				CDA134AC1E2A9C19005542DE /* MessagesStationsTableViewController.swift */,
+				CDA134A31E2A91F5005542DE /* StationDetailViewController+Messages.swift */,
+				CDA134A51E2A9346005542DE /* BikeStation+Distance.swift */,
+				CDF3475A1E2A8BE800241A8A /* MainInterface.storyboard */,
+				CDF3475D1E2A8BE800241A8A /* Assets.xcassets */,
+				CDF3475F1E2A8BE800241A8A /* Info.plist */,
+			);
+			path = BikeShareMessages;
+			sourceTree = "<group>";
+		};
+		CDF6E78B1E0DBC3000C3C6CA = {
+			isa = PBXGroup;
+			children = (
+				CDF6E7961E0DBC3000C3C6CA /* BikeShare */,
+				CDEF3D011E1737110002063F /* BikeShareWidget */,
+				CDF347571E2A8BE800241A8A /* BikeShareMessages */,
+				CD8C1B5A1E218056000F9A9D /* BikeShareTV */,
+				CD164C1D1E2B1A7A0062CBA5 /* BikeShareTopShelf */,
+				CD164C441E2C385D0062CBA5 /* BikeShareMac */,
+				CD164C811E33C3540062CBA5 /* BikeShareMacWidget */,
+				CDFBD7081E3849A000C751D7 /* BikeShareWatch */,
+				CDFBD7171E3849A000C751D7 /* BikeShareWatch Extension */,
+				CDF6E7951E0DBC3000C3C6CA /* Products */,
+				CDF6E7AB1E0DBC6600C3C6CA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CDF6E7951E0DBC3000C3C6CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CDF6E7941E0DBC3000C3C6CA /* BikeShare.app */,
+				CDEF3CFE1E1737110002063F /* BikeShareWidget.appex */,
+				CD8C1B591E218056000F9A9D /* BikeShareTV.app */,
+				CDF347541E2A8BE800241A8A /* BikeShareMessages.appex */,
+				CD164C1A1E2B1A7A0062CBA5 /* BikeShareTopShelf.appex */,
+				CD164C431E2C385D0062CBA5 /* BikeShareMac.app */,
+				CD164C7F1E33C3540062CBA5 /* BikeShareMacWidget.appex */,
+				CDFBD7071E3849A000C751D7 /* BikeShareWatch.app */,
+				CDFBD7131E3849A000C751D7 /* BikeShareWatch Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CDF6E7961E0DBC3000C3C6CA /* BikeShare */ = {
+			isa = PBXGroup;
+			children = (
+				CDEF3CF71E1360EA0002063F /* BikeShare.entitlements */,
+				CDF6E7971E0DBC3000C3C6CA /* AppDelegate.swift */,
+				CDF6E7B21E0DBD9500C3C6CA /* NetworkSearchController.swift */,
+				CDF6E7B31E0DBD9500C3C6CA /* NetworkTableViewController.swift */,
+				CDEC20111E4F69010044D923 /* NetworkSystemInformationTableViewController.swift */,
+				CDEC201B1E512E6A0044D923 /* PricingPlanTableViewCell.swift */,
+				CDEC201C1E512E6A0044D923 /* PricingPlanTableViewCell.xib */,
+				CDF6E7B61E0DBDA800C3C6CA /* StationsSearchController.swift */,
+				CDF6E7B71E0DBDA800C3C6CA /* StationsTableViewContoller.swift */,
+				CDEF3CF31E1301DE0002063F /* StationDetailViewController.swift */,
+				CDF6F5C11E7DFCAA009CBD32 /* StationDiffViewController.swift */,
+				CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */,
+				CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */,
+				CD164C631E2C3DBC0062CBA5 /* BaseMapViewController.swift */,
+				CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */,
+				CDF6E7B01E0DBD8300C3C6CA /* BikeTableViewCell.swift */,
+				CD80AAAA1E6BA81F00C1E9B6 /* MapKeyView.swift */,
+				CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */,
+				CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */,
+				CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */,
+				CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */,
+				CD121DFD1E115F03004F78E2 /* UserManager.swift */,
+				CDF6E7D41E0EDAAE00C3C6CA /* Model */,
+				CDF6E7C61E0ED89200C3C6CA /* Clients */,
+				CDF6E7C71E0ED8A400C3C6CA /* Extensions */,
+				CDF6E79D1E0DBC3000C3C6CA /* Main.storyboard */,
+				CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */,
+				CDF6E7A21E0DBC3000C3C6CA /* LaunchScreen.storyboard */,
+				CDF6E7A51E0DBC3000C3C6CA /* Info.plist */,
+			);
+			path = BikeShare;
+			sourceTree = "<group>";
+		};
+		CDF6E7AB1E0DBC6600C3C6CA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CDFBD7321E3D2E6300C751D7 /* MapKit.framework */,
+				CD164C531E2C38F40062CBA5 /* MapKit.framework */,
+				CD8C1B681E218062000F9A9D /* MapKit.framework */,
+				CDF6E7AC1E0DBC6600C3C6CA /* MapKit.framework */,
+				CDEF3CFF1E1737110002063F /* NotificationCenter.framework */,
+				CDF347551E2A8BE800241A8A /* Messages.framework */,
+				CD164C1B1E2B1A7A0062CBA5 /* TVServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CDF6E7C61E0ED89200C3C6CA /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */,
+				CDF6E7C41E0EBE7700C3C6CA /* StationsClient.swift */,
+				CDF6F5B91E7D7BDA009CBD32 /* WidgetStationClient.swift */,
+				CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */,
+				CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */,
+				CDEC20191E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift */,
+				CDEC20211E52A3BB0044D923 /* GBFSSystemAlertClient.swift */,
+				CDEC20251E54929F0044D923 /* GBFSStationInformationClient.swift */,
+				CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */,
+				CDF6E7C21E0EBBED00C3C6CA /* ClientResponse.swift */,
+			);
+			name = Clients;
+			sourceTree = "<group>";
+		};
+		CDF6E7C71E0ED8A400C3C6CA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CDF6E7BA1E0DBDB300C3C6CA /* UITableViewController+Diff.swift */,
+				CDEF3D191E173B030002063F /* UITableView+Diff.swift */,
+				CDF6E7C01E0EBAC300C3C6CA /* UIAlertController+Helper.swift */,
+				CDF6E7C81E0ED8CD00C3C6CA /* UIColor+Application.swift */,
+				CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */,
+				CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */,
+				CD121DFB1E106AC1004F78E2 /* UILabel+Sizing.swift */,
+				CDEF3CF11E12FA110002063F /* UITraitCollection+Helper.swift */,
+				CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		CDF6E7D41E0EDAAE00C3C6CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */,
+				CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */,
+				CDF6E7CE1E0ED98200C3C6CA /* BikeStation.swift */,
+				CDF6E7CC1E0ED93100C3C6CA /* BikeNetworkLocation.swift */,
+				CDF6E7CA1E0ED8FE00C3C6CA /* BikeNetwork.swift */,
+				CDF6F5BD1E7DB46B009CBD32 /* BikeStationDiff.swift */,
+				CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */,
+				CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */,
+				CDEC20171E50E8930044D923 /* GBFSSystemPricingPlan.swift */,
+				CDEC201F1E529E790044D923 /* GBFSSystemAlert.swift */,
+				CDEC20231E548F830044D923 /* GBFSStationInformation.swift */,
+				CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */,
+				CD8C1B871E218427000F9A9D /* Deeplink.swift */,
+				CDEC20131E50D9AC0044D923 /* SystemInfoTableViewContent.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		CDFBD7081E3849A000C751D7 /* BikeShareWatch */ = {
+			isa = PBXGroup;
+			children = (
+				CDFBD7351E3D2F0100C751D7 /* BikeShareWatch.entitlements */,
+				CDFBD7091E3849A000C751D7 /* Interface.storyboard */,
+				CDFBD70C1E3849A000C751D7 /* Assets.xcassets */,
+				CDFBD70E1E3849A000C751D7 /* Info.plist */,
+			);
+			path = BikeShareWatch;
+			sourceTree = "<group>";
+		};
+		CDFBD7171E3849A000C751D7 /* BikeShareWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CDFBD7341E3D2EF500C751D7 /* BikeShareWatch Extension.entitlements */,
+				CDFBD71A1E3849A000C751D7 /* ExtensionDelegate.swift */,
+				CDFBD7181E3849A000C751D7 /* InterfaceController.swift */,
+				CDFBD7481E3D6ADA00C751D7 /* StationsInterfaceController.swift */,
+				CDFBD74A1E3ED0EB00C751D7 /* MapInterfaceController.swift */,
+				CDFBD73B1E3D30AD00C751D7 /* StationRowObject.swift */,
+				CDFBD71C1E3849A000C751D7 /* ComplicationController.swift */,
+				CDFBD72F1E3D2DB900C751D7 /* WatchSessionManager.swift */,
+				CDFBD71E1E3849A000C751D7 /* Assets.xcassets */,
+				CDFBD7201E3849A000C751D7 /* Info.plist */,
+			);
+			path = "BikeShareWatch Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD164C191E2B1A7A0062CBA5 /* BikeShareTopShelf */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD164C261E2B1A7A0062CBA5 /* Build configuration list for PBXNativeTarget "BikeShareTopShelf" */;
+			buildPhases = (
+				CD164C161E2B1A7A0062CBA5 /* Sources */,
+				CD164C171E2B1A7A0062CBA5 /* Frameworks */,
+				CD164C181E2B1A7A0062CBA5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BikeShareTopShelf;
+			productName = BikeShareTopShelf;
+			productReference = CD164C1A1E2B1A7A0062CBA5 /* BikeShareTopShelf.appex */;
+			productType = "com.apple.product-type.tv-app-extension";
+		};
+		CD164C421E2C385D0062CBA5 /* BikeShareMac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD164C4F1E2C385E0062CBA5 /* Build configuration list for PBXNativeTarget "BikeShareMac" */;
+			buildPhases = (
+				CD164C3F1E2C385D0062CBA5 /* Sources */,
+				CD164C401E2C385D0062CBA5 /* Frameworks */,
+				CD164C411E2C385D0062CBA5 /* Resources */,
+				CD164C931E33C3540062CBA5 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD164C8E1E33C3540062CBA5 /* PBXTargetDependency */,
+			);
+			name = BikeShareMac;
+			productName = BikeShareMac;
+			productReference = CD164C431E2C385D0062CBA5 /* BikeShareMac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CD164C7E1E33C3540062CBA5 /* BikeShareMacWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD164C901E33C3540062CBA5 /* Build configuration list for PBXNativeTarget "BikeShareMacWidget" */;
+			buildPhases = (
+				CD164C7B1E33C3540062CBA5 /* Sources */,
+				CD164C7C1E33C3540062CBA5 /* Frameworks */,
+				CD164C7D1E33C3540062CBA5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BikeShareMacWidget;
+			productName = BikeShareMacWidget;
+			productReference = CD164C7F1E33C3540062CBA5 /* BikeShareMacWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		CD8C1B581E218056000F9A9D /* BikeShareTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD8C1B671E218056000F9A9D /* Build configuration list for PBXNativeTarget "BikeShareTV" */;
+			buildPhases = (
+				CD8C1B551E218056000F9A9D /* Sources */,
+				CD8C1B561E218056000F9A9D /* Frameworks */,
+				CD8C1B571E218056000F9A9D /* Resources */,
+				CD164C271E2B1A7A0062CBA5 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CD164C221E2B1A7A0062CBA5 /* PBXTargetDependency */,
+			);
+			name = BikeShareTV;
+			productName = BikeShareTV;
+			productReference = CD8C1B591E218056000F9A9D /* BikeShareTV.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CDEF3CFD1E1737110002063F /* BikeShareWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDEF3D0B1E1737110002063F /* Build configuration list for PBXNativeTarget "BikeShareWidget" */;
+			buildPhases = (
+				CDEF3CFA1E1737110002063F /* Sources */,
+				CDEF3CFB1E1737110002063F /* Frameworks */,
+				CDEF3CFC1E1737110002063F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BikeShareWidget;
+			productName = BikeShareWidget;
+			productReference = CDEF3CFE1E1737110002063F /* BikeShareWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		CDF347531E2A8BE800241A8A /* BikeShareMessages */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDF347651E2A8BE800241A8A /* Build configuration list for PBXNativeTarget "BikeShareMessages" */;
+			buildPhases = (
+				CDF347501E2A8BE800241A8A /* Sources */,
+				CDF347511E2A8BE800241A8A /* Frameworks */,
+				CDF347521E2A8BE800241A8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BikeShareMessages;
+			productName = BikeShareMessages;
+			productReference = CDF347541E2A8BE800241A8A /* BikeShareMessages.appex */;
+			productType = "com.apple.product-type.app-extension.messages";
+		};
+		CDF6E7931E0DBC3000C3C6CA /* BikeShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDF6E7A81E0DBC3000C3C6CA /* Build configuration list for PBXNativeTarget "BikeShare" */;
+			buildPhases = (
+				CDF6E7901E0DBC3000C3C6CA /* Sources */,
+				CDF6E7911E0DBC3000C3C6CA /* Frameworks */,
+				CDF6E7921E0DBC3000C3C6CA /* Resources */,
+				CDEF3D0E1E1737110002063F /* Embed App Extensions */,
+				CDFBD72B1E3849A000C751D7 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CDEF3D091E1737110002063F /* PBXTargetDependency */,
+				CDF347611E2A8BE800241A8A /* PBXTargetDependency */,
+				CDFBD7221E3849A000C751D7 /* PBXTargetDependency */,
+			);
+			name = BikeShare;
+			productName = BikeShare;
+			productReference = CDF6E7941E0DBC3000C3C6CA /* BikeShare.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CDFBD7061E3849A000C751D7 /* BikeShareWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDFBD72A1E3849A000C751D7 /* Build configuration list for PBXNativeTarget "BikeShareWatch" */;
+			buildPhases = (
+				CDFBD7051E3849A000C751D7 /* Resources */,
+				CDFBD7291E3849A000C751D7 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CDFBD7161E3849A000C751D7 /* PBXTargetDependency */,
+			);
+			name = BikeShareWatch;
+			productName = BikeShareWatch;
+			productReference = CDFBD7071E3849A000C751D7 /* BikeShareWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		CDFBD7121E3849A000C751D7 /* BikeShareWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDFBD7281E3849A000C751D7 /* Build configuration list for PBXNativeTarget "BikeShareWatch Extension" */;
+			buildPhases = (
+				CDFBD70F1E3849A000C751D7 /* Sources */,
+				CDFBD7101E3849A000C751D7 /* Frameworks */,
+				CDFBD7111E3849A000C751D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BikeShareWatch Extension";
+			productName = "BikeShareWatch Extension";
+			productReference = CDFBD7131E3849A000C751D7 /* BikeShareWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CDF6E78C1E0DBC3000C3C6CA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "B Gay";
+				TargetAttributes = {
+					CD164C191E2B1A7A0062CBA5 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 8DDUQH2RUD;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					CD164C421E2C385D0062CBA5 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 8DDUQH2RUD;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.Maps.Mac = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+					CD164C7E1E33C3540062CBA5 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 8DDUQH2RUD;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+							com.apple.Maps.Mac = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+					CD8C1B581E218056000F9A9D = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 8DDUQH2RUD;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+					CDEF3CFD1E1737110002063F = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 8DDUQH2RUD;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					CDF347531E2A8BE800241A8A = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 8DDUQH2RUD;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					CDF6E7931E0DBC3000C3C6CA = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 8DDUQH2RUD;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+					CDFBD7061E3849A000C751D7 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 8DDUQH2RUD;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					CDFBD7121E3849A000C751D7 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 8DDUQH2RUD;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = CDF6E78F1E0DBC3000C3C6CA /* Build configuration list for PBXProject "BikeShare" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CDF6E78B1E0DBC3000C3C6CA;
+			productRefGroup = CDF6E7951E0DBC3000C3C6CA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CDF6E7931E0DBC3000C3C6CA /* BikeShare */,
+				CDEF3CFD1E1737110002063F /* BikeShareWidget */,
+				CDF347531E2A8BE800241A8A /* BikeShareMessages */,
+				CD8C1B581E218056000F9A9D /* BikeShareTV */,
+				CD164C191E2B1A7A0062CBA5 /* BikeShareTopShelf */,
+				CD164C421E2C385D0062CBA5 /* BikeShareMac */,
+				CD164C7E1E33C3540062CBA5 /* BikeShareMacWidget */,
+				CDFBD7061E3849A000C751D7 /* BikeShareWatch */,
+				CDFBD7121E3849A000C751D7 /* BikeShareWatch Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD164C181E2B1A7A0062CBA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD164C3E1E2BEC650062CBA5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD164C411E2C385D0062CBA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD164C4A1E2C385D0062CBA5 /* Assets.xcassets in Resources */,
+				CD164C4D1E2C385D0062CBA5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD164C7D1E33C3540062CBA5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD164C881E33C3540062CBA5 /* TodayViewController.xib in Resources */,
+				CD164C8C1E33C3540062CBA5 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD8C1B571E218056000F9A9D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD8C1B631E218056000F9A9D /* Assets.xcassets in Resources */,
+				CD8C1B611E218056000F9A9D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDEF3CFC1E1737110002063F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDEF3D061E1737110002063F /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDF347521E2A8BE800241A8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDF3475E1E2A8BE800241A8A /* Assets.xcassets in Resources */,
+				CDF3475C1E2A8BE800241A8A /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDF6E7921E0DBC3000C3C6CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDF6E7A41E0DBC3000C3C6CA /* LaunchScreen.storyboard in Resources */,
+				CDF6E7A11E0DBC3000C3C6CA /* Assets.xcassets in Resources */,
+				CDF6E79F1E0DBC3000C3C6CA /* Main.storyboard in Resources */,
+				CDEC201E1E512E6A0044D923 /* PricingPlanTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDFBD7051E3849A000C751D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDFBD70D1E3849A000C751D7 /* Assets.xcassets in Resources */,
+				CDFBD70B1E3849A000C751D7 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDFBD7111E3849A000C751D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDFBD71F1E3849A000C751D7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD164C161E2B1A7A0062CBA5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD164C2F1E2B1BF60062CBA5 /* UserManager.swift in Sources */,
+				CD80AA941E625D7E00C1E9B6 /* GBFSStationInformation.swift in Sources */,
+				CD80AA951E625D9A00C1E9B6 /* GBFSStationStatus.swift in Sources */,
+				CD164C331E2B1EF20062CBA5 /* DispatchQueue+Helper.swift in Sources */,
+				CD164C321E2B1D890062CBA5 /* ClosebyStationsClient.swift in Sources */,
+				CD164C2C1E2B1BE30062CBA5 /* MapBikeNetwork.swift in Sources */,
+				CD164C291E2B1BCC0062CBA5 /* BikeNetworkLocation.swift in Sources */,
+				CD164C3B1E2BE5330062CBA5 /* UIFont+Application.swift in Sources */,
+				CD164C381E2BE3C90062CBA5 /* PinView.swift in Sources */,
+				CD164C2D1E2B1BE70062CBA5 /* MapBikeStation.swift in Sources */,
+				CD164C2B1E2B1BD90062CBA5 /* ExtensionConstants.swift in Sources */,
+				CD164C7A1E33AF780062CBA5 /* StationsClient.swift in Sources */,
+				CD164C341E2B240A0062CBA5 /* UIColor+Application.swift in Sources */,
+				CD164C301E2B1BFF0062CBA5 /* ClientResponse.swift in Sources */,
+				CD164C2A1E2B1BD00062CBA5 /* BikeStation.swift in Sources */,
+				CD164C1F1E2B1A7A0062CBA5 /* ServiceProvider.swift in Sources */,
+				CD164C281E2B1BC80062CBA5 /* BikeNetwork.swift in Sources */,
+				CD164C3A1E2BE3E60062CBA5 /* TopShelfView.swift in Sources */,
+				CD164C2E1E2B1BF30062CBA5 /* Constants.swift in Sources */,
+				CD164C351E2BC2020062CBA5 /* UserDefaults+Application.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD164C3F1E2C385D0062CBA5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD164C751E2F21730062CBA5 /* NetworkViewController.swift in Sources */,
+				CD164C661E2C3DEA0062CBA5 /* BaseMapViewController.swift in Sources */,
+				CD164C6C1E2C46F30062CBA5 /* BikeDetailCalloutAccessoryView.swift in Sources */,
+				CD164C581E2C3A6C0062CBA5 /* MapBikeNetwork.swift in Sources */,
+				CD164C591E2C3A710062CBA5 /* BikeStation.swift in Sources */,
+				CD164C6A1E2C42550062CBA5 /* MapViewController+macOS.swift in Sources */,
+				CD164C6D1E2C47180062CBA5 /* UserDefaults+Application.swift in Sources */,
+				CD80AAB01E7472B900C1E9B6 /* MapKeyView.swift in Sources */,
+				CD80AA681E624CE300C1E9B6 /* GBFSStationInformation.swift in Sources */,
+				CD164C5A1E2C3A760062CBA5 /* BikeNetworkLocation.swift in Sources */,
+				CD164C731E2DC75E0062CBA5 /* WindowController.swift in Sources */,
+				CDF6F5C01E7DB488009CBD32 /* BikeStationDiff.swift in Sources */,
+				CD164C701E2C487F0062CBA5 /* UIFont+Application.swift in Sources */,
+				CD80AA791E624D2900C1E9B6 /* GBFSFeedClient.swift in Sources */,
+				CD164C5E1E2C3A9B0062CBA5 /* StationsClient.swift in Sources */,
+				CD80AA851E624D3D00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */,
+				CD80AA7F1E624D3300C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */,
+				CD164C771E2F24E20062CBA5 /* NetworkTableCell.swift in Sources */,
+				CD164C5D1E2C3A960062CBA5 /* NetworksClient.swift in Sources */,
+				CD164C711E2C4E9F0062CBA5 /* UILabel+Sizing.swift in Sources */,
+				CD80AA891E624D4700C1E9B6 /* GBFSStationInformationClient.swift in Sources */,
+				CD164C461E2C385D0062CBA5 /* AppDelegate.swift in Sources */,
+				CD164C681E2C3F600062CBA5 /* UIColor+Application.swift in Sources */,
+				CD80AA5D1E624CCC00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */,
+				CD164C621E2C3C5D0062CBA5 /* MapViewController.swift in Sources */,
+				CD80AA4F1E624C9B00C1E9B6 /* GBFSFeed.swift in Sources */,
+				CD80AA981E626E9F00C1E9B6 /* NetworkInformationViewController.swift in Sources */,
+				CD80AA9B1E62753300C1E9B6 /* InfoTableCellView.swift in Sources */,
+				CD80AA631E624CD800C1E9B6 /* GBFSSystemAlert.swift in Sources */,
+				CD164C5C1E2C3A8A0062CBA5 /* Deeplink.swift in Sources */,
+				CD164C561E2C3A5B0062CBA5 /* UserManager.swift in Sources */,
+				CD164C791E2F26420062CBA5 /* NSTableView+Animations.swift in Sources */,
+				CD80AA8D1E624D5000C1E9B6 /* GBFSStationStatusClient.swift in Sources */,
+				CD80AAAE1E74727200C1E9B6 /* PinView.swift in Sources */,
+				CD80AA731E624D1F00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
+				CD80AA991E62702200C1E9B6 /* SystemInfoTableViewContent.swift in Sources */,
+				CD164C551E2C3A520062CBA5 /* Constants.swift in Sources */,
+				CD164C5F1E2C3A9F0062CBA5 /* ClientResponse.swift in Sources */,
+				CD164C571E2C3A670062CBA5 /* MapBikeStation.swift in Sources */,
+				CD164C5B1E2C3A7B0062CBA5 /* BikeNetwork.swift in Sources */,
+				CD80AA571E624CC000C1E9B6 /* GBFSSystemInformation.swift in Sources */,
+				CD80AA6D1E624CFF00C1E9B6 /* GBFSStationStatus.swift in Sources */,
+				CD164C6F1E2C47DC0062CBA5 /* BikeDetailAccessoryTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD164C7B1E33C3540062CBA5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD80AA6E1E624D0000C1E9B6 /* GBFSStationStatus.swift in Sources */,
+				CD164C9B1E33C4CB0062CBA5 /* UserManager.swift in Sources */,
+				CD164CA01E33C5830062CBA5 /* DispatchQueue+Helper.swift in Sources */,
+				CD80AA5E1E624CCE00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */,
+				CD164C9E1E33C54C0062CBA5 /* ClientResponse.swift in Sources */,
+				CD80AA691E624CE700C1E9B6 /* GBFSStationInformation.swift in Sources */,
+				CD164CA21E33CA960062CBA5 /* NetworkTableCell.swift in Sources */,
+				CD164C981E33C4B10062CBA5 /* BikeNetworkLocation.swift in Sources */,
+				CD164C851E33C3540062CBA5 /* TodayViewController.swift in Sources */,
+				CD80AA8A1E624D4800C1E9B6 /* GBFSStationInformationClient.swift in Sources */,
+				CD80AA641E624CDB00C1E9B6 /* GBFSSystemAlert.swift in Sources */,
+				CD164C991E33C4B60062CBA5 /* BikeNetwork.swift in Sources */,
+				CD80AA581E624CC100C1E9B6 /* GBFSSystemInformation.swift in Sources */,
+				CD80AA741E624D2000C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
+				CD164C941E33C48F0062CBA5 /* ExtensionConstants.swift in Sources */,
+				CD164C971E33C4AD0062CBA5 /* BikeStation.swift in Sources */,
+				CD164C9F1E33C5750062CBA5 /* UIColor+Application.swift in Sources */,
+				CD164C961E33C4A70062CBA5 /* MapBikeNetwork.swift in Sources */,
+				CD80AA531E624CB800C1E9B6 /* GBFSFeed.swift in Sources */,
+				CD80AA801E624D3400C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */,
+				CD164C9D1E33C5480062CBA5 /* StationsClient.swift in Sources */,
+				CDF6F5BC1E7D7F85009CBD32 /* WidgetStationClient.swift in Sources */,
+				CD164C9C1E33C5440062CBA5 /* NetworksClient.swift in Sources */,
+				CD80AA7A1E624D2A00C1E9B6 /* GBFSFeedClient.swift in Sources */,
+				CD80AA8E1E624D5100C1E9B6 /* GBFSStationStatusClient.swift in Sources */,
+				CD80AA861E624D3E00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */,
+				CD164C951E33C4A30062CBA5 /* MapBikeStation.swift in Sources */,
+				CD164C9A1E33C4C70062CBA5 /* Constants.swift in Sources */,
+				CD164CA11E33C58C0062CBA5 /* UserDefaults+Application.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD8C1B551E218056000F9A9D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD8C1B6E1E2181AB000F9A9D /* MapBikeNetwork.swift in Sources */,
+				CD8C1B731E2181C0000F9A9D /* Constants.swift in Sources */,
+				CD80AA6B1E624CF000C1E9B6 /* GBFSStationStatus.swift in Sources */,
+				CD80AA8C1E624D4E00C1E9B6 /* GBFSStationStatusClient.swift in Sources */,
+				CD80AA911E625A8300C1E9B6 /* SystemInfoTableViewContent.swift in Sources */,
+				CD8C1B751E2181CF000F9A9D /* BikeTableViewCell.swift in Sources */,
+				CD8C1B791E218224000F9A9D /* StationDetailViewController.swift in Sources */,
+				CD8C1B6F1E2181AF000F9A9D /* BikeStation.swift in Sources */,
+				CD8C1B701E2181B3000F9A9D /* BikeNetworkLocation.swift in Sources */,
+				CD8C1B6C1E21819E000F9A9D /* NetworkSearchController.swift in Sources */,
+				CD80AA561E624CBF00C1E9B6 /* GBFSSystemInformation.swift in Sources */,
+				CDA1D2C71E22B9A4008B2AE8 /* UIFont+Application.swift in Sources */,
+				CD80AA5C1E624CCB00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */,
+				CD80AA661E624CE200C1E9B6 /* GBFSStationInformation.swift in Sources */,
+				CD8C1B7C1E2182FA000F9A9D /* NetworksClient.swift in Sources */,
+				CD80AA621E624CD700C1E9B6 /* GBFSSystemAlert.swift in Sources */,
+				CD8C1B741E2181C3000F9A9D /* StationDetailTableViewCell.swift in Sources */,
+				CD8C1B7B1E21822D000F9A9D /* StationsSearchController.swift in Sources */,
+				CD8C1B781E21821E000F9A9D /* BikeDetailCalloutAccessoryView.swift in Sources */,
+				CD8C1B7D1E2182FE000F9A9D /* StationsClient.swift in Sources */,
+				CD80AA881E624D4500C1E9B6 /* GBFSStationInformationClient.swift in Sources */,
+				CD8C1B851E218320000F9A9D /* UITraitCollection+Helper.swift in Sources */,
+				CD8C1B6B1E218199000F9A9D /* NetworkTableViewController.swift in Sources */,
+				CD80AA781E624D2800C1E9B6 /* GBFSFeedClient.swift in Sources */,
+				CD8C1B5C1E218056000F9A9D /* AppDelegate.swift in Sources */,
+				CD8C1B891E218427000F9A9D /* Deeplink.swift in Sources */,
+				CD8C1B7A1E218228000F9A9D /* StationsTableViewContoller.swift in Sources */,
+				CD8C1B831E218317000F9A9D /* DispatchQueue+Helper.swift in Sources */,
+				CD80AA4E1E624C9900C1E9B6 /* GBFSFeed.swift in Sources */,
+				CD8C1B6D1E2181A7000F9A9D /* MapBikeStation.swift in Sources */,
+				CD80AAA91E6BA7B500C1E9B6 /* PinView.swift in Sources */,
+				CD8C1B7F1E218306000F9A9D /* UITableViewController+Diff.swift in Sources */,
+				CD80AA841E624D3C00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */,
+				CD8C1B7E1E218302000F9A9D /* ClientResponse.swift in Sources */,
+				CD8C1B771E218218000F9A9D /* BikeDetailAccessoryTableViewCell.swift in Sources */,
+				CD80AA721E624D1E00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
+				CD8C1B821E218313000F9A9D /* UIColor+Application.swift in Sources */,
+				CD164C671E2C3E390062CBA5 /* BaseMapViewController.swift in Sources */,
+				CD8C1B721E2181BB000F9A9D /* UserManager.swift in Sources */,
+				CD8C1B711E2181B7000F9A9D /* BikeNetwork.swift in Sources */,
+				CD80AAAC1E6BA81F00C1E9B6 /* MapKeyView.swift in Sources */,
+				CDA1348A1E2A8F18005542DE /* BikeTableFooterView.swift in Sources */,
+				CD80AA901E625A3A00C1E9B6 /* NetworkSystemInformationTableViewController.swift in Sources */,
+				CD8C1B841E21831B000F9A9D /* UILabel+Sizing.swift in Sources */,
+				CD8C1B8B1E21BE73000F9A9D /* MenuSplitViewController.swift in Sources */,
+				CD8C1B801E21830B000F9A9D /* UITableView+Diff.swift in Sources */,
+				CDF6F5BF1E7DB487009CBD32 /* BikeStationDiff.swift in Sources */,
+				CD8C1B761E218209000F9A9D /* MapViewController.swift in Sources */,
+				CD80AA921E625AD600C1E9B6 /* PricingPlanTableViewCell.swift in Sources */,
+				CD8C1B811E21830F000F9A9D /* UIAlertController+Helper.swift in Sources */,
+				CD8C1B861E218324000F9A9D /* UserDefaults+Application.swift in Sources */,
+				CD80AA7E1E624D3100C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDEF3CFA1E1737110002063F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDFED5D61E6214D400D5C4BF /* GBFSStationStatus.swift in Sources */,
+				CD80AA541E624CBD00C1E9B6 /* GBFSSystemInformation.swift in Sources */,
+				CDA1349D1E2A906D005542DE /* StationDetailTableViewCell.swift in Sources */,
+				CDEF3D101E17377C0002063F /* StationsClient.swift in Sources */,
+				CDEF3D031E1737110002063F /* TodayViewController.swift in Sources */,
+				CDA1D2C81E22B9A7008B2AE8 /* UIFont+Application.swift in Sources */,
+				CD80AA511E624CAB00C1E9B6 /* GBFSFeed.swift in Sources */,
+				CDFED5D81E6214DB00D5C4BF /* GBFSStationInformationClient.swift in Sources */,
+				CD80AA7C1E624D2F00C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */,
+				CDFED5D41E6214C900D5C4BF /* GBFSStationInformation.swift in Sources */,
+				CDEF3D141E17379A0002063F /* BikeNetwork.swift in Sources */,
+				CDEF3D211E1985C40002063F /* NetworksClient.swift in Sources */,
+				CDEF3D111E1737820002063F /* UserManager.swift in Sources */,
+				CDEF3D0F1E1737720002063F /* Constants.swift in Sources */,
+				CDEF3D1C1E1741AC0002063F /* BikeNetworkLocation.swift in Sources */,
+				CDA1348E1E2A8F46005542DE /* UIAlertController+Helper.swift in Sources */,
+				CD80AA5A1E624CC900C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */,
+				CDEF3D1D1E1741D90002063F /* UIColor+Application.swift in Sources */,
+				CDEF3D121E17378B0002063F /* MapBikeStation.swift in Sources */,
+				CDEF3D131E1737910002063F /* BikeStation.swift in Sources */,
+				CD80AA821E624D3A00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */,
+				CDF6F5BB1E7D7F80009CBD32 /* WidgetStationClient.swift in Sources */,
+				CDA134A91E2A939C005542DE /* ExtensionConstants.swift in Sources */,
+				CDEF3D161E1737AE0002063F /* ClientResponse.swift in Sources */,
+				CDEF3D151E1737A30002063F /* UserDefaults+Application.swift in Sources */,
+				CD80AA701E624D1C00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
+				CDFED5DA1E6214E200D5C4BF /* GBFSStationStatusClient.swift in Sources */,
+				CD80AA761E624D2600C1E9B6 /* GBFSFeedClient.swift in Sources */,
+				CD80AA601E624CD400C1E9B6 /* GBFSSystemAlert.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDF347501E2A8BE800241A8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDA134A61E2A9346005542DE /* BikeStation+Distance.swift in Sources */,
+				CDFED5DB1E6214E300D5C4BF /* GBFSStationStatusClient.swift in Sources */,
+				CDA1349F1E2A908D005542DE /* StationsClient.swift in Sources */,
+				CDA1349C1E2A8FC0005542DE /* StationDetailTableViewCell.swift in Sources */,
+				CDA134831E2A8E5C005542DE /* MapBikeNetwork.swift in Sources */,
+				CDA134AB1E2A9687005542DE /* MessagesNetworkTableViewController.swift in Sources */,
+				CD80AA831E624D3B00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */,
+				CDA134AE1E2AAE50005542DE /* Deeplink.swift in Sources */,
+				CD80AA551E624CBE00C1E9B6 /* GBFSSystemInformation.swift in Sources */,
+				CDFED5D91E6214DB00D5C4BF /* GBFSStationInformationClient.swift in Sources */,
+				CD80AA5B1E624CCA00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */,
+				CDA134941E2A8F69005542DE /* UITraitCollection+Helper.swift in Sources */,
+				CD80AA611E624CD500C1E9B6 /* GBFSSystemAlert.swift in Sources */,
+				CDA134841E2A8E61005542DE /* BikeStation.swift in Sources */,
+				CDA134A81E2A9392005542DE /* ExtensionConstants.swift in Sources */,
+				CDA134891E2A8F0F005542DE /* BikeTableFooterView.swift in Sources */,
+				CDA134871E2A8E71005542DE /* UserManager.swift in Sources */,
+				CD80AA7D1E624D3000C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */,
+				CDA134951E2A8F6F005542DE /* UserDefaults+Application.swift in Sources */,
+				CDA1349B1E2A8FBA005542DE /* BikeTableViewCell.swift in Sources */,
+				CDA134821E2A8E57005542DE /* MapBikeStation.swift in Sources */,
+				CDA134851E2A8E66005542DE /* BikeNetworkLocation.swift in Sources */,
+				CDA1348F1E2A8F47005542DE /* UIAlertController+Helper.swift in Sources */,
+				CDA1349A1E2A8FAA005542DE /* StationDetailViewController.swift in Sources */,
+				CD80AA521E624CAE00C1E9B6 /* GBFSFeed.swift in Sources */,
+				CDA134AD1E2A9C19005542DE /* MessagesStationsTableViewController.swift in Sources */,
+				CDA134921E2A8F54005542DE /* DispatchQueue+Helper.swift in Sources */,
+				CDA134901E2A8F4C005542DE /* UIColor+Application.swift in Sources */,
+				CDF347591E2A8BE800241A8A /* MessagesViewController.swift in Sources */,
+				CDA134861E2A8E6A005542DE /* BikeNetwork.swift in Sources */,
+				CD80AA771E624D2700C1E9B6 /* GBFSFeedClient.swift in Sources */,
+				CDA1348C1E2A8F35005542DE /* UITableView+Diff.swift in Sources */,
+				CD80AA711E624D1D00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
+				CDA1349E1E2A9089005542DE /* ClientResponse.swift in Sources */,
+				CDA134A01E2A9091005542DE /* NetworksClient.swift in Sources */,
+				CDA134931E2A8F59005542DE /* UILabel+Sizing.swift in Sources */,
+				CDFED5D71E6214D500D5C4BF /* GBFSStationStatus.swift in Sources */,
+				CDFED5D51E6214CA00D5C4BF /* GBFSStationInformation.swift in Sources */,
+				CDA1348B1E2A8F31005542DE /* UITableViewController+Diff.swift in Sources */,
+				CDA134881E2A8E75005542DE /* Constants.swift in Sources */,
+				CDA134911E2A8F4F005542DE /* UIFont+Application.swift in Sources */,
+				CDA134A41E2A91F5005542DE /* StationDetailViewController+Messages.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDF6E7901E0DBC3000C3C6CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDEF3CF61E1311360002063F /* StationDetailTableViewCell.swift in Sources */,
+				CDEC20241E548F830044D923 /* GBFSStationInformation.swift in Sources */,
+				CDF6E7BD1E0DBF6200C3C6CA /* MapViewController.swift in Sources */,
+				CDF6E7CF1E0ED98200C3C6CA /* BikeStation.swift in Sources */,
+				CD80AAAB1E6BA81F00C1E9B6 /* MapKeyView.swift in Sources */,
+				CDF6E7C31E0EBBED00C3C6CA /* ClientResponse.swift in Sources */,
+				CDEC20181E50E8930044D923 /* GBFSSystemPricingPlan.swift in Sources */,
+				CDF6E7CD1E0ED93100C3C6CA /* BikeNetworkLocation.swift in Sources */,
+				CD8C1B881E218427000F9A9D /* Deeplink.swift in Sources */,
+				CDEC201A1E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift in Sources */,
+				CDFBD7311E3D2DC900C751D7 /* WatchSessionManager.swift in Sources */,
+				CDF6E7BF1E0EB6FB00C3C6CA /* NetworksClient.swift in Sources */,
+				CDA134A21E2A9124005542DE /* StationDetailViewController+Application.swift in Sources */,
+				CDA1D2C61E22B632008B2AE8 /* UIFont+Application.swift in Sources */,
+				CD121DF41E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift in Sources */,
+				CDEC200A1E4D4E8D0044D923 /* GBFSFeed.swift in Sources */,
+				CD121DFE1E115F03004F78E2 /* UserManager.swift in Sources */,
+				CDEC20141E50D9AC0044D923 /* SystemInfoTableViewContent.swift in Sources */,
+				CD121DF81E1040D7004F78E2 /* DispatchQueue+Helper.swift in Sources */,
+				CD80AAA81E6BA7AC00C1E9B6 /* PinView.swift in Sources */,
+				CDF6F5C21E7DFCAA009CBD32 /* StationDiffViewController.swift in Sources */,
+				CDF6E7C11E0EBAC300C3C6CA /* UIAlertController+Helper.swift in Sources */,
+				CDF6E7D11E0ED9FF00C3C6CA /* MapBikeNetwork.swift in Sources */,
+				CDF6E7D31E0EDA5F00C3C6CA /* MapBikeStation.swift in Sources */,
+				CDF6E7C91E0ED8CD00C3C6CA /* UIColor+Application.swift in Sources */,
+				CDEC20201E529E790044D923 /* GBFSSystemAlert.swift in Sources */,
+				CDF6F5BA1E7D7BDA009CBD32 /* WidgetStationClient.swift in Sources */,
+				CDF6E7B81E0DBDA800C3C6CA /* StationsSearchController.swift in Sources */,
+				CDEC20161E50DD560044D923 /* GBFSFeedClient.swift in Sources */,
+				CDEC200C1E4D50250044D923 /* GBFSSystemInformation.swift in Sources */,
+				CDF6E7C51E0EBE7700C3C6CA /* StationsClient.swift in Sources */,
+				CDF6E7B51E0DBD9500C3C6CA /* NetworkTableViewController.swift in Sources */,
+				CDEF3D1A1E173B030002063F /* UITableView+Diff.swift in Sources */,
+				CDF6F5BE1E7DB46B009CBD32 /* BikeStationDiff.swift in Sources */,
+				CDEF3CF21E12FA110002063F /* UITraitCollection+Helper.swift in Sources */,
+				CDEC20121E4F69010044D923 /* NetworkSystemInformationTableViewController.swift in Sources */,
+				CDF6E7CB1E0ED8FE00C3C6CA /* BikeNetwork.swift in Sources */,
+				CDF6E7B91E0DBDA800C3C6CA /* StationsTableViewContoller.swift in Sources */,
+				CD121DFA1E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift in Sources */,
+				CDF6E7B11E0DBD8300C3C6CA /* BikeTableViewCell.swift in Sources */,
+				CDFED5D31E62132500D5C4BF /* GBFSStationStatusClient.swift in Sources */,
+				CD121DFC1E106AC1004F78E2 /* UILabel+Sizing.swift in Sources */,
+				CDEC200E1E4F61790044D923 /* GBFSSystemInformationClient.swift in Sources */,
+				CDF6E7981E0DBC3000C3C6CA /* AppDelegate.swift in Sources */,
+				CDEC20221E52A3BB0044D923 /* GBFSSystemAlertClient.swift in Sources */,
+				CDA1D2CA1E230243008B2AE8 /* BikeTableFooterView.swift in Sources */,
+				CD164C641E2C3DBC0062CBA5 /* BaseMapViewController.swift in Sources */,
+				CDF6E7B41E0DBD9500C3C6CA /* NetworkSearchController.swift in Sources */,
+				CDFED5D11E620F3000D5C4BF /* GBFSStationStatus.swift in Sources */,
+				CDEC201D1E512E6A0044D923 /* PricingPlanTableViewCell.swift in Sources */,
+				CD8C1B8C1E21BEC9000F9A9D /* MenuSplitViewController.swift in Sources */,
+				CDF6E7BB1E0DBDB300C3C6CA /* UITableViewController+Diff.swift in Sources */,
+				CDEF3CF41E1301DE0002063F /* StationDetailViewController.swift in Sources */,
+				CDEC20261E54929F0044D923 /* GBFSStationInformationClient.swift in Sources */,
+				CDF6E7AF1E0DBD7700C3C6CA /* Constants.swift in Sources */,
+				CDEF3CF91E1361AC0002063F /* UserDefaults+Application.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CDFBD70F1E3849A000C751D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDFBD7431E3D31F000C751D7 /* StationsClient.swift in Sources */,
+				CDFBD7451E3D320700C751D7 /* ClosebyStationsClient.swift in Sources */,
+				CD80AA651E624CDC00C1E9B6 /* GBFSSystemAlert.swift in Sources */,
+				CDFBD71B1E3849A000C751D7 /* ExtensionDelegate.swift in Sources */,
+				CD80AA501E624CA000C1E9B6 /* GBFSFeed.swift in Sources */,
+				CD80AA5F1E624CCF00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */,
+				CDFBD7191E3849A000C751D7 /* InterfaceController.swift in Sources */,
+				CDFBD73C1E3D30AD00C751D7 /* StationRowObject.swift in Sources */,
+				CDFBD7421E3D31EC00C751D7 /* NetworksClient.swift in Sources */,
+				CDFBD7491E3D6ADA00C751D7 /* StationsInterfaceController.swift in Sources */,
+				CDFBD7381E3D2F4B00C751D7 /* ExtensionConstants.swift in Sources */,
+				CD80AA7B1E624D2B00C1E9B6 /* GBFSFeedClient.swift in Sources */,
+				CD80AA591E624CC200C1E9B6 /* GBFSSystemInformation.swift in Sources */,
+				CD80AA751E624D2200C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
+				CDFBD73F1E3D31DE00C751D7 /* BikeStation.swift in Sources */,
+				CDFBD7301E3D2DB900C751D7 /* WatchSessionManager.swift in Sources */,
+				CDFBD7401E3D31E200C751D7 /* BikeNetworkLocation.swift in Sources */,
+				CDFBD7361E3D2F3900C751D7 /* UserManager.swift in Sources */,
+				CDFBD71D1E3849A000C751D7 /* ComplicationController.swift in Sources */,
+				CDFBD7411E3D31E500C751D7 /* BikeNetwork.swift in Sources */,
+				CD80AA6F1E624D0200C1E9B6 /* GBFSStationStatus.swift in Sources */,
+				CDFBD7371E3D2F4400C751D7 /* UserDefaults+Application.swift in Sources */,
+				CDFBD7471E3D45E400C751D7 /* UIColor+Application.swift in Sources */,
+				CD80AA871E624D3F00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */,
+				CD80AA811E624D3500C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */,
+				CDFBD7441E3D31F900C751D7 /* ClientResponse.swift in Sources */,
+				CDFBD73E1E3D31DA00C751D7 /* MapBikeNetwork.swift in Sources */,
+				CDFBD74B1E3ED0EB00C751D7 /* MapInterfaceController.swift in Sources */,
+				CD80AA6A1E624CEA00C1E9B6 /* GBFSStationInformation.swift in Sources */,
+				CD80AA8F1E624D5100C1E9B6 /* GBFSStationStatusClient.swift in Sources */,
+				CDFBD73D1E3D31D600C751D7 /* MapBikeStation.swift in Sources */,
+				CD80AA8B1E624D4800C1E9B6 /* GBFSStationInformationClient.swift in Sources */,
+				CDFBD7461E3D34F100C751D7 /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CD164C221E2B1A7A0062CBA5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD164C191E2B1A7A0062CBA5 /* BikeShareTopShelf */;
+			targetProxy = CD164C211E2B1A7A0062CBA5 /* PBXContainerItemProxy */;
+		};
+		CD164C8E1E33C3540062CBA5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CD164C7E1E33C3540062CBA5 /* BikeShareMacWidget */;
+			targetProxy = CD164C8D1E33C3540062CBA5 /* PBXContainerItemProxy */;
+		};
+		CDEF3D091E1737110002063F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDEF3CFD1E1737110002063F /* BikeShareWidget */;
+			targetProxy = CDEF3D081E1737110002063F /* PBXContainerItemProxy */;
+		};
+		CDF347611E2A8BE800241A8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDF347531E2A8BE800241A8A /* BikeShareMessages */;
+			targetProxy = CDF347601E2A8BE800241A8A /* PBXContainerItemProxy */;
+		};
+		CDFBD7161E3849A000C751D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDFBD7121E3849A000C751D7 /* BikeShareWatch Extension */;
+			targetProxy = CDFBD7151E3849A000C751D7 /* PBXContainerItemProxy */;
+		};
+		CDFBD7221E3849A000C751D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CDFBD7061E3849A000C751D7 /* BikeShareWatch */;
+			targetProxy = CDFBD7211E3849A000C751D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CD164C4B1E2C385D0062CBA5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD164C4C1E2C385D0062CBA5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CD164C861E33C3540062CBA5 /* TodayViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD164C871E33C3540062CBA5 /* Base */,
+			);
+			name = TodayViewController.xib;
+			sourceTree = "<group>";
+		};
+		CD164C8A1E33C3540062CBA5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD164C8B1E33C3540062CBA5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CD8C1B5F1E218056000F9A9D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD8C1B601E218056000F9A9D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CDEF3D041E1737110002063F /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDEF3D051E1737110002063F /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		CDF3475A1E2A8BE800241A8A /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDF3475B1E2A8BE800241A8A /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		CDF6E79D1E0DBC3000C3C6CA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDF6E79E1E0DBC3000C3C6CA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CDF6E7A21E0DBC3000C3C6CA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDF6E7A31E0DBC3000C3C6CA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CDFBD7091E3849A000C751D7 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CDFBD70A1E3849A000C751D7 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD164C241E2B1A7A0062CBA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BikeShareTopShelf/BikeShareTopShelf.entitlements;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShareTopShelf/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareTV.BikeShareTopShelf;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Debug;
+		};
+		CD164C251E2B1A7A0062CBA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BikeShareTopShelf/BikeShareTopShelf.entitlements;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShareTopShelf/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareTV.BikeShareTopShelf;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Release;
+		};
+		CD164C501E2C385E0062CBA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BikeShareMac/BikeShareMac.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShareMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CD164C511E2C385E0062CBA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BikeShareMac/BikeShareMac.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShareMac/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareMac;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		CD164C911E33C3540062CBA5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BikeShareMacWidget/BikeShareMacWidget.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShareMacWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareMac.BikeShareMacWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CD164C921E33C3540062CBA5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BikeShareMacWidget/BikeShareMacWidget.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShareMacWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareMac.BikeShareMacWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		CD8C1B651E218056000F9A9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = BikeShareTV/BikeShareTV.entitlements;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShareTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Debug;
+		};
+		CD8C1B661E218056000F9A9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = BikeShareTV/BikeShareTV.entitlements;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShareTV/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareTV;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Release;
+		};
+		CDEF3D0C1E1737110002063F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BikeShareWidget/BikeShareWidget.entitlements;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShareWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CDEF3D0D1E1737110002063F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = BikeShareWidget/BikeShareWidget.entitlements;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShareWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		CDF347631E2A8BE800241A8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = BikeShareMessages/BikeShareMessages.entitlements;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShareMessages/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareMessages;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CDF347641E2A8BE800241A8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
+				CODE_SIGN_ENTITLEMENTS = BikeShareMessages/BikeShareMessages.entitlements;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShareMessages/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareMessages;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		CDF6E7A61E0DBC3000C3C6CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CDF6E7A71E0DBC3000C3C6CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CDF6E7A91E0DBC3000C3C6CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BikeShare/BikeShare.entitlements;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		CDF6E7AA1E0DBC3000C3C6CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BikeShare/BikeShare.entitlements;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = BikeShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		CDFBD7241E3849A000C751D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BikeShareWatch/BikeShareWatch.entitlements;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				IBSC_MODULE = BikeShareWatch_Extension;
+				INFOPLIST_FILE = BikeShareWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		CDFBD7251E3849A000C751D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BikeShareWatch/BikeShareWatch.entitlements;
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				IBSC_MODULE = BikeShareWatch_Extension;
+				INFOPLIST_FILE = BikeShareWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
+		CDFBD7261E3849A000C751D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "BikeShareWatch Extension/BikeShareWatch Extension.entitlements";
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = "BikeShareWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Debug;
+		};
+		CDFBD7271E3849A000C751D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "BikeShareWatch Extension/BikeShareWatch Extension.entitlements";
+				DEVELOPMENT_TEAM = 8DDUQH2RUD;
+				INFOPLIST_FILE = "BikeShareWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD164C261E2B1A7A0062CBA5 /* Build configuration list for PBXNativeTarget "BikeShareTopShelf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD164C241E2B1A7A0062CBA5 /* Debug */,
+				CD164C251E2B1A7A0062CBA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD164C4F1E2C385E0062CBA5 /* Build configuration list for PBXNativeTarget "BikeShareMac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD164C501E2C385E0062CBA5 /* Debug */,
+				CD164C511E2C385E0062CBA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD164C901E33C3540062CBA5 /* Build configuration list for PBXNativeTarget "BikeShareMacWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD164C911E33C3540062CBA5 /* Debug */,
+				CD164C921E33C3540062CBA5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD8C1B671E218056000F9A9D /* Build configuration list for PBXNativeTarget "BikeShareTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD8C1B651E218056000F9A9D /* Debug */,
+				CD8C1B661E218056000F9A9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDEF3D0B1E1737110002063F /* Build configuration list for PBXNativeTarget "BikeShareWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDEF3D0C1E1737110002063F /* Debug */,
+				CDEF3D0D1E1737110002063F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDF347651E2A8BE800241A8A /* Build configuration list for PBXNativeTarget "BikeShareMessages" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDF347631E2A8BE800241A8A /* Debug */,
+				CDF347641E2A8BE800241A8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDF6E78F1E0DBC3000C3C6CA /* Build configuration list for PBXProject "BikeShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDF6E7A61E0DBC3000C3C6CA /* Debug */,
+				CDF6E7A71E0DBC3000C3C6CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDF6E7A81E0DBC3000C3C6CA /* Build configuration list for PBXNativeTarget "BikeShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDF6E7A91E0DBC3000C3C6CA /* Debug */,
+				CDF6E7AA1E0DBC3000C3C6CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDFBD7281E3849A000C751D7 /* Build configuration list for PBXNativeTarget "BikeShareWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDFBD7261E3849A000C751D7 /* Debug */,
+				CDFBD7271E3849A000C751D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDFBD72A1E3849A000C751D7 /* Build configuration list for PBXNativeTarget "BikeShareWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CDFBD7241E3849A000C751D7 /* Debug */,
+				CDFBD7251E3849A000C751D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CDF6E78C1E0DBC3000C3C6CA /* Project object */;
+}

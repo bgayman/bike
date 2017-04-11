@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TodayViewController" customModule="BikeShareMacWidget" customModuleProvider="target">
+            <connections>
+                <outlet property="emptyStateLabel" destination="nei-GY-Mah" id="dgS-tS-i1S"/>
+                <outlet property="tableView" destination="C20-ge-tjA" id="c4b-TX-xIt"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView simulatedAppContext="notificationCenter" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <subviews>
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qju-YM-KPj">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="4nS-r2-6Ia">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="36" rowSizeStyle="automatic" viewBased="YES" id="C20-ge-tjA">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn width="317" minWidth="40" maxWidth="1000" id="MLt-sI-d0O">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="gIs-co-SYW">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <prototypeCellViews>
+                                            <tableCellView id="2fK-sF-6Dj" customClass="NetworkTableCell" customModule="BikeShareMacWidget" customModuleProvider="target">
+                                                <rect key="frame" x="1" y="1" width="317" height="54"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="SBU-mx-jsA">
+                                                        <rect key="frame" x="-2" y="24" width="321" height="30"/>
+                                                        <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="Multiline Label" id="Ks5-F5-7Hi">
+                                                            <font key="font" size="25" name=".AppleSystemUIFont"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="uwr-6d-g7i">
+                                                        <rect key="frame" x="-2" y="0.0" width="321" height="16"/>
+                                                        <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" title="Multiline Label" id="3u2-9Q-FLL">
+                                                            <font key="font" metaFont="system" size="12"/>
+                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="SBU-mx-jsA" firstAttribute="leading" secondItem="2fK-sF-6Dj" secondAttribute="leading" id="WdS-mh-ro1"/>
+                                                    <constraint firstAttribute="trailing" secondItem="SBU-mx-jsA" secondAttribute="trailing" id="c3s-8S-AFt"/>
+                                                    <constraint firstItem="uwr-6d-g7i" firstAttribute="top" secondItem="SBU-mx-jsA" secondAttribute="bottom" constant="8" symbolic="YES" id="pBG-h2-l5Y"/>
+                                                    <constraint firstItem="SBU-mx-jsA" firstAttribute="top" secondItem="2fK-sF-6Dj" secondAttribute="top" id="pm1-va-w7G"/>
+                                                    <constraint firstItem="uwr-6d-g7i" firstAttribute="leading" secondItem="2fK-sF-6Dj" secondAttribute="leading" id="rFh-Bh-H11"/>
+                                                    <constraint firstAttribute="trailing" secondItem="uwr-6d-g7i" secondAttribute="trailing" id="vFZ-xw-hEr"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="subtitleTextField" destination="uwr-6d-g7i" id="r2h-6n-wtT"/>
+                                                    <outlet property="titleTextField" destination="SBU-mx-jsA" id="Ne9-wF-nZZ"/>
+                                                </connections>
+                                            </tableCellView>
+                                        </prototypeCellViews>
+                                    </tableColumn>
+                                </tableColumns>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="CVI-XY-zLQ"/>
+                                    <outlet property="delegate" destination="-2" id="HAP-Nt-Gow"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="PAt-Sj-ef4">
+                        <rect key="frame" x="1" y="119" width="223" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="oFq-Ns-JBU">
+                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="nei-GY-Mah">
+                    <rect key="frame" x="156" y="32" width="8" height="17"/>
+                    <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" id="JtM-kD-u9H">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nei-GY-Mah" secondAttribute="bottom" constant="20" symbolic="YES" id="2fS-p0-zFo"/>
+                <constraint firstItem="nei-GY-Mah" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="KIr-Sp-bd3"/>
+                <constraint firstItem="Qju-YM-KPj" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="bvt-k1-1dz"/>
+                <constraint firstItem="nei-GY-Mah" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="eyA-ag-0B3"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nei-GY-Mah" secondAttribute="trailing" constant="20" symbolic="YES" id="hfR-WY-7Ma"/>
+                <constraint firstItem="Qju-YM-KPj" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="lmX-u3-A1e"/>
+                <constraint firstAttribute="trailing" secondItem="Qju-YM-KPj" secondAttribute="trailing" id="nmi-o4-uta"/>
+                <constraint firstAttribute="bottom" secondItem="Qju-YM-KPj" secondAttribute="bottom" id="rhf-z6-syY"/>
+                <constraint firstItem="nei-GY-Mah" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="rxn-dl-qM1"/>
+                <constraint firstItem="nei-GY-Mah" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="suF-Dg-MNx"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>

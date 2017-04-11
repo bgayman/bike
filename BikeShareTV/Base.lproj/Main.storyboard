@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ecl-jl-1oD">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Map View Controller-->
+        <scene sceneID="O4r-7k-28S">
+            <objects>
+                <viewController id="MBY-aV-AH1" customClass="MapViewController" customModule="BikeShareTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xN8-K2-J7R"/>
+                        <viewControllerLayoutGuide type="bottom" id="hMw-QE-pG0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J0M-Jk-pVo">
+                        <rect key="frame" x="0.0" y="0.0" width="1285" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iMm-cU-mhw"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lmH-8B-F7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2682" y="-611"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="Dpa-rU-MCg">
+            <objects>
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="2qd-Vh-qwx" customClass="NetworkTableViewController" customModule="BikeShareTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="66" sectionFooterHeight="66" id="Tfs-dE-Bn8">
+                        <rect key="frame" x="0.0" y="0.0" width="634" height="1080"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <connections>
+                            <outlet property="dataSource" destination="2qd-Vh-qwx" id="Bt4-kl-d4z"/>
+                            <outlet property="delegate" destination="2qd-Vh-qwx" id="pCW-p6-qLl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="6IB-ma-d3f"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QgX-Z2-dOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2682" y="-1773"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="m7r-Wy-tdC">
+            <objects>
+                <navigationController id="VdF-aH-AQ2" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WPt-iL-l5E">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="145"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="2qd-Vh-qwx" kind="relationship" relationship="rootViewController" id="khh-ms-rJN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Byn-xf-agu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="550" y="-1773"/>
+        </scene>
+        <!--Menu Split View Controller-->
+        <scene sceneID="n2Q-dp-mD9">
+            <objects>
+                <splitViewController id="Ecl-jl-1oD" customClass="MenuSplitViewController" customModule="BikeShareTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="VdF-aH-AQ2" kind="relationship" relationship="masterViewController" id="7Yh-OG-2mb"/>
+                        <segue destination="3QN-qq-P8X" kind="relationship" relationship="detailViewController" id="75C-Qy-Mla"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PD0-LU-r1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1590" y="-1183"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="84J-yv-7iw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3QN-qq-P8X" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dka-Ze-Oaw">
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="145"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MBY-aV-AH1" kind="relationship" relationship="rootViewController" id="EYZ-xa-zIP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HA7-qF-bFx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="550" y="-611"/>
+        </scene>
+    </scenes>
+</document>
