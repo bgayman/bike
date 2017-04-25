@@ -8,6 +8,9 @@
 
 import UIKit
 import MapKit
+#if !os(tvOS)
+import Hero
+#endif
 
 protocol BikeDetailCalloutAccessoryViewDelegate: class
 {
@@ -156,6 +159,9 @@ extension BikeDetailCalloutAccessoryView: UITableViewDelegate, UITableViewDataSo
             cell.calloutLabel.text = string
             cell.calloutSubtitleLabel.text = station.dateComponentText
             cell.calloutSubtitleLabel.isHidden = false
+            #if !os(tvOS)
+            cell.calloutLabel.heroID = "Station"
+            #endif
         case .mapBikeNetwork(let network):
             let string = self.userManager.currentLocation != nil ? (network.subtitle ?? "") + " - \(network.bikeNetwork.location.distanceDescription)" : (network.subtitle ?? "")
             cell.calloutLabel.text = string
@@ -209,6 +215,7 @@ extension BikeDetailCalloutAccessoryView
         { (snapshot, _) in
             cell.bikeImageView.image = snapshot?.image
             #if !os(tvOS)
+            cell.bikeImageView.heroID = "Map"
             cell.activityIndicator.stopAnimating()
             cell.stackView.removeArrangedSubview(cell.activityIndicator)
             #endif

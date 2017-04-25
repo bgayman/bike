@@ -15,6 +15,7 @@ struct NetworksClient
     struct Constants
     {
         static let NetworksURL = URL(string: "https://api.citybik.es/v2/networks")!
+        static let HistoryNetworksURL = URL(string: "https://bike-share.mybluemix.net/historyNetworks")!
     }
     
     //MARK: - Properties
@@ -22,6 +23,38 @@ struct NetworksClient
     {
         return URLSession(configuration: URLSessionConfiguration.default)
     }()
+    
+    mutating func fetchHistoryNetworks(completion: @escaping (ClientResponse<[String]>) -> ())
+    {
+        let task = self.session?.dataTask(with: Constants.HistoryNetworksURL)
+        { (data, _, error) in
+            guard error == nil else
+            {
+                completion(.error(errorMessage: "Error: \(error!.localizedDescription)"))
+                return
+            }
+            guard let data = data else
+            {
+                completion(.error(errorMessage: "Error: could not get data."))
+                return
+            }
+            guard let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String] else
+            {
+                completion(.error(errorMessage: "Error: data malformed or corrupted"))
+                return
+            }
+            if let historyNetworks = json
+            {
+                completion(.success(response: historyNetworks))
+            }
+            else
+            {
+                completion(.error(errorMessage: "🤷‍♀️"))
+            }
+            
+        }
+        task?.resume()
+    }
     
     //MARK: - Networking
     mutating func fetchNetworks(completion: @escaping (ClientResponse<[BikeNetwork]>) -> ())

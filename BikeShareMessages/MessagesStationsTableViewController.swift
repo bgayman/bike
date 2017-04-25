@@ -213,7 +213,7 @@ class MessagesStationsTableViewController: UITableViewController
         var stations = self.stations
         let index = stations.index(of: station)!
         stations.remove(at: index)
-        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: stations)
+        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
         self.navigationController?.pushViewController(stationDetailViewController, animated: true)
     }
 

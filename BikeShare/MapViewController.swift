@@ -456,7 +456,7 @@ extension MapViewController: UIViewControllerPreviewingDelegate
         {
             let mapBikeStation = annotation as! MapBikeStation
             guard let network = self.network else { return nil }
-            let stationDetailViewController = StationDetailViewController(with: network, station: mapBikeStation.bikeStation, stations: self.stations)
+            let stationDetailViewController = StationDetailViewController(with: network, station: mapBikeStation.bikeStation, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(network.id))
             return stationDetailViewController
         }
         else if annotation is MapBikeNetwork

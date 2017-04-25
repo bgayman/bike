@@ -1,5 +1,8 @@
 import UIKit
 import CoreLocation
+#if !os(tvOS)
+import Hero
+#endif
 
 //MARK: - StationsTableViewController
 class StationsTableViewController: UITableViewController
@@ -431,7 +434,7 @@ extension StationsTableViewController: StationsSearchControllerDelegate
         }
         
         self.searchController.isActive = false
-        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.stations)
+        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
         if self.splitViewController?.traitCollection.isSmallerDevice ?? false
         {
             self.navigationController?.pushViewController(stationDetailViewController, animated: true)
@@ -440,9 +443,11 @@ extension StationsTableViewController: StationsSearchControllerDelegate
         {
             self.mapViewController?.focus(on: [station])
             let navVC = UINavigationController(rootViewController: stationDetailViewController)
+            
             #if !os(tvOS)
             navVC.modalPresentationStyle = .pageSheet
             #endif
+            
             self.present(navVC, animated: true)
         }
     }
@@ -460,7 +465,29 @@ extension StationsTableViewController: MapViewControllerDelegate
     
     func didSelect(mapBikeStation: MapBikeStation)
     {
-        self.didSelect(station: mapBikeStation.bikeStation)
+        #if !os(tvOS)
+            let stationDetailViewController = StationDetailViewController(with: self.network, station: mapBikeStation.bikeStation, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
+            if self.splitViewController?.traitCollection.isSmallerDevice ?? false
+            {
+                self.navigationController?.pushViewController(stationDetailViewController, animated: true)
+            }
+            else
+            {
+                self.mapViewController?.focus(on: [mapBikeStation.bikeStation])
+                let navVC = UINavigationController(rootViewController: stationDetailViewController)
+                #if !os(tvOS)
+                    navVC.modalPresentationStyle = .pageSheet
+                    navVC.isHeroEnabled = true
+                    self.heroModalAnimationType = .fade
+                #endif
+                
+                self.present(navVC, animated: true)
+            }
+            
+        #else
+            self.didSelect(station: mapBikeStation.bikeStation)
+        #endif
+        
     }
 }
 
@@ -501,7 +528,7 @@ extension StationsTableViewController: UIViewControllerPreviewingDelegate
     {
         guard let indexPath = self.tableView.indexPathForRow(at: location) else { return nil }
         let station = self.stations[indexPath.row]
-        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.stations)
+        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
         return stationDetailViewController
     }
     

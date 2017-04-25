@@ -94,6 +94,10 @@ class NetworkTableViewController: UITableViewController
         self.navigationItem.titleView = activityIndicator
         activityIndicator.startAnimating()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        if let navigationController = self.navigationController
+        {
+            let _ = SloppySwiper(navigationController: navigationController)
+        }
         #else
         self.navigationItem.leftBarButtonItem = self.searchBarButton
         #endif

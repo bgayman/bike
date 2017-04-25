@@ -10,12 +10,35 @@ import UIKit
 import MapKit
 import CoreSpotlight
 import MobileCoreServices
+import Charts
+#if !os(tvOS)
+import Hero
+#endif
 
 class StationDetailViewController: UIViewController
 {
+    fileprivate enum StationDetailSection
+    {
+        case graph
+        case station
+        case nearBy
+    }
+    
     let network: BikeNetwork
+    let hasGraph: Bool
     var station: BikeStation
     var stations: [BikeStation]
+    var stationStatuses: [BikeStationStatus]?
+    {
+        didSet
+        {
+            guard self.stationStatuses != nil else { return }
+            let bikeStationStatus = BikeStationStatus(numberOfBikesAvailable: self.station.freeBikes ?? 0, stationID: self.station.id, id: 0, networkID: self.network.id, timestamp: Date(), numberOfDocksDisabled: self.station.gbfsStationInformation?.stationStatus?.numberOfDocksDisabled, numberOfDocksAvailable: self.station.emptySlots, numberOfBikesDisabled: self.station.gbfsStationInformation?.stationStatus?.numberOfBikesDisabled, isRenting: self.station.gbfsStationInformation?.stationStatus?.isRenting, isReturning: self.station.gbfsStationInformation?.stationStatus?.isReturning, isInstalled: self.station.gbfsStationInformation?.stationStatus?.isInstalled)
+            self.stationStatuses?.append(bikeStationStatus)
+            let indexPath = IndexPath(row: 0, section: self.sectionIndex(for: .graph) ?? 0)
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
     
     lazy var annotation: MapBikeStation =
     {
@@ -50,8 +73,8 @@ class StationDetailViewController: UIViewController
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(StationDetailTableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(StationDetailGraphTableViewCell.self, forCellReuseIdentifier: "\(StationDetailGraphTableViewCell.self)")
         tableView.estimatedRowHeight = 65.0
-        tableView.rowHeight = UITableViewAutomaticDimension
         return tableView
     }()
     
@@ -97,7 +120,9 @@ class StationDetailViewController: UIViewController
         self.visualEffectView.leadingAnchor.constraint(equalTo: tableHeaderView.leadingAnchor).isActive = true
         self.visualEffectView.trailingAnchor.constraint(equalTo: tableHeaderView.trailingAnchor).isActive = true
         self.visualEffectView.bottomAnchor.constraint(equalTo: tableHeaderView.bottomAnchor).isActive = true
-        
+        #if !os(tvOS)
+        tableHeaderView.heroID = "Map"
+        #endif
         return tableHeaderView
     }()
     #if !os(tvOS)
@@ -106,11 +131,22 @@ class StationDetailViewController: UIViewController
         let actionBarButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.didPressAction))
         return actionBarButton
     }()
+    
+    
     #endif
     
     var mapHeight: CGFloat
     {
         return self.view.bounds.height * 0.3
+    }
+    
+    fileprivate var sections: [StationDetailSection]
+    {
+        if self.hasGraph
+        {
+            return [.graph, .station, .nearBy]
+        }
+        return [.station, .nearBy]
     }
     
     override var canBecomeFirstResponder: Bool
@@ -127,9 +163,10 @@ class StationDetailViewController: UIViewController
     #endif
     
     //MARK: - LifeCycle
-    init(with network: BikeNetwork, station: BikeStation, stations: [BikeStation])
+    init(with network: BikeNetwork, station: BikeStation, stations: [BikeStation], hasGraph: Bool = false)
     {
         self.network = network
+        self.hasGraph = hasGraph
         self.station = station
         self.stations = stations.filter { $0.id != station.id }
         super.init(nibName: nil, bundle: nil)
@@ -156,6 +193,16 @@ class StationDetailViewController: UIViewController
         self.title = self.station.name
         self.tableView.tableHeaderView = self.tableHeaderView
         NotificationCenter.default.addObserver(self, selector: #selector(self.applicationWillEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        if self.hasGraph
+        {
+            self.fetchHistory()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        self.fetchStations()
     }
     
     func applicationWillEnterForeground()
@@ -219,6 +266,17 @@ class StationDetailViewController: UIViewController
         }
     }
     
+    fileprivate func section(for section: Int) -> StationDetailSection?
+    {
+        guard 0 ..< self.sections.count ~= section else { return nil }
+        return self.sections[section]
+    }
+    
+    fileprivate func sectionIndex(for section: StationDetailSection) -> Int?
+    {
+        return self.sections.index(of: section)
+    }
+    
     //MARK: - Networking
     @objc func fetchStations()
     {
@@ -258,13 +316,41 @@ class StationDetailViewController: UIViewController
                         let oldValue = self.closebyStations
                         self.closebyStations = nil
                         self.stations = stations
-                        self.tableView.animateUpdate(with: oldValue!, newDataSource: self.closebyStations)
+                        self.tableView.animateUpdate(with: oldValue!, newDataSource: self.closebyStations, section: self.sectionIndex(for: .nearBy) ?? 0)
                     }
                 }
             }
         }
     }
-
+    
+    private func fetchHistory()
+    {
+        #if !os(tvOS)
+            self.setNetworkActivityIndicator(shown: true)
+        #endif
+        let stationsClient = StationsClient()
+        stationsClient.fetchStationStatuses(with: self.network.id, stationID: self.station.id)
+        { (response) in
+            DispatchQueue.main.async
+            {
+                #if !os(tvOS)
+                    self.setNetworkActivityIndicator(shown: false)
+                #endif
+                stationsClient.invalidate()
+                switch response
+                {
+                case .error(let errorMessage):
+                    let alert = UIAlertController(errorMessage: errorMessage)
+                    alert.modalPresentationStyle = .overFullScreen
+                    self.present(alert, animated: true)
+                case .success(let statuses):
+                    #if !os(tvOS)
+                        self.stationStatuses = statuses
+                    #endif
+                }
+            }
+        }
+    }
 }
 
 //MARK: - MKMapViewDelegate
@@ -309,7 +395,7 @@ extension StationDetailViewController: MKMapViewDelegate
         }
         annotationView?.pinTintColor = station.bikeStation.pinTintColor
         annotationView?.canShowCallout = true
-        annotationView?.animatesDrop = true
+        annotationView?.animatesDrop = false
         return annotationView
     }
 }
@@ -319,68 +405,91 @@ extension StationDetailViewController: UITableViewDelegate, UITableViewDataSourc
 {
     func numberOfSections(in tableView: UITableView) -> Int
     {
-        return 2
+        return self.sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+        guard let section = self.section(for: section) else { return 0 }
         switch section
         {
-        case 0: return 1
-        case 1: return self.closebyStations.count
-        default:
-            return 0
+        case .graph: return 1
+        case .station: return 1
+        case .nearBy: return self.closebyStations.count
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
+        guard let section = self.section(for: section) else { return nil }
         switch section
         {
-        case 0: return self.station.name
-        case 1: return "Close By Stations"
-        default:
-            return ""
+        case .graph: return "Graph"
+        case .station: return self.station.name
+        case .nearBy: return "Close By Stations"
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationDetailTableViewCell
-        switch indexPath.section
+        guard let section = self.section(for: indexPath.section) else { return UITableViewCell() }
+        var cell: UITableViewCell
+        switch section
         {
-        case 0:
-            cell.bikeStation = self.station
-        case 1:
-            cell.bikeStation = self.closebyStations[indexPath.row]
-        default:
-            break
-        }
-        if self.traitCollection.isSmallerDevice
-        {
+        case .station:
+            let stationCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationDetailTableViewCell
+            stationCell.bikeStation = self.station
             #if !os(tvOS)
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 28, bottom: 0, right: 0)
+                stationCell.heroID = "Station"
             #endif
-        }
-        else
-        {
-            #if !os(tvOS)
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 90, bottom: 0, right: 90)
-            #endif
-            cell.titleLabel.textAlignment = .center
-            cell.subtitleLabel.textAlignment = .center
+            cell = stationCell
+        case .nearBy:
+            let stationCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationDetailTableViewCell
+            stationCell.bikeStation = self.closebyStations[indexPath.row]
+            cell = stationCell
+        case .graph:
+            let graphCell = tableView.dequeueReusableCell(withIdentifier: "\(StationDetailGraphTableViewCell.self)", for: indexPath) as! StationDetailGraphTableViewCell
+            if self.stationStatuses != nil
+            {
+                graphCell.stationStatuses = self.stationStatuses
+                let freePlusEmpty = (self.station.freeBikes ?? 0) + (self.station.emptySlots ?? 0)
+                graphCell.lineChartView.leftAxis.axisMaximum = Double(self.station.gbfsStationInformation?.capacity ?? freePlusEmpty)
+            }
+            else
+            {
+                graphCell.activityIndicator.startAnimating()
+            }
+            cell = graphCell
         }
         #if !os(tvOS)
         cell.contentView.backgroundColor = .white
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
         #else
         cell.contentView.backgroundColor = .clear
         #endif
         return cell
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView)
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath?
+    {
+        return nil
+    }
+    
+    /*func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         self.visualEffectView.alpha = min(scrollView.contentOffset.y / self.mapHeight * 2, 1)
+    }*/
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        guard let section = self.section(for: indexPath.section) else { return 0.0 }
+        switch section
+        {
+        case .nearBy, .station:
+            return UITableViewAutomaticDimension
+        case .graph:
+            return self.mapHeight
+        }
     }
 }
 
@@ -418,6 +527,21 @@ fileprivate extension BikeStation
         let stationLocation = CLLocation(latitude: self.coordinates.latitude, longitude: self.coordinates.longitude)
         let otherStationLocation = CLLocation(latitude: station.coordinates.latitude, longitude: station.coordinates.longitude)
         return stationLocation.distance(from: otherStationLocation)
+    }
+}
+
+class DateValueFormatter: NSObject, IAxisValueFormatter
+{
+    static let dateFormatter: DateFormatter =
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd"
+        return dateFormatter
+    }()
+    
+    func stringForValue(_ value: Double, axis: AxisBase?) -> String
+    {
+        return DateValueFormatter.dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 extension UITableView
 {
-    func animateUpdate<T: Hashable>(with oldDataSource: [T], newDataSource: [T])
+    func animateUpdate<T: Hashable>(with oldDataSource: [T], newDataSource: [T], section: Int)
     {
         let oldArray = oldDataSource
         let oldSet = Set(oldArray)
@@ -21,9 +21,9 @@ extension UITableView
         let inserted = newSet.subtracting(oldSet)
         let updated = newSet.intersection(oldSet)
         
-        let removedIndexes = removed.flatMap{ oldArray.index(of: $0) }.map{ IndexPath(row: $0, section: 1) }
-        let insertedIndexes = inserted.flatMap{ newArray.index(of: $0) }.map{ IndexPath(row: $0, section: 1) }
-        let updatedIndexes = updated.flatMap{ oldArray.index(of: $0) }.map{ IndexPath(row: $0, section: 1) }
+        let removedIndexes = removed.flatMap{ oldArray.index(of: $0) }.map{ IndexPath(row: $0, section: section) }
+        let insertedIndexes = inserted.flatMap{ newArray.index(of: $0) }.map{ IndexPath(row: $0, section: section) }
+        let updatedIndexes = updated.flatMap{ oldArray.index(of: $0) }.map{ IndexPath(row: $0, section: section) }
         
         self.beginUpdates()
         self.reloadRows(at: updatedIndexes, with: .none)
