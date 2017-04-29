@@ -80,9 +80,12 @@ class NetworkSystemInformationTableViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.view.backgroundColor = .app_beige
+        #if !os(tvOS)
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         self.navigationItem.titleView = activityIndicator
         activityIndicator.startAnimating()
+        #endif
         self.navigationItem.rightBarButtonItem = self.doneButton
         self.navigationItem.leftBarButtonItem = self.actionButton
         self.tableView.estimatedRowHeight = 44.0
@@ -229,8 +232,10 @@ class NetworkSystemInformationTableViewController: UITableViewController
     func didPressAction(sender: UIBarButtonItem)
     {
         guard let url = URL(string: Constants.WebSiteDomain + "/systemInfo/" + self.network.id) else { return }
+        #if !os(tvOS)
         let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         self.present(activityViewController, animated: true)
+        #endif
     }
 
     // MARK: - Table View Data Source
@@ -270,6 +275,7 @@ class NetworkSystemInformationTableViewController: UITableViewController
             }
             unwrappedCell = cell!
             content.configure(cell: unwrappedCell)
+            
         }
         return unwrappedCell
     }
@@ -344,6 +350,18 @@ extension NetworkSystemInformationTableViewController: MKMapViewDelegate
         annotationView?.canShowCallout = true
         annotationView?.animatesDrop = true
         return annotationView
+    }
+}
+
+extension NetworkSystemInformationTableViewController: UIGestureRecognizerDelegate
+{
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool
+    {
+        if self.tableView.contentOffset.y <= 0.0
+        {
+            return true
+        }
+        return false
     }
 }
 

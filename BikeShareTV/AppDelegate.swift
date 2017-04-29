@@ -129,8 +129,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                 guard let networkVC = navController.viewControllers.first as? NetworkTableViewController else { return }
                 networkVC.handleDeeplink(deeplink)
             }
+        case .systemInfo:
+            break
         }
     }
-
 }
 

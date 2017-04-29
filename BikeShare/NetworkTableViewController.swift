@@ -18,7 +18,9 @@ class NetworkTableViewController: UITableViewController
     {
         didSet
         {
+            #if !os(tvOS)
             self.mapBarButton.isEnabled = !self.networks.isEmpty
+            #endif
             self.animateUpdate(with: oldValue, newDataSource: self.networks)
         }
     }
@@ -45,13 +47,14 @@ class NetworkTableViewController: UITableViewController
         refresh.addTarget(self, action: #selector(self.fetchNetworks), for: .valueChanged)
         return refresh
     }()
-    #endif
+    
     
     lazy var mapBarButton: UIBarButtonItem =
     {
         let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "World Map"), style: .plain, target: self, action: #selector(self.showMapViewController))
         return barButtonItem
     }()
+    #endif
     
     lazy var searchBarButton: UIBarButtonItem =
     {
@@ -82,6 +85,7 @@ class NetworkTableViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor = UIColor.app_beige
         if let split = self.splitViewController
         {
             let controllers = split.viewControllers
@@ -94,10 +98,8 @@ class NetworkTableViewController: UITableViewController
         self.navigationItem.titleView = activityIndicator
         activityIndicator.startAnimating()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        if let navigationController = self.navigationController
-        {
-            let _ = SloppySwiper(navigationController: navigationController)
-        }
+        self.view.backgroundColor = .app_beige
+        self.mapBarButton.isEnabled = !self.networks.isEmpty
         #else
         self.navigationItem.leftBarButtonItem = self.searchBarButton
         #endif
@@ -108,7 +110,7 @@ class NetworkTableViewController: UITableViewController
             self.registerForPreviewing(with: self, sourceView: self.tableView)
         }
         self.configureTableView()
-        self.mapBarButton.isEnabled = !self.networks.isEmpty
+        
         self.fetchNetworks()
         self.showHomeNetwork()
     }
@@ -118,15 +120,16 @@ class NetworkTableViewController: UITableViewController
         super.viewWillAppear(animated)
         #if !os(tvOS)
         self.networkMapViewController?.navigationItem.prompt = nil
+        if self.splitViewController?.traitCollection.isSmallerDevice ?? false
+        {
+            self.navigationItem.setRightBarButton(self.mapBarButton, animated: true)
+        }
         #endif
         
         self.networkMapViewController?.delegate = self
         self.networkMapViewController?.networks = self.networks
         NotificationCenter.default.addObserver(self, selector: #selector(self.didUpdateCurrentLocation), name: Notification.Name(Constants.DidUpdatedUserLocationNotification), object: nil)
-        if self.splitViewController?.traitCollection.isSmallerDevice ?? false
-        {
-            self.navigationItem.setRightBarButton(self.mapBarButton, animated: true)
-        }
+        
     }
     
     override func viewDidDisappear(_ animated: Bool)
@@ -439,9 +442,11 @@ extension NetworkTableViewController: NetworkSearchControllerDelegate
         guard let navVC = self.navigationController else { return }
         if navVC.topViewController is MapViewController || navVC.topViewController is UINavigationController
         {
-            navVC.popToViewController(self, animated: true)
+            navVC.popToViewController(self, animated: false)
         }
+        
         navVC.pushViewController(stationsTableViewController, animated: true)
+        
     }
 }
 

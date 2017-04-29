@@ -43,7 +43,7 @@ class MapKeyView: UIView
         orangePin.backgroundColor = .clear
         orangePin.isOpaque = false
         orangePin.translatesAutoresizingMaskIntoConstraints = false
-        orangePin.pinTintColor = UIColor.orange
+        orangePin.pinTintColor = UIColor.app_orange
         orangePin.widthAnchor.constraint(equalToConstant: 20).isActive = true
         orangePin.heightAnchor.constraint(equalToConstant: 60).isActive = true
         return orangePin
@@ -55,7 +55,7 @@ class MapKeyView: UIView
         redPin.backgroundColor = .clear
         redPin.isOpaque = false
         redPin.translatesAutoresizingMaskIntoConstraints = false
-        redPin.pinTintColor = UIColor.red
+        redPin.pinTintColor = UIColor.app_red
         redPin.widthAnchor.constraint(equalToConstant: 20).isActive = true
         redPin.heightAnchor.constraint(equalToConstant: 60).isActive = true
         return redPin

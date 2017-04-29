@@ -98,12 +98,10 @@ class BikeTableViewCell: UITableViewCell
         
         self.titleLabel.font = UIFont.app_font(forTextStyle: .title1)
         self.subtitleLabel.font = UIFont.app_font(forTextStyle: .body)
-    }
-    
-    override func layoutSubviews()
-    {
-        super.layoutSubviews()
+        
         #if !os(tvOS)
+            self.contentView.backgroundColor = .app_beige
+            self.backgroundColor = .app_beige
             self.separatorInset = UIEdgeInsets(top: 0, left: 3 * Constants.LayoutMargin, bottom: 0, right: 0)
         #endif
     }

@@ -10,8 +10,8 @@ import UIKit
 import MapKit
 import CoreSpotlight
 import MobileCoreServices
-import Charts
 #if !os(tvOS)
+import Charts
 import Hero
 #endif
 
@@ -69,11 +69,11 @@ class StationDetailViewController: UIViewController
         tableView.backgroundColor = UIColor.clear
         #if !os(tvOS)
         tableView.allowsSelection = false
+        tableView.register(StationDetailGraphTableViewCell.self, forCellReuseIdentifier: "\(StationDetailGraphTableViewCell.self)")
         #endif
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(StationDetailTableViewCell.self, forCellReuseIdentifier: "Cell")
-        tableView.register(StationDetailGraphTableViewCell.self, forCellReuseIdentifier: "\(StationDetailGraphTableViewCell.self)")
         tableView.estimatedRowHeight = 65.0
         return tableView
     }()
@@ -125,6 +125,7 @@ class StationDetailViewController: UIViewController
         #endif
         return tableHeaderView
     }()
+    
     #if !os(tvOS)
     lazy var actionBarButton: UIBarButtonItem =
     {
@@ -181,7 +182,7 @@ class StationDetailViewController: UIViewController
     {
         super.viewDidLoad()
         #if !os(tvOS)
-            self.view.backgroundColor = .white
+            self.view.backgroundColor = .app_beige
             self.setupNavigationBar()
             self.tableView.addSubview(refresh)
             self.addQuickAction()
@@ -448,6 +449,7 @@ extension StationDetailViewController: UITableViewDelegate, UITableViewDataSourc
             stationCell.bikeStation = self.closebyStations[indexPath.row]
             cell = stationCell
         case .graph:
+            #if !os(tvOS)
             let graphCell = tableView.dequeueReusableCell(withIdentifier: "\(StationDetailGraphTableViewCell.self)", for: indexPath) as! StationDetailGraphTableViewCell
             if self.stationStatuses != nil
             {
@@ -460,9 +462,13 @@ extension StationDetailViewController: UITableViewDelegate, UITableViewDataSourc
                 graphCell.activityIndicator.startAnimating()
             }
             cell = graphCell
+            #else
+            cell = UITableViewCell()
+            #endif
         }
         #if !os(tvOS)
-        cell.contentView.backgroundColor = .white
+        cell.contentView.backgroundColor = .app_beige
+        cell.backgroundColor = .app_beige
         cell.separatorInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
         #else
         cell.contentView.backgroundColor = .clear
@@ -530,6 +536,7 @@ fileprivate extension BikeStation
     }
 }
 
+#if !os(tvOS)
 class DateValueFormatter: NSObject, IAxisValueFormatter
 {
     static let dateFormatter: DateFormatter =
@@ -544,4 +551,4 @@ class DateValueFormatter: NSObject, IAxisValueFormatter
         return DateValueFormatter.dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }
 }
-
+#endif

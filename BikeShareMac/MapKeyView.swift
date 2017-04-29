@@ -48,7 +48,7 @@ class MapKeyView: NSView
     {
         let orangePin = PinView(frame: NSRect(x: 0, y: 0, width: 20, height: 60))
         orangePin.translatesAutoresizingMaskIntoConstraints = false
-        orangePin.pinTintColor = NSColor.orange
+        orangePin.pinTintColor = NSColor.app_orange
         orangePin.widthAnchor.constraint(equalToConstant: self.pinWidth).isActive = true
         orangePin.heightAnchor.constraint(equalToConstant: self.pinHeight).isActive = true
         return orangePin
@@ -58,7 +58,7 @@ class MapKeyView: NSView
     {
         let redPin = PinView(frame: NSRect(x: 0, y: 0, width: 20, height: 60))
         redPin.translatesAutoresizingMaskIntoConstraints = false
-        redPin.pinTintColor = NSColor.red
+        redPin.pinTintColor = NSColor.app_red
         redPin.widthAnchor.constraint(equalToConstant: self.pinWidth).isActive = true
         redPin.heightAnchor.constraint(equalToConstant: self.pinHeight).isActive = true
         return redPin

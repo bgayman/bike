@@ -38,7 +38,7 @@ class PricingPlanTableViewCell: UITableViewCell
     
     func configureCell(with plan: GBFSSystemPricingPlan)
     {
-        
+        self.contentView.backgroundColor = .clear
         if plan.description.isEmpty
         {
             self.planNameLabel.text = "Plan:"
@@ -79,6 +79,10 @@ class PricingPlanTableViewCell: UITableViewCell
     
     func configureCell(with alert: GBFSSystemAlert)
     {
+        #if !os(tvOS)
+        self.contentView.backgroundColor = .app_beige
+        self.backgroundColor = .app_beige
+        #endif
         self.planNameLabel.text = "Alert:"
         self.planDetailLabel.text = "\(alert.type.displayText)"
         self.planDetailLabel.textColor = .gray

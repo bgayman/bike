@@ -22,9 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.preferredDisplayMode = .allVisible
         splitViewController.maximumPrimaryColumnWidth = 320
+        self.window?.tintColor = .app_blue
         
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        navigationController.navigationBar.barTintColor = .app_beige
         splitViewController.delegate = self
         
         let store = NSUbiquitousKeyValueStore.default()

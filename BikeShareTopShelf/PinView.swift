@@ -10,7 +10,7 @@ import UIKit
 
 class PinView: UIView
 {
-    var pinTintColor = UIColor.red
+    var pinTintColor = UIColor.app_red
     
     override func draw(_ rect: CGRect)
     {

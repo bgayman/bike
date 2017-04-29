@@ -74,7 +74,7 @@ class StationDiffViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor.app_beige
         self.navigationItem.titleView = self.activityIndicator
         self.activityIndicator.startAnimating()
         self.navigationItem.rightBarButtonItems = [self.refreshButton]

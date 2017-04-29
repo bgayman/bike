@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BikeShareMessages/MessagesViewController.swift"
-            timestampString = "508530863.667632"
+            filePath = "BikeShare/SloppySwiper.swift"
+            timestampString = "515185478.520265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "didReceive(_:conversation:)"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "gestureRecognizerShouldBegin(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

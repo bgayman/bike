@@ -91,6 +91,18 @@
 		CD2BA3D01EABFDC200C26F90 /* HistoryNetworksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */; };
 		CD2BA3D21EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */; };
 		CD2BA3D31EABFE8D00C26F90 /* StationDetailGraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */; };
+		CD6276EB1EB4E712008666AC /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
+		CD6276EC1EB4E784008666AC /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
+		CD6276ED1EB4E794008666AC /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
+		CD6276EE1EB4E79E008666AC /* GBFSStationInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20251E54929F0044D923 /* GBFSStationInformationClient.swift */; };
+		CD6276EF1EB4E7AC008666AC /* GBFSStationStatusClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */; };
+		CD6276F11EB4EDA5008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
+		CD6276F21EB4EDA5008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
+		CD6276F31EB4EDA6008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
+		CD6276F41EB4EDA7008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
+		CD6276F51EB4EDA8008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
+		CD6276F61EB4EDA9008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
+		CD6276F71EB4EDAB008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
 		CD6733221EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = CD6733201EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap */; };
 		CD67332C1EAAEDBB0070E69B /* BikeStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */; };
 		CD67332E1EAAEE220070E69B /* StationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332D1EAAEE220070E69B /* StationsClient.swift */; };
@@ -1309,6 +1321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6276F41EB4EDA7008666AC /* Assets.xcassets in Resources */,
 				CD164C3E1E2BEC650062CBA5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1318,6 +1331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD164C4A1E2C385D0062CBA5 /* Assets.xcassets in Resources */,
+				CD6276F51EB4EDA8008666AC /* Assets.xcassets in Resources */,
 				CD164C4D1E2C385D0062CBA5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1327,6 +1341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD164C881E33C3540062CBA5 /* TodayViewController.xib in Resources */,
+				CD6276F61EB4EDA9008666AC /* Assets.xcassets in Resources */,
 				CD164C8C1E33C3540062CBA5 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1336,6 +1351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD8C1B631E218056000F9A9D /* Assets.xcassets in Resources */,
+				CD6276F31EB4EDA6008666AC /* Assets.xcassets in Resources */,
 				CD8C1B611E218056000F9A9D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1344,6 +1360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6276F11EB4EDA5008666AC /* Assets.xcassets in Resources */,
 				CDEF3D061E1737110002063F /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1353,6 +1370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDF3475E1E2A8BE800241A8A /* Assets.xcassets in Resources */,
+				CD6276F21EB4EDA5008666AC /* Assets.xcassets in Resources */,
 				CDF3475C1E2A8BE800241A8A /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1382,6 +1400,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD6276F71EB4EDAB008666AC /* Assets.xcassets in Resources */,
 				CDFBD71F1E3849A000C751D7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1436,19 +1455,24 @@
 				CD164C2C1E2B1BE30062CBA5 /* MapBikeNetwork.swift in Sources */,
 				CD164C291E2B1BCC0062CBA5 /* BikeNetworkLocation.swift in Sources */,
 				CD164C3B1E2BE5330062CBA5 /* UIFont+Application.swift in Sources */,
+				CD6276EF1EB4E7AC008666AC /* GBFSStationStatusClient.swift in Sources */,
+				CD6276EB1EB4E712008666AC /* GBFSFeed.swift in Sources */,
 				CD164C381E2BE3C90062CBA5 /* PinView.swift in Sources */,
 				CD164C2D1E2B1BE70062CBA5 /* MapBikeStation.swift in Sources */,
 				CD164C2B1E2B1BD90062CBA5 /* ExtensionConstants.swift in Sources */,
 				CD164C341E2B240A0062CBA5 /* UIColor+Application.swift in Sources */,
 				CD6733391EAAEE410070E69B /* BikeStationStatus.swift in Sources */,
+				CD6276EE1EB4E79E008666AC /* GBFSStationInformationClient.swift in Sources */,
 				CD164C301E2B1BFF0062CBA5 /* ClientResponse.swift in Sources */,
 				CD164C2A1E2B1BD00062CBA5 /* BikeStation.swift in Sources */,
 				CD164C1F1E2B1A7A0062CBA5 /* ServiceProvider.swift in Sources */,
 				CD6733321EAAEE220070E69B /* StationsClient.swift in Sources */,
 				CD2BA3CD1EABFDBB00C26F90 /* HistoryNetworksManager.swift in Sources */,
+				CD6276EC1EB4E784008666AC /* NetworksClient.swift in Sources */,
 				CD164C281E2B1BC80062CBA5 /* BikeNetwork.swift in Sources */,
 				CD164C3A1E2BE3E60062CBA5 /* TopShelfView.swift in Sources */,
 				CD164C2E1E2B1BF30062CBA5 /* Constants.swift in Sources */,
+				CD6276ED1EB4E794008666AC /* GBFSFeedClient.swift in Sources */,
 				CD164C351E2BC2020062CBA5 /* UserDefaults+Application.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

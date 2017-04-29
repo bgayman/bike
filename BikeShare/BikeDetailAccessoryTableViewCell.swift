@@ -85,6 +85,7 @@ class BikeDetailAccessoryTableViewCell: UITableViewCell
     {
         super.willMove(toSuperview: newSuperview)
         self.contentView.backgroundColor = UIColor.clear
+        self.backgroundColor = .clear
         self.stackView.spacing = Constants.LayoutMargin
         #if !os(tvOS)
         self.separatorInset = UIEdgeInsetsMake(0, Constants.LayoutMargin, 0, 0)

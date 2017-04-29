@@ -22,6 +22,10 @@ class StationDetailTableViewCell: UITableViewCell
     {
         didSet
         {
+            #if !os(tvOS)
+                self.contentView.backgroundColor = .app_beige
+                self.backgroundColor = .app_beige
+            #endif
             guard let bikeStation = self.bikeStation else
             {
                 self.titleLabel.text = nil

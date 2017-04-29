@@ -46,6 +46,7 @@ class MessagesStationsTableViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.tableView.backgroundColor = UIColor.app_beige
         self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
         self.title = self.network.name
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

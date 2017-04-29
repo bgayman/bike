@@ -10,7 +10,7 @@ import Cocoa
 
 class PinView: NSView
 {
-    var pinTintColor = NSColor.red
+    var pinTintColor = NSColor.app_red
     
     override func draw(_ dirtyRect: NSRect)
     {

@@ -15,6 +15,7 @@ class MessagesViewController: MSMessagesAppViewController {
     {
         super.viewDidLoad()
         let navigationController = UINavigationController(rootViewController: MessagesNetworkTableViewController())
+        navigationController.navigationBar.barTintColor = UIColor.app_beige
         navigationController.view.frame = self.view.bounds
         self.addChildViewController(navigationController)
         self.view.addSubview(navigationController.view)

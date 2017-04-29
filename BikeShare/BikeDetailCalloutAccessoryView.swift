@@ -93,6 +93,7 @@ class BikeDetailCalloutAccessoryView: UIView
         options.size = CGSize(width: self.imageWidthHeight, height: self.imageWidthHeight)
         options.mapType = .satelliteFlyover
         options.showsPointsOfInterest = true
+        options.scale = UIScreen.main.scale
         switch self.annotation
         {
         case .mapBikeStation(let station):

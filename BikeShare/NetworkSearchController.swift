@@ -38,6 +38,8 @@ class NetworkSearchController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = .app_beige
         self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension

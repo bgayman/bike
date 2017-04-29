@@ -24,9 +24,9 @@ class MapInterfaceController: WKInterfaceController
         let color: WKInterfaceMapPinColor
         switch station.pinTintColor
         {
-        case UIColor.red:
+        case UIColor.app_red:
             color = .red
-        case UIColor.orange:
+        case UIColor.app_orange:
             color = .purple
         case UIColor.app_green:
             color = .green

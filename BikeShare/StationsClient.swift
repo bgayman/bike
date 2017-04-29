@@ -95,7 +95,16 @@ class StationsClient
             }
             else
             {
-                completion(.success(response: stations))
+                if bikeNetwork.id.lowercased() == "bikerio"
+                {
+                    let filteredStations = stations.filter { $0.id != "af80c66aabefbffde2f0e7a1ed725ebf" }
+                    completion(.success(response: filteredStations))
+                }
+                else
+                {
+                    completion(.success(response: stations))
+                }
+                
             }
             
         }

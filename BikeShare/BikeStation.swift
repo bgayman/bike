@@ -67,15 +67,15 @@ struct BikeStation
         let totalDocks = freeBikes + emptySlots
         if freeBikes == 0 || emptySlots == 0
         {
-            return NSColor.red
+            return NSColor.app_red
         }
         else if Double(freeBikes) / Double(totalDocks) < 0.10
         {
-            return NSColor.orange
+            return NSColor.app_orange
         }
         else if Double(emptySlots) / Double(totalDocks) < 0.10
         {
-            return NSColor.orange
+            return NSColor.app_orange
         }
         return NSColor.app_green
     }
@@ -84,19 +84,19 @@ struct BikeStation
     {
         guard let freeBikes = self.freeBikes,
               let emptySlots = self.emptySlots
-        else { return .orange }
+        else { return .app_orange }
         let totalDocks = freeBikes + emptySlots
         if freeBikes == 0 || emptySlots == 0
         {
-            return UIColor.red
+            return UIColor.app_red
         }
         else if Double(freeBikes) / Double(totalDocks) < 0.10
         {
-            return UIColor.orange
+            return UIColor.app_orange
         }
         else if Double(emptySlots) / Double(totalDocks) < 0.10
         {
-            return UIColor.orange
+            return UIColor.app_orange
         }
         return UIColor.app_green
     }

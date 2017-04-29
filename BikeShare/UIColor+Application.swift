@@ -12,7 +12,20 @@ import AppKit
 extension NSColor
 {
     static let app_blue = NSColor(red: 0.0, green: 122.0 / 255.0, blue: 1.0, alpha: 1.0)
-    static let app_green = NSColor(red: 91.0/255.0 , green: 221.0/255.0, blue: 103.0/255.0, alpha: 1.0)
+    static let app_green = NSColor(hex: 0x5cce6f)
+    static let app_red = NSColor(hex: 0xf41411)
+    static let app_orange = NSColor.orange
+    static let app_sandyBrown = NSColor(hex: 0xf6b530)
+    static let app_beige = NSColor(hex: 0xf8f5f1)
+    
+    convenience init(hex:Int)
+    {
+        let redComponent = CGFloat((hex >> 16 & 0xFF)) / 255.0
+        let greenComponent = CGFloat((hex >> 8 & 0xFF)) / 255.0
+        let blueComponent = CGFloat((hex & 0xFF)) / 255.0
+        let alpha:CGFloat = 1.0
+        self.init(red: redComponent, green: greenComponent, blue: blueComponent, alpha: alpha)
+    }
 }
 #else
 import UIKit
@@ -20,6 +33,19 @@ import UIKit
 extension UIColor
 {
     static let app_blue = UIColor(red: 0.0, green: 122.0 / 255.0, blue: 1.0, alpha: 1.0)
-    static let app_green = UIColor(red: 91.0/255.0 , green: 221.0/255.0, blue: 103.0/255.0, alpha: 1.0)
+    static let app_green = UIColor(hex: 0x5cce6f)
+    static let app_red = UIColor(hex: 0xf41411)
+    static let app_orange = UIColor.orange
+    static let app_sandyBrown = UIColor(hex: 0xf6b530)
+    static let app_beige = UIColor(hex: 0xf8f5f1)
+    
+    convenience init(hex:Int)
+    {
+        let redComponent = CGFloat((hex >> 16 & 0xFF)) / 255.0
+        let greenComponent = CGFloat((hex >> 8 & 0xFF)) / 255.0
+        let blueComponent = CGFloat((hex & 0xFF)) / 255.0
+        let alpha:CGFloat = 1.0
+        self.init(red: redComponent, green: greenComponent, blue: blueComponent, alpha: alpha)
+    }
 }
 #endif

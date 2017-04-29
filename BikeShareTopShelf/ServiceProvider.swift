@@ -39,8 +39,8 @@ class ServiceProvider: NSObject, TVTopShelfProvider
         
         if let homeNetwork = UserDefaults.bikeShareGroup.homeNetwork
         {
-            var stationsClient = StationsClient()
-            stationsClient.fetchNetworks(with: homeNetwork.href)
+            let stationsClient = StationsClient()
+            stationsClient.fetchStations(with: homeNetwork)
             { [weak self] (response) in
                 DispatchQueue.main.async
                 {

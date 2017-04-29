@@ -72,9 +72,18 @@ class MapViewController: BaseMapViewController
             , height: 70))
         mapKeyView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapKeyView)
-        mapKeyView.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        mapKeyView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        mapKeyView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor, constant: -20).isActive = true
+        
+        #if os(tvOS)
+            mapKeyView.widthAnchor.constraint(equalToConstant: 600).isActive = true
+            mapKeyView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+            mapKeyView.topAnchor.constraint(equalTo: self.topLayoutGuide.topAnchor, constant: 20).isActive = true
+        #else
+            mapKeyView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+            mapKeyView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+            mapKeyView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor, constant: -20).isActive = true
+        #endif
+        
+        
         if self.view.bounds.width < 500.0
         {
             mapKeyView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -250,6 +259,7 @@ class MapViewController: BaseMapViewController
     {
         self.title = ""
         self.state = .networks
+        self.navigationItem.rightBarButtonItems = nil
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.configureForUpdatedNetworks(oldValue: [])
         self.initialDrop = false

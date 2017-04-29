@@ -25,7 +25,6 @@ final class SloppySwiper: NSObject, UINavigationControllerDelegate, UIGestureRec
         self.navigationController.view.addGestureRecognizer(panRecognizer)
         self.panRecognizer = panRecognizer
         self.navigationController.delegate = self
-        self.navigationController.isHeroEnabled = true
         self.navigationController.heroNavigationAnimationType = .auto
     }
     

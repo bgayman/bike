@@ -9,7 +9,9 @@
 import Foundation
 #if !os(macOS)
 import UIKit
+#if !os(tvOS)
 import MessageUI
+#endif
 #else
 import AppKit
 #endif
@@ -94,7 +96,8 @@ enum SystemInfoTableViewContent
     {
         cell.accessoryType = .none
         cell.detailTextLabel?.textColor = .gray
-        
+        cell.contentView.backgroundColor = .app_beige
+        cell.backgroundColor = .app_beige
         switch self
         {
         case .name(let name):

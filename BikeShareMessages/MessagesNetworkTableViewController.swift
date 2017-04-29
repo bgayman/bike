@@ -38,6 +38,7 @@ class MessagesNetworkTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.title = "Networks"
+        self.tableView.backgroundColor = UIColor.app_beige
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         self.navigationItem.titleView = activityIndicator
         activityIndicator.startAnimating()

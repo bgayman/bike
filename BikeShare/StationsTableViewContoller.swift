@@ -15,7 +15,9 @@ class StationsTableViewController: UITableViewController
     {
         didSet
         {
+            #if !os(tvOS)
             self.mapBarButton.isEnabled = !self.stations.isEmpty
+            #endif
             self.animateUpdate(with: oldValue, newDataSource: self.stations)
         }
     }
@@ -47,17 +49,11 @@ class StationsTableViewController: UITableViewController
         refresh.addTarget(self, action: #selector(self.fetchStations), for: .valueChanged)
         return refresh
     }()
-    #endif
+    
     
     lazy var mapBarButton: UIBarButtonItem =
     {
         let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "World Map"), style: .plain, target: self, action: #selector(self.showMapViewController))
-        return barButtonItem
-    }()
-    
-    lazy var networkBarButton: UIBarButtonItem =
-    {
-        let barButtonItem = UIBarButtonItem(title: "Networks", style: .plain, target: self, action: #selector(self.showNetworksViewController))
         return barButtonItem
     }()
     
@@ -66,6 +62,15 @@ class StationsTableViewController: UITableViewController
         let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Point Objects"), style: .plain, target: self, action: #selector(self.showStationsDiffViewController))
         return barButtonItem
     }()
+    #endif
+    
+    lazy var networkBarButton: UIBarButtonItem =
+    {
+        let barButtonItem = UIBarButtonItem(title: "Networks", style: .plain, target: self, action: #selector(self.showNetworksViewController))
+        return barButtonItem
+    }()
+    
+    
     
     //MARK: - Computed Properties
     var userManager: UserManager
@@ -147,6 +152,8 @@ class StationsTableViewController: UITableViewController
             self.navigationItem.titleView = activityIndicator
             activityIndicator.startAnimating()
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            self.view.backgroundColor = .app_beige
+            self.mapBarButton.isEnabled = false
         #else
             self.title = "  Stations"
             self.navigationItem.leftBarButtonItem = self.searchBarButton
@@ -158,14 +165,13 @@ class StationsTableViewController: UITableViewController
         {
             self.registerForPreviewing(with: self, sourceView: self.tableView)
         }
-        self.mapBarButton.isEnabled = false
         self.fetchStations()
     }
     
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
-        
+        #if !os(tvOS)
         if self.splitViewController?.traitCollection.isSmallerDevice ?? false
         {
             self.navigationItem.setRightBarButtonItems([self.mapBarButton, self.diffBarButton], animated: true)
@@ -174,6 +180,15 @@ class StationsTableViewController: UITableViewController
         {
             self.navigationItem.setRightBarButtonItems([self.diffBarButton], animated: true)
         }
+        #endif
+    }
+    
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        #if !os(tvOS)
+        self.navigationController?.isHeroEnabled = false
+        #endif
     }
     
     override func viewDidDisappear(_ animated: Bool)
@@ -289,8 +304,15 @@ class StationsTableViewController: UITableViewController
             let stationsString = Constants.numberFormatter.string(from: NSNumber(value: stations.count)) ?? ""
             let bikesString = Constants.numberFormatter.string(from: NSNumber(value: bikes)) ?? ""
             let docksString = Constants.numberFormatter.string(from: NSNumber(value: docks)) ?? ""
-            
-            let prompt = "\(stationsString) stations - \(bikesString) available bikes - \(docksString) empty slots"
+            let prompt: String?
+            if bikes > 0
+            {
+                prompt = "\(stationsString) stations - \(bikesString) available bikes - \(docksString) empty slots"
+            }
+            else
+            {
+                prompt = nil
+            }
             #endif
             let sortedStations = stations.sorted{ $0.distance < $1.distance }
             self.bikeStationDiffs += BikeStationDiff.performDiff(with: self.stations, newDataSource: sortedStations) ?? [BikeStationDiff]()
@@ -332,9 +354,11 @@ class StationsTableViewController: UITableViewController
     
     func showStationsDiffViewController()
     {
+        #if !os(tvOS)
         let stationDiffViewController = StationDiffViewController(bikeNetwork: self.network, bikeStations: self.stations, bikeStationDiffs: self.bikeStationDiffs)
         stationDiffViewController.delegate = self
         self.navigationController?.pushViewController(stationDiffViewController, animated: true)
+        #endif
     }
     
     func handleDeeplink(_ deeplink: Deeplink)
@@ -443,7 +467,6 @@ extension StationsTableViewController: StationsSearchControllerDelegate
         {
             self.mapViewController?.focus(on: [station])
             let navVC = UINavigationController(rootViewController: stationDetailViewController)
-            
             #if !os(tvOS)
             navVC.modalPresentationStyle = .pageSheet
             #endif
@@ -469,6 +492,7 @@ extension StationsTableViewController: MapViewControllerDelegate
             let stationDetailViewController = StationDetailViewController(with: self.network, station: mapBikeStation.bikeStation, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
             if self.splitViewController?.traitCollection.isSmallerDevice ?? false
             {
+                self.navigationController?.isHeroEnabled = true
                 self.navigationController?.pushViewController(stationDetailViewController, animated: true)
             }
             else
@@ -477,8 +501,6 @@ extension StationsTableViewController: MapViewControllerDelegate
                 let navVC = UINavigationController(rootViewController: stationDetailViewController)
                 #if !os(tvOS)
                     navVC.modalPresentationStyle = .pageSheet
-                    navVC.isHeroEnabled = true
-                    self.heroModalAnimationType = .fade
                 #endif
                 
                 self.present(navVC, animated: true)
@@ -539,6 +561,7 @@ extension StationsTableViewController: UIViewControllerPreviewingDelegate
 }
 
 //MARK: - Station
+#if !os(tvOS)
 extension StationsTableViewController: StationDiffViewControllerDelegate
 {
     func didUpdateBikeStations(stations: [BikeStation])
@@ -556,6 +579,7 @@ extension StationsTableViewController: StationDiffViewControllerDelegate
         self.didSelect(station: station)
     }
 }
+#endif
 
 extension BikeStation
 {

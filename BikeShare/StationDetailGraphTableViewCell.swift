@@ -38,7 +38,7 @@ class StationDetailGraphTableViewCell: UITableViewCell
         lineChartView.trailingAnchor.constraint(equalTo: self.contentView.readableContentGuide.trailingAnchor).isActive = true
         lineChartView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         
-        lineChartView.backgroundColor = .white
+        lineChartView.backgroundColor = .app_beige
         lineChartView.drawGridBackgroundEnabled = false
         lineChartView.legend.enabled = false
         lineChartView.legend.form = .line
@@ -68,6 +68,7 @@ class StationDetailGraphTableViewCell: UITableViewCell
         leftAxis.drawLabelsEnabled = true
         
         lineChartView.rightAxis.enabled = false
+        lineChartView.isUserInteractionEnabled = false
         return lineChartView
     }()
     
