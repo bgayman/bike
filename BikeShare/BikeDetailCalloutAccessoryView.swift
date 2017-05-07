@@ -22,7 +22,7 @@ protocol BikeDetailCalloutAccessoryViewDelegate: class
 enum BikeDetailCalloutAnnotation
 {
     case mapBikeNetwork(network: MapBikeNetwork)
-    case mapBikeStation(station: MapBikeStation)
+    case mapBikeStation(network: MapBikeNetwork, station: MapBikeStation)
 }
 
 class BikeDetailCalloutAccessoryView: UIView
@@ -39,12 +39,12 @@ class BikeDetailCalloutAccessoryView: UIView
         {
         case .mapBikeNetwork(let network):
             label.text = network.subtitle ?? ""
-        case .mapBikeStation(let station):
+        case .mapBikeStation(_, let station):
             label.text = station.subtitle ?? ""
         }
         let size = label.sizeThatFits(CGSize(width: self.imageWidthHeight, height: CGFloat.greatestFiniteMagnitude))
         var height = self.imageWidthHeight + (3 * BikeDetailAccessoryTableViewCell.Constants.LayoutMargin) + size.height
-        if case BikeDetailCalloutAnnotation.mapBikeStation(let station) = annotation
+        if case BikeDetailCalloutAnnotation.mapBikeStation(_, let station) = annotation
         {
             label.font = BikeDetailAccessoryTableViewCell.Constants.SubtitleLabelFont
             label.text = station.dateComponentText
@@ -98,7 +98,7 @@ class BikeDetailCalloutAccessoryView: UIView
         options.scale = UIScreen.main.scale
         switch self.annotation
         {
-        case .mapBikeStation(let station):
+        case .mapBikeStation(_, let station):
             options.camera = MKMapCamera(lookingAtCenter: station.coordinate, fromDistance: 250, pitch: 65, heading: 0)
         case .mapBikeNetwork(let network):
             options.camera = MKMapCamera(lookingAtCenter: network.coordinate, fromDistance: 3500, pitch: 35, heading: 0)
@@ -131,7 +131,7 @@ class BikeDetailCalloutAccessoryView: UIView
         {
         case .mapBikeNetwork(let network):
             labelSize = UILabel.labelSize(with: network.title ?? "")
-        case .mapBikeStation(let station):
+        case .mapBikeStation(_, let station):
             labelSize = UILabel.labelSize(with: station.title)
         }
         self.widthAnchor.constraint(equalToConstant: max(275.0, labelSize.width)).isActive = true
@@ -157,7 +157,7 @@ extension BikeDetailCalloutAccessoryView: UITableViewDelegate, UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeDetailAccessoryTableViewCell
         switch annotation
         {
-        case .mapBikeStation(let station):
+        case .mapBikeStation(let network, let station):
             let string = self.userManager.currentLocation != nil ? (station.subtitle ?? "") + "\n\(station.bikeStation.distanceDescription)" : (station.subtitle ?? "")
             cell.calloutLabel.text = string
             cell.calloutSubtitleLabel.text = station.dateComponentText
@@ -166,6 +166,14 @@ extension BikeDetailCalloutAccessoryView: UITableViewDelegate, UITableViewDataSo
             cell.calloutLabel.heroID = "Station"
             cell.stackView.addArrangedSubview(self.faveButton)
             #endif
+            if UserDefaults.bikeShareGroup.favoriteStations(for: network.bikeNetwork).contains(where: { $0.id == station.bikeStation.id })
+            {
+                self.faveButton.isSelected = true
+            }
+            else
+            {
+                self.faveButton.isSelected = false
+            }
         case .mapBikeNetwork(let network):
             let string = self.userManager.currentLocation != nil ? (network.subtitle ?? "") + " - \(network.bikeNetwork.location.distanceDescription)" : (network.subtitle ?? "")
             cell.calloutLabel.text = string
@@ -194,7 +202,7 @@ extension BikeDetailCalloutAccessoryView: UITableViewDelegate, UITableViewDataSo
         {
         case .mapBikeNetwork(let network):
             self.delegate?.didSelectNetworkCallout(with: network)
-        case .mapBikeStation(let station):
+        case .mapBikeStation(_, let station):
             self.delegate?.didSelectStationCallout(with: station)
         }
     }
@@ -235,23 +243,47 @@ extension BikeDetailCalloutAccessoryView
     //MARK: - Actions
     func didPressHomeNetwork(_ sender: UIButton)
     {
-        if sender.isSelected
+        switch self.annotation
         {
-            sender.isSelected = false
-            UserDefaults.bikeShareGroup.setHomeNetwork(nil)
-            #if os(iOS) || os(watchOS)
-                try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [Constants.HomeNetworkKey: NSNull() as AnyObject])
-            #endif
+        case .mapBikeNetwork:
+            if sender.isSelected
+            {
+                sender.isSelected = false
+                UserDefaults.bikeShareGroup.setHomeNetwork(nil)
+                #if os(iOS) || os(watchOS)
+                    try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [Constants.HomeNetworkKey: NSNull() as AnyObject])
+                #endif
+            }
+            else
+            {
+                guard case BikeDetailCalloutAnnotation.mapBikeNetwork(let network) = self.annotation else { return }
+                sender.isSelected = true
+                UserDefaults.bikeShareGroup.setHomeNetwork(network.bikeNetwork)
+                #if os(iOS) || os(watchOS)
+                    try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [Constants.HomeNetworkKey: network.bikeNetwork.jsonDict as AnyObject])
+                #endif
+            }
+        case .mapBikeStation(let network, let station):
+            if sender.isSelected
+            {
+                sender.isSelected = false
+                var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: network.bikeNetwork)
+                let s = favedStations.filter { $0.id == station.bikeStation.id }.last
+                guard let station = s,
+                      let index = favedStations.index(of: station) else { break }
+                favedStations.remove(at: index)
+                UserDefaults.bikeShareGroup.setFavoriteStations(for: network.bikeNetwork, favorites: favedStations)
+                
+            }
+            else
+            {
+                sender.isSelected = true
+                var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: network.bikeNetwork)
+                favedStations.append(station.bikeStation)
+                UserDefaults.bikeShareGroup.setFavoriteStations(for: network.bikeNetwork, favorites: favedStations)
+            }
         }
-        else
-        {
-            guard case BikeDetailCalloutAnnotation.mapBikeNetwork(let network) = self.annotation else { return }
-            sender.isSelected = true
-            UserDefaults.bikeShareGroup.setHomeNetwork(network.bikeNetwork)
-            #if os(iOS) || os(watchOS)
-                try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [Constants.HomeNetworkKey: network.bikeNetwork.jsonDict as AnyObject])
-            #endif
-        }
+        
     }
 }
 

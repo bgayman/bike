@@ -231,6 +231,7 @@ class StationsTableViewController: UITableViewController
     #if !os(tvOS)
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
+        let s = self.stations[indexPath.row]
         let share = UITableViewRowAction(style: .default, title: "Share")
         { [unowned self] (_, indexPath) in
             let cell = tableView.cellForRow(at: indexPath)
@@ -247,7 +248,24 @@ class StationsTableViewController: UITableViewController
             self.present(activityViewController, animated: true)
         }
         share.backgroundColor = UIColor.app_green
-        return [share]
+        let favorite = UITableViewRowAction(style: .default, title: "☆")
+        { [unowned self] _, indexPath in
+            let station = self.stations[indexPath.row]
+            var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.network)
+            favedStations.append(station)
+            UserDefaults.bikeShareGroup.setFavoriteStations(for: self.network, favorites: favedStations)
+        }
+        let unfavorite = UITableViewRowAction(style: .default, title: "★")
+        { [unowned self] _, indexPath in
+            let station = self.stations[indexPath.row]
+            var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.network)
+            let favedS = favedStations.filter { $0.id == station.id }.last
+            guard let favedStation = favedS,
+                  let index = favedStations.index(of: favedStation) else { return }
+            favedStations.remove(at: index)
+            UserDefaults.bikeShareGroup.setFavoriteStations(for: self.network, favorites: favedStations)
+        }
+        return UserDefaults.bikeShareGroup.favoriteStations(for: self.network).contains(where: { $0.id == s.id }) ? [share, unfavorite] : [share, favorite]
     }
     #endif
     

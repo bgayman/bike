@@ -57,6 +57,19 @@ extension UserDefaults
     var networks: [BikeNetwork]?
     {
         guard let networks = self.object(forKey: Constants.NetworksKey) as? [JSONDictionary] else { return nil }
-        return networks.flatMap { BikeNetwork(json: $0) }
+        return networks.flatMap(BikeNetwork.init)
+    }
+    
+    func favoriteStations(for bikeNetwork: BikeNetwork) -> [BikeStation]
+    {
+        guard let stations = self.object(forKey: bikeNetwork.id) as? [JSONDictionary] else { return [BikeStation]() }
+        return stations.flatMap(BikeStation.init)
+    }
+    
+    func setFavoriteStations(for bikeNetwork: BikeNetwork, favorites: [BikeStation])
+    {
+        let jsonDictionaries = favorites.map { $0.jsonDict }
+        self.set(jsonDictionaries, forKey: bikeNetwork.id)
+        NSUbiquitousKeyValueStore.default().set(jsonDictionaries, forKey: bikeNetwork.id)
     }
 }

@@ -28,8 +28,29 @@ extension StationDetailViewController
                 else { return }
             viewController.openMapBikeStationInMaps(MapBikeStation(bikeStation: viewController.station))
         }
+        let favorite = UIPreviewAction(title: "☆", style: .default)
+        { [unowned self] _, viewController in
+            guard let viewController = viewController as? StationDetailViewController
+                else { return }
+            let station = viewController.station
+            var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.network)
+            favedStations.append(station)
+            UserDefaults.bikeShareGroup.setFavoriteStations(for: self.network, favorites: favedStations)
+        }
+        let unfavorite = UIPreviewAction(title: "★", style: .default)
+        { [unowned self] _, viewController in
+            guard let viewController = viewController as? StationDetailViewController
+                else { return }
+            let station = viewController.station
+            var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.network)
+            let favedS = favedStations.filter { $0.id == station.id }.last
+            guard let favedStation = favedS,
+                let index = favedStations.index(of: favedStation) else { return }
+            favedStations.remove(at: index)
+            UserDefaults.bikeShareGroup.setFavoriteStations(for: self.network, favorites: favedStations)
+        }
         
-        return  [shareActionItem, mapsActionItem]
+        return UserDefaults.bikeShareGroup.favoriteStations(for: self.network).contains(where: { $0.id == self.station.id }) ? [shareActionItem, mapsActionItem, unfavorite] : [shareActionItem, mapsActionItem, favorite]
     }
     
     //MARK: - QuickAction

@@ -95,7 +95,7 @@ class MapSettingsViewController: UIViewController
         return tableView
     }()
     
-    let pins: [(UIColor, String)] = [(UIColor.app_green, "Good mix of bikes and empty slots"), (UIColor.app_orange, "Approaching full or empty"), (UIColor.app_red, "Station is full or empty")]
+    let pins: [(UIColor, String)] = [(UIColor.app_green, "Good mix of bikes and empty slots"), (UIColor.app_orange, "Approaching full or empty / Status cannot be determined"), (UIColor.app_red, "Station is full or empty"), (UIColor.app_blue, "Bike network")]
     
     override func viewDidLoad()
     {
@@ -126,9 +126,9 @@ extension MapSettingsViewController: UITableViewDelegate, UITableViewDataSource
         switch section
         {
         case .pins:
-            return 3
+            return self.pins.count
         case .status:
-            return 4
+            return StationStatus.all.count
         case .rentalMethods:
             return RentalMethod.all.count
         }
@@ -146,7 +146,7 @@ extension MapSettingsViewController: UITableViewDelegate, UITableViewDataSource
             cell.pinView.backgroundColor = .app_beige
             cell.pinView.isOpaque = false
             cell.meaningLabel.text = pin.1
-            cell.meaningLabel.textColor = .lightGray
+            cell.meaningLabel.textColor = .gray
             cell.contentView.backgroundColor = .app_beige
             cell.backgroundColor = .app_beige
             return cell

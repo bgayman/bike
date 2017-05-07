@@ -464,11 +464,13 @@ extension MapViewController: MKMapViewDelegate
             annotationView?.detailCalloutAccessoryView = bikeNetworkDetailView
             
         case .stations:
-            guard annotation is MapBikeStation else { return nil }
+            guard annotation is MapBikeStation,
+                  let network = self.network
+            else { return nil }
             annotationView?.annotation = annotation
             let station = annotation as! MapBikeStation
             annotationView?.pinTintColor = station.bikeStation.pinTintColor
-            let bikeStationDetailView = BikeDetailCalloutAccessoryView(annotation: .mapBikeStation(station: station))
+            let bikeStationDetailView = BikeDetailCalloutAccessoryView(annotation: .mapBikeStation(network: MapBikeNetwork(bikeNetwork: network),station: station))
             bikeStationDetailView.delegate = self
             annotationView?.detailCalloutAccessoryView = bikeStationDetailView
         }
