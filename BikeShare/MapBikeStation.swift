@@ -29,7 +29,17 @@ class MapBikeStation: NSObject, MKAnnotation
     
     var subtitle: String?
     {
-        return "\(self.bikeStation.statusDisplayText)"
+        let rentalMethods = self.bikeStation.gbfsStationInformation?.rentalMethods?.map { $0.displayString }
+        let strings: [String]
+        if let rentalMethods = rentalMethods
+        {
+            strings = [self.bikeStation.statusDisplayText, "Accepts: \(rentalMethods.joined(separator: ", "))"]
+        }
+        else
+        {
+            strings = [self.bikeStation.statusDisplayText]
+        }
+        return strings.joined(separator: "\n")
     }
     
     var dateComponentText: String

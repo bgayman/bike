@@ -151,7 +151,7 @@ extension BikeDetailCalloutAccessoryView: NSTableViewDelegate, NSTableViewDataSo
         switch annotation
         {
         case .mapBikeStation(let station):
-            let string = self.userManager.currentLocation != nil ? (station.subtitle ?? "") + " - \(station.bikeStation.distanceDescription)" : (station.subtitle ?? "")
+            let string = self.userManager.currentLocation != nil ? (station.subtitle ?? "") + "\n\(station.bikeStation.distanceDescription)" : (station.subtitle ?? "")
             cell.calloutLabel.stringValue = string
             cell.calloutSubtitleLabel.stringValue = station.dateComponentText
             cell.calloutSubtitleLabel.isHidden = false

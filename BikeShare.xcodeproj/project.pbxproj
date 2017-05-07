@@ -81,6 +81,9 @@
 		CD164CA11E33C58C0062CBA5 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
 		CD164CA21E33CA960062CBA5 /* NetworkTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C761E2F24E20062CBA5 /* NetworkTableCell.swift */; };
 		CD164CA31E33CF870062CBA5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD164C531E2C38F40062CBA5 /* MapKit.framework */; };
+		CD1ED2E51EB6CB6600806D97 /* MapSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */; };
+		CD1ED2E81EB6D3BC00806D97 /* MapPinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E61EB6D3BC00806D97 /* MapPinTableViewCell.swift */; };
+		CD1ED2E91EB6D3BC00806D97 /* MapPinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1ED2E71EB6D3BC00806D97 /* MapPinTableViewCell.xib */; };
 		CD2BA3C91EABFD5500C26F90 /* HistoryNetworksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */; };
 		CD2BA3CA1EABFDB600C26F90 /* HistoryNetworksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */; };
 		CD2BA3CB1EABFDB700C26F90 /* HistoryNetworksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */; };
@@ -91,6 +94,7 @@
 		CD2BA3D01EABFDC200C26F90 /* HistoryNetworksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */; };
 		CD2BA3D21EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */; };
 		CD2BA3D31EABFE8D00C26F90 /* StationDetailGraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */; };
+		CD3932361EBF63C7009427E6 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3932351EBF63C7009427E6 /* LocationControl.swift */; };
 		CD6276EB1EB4E712008666AC /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
 		CD6276EC1EB4E784008666AC /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
 		CD6276ED1EB4E794008666AC /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
@@ -120,12 +124,10 @@
 		CD67333A1EAAEE420070E69B /* BikeStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */; };
 		CD67333B1EAAEE430070E69B /* BikeStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */; };
 		CD67333C1EAAEE440070E69B /* BikeStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */; };
-		CD67333D1EAAF1AF0070E69B /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6733211EAAECC10070E69B /* Charts.framework */; };
 		CD6A6BA21EAD584F0042ABE5 /* SloppySwipePanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */; };
 		CD6A6BA41EAD59A10042ABE5 /* SloppySwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */; };
 		CD6A6BA51EAD59A60042ABE5 /* SloppySwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */; };
 		CD6A6BA61EAD5A000042ABE5 /* SloppySwipePanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */; };
-		CD6A6BA71EAD762D0042ABE5 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6733241EAAECCE0070E69B /* Hero.framework */; };
 		CD6A6BA91EAD76EF0042ABE5 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6733211EAAECC10070E69B /* Charts.framework */; };
 		CD6A6BAA1EAD76FC0042ABE5 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6733241EAAECCE0070E69B /* Hero.framework */; };
 		CD80AA4E1E624C9900C1E9B6 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
@@ -525,8 +527,12 @@
 		CD164C871E33C3540062CBA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
 		CD164C891E33C3540062CBA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD164C8B1E33C3540062CBA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSettingsViewController.swift; sourceTree = "<group>"; };
+		CD1ED2E61EB6D3BC00806D97 /* MapPinTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPinTableViewCell.swift; sourceTree = "<group>"; };
+		CD1ED2E71EB6D3BC00806D97 /* MapPinTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapPinTableViewCell.xib; sourceTree = "<group>"; };
 		CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNetworksManager.swift; sourceTree = "<group>"; };
 		CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDetailGraphTableViewCell.swift; sourceTree = "<group>"; };
+		CD3932351EBF63C7009427E6 /* LocationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationControl.swift; sourceTree = "<group>"; };
 		CD6733201EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap"; sourceTree = "<group>"; };
 		CD6733211EAAECC10070E69B /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
 		CD6733241EAAECCE0070E69B /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hero.framework; sourceTree = "<group>"; };
@@ -683,8 +689,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD6A6BA71EAD762D0042ABE5 /* Hero.framework in Frameworks */,
-				CD67333D1EAAF1AF0070E69B /* Charts.framework in Frameworks */,
 				CDF347661E2A8C2F00241A8A /* MapKit.framework in Frameworks */,
 				CDF347561E2A8BE800241A8A /* Messages.framework in Frameworks */,
 			);
@@ -768,6 +772,69 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CD1ED2DF1EB6953E00806D97 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				CD121DFD1E115F03004F78E2 /* UserManager.swift */,
+				CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		CD1ED2E01EB6954C00806D97 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */,
+				CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */,
+				CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */,
+			);
+			name = Misc;
+			sourceTree = "<group>";
+		};
+		CD1ED2E11EB6956500806D97 /* TableView Views */ = {
+			isa = PBXGroup;
+			children = (
+				CDEC201B1E512E6A0044D923 /* PricingPlanTableViewCell.swift */,
+				CDEC201C1E512E6A0044D923 /* PricingPlanTableViewCell.xib */,
+				CD1ED2E61EB6D3BC00806D97 /* MapPinTableViewCell.swift */,
+				CD1ED2E71EB6D3BC00806D97 /* MapPinTableViewCell.xib */,
+				CDF6E7B01E0DBD8300C3C6CA /* BikeTableViewCell.swift */,
+				CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */,
+				CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */,
+				CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */,
+				CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */,
+			);
+			name = "TableView Views";
+			sourceTree = "<group>";
+		};
+		CD1ED2E21EB6957F00806D97 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */,
+				CD80AAAA1E6BA81F00C1E9B6 /* MapKeyView.swift */,
+				CD3932351EBF63C7009427E6 /* LocationControl.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		CD1ED2E31EB6958800806D97 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CDF6E7B21E0DBD9500C3C6CA /* NetworkSearchController.swift */,
+				CDF6E7B31E0DBD9500C3C6CA /* NetworkTableViewController.swift */,
+				CDEC20111E4F69010044D923 /* NetworkSystemInformationTableViewController.swift */,
+				CDF6E7B61E0DBDA800C3C6CA /* StationsSearchController.swift */,
+				CDF6E7B71E0DBDA800C3C6CA /* StationsTableViewContoller.swift */,
+				CDEF3CF31E1301DE0002063F /* StationDetailViewController.swift */,
+				CDF6F5C11E7DFCAA009CBD32 /* StationDiffViewController.swift */,
+				CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */,
+				CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */,
+				CD164C631E2C3DBC0062CBA5 /* BaseMapViewController.swift */,
+				CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		CD8C1B5A1E218056000F9A9D /* BikeShareTV */ = {
 			isa = PBXGroup;
 			children = (
@@ -847,30 +914,11 @@
 			children = (
 				CDEF3CF71E1360EA0002063F /* BikeShare.entitlements */,
 				CDF6E7971E0DBC3000C3C6CA /* AppDelegate.swift */,
-				CDF6E7B21E0DBD9500C3C6CA /* NetworkSearchController.swift */,
-				CDF6E7B31E0DBD9500C3C6CA /* NetworkTableViewController.swift */,
-				CDEC20111E4F69010044D923 /* NetworkSystemInformationTableViewController.swift */,
-				CDEC201B1E512E6A0044D923 /* PricingPlanTableViewCell.swift */,
-				CDEC201C1E512E6A0044D923 /* PricingPlanTableViewCell.xib */,
-				CDF6E7B61E0DBDA800C3C6CA /* StationsSearchController.swift */,
-				CDF6E7B71E0DBDA800C3C6CA /* StationsTableViewContoller.swift */,
-				CDEF3CF31E1301DE0002063F /* StationDetailViewController.swift */,
-				CDF6F5C11E7DFCAA009CBD32 /* StationDiffViewController.swift */,
-				CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */,
-				CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */,
-				CD164C631E2C3DBC0062CBA5 /* BaseMapViewController.swift */,
-				CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */,
-				CDF6E7B01E0DBD8300C3C6CA /* BikeTableViewCell.swift */,
-				CD80AAAA1E6BA81F00C1E9B6 /* MapKeyView.swift */,
-				CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */,
-				CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */,
-				CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */,
-				CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */,
-				CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */,
-				CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */,
-				CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */,
-				CD121DFD1E115F03004F78E2 /* UserManager.swift */,
-				CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */,
+				CD1ED2E31EB6958800806D97 /* Controllers */,
+				CD1ED2E21EB6957F00806D97 /* Views */,
+				CD1ED2E11EB6956500806D97 /* TableView Views */,
+				CD1ED2E01EB6954C00806D97 /* Misc */,
+				CD1ED2DF1EB6953E00806D97 /* Managers */,
 				CDF6E7D41E0EDAAE00C3C6CA /* Model */,
 				CDF6E7C61E0ED89200C3C6CA /* Clients */,
 				CDF6E7C71E0ED8A400C3C6CA /* Extensions */,
@@ -1383,6 +1431,7 @@
 				CDF6E7A11E0DBC3000C3C6CA /* Assets.xcassets in Resources */,
 				CDF6E79F1E0DBC3000C3C6CA /* Main.storyboard in Resources */,
 				CD6733221EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap in Resources */,
+				CD1ED2E91EB6D3BC00806D97 /* MapPinTableViewCell.xib in Resources */,
 				CDEC201E1E512E6A0044D923 /* PricingPlanTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1430,8 +1479,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/BikeShare/Hero.framework",
-				"$(SRCROOT)/BikeShare/Charts.framework",
 			);
 			name = "Embed Carthage Frameworks";
 			outputPaths = (
@@ -1734,6 +1781,7 @@
 				CDEC20181E50E8930044D923 /* GBFSSystemPricingPlan.swift in Sources */,
 				CDF6E7CD1E0ED93100C3C6CA /* BikeNetworkLocation.swift in Sources */,
 				CD8C1B881E218427000F9A9D /* Deeplink.swift in Sources */,
+				CD3932361EBF63C7009427E6 /* LocationControl.swift in Sources */,
 				CD67332C1EAAEDBB0070E69B /* BikeStationStatus.swift in Sources */,
 				CD2BA3C91EABFD5500C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CDEC201A1E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift in Sources */,
@@ -1749,6 +1797,7 @@
 				CD80AAA81E6BA7AC00C1E9B6 /* PinView.swift in Sources */,
 				CDF6F5C21E7DFCAA009CBD32 /* StationDiffViewController.swift in Sources */,
 				CDF6E7C11E0EBAC300C3C6CA /* UIAlertController+Helper.swift in Sources */,
+				CD1ED2E81EB6D3BC00806D97 /* MapPinTableViewCell.swift in Sources */,
 				CDF6E7D11E0ED9FF00C3C6CA /* MapBikeNetwork.swift in Sources */,
 				CDF6E7D31E0EDA5F00C3C6CA /* MapBikeStation.swift in Sources */,
 				CDF6E7C91E0ED8CD00C3C6CA /* UIColor+Application.swift in Sources */,
@@ -1768,6 +1817,7 @@
 				CDF6E7CB1E0ED8FE00C3C6CA /* BikeNetwork.swift in Sources */,
 				CDF6E7B91E0DBDA800C3C6CA /* StationsTableViewContoller.swift in Sources */,
 				CD121DFA1E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift in Sources */,
+				CD1ED2E51EB6CB6600806D97 /* MapSettingsViewController.swift in Sources */,
 				CDF6E7B11E0DBD8300C3C6CA /* BikeTableViewCell.swift in Sources */,
 				CDFED5D31E62132500D5C4BF /* GBFSStationStatusClient.swift in Sources */,
 				CD121DFC1E106AC1004F78E2 /* UILabel+Sizing.swift in Sources */,

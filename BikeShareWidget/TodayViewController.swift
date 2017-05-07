@@ -218,7 +218,8 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource
         
         cell.bikeStation = self.closebyStations[indexPath.row]
         cell.contentView.backgroundColor = .clear
-        cell.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 0)
+        cell.backgroundColor = .clear
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 8.0, bottom: 0, right: 0)
         return cell
     }
     

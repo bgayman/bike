@@ -96,13 +96,15 @@ class BikeTableViewCell: UITableViewCell
         stackView.alignment = .leading
         stackView.spacing = Constants.LayoutMargin
         
-        self.titleLabel.font = UIFont.app_font(forTextStyle: .title1)
-        self.subtitleLabel.font = UIFont.app_font(forTextStyle: .body)
-        
         #if !os(tvOS)
             self.contentView.backgroundColor = .app_beige
             self.backgroundColor = .app_beige
-            self.separatorInset = UIEdgeInsets(top: 0, left: 3 * Constants.LayoutMargin, bottom: 0, right: 0)
+            self.separatorInset = UIEdgeInsets(top: 0, left: Constants.LayoutMargin, bottom: 0, right: 0)
+            self.titleLabel.font = UIFont.app_font(forTextStyle: .title1)
+            self.subtitleLabel.font = UIFont.app_font(forTextStyle: .body)
+        #else
+            self.titleLabel.font = UIFont.app_font(forTextStyle: .title3)
+            self.subtitleLabel.font = UIFont.app_font(forTextStyle: .body)
         #endif
     }
     

@@ -9,6 +9,69 @@
 import Foundation
 import CoreLocation
 
+enum RentalMethod: String
+{
+    case key = "KEY"
+    case creditCard = "CREDITCARD"
+    case payPass = "PAYPASS"
+    case applePay = "APPLEPAY"
+    case androidPay = "ANDROIDPAY"
+    case transitCard = "TRANSITCARD"
+    case accountNumber = "ACCOUNTNUMBER"
+    case phone = "PHONE"
+    
+    var displayString: String
+    {
+        switch self
+        {
+        case .key:
+            return "🔑"
+        case .creditCard:
+            return "💳"
+        case .payPass:
+            return "🛂"
+        case .applePay:
+            return ""
+        case .androidPay:
+            return "🤖"
+        case .transitCard:
+            return "🚍"
+        case .accountNumber:
+            return "#"
+        case .phone:
+            return "📞"
+        }
+    }
+    
+    var meaningString: String
+    {
+        switch self
+        {
+        case .key:
+            return "Key"
+        case .creditCard:
+            return "Credit Card"
+        case .payPass:
+            return "Pay Pass"
+        case .applePay:
+            return "Apple Pay"
+        case .androidPay:
+            return "Android Pay"
+        case .transitCard:
+            return "Transit Card"
+        case .accountNumber:
+            return "Account Number"
+        case .phone:
+            return "Phone"
+        }
+    }
+    
+    static var all: [RentalMethod]
+    {
+        return [.key, .creditCard, .payPass, .applePay, .androidPay, .transitCard, .accountNumber, .phone]
+    }
+}
+
 struct GBFSStationInformation
 {
     let stationID: String
@@ -19,9 +82,11 @@ struct GBFSStationInformation
     let crossStreet: String?
     let regionID: String?
     let postCode: String?
-    let rentalMethods: [String]?
+    var rentalMethods: [RentalMethod]? = nil
     let capacity: Int?
     var stationStatus: GBFSStationStatus? = nil
+    
+    
 }
 
 extension GBFSStationInformation
@@ -40,7 +105,10 @@ extension GBFSStationInformation
         self.crossStreet = json["cross_street"] as? String
         self.regionID = json["region_id"] as? String
         self.postCode = json["post_code"] as? String
-        self.rentalMethods = json["rental_methods"] as? [String]
+        if let rentalMethods = json["rental_methods"] as? [String]
+        {
+            self.rentalMethods = rentalMethods.flatMap { RentalMethod(rawValue: $0) }
+        }
         self.capacity = json["capacity"] as? Int
     }
 }

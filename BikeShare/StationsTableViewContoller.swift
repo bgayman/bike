@@ -11,6 +11,7 @@ class StationsTableViewController: UITableViewController
     let network: BikeNetwork
     var bikeStationDiffs = [BikeStationDiff]()
     var mapViewController: MapViewController? = nil
+    var isHomeNetworkTransition = false
     var stations = [BikeStation]()
     {
         didSet
@@ -69,8 +70,6 @@ class StationsTableViewController: UITableViewController
         let barButtonItem = UIBarButtonItem(title: "Networks", style: .plain, target: self, action: #selector(self.showNetworksViewController))
         return barButtonItem
     }()
-    
-    
     
     //MARK: - Computed Properties
     var userManager: UserManager
@@ -166,6 +165,11 @@ class StationsTableViewController: UITableViewController
             self.registerForPreviewing(with: self, sourceView: self.tableView)
         }
         self.fetchStations()
+        if self.splitViewController?.traitCollection.isSmallerDevice == true && self.isHomeNetworkTransition
+        {
+            self.isHomeNetworkTransition = false
+            self.showMapViewController(animated: false)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -209,6 +213,13 @@ class StationsTableViewController: UITableViewController
         cell.bikeStation = self.stations[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator)
+    {
+        guard let nextIndexPath = context.nextFocusedIndexPath else { return }
+        let station = self.stations[nextIndexPath.row]
+        self.mapViewController?.bouncePin(for: station)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
@@ -281,7 +292,7 @@ class StationsTableViewController: UITableViewController
         }
     }
     
-    func updateStationsData(stations: [ BikeStation])
+    func updateStationsData(stations: [ BikeStation], fromUserLocationUpdate: Bool = false)
     {
         guard let stationsSearchController = self.searchController.searchResultsController as? StationsSearchController else { return }
         stationsSearchController.all = stations
@@ -322,7 +333,10 @@ class StationsTableViewController: UITableViewController
                 self.mapViewController?.navigationItem.prompt = prompt
                 #endif
                 self.stations = sortedStations
-                self.mapViewController?.stations = sortedStations
+                if !fromUserLocationUpdate
+                {
+                    self.mapViewController?.stations = sortedStations
+                }
                 if !sortedStations.isEmpty
                 {
                     self.didFetchStationsCallback?()
@@ -333,7 +347,7 @@ class StationsTableViewController: UITableViewController
     }
     
     //MARK: - Navigation
-    func showMapViewController()
+    func showMapViewController(animated: Bool = true)
     {
         guard let mapVC = self.mapViewController else
         {
@@ -344,7 +358,7 @@ class StationsTableViewController: UITableViewController
             self.splitViewController?.showDetailViewController(mapVC, sender: nil)
             return
         }
-        self.navigationController?.pushViewController(mapVC, animated: true)
+        self.navigationController?.pushViewController(mapVC, animated: animated)
     }
     
     func showNetworksViewController()
@@ -435,7 +449,7 @@ extension StationsTableViewController
 {
     func didUpdateCurrentLocation()
     {
-        self.updateStationsData(stations: self.stations)
+        self.updateStationsData(stations: self.stations, fromUserLocationUpdate: true)
     }
 }
 

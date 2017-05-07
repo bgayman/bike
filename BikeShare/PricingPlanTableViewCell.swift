@@ -35,6 +35,14 @@ class PricingPlanTableViewCell: UITableViewCell
             self.configureCell(with: alert)
         }
     }
+    override func awakeFromNib()
+    {
+        super.awakeFromNib()
+        #if !os(tvOS)
+            self.contentView.backgroundColor = .app_beige
+            self.backgroundColor = .app_beige
+        #endif
+    }
     
     func configureCell(with plan: GBFSSystemPricingPlan)
     {
@@ -79,10 +87,6 @@ class PricingPlanTableViewCell: UITableViewCell
     
     func configureCell(with alert: GBFSSystemAlert)
     {
-        #if !os(tvOS)
-        self.contentView.backgroundColor = .app_beige
-        self.backgroundColor = .app_beige
-        #endif
         self.planNameLabel.text = "Alert:"
         self.planDetailLabel.text = "\(alert.type.displayText)"
         self.planDetailLabel.textColor = .gray

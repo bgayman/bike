@@ -31,7 +31,6 @@ extension MapViewControllerDelegate
 }
 
 //MARK: - MapViewController
-
 class MapViewController: BaseMapViewController
 {
     //MARK: - State
@@ -95,23 +94,40 @@ class MapViewController: BaseMapViewController
         
         return mapKeyView
     }()
+    
+    lazy var settingsBarButton: UIBarButtonItem =
+    {
+        let settingsBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(self.didPressSettings(_:)))
+        return settingsBarButton
+    }()
+    
+    lazy var locationBarButton: UIBarButtonItem =
+    {
+        let locationControl = LocationControl(frame: CGRect(x: 0.0, y: 0.0, width: 22.0, height: 22.0))
+        locationControl.addTarget(self, action: #selector(self.didPressLocationButton), for: .touchUpInside)
+        let locationBarButton = UIBarButtonItem(customView: locationControl)
+        return locationBarButton
+    }()
+    
     #endif
     
     var network: BikeNetwork?
     {
         didSet
         {
-            self.mapKeyView.isHidden = self.network == nil
             guard let network = self.network else { return }
             self.title = network.name
             
             #if os(macOS)
+                
             guard let windowController = self.view.window?.windowController as? WindowController else { return }
             windowController.bikeNetwork = self.network
+                
             #elseif os(iOS)
+                
             guard let url = self.network?.gbfsHref else
             {
-                self.navigationItem.rightBarButtonItem = nil
+                self.navigationItem.rightBarButtonItems = [self.locationBarButton, self.settingsBarButton]
                 return
             }
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -125,7 +141,7 @@ class MapViewController: BaseMapViewController
                     {
                         let systemInfoFeed = feeds.filter { $0.name == "system_information" }.first
                         self.networkFeeds = feeds
-                        self.navigationItem.rightBarButtonItem = systemInfoFeed == nil ? nil : self.infoBarButton
+                        self.navigationItem.rightBarButtonItems = systemInfoFeed == nil ? [self.locationBarButton, self.settingsBarButton] : [self.infoBarButton, self.locationBarButton, self.settingsBarButton]
                         if self.deeplink != nil && self.view.window != nil
                         {
                             self.deeplink = nil
@@ -134,10 +150,11 @@ class MapViewController: BaseMapViewController
                     }
                     else
                     {
-                        self.navigationItem.rightBarButtonItem = nil
+                        self.navigationItem.rightBarButtonItems = [self.locationBarButton, self.settingsBarButton]
                     }
                 }
             }
+                
             #endif
         }
     }
@@ -215,7 +232,7 @@ class MapViewController: BaseMapViewController
         self.navigationItem.leftBarButtonItems = nil
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         #endif
-        self.title = ""
+        self.setupForNetworks()
         #else
         self.network = UserDefaults.bikeShareGroup.homeNetwork
         if self.network == nil
@@ -257,9 +274,9 @@ class MapViewController: BaseMapViewController
     
     func setupForNetworks()
     {
-        self.title = ""
+        self.title = "Networks"
         self.state = .networks
-        self.navigationItem.rightBarButtonItems = nil
+        self.navigationItem.rightBarButtonItems = [self.locationBarButton]
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.configureForUpdatedNetworks(oldValue: [])
         self.initialDrop = false
@@ -281,20 +298,7 @@ class MapViewController: BaseMapViewController
         }
         self.mapView.removeAnnotations(annotationsToRemove)
         self.mapView.addAnnotations(inserted.map(MapBikeNetwork.init))
-        if self.userManager.currentLocation != nil
-        {
-            let closeNetworks = self.networks.prefix(10)
-            let closeAnnotations = self.mapView.annotations.filter
-            {
-                guard let network = $0 as? MapBikeNetwork else { return false}
-                return closeNetworks.contains(network.bikeNetwork)
-            }
-            self.mapView.showAnnotations(closeAnnotations, animated: true)
-        }
-        else
-        {
-            self.mapView.showAnnotations(self.mapView.annotations, animated: true)
-        }
+        self.mapView.showAnnotations(self.mapView.annotations, animated: true)
     }
     
     func configureForUpdatedStations(oldValue: [BikeStation])
@@ -343,6 +347,46 @@ class MapViewController: BaseMapViewController
         #endif
         navVC.modalTransitionStyle = .coverVertical
         self.present(navVC, animated: true)
+    }
+    
+    @objc func didPressSettings(_ sender: UIBarButtonItem)
+    {
+        let settingsViewController = MapSettingsViewController()
+        let navVC = UINavigationController(rootViewController: settingsViewController)
+        #if !os(tvOS)
+            navVC.modalPresentationStyle = .formSheet
+        #endif
+        navVC.modalTransitionStyle = .coverVertical
+        self.present(navVC, animated: true)
+    }
+    
+    @objc fileprivate func didPressLocationButton()
+    {
+        guard CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways else
+        {
+            let alert = UIAlertController(errorMessage: "Please adjust your privacy settings to focus on your current location")
+            self.present(alert, animated: true)
+            return
+        }
+        switch self.state
+        {
+        case .networks:
+            let closeNetworks = self.networks.prefix(3)
+            let closeAnnotations = self.mapView.annotations.filter
+            {
+                guard let network = $0 as? MapBikeNetwork else { return false}
+                return closeNetworks.contains(network.bikeNetwork)
+            }
+            self.mapView.showAnnotations(closeAnnotations, animated: true)
+        case .stations:
+            let closeStations = self.stations.prefix(2)
+            let closeAnnotations = self.mapView.annotations.filter
+            {
+                guard let station = $0 as? MapBikeStation else { return false}
+                return closeStations.contains(station.bikeStation)
+            }
+            self.mapView.showAnnotations(closeAnnotations, animated: true)
+        }
     }
     
     
@@ -487,6 +531,50 @@ extension MapViewController: UIViewControllerPreviewingDelegate
         else if let stationsTableViewController = viewControllerToCommit as? StationsTableViewController
         {
             self.didSelectNetworkCallout(with: MapBikeNetwork(bikeNetwork: stationsTableViewController.network))
+        }
+    }
+    
+    func bouncePin(for station: BikeStation)
+    {
+        let annotations = self.mapView.annotations.filter
+        { annotation in
+            guard let annot = annotation as? MapBikeStation,
+                annot.bikeStation.id == station.id
+                else { return false }
+            return true
+        }
+        guard let annotation = annotations.last else { return }
+        guard let view = self.mapView.view(for: annotation) else { return }
+        let center = view.center
+        UIView.animate(withDuration: 0.2, animations: {
+            view.center = CGPoint(x: view.center.x, y: view.center.y - 100.0)
+        }) { (_) in
+            UIView.animate(withDuration: 0.2)
+            {
+                view.center = center
+            }
+        }
+    }
+    
+    func bouncePin(for network: BikeNetwork)
+    {
+        let annotations = self.mapView.annotations.filter
+        { annotation in
+            guard let annot = annotation as? MapBikeNetwork,
+                annot.bikeNetwork.id == network.id
+                else { return false }
+            return true
+        }
+        guard let annotation = annotations.last else { return }
+        guard let view = self.mapView.view(for: annotation) else { return }
+        let center = view.center
+        UIView.animate(withDuration: 0.2, animations: {
+            view.center = CGPoint(x: view.center.x, y: view.center.y - 100.0)
+        }) { (_) in
+            UIView.animate(withDuration: 0.2)
+            {
+                view.center = center
+            }
         }
     }
 }

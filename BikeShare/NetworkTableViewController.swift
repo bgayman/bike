@@ -98,6 +98,7 @@ class NetworkTableViewController: UITableViewController
         self.navigationItem.titleView = activityIndicator
         activityIndicator.startAnimating()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.rightBarButtonItem = self.mapBarButton
         self.view.backgroundColor = .app_beige
         self.mapBarButton.isEnabled = !self.networks.isEmpty
         #else
@@ -165,6 +166,7 @@ class NetworkTableViewController: UITableViewController
         let stationsTableViewController = StationsTableViewController(with: homeNetwork)
         stationsTableViewController.mapViewController = self.networkMapViewController
         stationsTableViewController.mapViewController?.network = homeNetwork
+        stationsTableViewController.isHomeNetworkTransition = true
         self.networkMapViewController?.delegate = stationsTableViewController
         self.navigationController?.pushViewController(stationsTableViewController, animated: false)
     }
@@ -177,14 +179,14 @@ class NetworkTableViewController: UITableViewController
     }
     #endif
     
-    override func shouldUpdateFocus(in context: UIFocusUpdateContext) -> Bool
+    /*override func shouldUpdateFocus(in context: UIFocusUpdateContext) -> Bool
     {
         if context.nextFocusedView is UIButton
         {
             return false
         }
         return super.shouldUpdateFocus(in: context)
-    }
+    }*/
     
     func search()
     {
@@ -266,6 +268,13 @@ class NetworkTableViewController: UITableViewController
         return true
     }
     
+    override func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator)
+    {
+        guard let nextIndexPath = context.nextFocusedIndexPath else { return }
+        let network = self.networks[nextIndexPath.row]
+        self.networkMapViewController?.bouncePin(for: network)
+    }
+    
     //MARK: - Networking
     @objc func fetchNetworks()
     {
@@ -297,7 +306,7 @@ class NetworkTableViewController: UITableViewController
         }
     }
     
-    func updateNetworksData(networks: [BikeNetwork])
+    func updateNetworksData(networks: [BikeNetwork], fromUserLocationUpdate: Bool = false)
     {
         guard let searchVC = self.searchController.searchResultsController as? NetworkSearchController else { return }
         searchVC.all = networks
@@ -325,7 +334,10 @@ class NetworkTableViewController: UITableViewController
                 UserDefaults.bikeShareGroup.setNetworks(networks: sortedNetworks)
                 if self.navigationController?.topViewController === self
                 {
-                    self.networkMapViewController?.networks = sortedNetworks
+                    if !fromUserLocationUpdate
+                    {
+                        self.networkMapViewController?.networks = sortedNetworks
+                    }
                     if !sortedNetworks.isEmpty
                     {
                         self.didFetchNetworkCallback?()
@@ -338,7 +350,7 @@ class NetworkTableViewController: UITableViewController
     
     func didUpdateCurrentLocation()
     {
-        self.updateNetworksData(networks: self.networks)
+        self.updateNetworksData(networks: self.networks, fromUserLocationUpdate: true)
     }
     
     //MARK: - Segue

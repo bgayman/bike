@@ -100,7 +100,6 @@ class StationDetailGraphTableViewCell: UITableViewCell
         set.fillAlpha = 0.80
         set.lineWidth = 1.5
         set.highlightColor = UIColor.app_blue
-        set.mode = .cubicBezier
         set.visible = true
         
         let chartData = LineChartData(dataSet: set)
@@ -109,6 +108,6 @@ class StationDetailGraphTableViewCell: UITableViewCell
         
         self.lineChartView.doubleTapToZoomEnabled = false
         self.lineChartView.data = chartData
-        self.lineChartView.setNeedsDisplay()
+        self.lineChartView.animate(xAxisDuration: 0.3)
     }
 }

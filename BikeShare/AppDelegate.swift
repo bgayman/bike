@@ -21,11 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.preferredDisplayMode = .allVisible
+        if splitViewController.traitCollection.userInterfaceIdiom == .phone
+        {
+            splitViewController.preferredDisplayMode = .primaryHidden
+        }
         splitViewController.maximumPrimaryColumnWidth = 320
         self.window?.tintColor = .app_blue
         
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
-        navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
+        navigationController.topViewController?.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         navigationController.navigationBar.barTintColor = .app_beige
         splitViewController.delegate = self
         
@@ -203,6 +207,11 @@ extension AppDelegate
             {
                 stationVC.handleDeeplink(deeplink)
             }
+            else if let mapVC = navController.topViewController as? MapViewController,
+                mapVC.network?.id == networkID
+            {
+                mapVC.handleDeeplink(deeplink: deeplink)
+            }
             else if navController.viewControllers.count > 1
             {
                 _ = navController.popToRootViewController(animated: false)
@@ -212,4 +221,6 @@ extension AppDelegate
         }
     }
 }
+
+
 

@@ -1,50 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xfU-Bp-gAD">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xfU-Bp-gAD">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
     </dependencies>
     <scenes>
-        <!--Networks-->
-        <scene sceneID="aou-V4-d1y">
-            <objects>
-                <controller title="Networks" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="BikeShareWatch" customModuleProvider="target">
-                    <items>
-                        <table alignment="left" id="LqX-Yd-ZAt">
-                            <items>
-                                <tableRow identifier="StationRow" id="A5F-J9-jqZ" customClass="StationRowObject" customModule="BikeShareWatch_Extension">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="rJQ-8S-sZP">
-                                        <items>
-                                            <label alignment="left" text="Label" numberOfLines="0" id="a9g-HZ-WOb">
-                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                            </label>
-                                            <label alignment="left" text="Label" numberOfLines="0" id="2Sp-nz-O32">
-                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
-                                            </label>
-                                        </items>
-                                        <connections>
-                                            <segue destination="xfU-Bp-gAD" kind="push" id="2L6-xw-5lT"/>
-                                        </connections>
-                                    </group>
-                                    <connections>
-                                        <outlet property="subtitleLabel" destination="2Sp-nz-O32" id="ioV-1B-TB7"/>
-                                        <outlet property="titleLabel" destination="a9g-HZ-WOb" id="tmq-mk-qtn"/>
-                                    </connections>
-                                </tableRow>
-                            </items>
-                        </table>
-                    </items>
-                    <connections>
-                        <outlet property="table" destination="LqX-Yd-ZAt" id="Yj4-Wj-0Vr"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="-144" y="37"/>
-        </scene>
         <!--Stations-->
         <scene sceneID="lvZ-q4-C57">
             <objects>

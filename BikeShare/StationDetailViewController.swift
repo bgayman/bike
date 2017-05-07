@@ -66,7 +66,7 @@ class StationDetailViewController: UIViewController
         tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        tableView.backgroundColor = UIColor.clear
+        tableView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         #if !os(tvOS)
         tableView.allowsSelection = false
         tableView.register(StationDetailGraphTableViewCell.self, forCellReuseIdentifier: "\(StationDetailGraphTableViewCell.self)")
@@ -475,16 +475,6 @@ extension StationDetailViewController: UITableViewDelegate, UITableViewDataSourc
         #endif
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath?
-    {
-        return nil
-    }
-    
-    /*func scrollViewDidScroll(_ scrollView: UIScrollView)
-    {
-        self.visualEffectView.alpha = min(scrollView.contentOffset.y / self.mapHeight * 2, 1)
-    }*/
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {

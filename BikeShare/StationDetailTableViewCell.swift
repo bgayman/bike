@@ -14,8 +14,13 @@ class StationDetailTableViewCell: UITableViewCell
     struct Constants
     {
         static let LayoutMargin: CGFloat = 8.0
+        #if !os(tvOS)
         static let LabelFont = UIFont.app_font(forTextStyle: .title1)
         static let SubtitleLabelFont = UIFont.app_font(forTextStyle: .caption1)
+        #else
+        static let LabelFont = UIFont.app_font(forTextStyle: .body)
+        static let SubtitleLabelFont = UIFont.app_font(forTextStyle: .caption1)
+        #endif
     }
     
     var bikeStation: BikeStation?
@@ -25,6 +30,7 @@ class StationDetailTableViewCell: UITableViewCell
             #if !os(tvOS)
                 self.contentView.backgroundColor = .app_beige
                 self.backgroundColor = .app_beige
+                self.separatorInset = UIEdgeInsets(top: 0, left: Constants.LayoutMargin, bottom: 0, right: 0)
             #endif
             guard let bikeStation = self.bikeStation else
             {
@@ -34,9 +40,6 @@ class StationDetailTableViewCell: UITableViewCell
             }
             self.titleLabel.text = bikeStation.statusDisplayText
             self.subtitleLabel.text = "\(bikeStation.name) — \(bikeStation.dateComponentText)" + (bikeStation.distance > 0 ? "— \(bikeStation.distanceDescription)" : "")
-            #if !os(tvOS)
-                self.separatorInset = UIEdgeInsets(top: 0, left: Constants.LayoutMargin, bottom: 0, right: 0)
-            #endif
         }
     }
     

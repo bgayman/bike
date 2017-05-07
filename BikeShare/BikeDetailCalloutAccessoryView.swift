@@ -50,10 +50,11 @@ class BikeDetailCalloutAccessoryView: UIView
             label.text = station.dateComponentText
             let size2 = label.sizeThatFits(CGSize(width: self.imageWidthHeight, height: CGFloat.greatestFiniteMagnitude))
             height += BikeDetailAccessoryTableViewCell.Constants.LayoutMargin + size2.height
+            height += BikeDetailAccessoryTableViewCell.Constants.LayoutMargin + self.faveButton.intrinsicContentSize.height
         }
         else
         {
-            height += BikeDetailAccessoryTableViewCell.Constants.LayoutMargin + self.homeNetworkButton.intrinsicContentSize.height
+            height += BikeDetailAccessoryTableViewCell.Constants.LayoutMargin + self.faveButton.intrinsicContentSize.height
         }
         return height
     }
@@ -80,6 +81,7 @@ class BikeDetailCalloutAccessoryView: UIView
         tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        tableView.isScrollEnabled = false
         tableView.backgroundColor = .clear
         #if !os(tvOS)
             tableView.separatorStyle = .none
@@ -104,7 +106,7 @@ class BikeDetailCalloutAccessoryView: UIView
         return options
     }()
     
-    lazy var homeNetworkButton: UIButton =
+    lazy var faveButton: UIButton =
     {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44.0, height: 44.0))
         let attributes = [NSFontAttributeName: UIFont.app_font(forTextStyle: .title1), NSForegroundColorAttributeName: UIColor.app_blue]
@@ -156,28 +158,29 @@ extension BikeDetailCalloutAccessoryView: UITableViewDelegate, UITableViewDataSo
         switch annotation
         {
         case .mapBikeStation(let station):
-            let string = self.userManager.currentLocation != nil ? (station.subtitle ?? "") + " - \(station.bikeStation.distanceDescription)" : (station.subtitle ?? "")
+            let string = self.userManager.currentLocation != nil ? (station.subtitle ?? "") + "\n\(station.bikeStation.distanceDescription)" : (station.subtitle ?? "")
             cell.calloutLabel.text = string
             cell.calloutSubtitleLabel.text = station.dateComponentText
             cell.calloutSubtitleLabel.isHidden = false
             #if !os(tvOS)
             cell.calloutLabel.heroID = "Station"
+            cell.stackView.addArrangedSubview(self.faveButton)
             #endif
         case .mapBikeNetwork(let network):
             let string = self.userManager.currentLocation != nil ? (network.subtitle ?? "") + " - \(network.bikeNetwork.location.distanceDescription)" : (network.subtitle ?? "")
             cell.calloutLabel.text = string
             cell.calloutSubtitleLabel.isHidden = true
             #if !os(tvOS)
-            cell.stackView.addArrangedSubview(self.homeNetworkButton)
+            cell.stackView.addArrangedSubview(self.faveButton)
             #endif
             if let homeNetwork = UserDefaults.bikeShareGroup.homeNetwork,
                    homeNetwork.id == network.bikeNetwork.id
             {
-                self.homeNetworkButton.isSelected = true
+                self.faveButton.isSelected = true
             }
             else
             {
-                self.homeNetworkButton.isSelected = false
+                self.faveButton.isSelected = false
             }
         }
         self.configureImageView(with: cell)
