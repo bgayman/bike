@@ -233,7 +233,10 @@ class NetworkSystemInformationTableViewController: UITableViewController
     {
         guard let url = URL(string: Constants.WebSiteDomain + "/systemInfo/" + self.network.id) else { return }
         #if !os(tvOS)
-        let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            
+        let customActivity = ActivityViewCustomActivity.networkFavoriteActivity(with: self.network)
+
+        let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: [customActivity])
         self.present(activityViewController, animated: true)
         #endif
     }

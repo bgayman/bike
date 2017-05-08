@@ -166,14 +166,8 @@ extension BikeDetailCalloutAccessoryView: UITableViewDelegate, UITableViewDataSo
             cell.calloutLabel.heroID = "Station"
             cell.stackView.addArrangedSubview(self.faveButton)
             #endif
-            if UserDefaults.bikeShareGroup.favoriteStations(for: network.bikeNetwork).contains(where: { $0.id == station.bikeStation.id })
-            {
-                self.faveButton.isSelected = true
-            }
-            else
-            {
-                self.faveButton.isSelected = false
-            }
+            self.faveButton.isSelected = UserDefaults.bikeShareGroup.isStationFavorited(station: station.bikeStation, network: network.bikeNetwork)
+            
         case .mapBikeNetwork(let network):
             let string = self.userManager.currentLocation != nil ? (network.subtitle ?? "") + " - \(network.bikeNetwork.location.distanceDescription)" : (network.subtitle ?? "")
             cell.calloutLabel.text = string
@@ -181,15 +175,7 @@ extension BikeDetailCalloutAccessoryView: UITableViewDelegate, UITableViewDataSo
             #if !os(tvOS)
             cell.stackView.addArrangedSubview(self.faveButton)
             #endif
-            if let homeNetwork = UserDefaults.bikeShareGroup.homeNetwork,
-                   homeNetwork.id == network.bikeNetwork.id
-            {
-                self.faveButton.isSelected = true
-            }
-            else
-            {
-                self.faveButton.isSelected = false
-            }
+            self.faveButton.isSelected = UserDefaults.bikeShareGroup.isNetworkHomeNetwork(network: network.bikeNetwork)
         }
         self.configureImageView(with: cell)
         return cell
@@ -267,20 +253,12 @@ extension BikeDetailCalloutAccessoryView
             if sender.isSelected
             {
                 sender.isSelected = false
-                var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: network.bikeNetwork)
-                let s = favedStations.filter { $0.id == station.bikeStation.id }.last
-                guard let station = s,
-                      let index = favedStations.index(of: station) else { break }
-                favedStations.remove(at: index)
-                UserDefaults.bikeShareGroup.setFavoriteStations(for: network.bikeNetwork, favorites: favedStations)
-                
+                UserDefaults.bikeShareGroup.removeStationFromFavorites(station: station.bikeStation, network: network.bikeNetwork)
             }
             else
             {
                 sender.isSelected = true
-                var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: network.bikeNetwork)
-                favedStations.append(station.bikeStation)
-                UserDefaults.bikeShareGroup.setFavoriteStations(for: network.bikeNetwork, favorites: favedStations)
+                UserDefaults.bikeShareGroup.addStationToFavorites(station: station.bikeStation, network: network.bikeNetwork)
             }
         }
         

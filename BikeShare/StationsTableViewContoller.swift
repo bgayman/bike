@@ -4,14 +4,21 @@ import CoreLocation
 import Hero
 #endif
 
+enum FilterState: Int
+{
+    case all
+    case favorites
+}
+
 //MARK: - StationsTableViewController
-class StationsTableViewController: UITableViewController
+class StationsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     //MARK: - Properties
     let network: BikeNetwork
     var bikeStationDiffs = [BikeStationDiff]()
     var mapViewController: MapViewController? = nil
     var isHomeNetworkTransition = false
+    fileprivate var filterState = FilterState.all
     var stations = [BikeStation]()
     {
         didSet
@@ -19,17 +26,38 @@ class StationsTableViewController: UITableViewController
             #if !os(tvOS)
             self.mapBarButton.isEnabled = !self.stations.isEmpty
             #endif
-            self.animateUpdate(with: oldValue, newDataSource: self.stations)
+            switch self.filterState
+            {
+            case .all:
+                self.dataSource = self.stations
+            case .favorites:
+                let favoriteStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.network)
+                let favoriteStationIDs = favoriteStations.map { $0.id }
+                self.dataSource = self.stations.filter { favoriteStationIDs.contains($0.id) }
+            }
+        }
+    }
+    
+    var dataSource = [BikeStation]()
+    {
+        didSet
+        {
+            self.tableView.animateUpdate(with: oldValue, newDataSource: self.dataSource)
+            self.mapViewController?.stations = self.dataSource
+            guard let stationsSearchController = self.searchController.searchResultsController as? StationsSearchController else { return }
+            stationsSearchController.all = self.dataSource
         }
     }
     
     var didFetchStationsCallback: (() -> ())?
     
+    // MARK: - Lazy Vars
     lazy var searchController: UISearchController =
     {
         
         let searchResultsController = StationsSearchController()
         searchResultsController.delegate = self
+        searchResultsController.network = self.network
         let searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.searchResultsUpdater = self
         searchController.delegate = self
@@ -42,6 +70,57 @@ class StationsTableViewController: UITableViewController
         let searchBarButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.presentSearch))
         return searchBarButton
     }()
+    
+    lazy var segmentedControl: UISegmentedControl =
+    {
+        let segmentedControl = UISegmentedControl(items: ["All", "★"])
+        segmentedControl.addTarget(self, action: #selector(self.segmentedControlDidChange(_:)), for: .valueChanged)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.frame.size.width = 310.0
+        return segmentedControl
+    }()
+    
+    lazy var toolbar: UIToolbar =
+    {
+        let toolbar = UIToolbar()
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.barTintColor = UIColor.app_beige
+        self.view.addSubview(toolbar)
+        toolbar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        toolbar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        toolbar.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+        
+        toolbar.items = [UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil), UIBarButtonItem(customView: self.segmentedControl), UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)]
+        return toolbar
+    }()
+    
+    lazy var tableView: UITableView =
+    {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(tableView)
+        tableView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.toolbar.topAnchor).isActive = true
+        return tableView
+    }()
+    
+    func segmentedControlDidChange(_ sender: UISegmentedControl)
+    {
+        guard let filterState = FilterState(rawValue: sender.selectedSegmentIndex) else { return }
+        switch filterState
+        {
+        case .all:
+            self.dataSource = self.stations
+        case .favorites:
+            let favoriteStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.network)
+            let favoriteStationIDs = favoriteStations.map { $0.id }
+            self.dataSource = self.stations.filter { favoriteStationIDs.contains($0.id) }
+        }
+    }
     
     #if !os(tvOS)
     lazy var refresh: UIRefreshControl =
@@ -87,7 +166,8 @@ class StationsTableViewController: UITableViewController
                   let url = URL(string: "\(Constants.WebSiteDomain)/stations/\(viewController.network.id)")
             else { return }
             
-            let controller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            let activity = ActivityViewCustomActivity.networkFavoriteActivity(with: viewController.network)
+            let controller = UIActivityViewController(activityItems: [url], applicationActivities: [activity])
             UIApplication.shared.keyWindow?.rootViewController?.present(controller, animated: true)
         }
         let favorite = UIPreviewAction(title: "☆", style: .default)
@@ -128,7 +208,7 @@ class StationsTableViewController: UITableViewController
     init(with bikeNetwork: BikeNetwork)
     {
         self.network = bikeNetwork
-        super.init(style: .plain)
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder aDecoder: NSCoder)
@@ -157,7 +237,7 @@ class StationsTableViewController: UITableViewController
             self.title = "  Stations"
             self.navigationItem.leftBarButtonItem = self.searchBarButton
         #endif
-        
+        self.view.backgroundColor = UIColor.app_beige
         self.configureTableView()
         NotificationCenter.default.addObserver(self, selector: #selector(self.didUpdateCurrentLocation), name: Notification.Name(Constants.DidUpdatedUserLocationNotification), object: nil)
         if self.traitCollection.forceTouchCapability == .available
@@ -202,44 +282,45 @@ class StationsTableViewController: UITableViewController
     }
     
     //MARK: - TableView
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.stations.count
+        return self.dataSource.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeTableViewCell
-        cell.bikeStation = self.stations[indexPath.row]
+        cell.bikeStation = self.dataSource[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator)
+    func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator)
     {
         guard let nextIndexPath = context.nextFocusedIndexPath else { return }
-        let station = self.stations[nextIndexPath.row]
+        let station = self.dataSource[nextIndexPath.row]
         self.mapViewController?.bouncePin(for: station)
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let station = self.stations[indexPath.row]
+        let station = self.dataSource[indexPath.row]
         self.didSelect(station: station)
     }
     
     #if !os(tvOS)
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
     {
-        let s = self.stations[indexPath.row]
+        let s = self.dataSource[indexPath.row]
         let share = UITableViewRowAction(style: .default, title: "Share")
         { [unowned self] (_, indexPath) in
             let cell = tableView.cellForRow(at: indexPath)
             let rect = tableView.rectForRow(at: indexPath)
             let network = self.network
-            let station = self.stations[indexPath.row]
+            let station = self.dataSource[indexPath.row]
             guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(network.id)/station/\(station.id)") else { return }
-            let activityViewController = UIActivityViewController(activityItems: [url, station.coordinates], applicationActivities: nil)
+            let activity = ActivityViewCustomActivity.stationFavoriteActivity(station: station, network: network)
+            let activityViewController = UIActivityViewController(activityItems: [url, station.coordinates], applicationActivities: [activity])
             if let presenter = activityViewController.popoverPresentationController
             {
                 presenter.sourceRect = rect
@@ -250,22 +331,19 @@ class StationsTableViewController: UITableViewController
         share.backgroundColor = UIColor.app_green
         let favorite = UITableViewRowAction(style: .default, title: "☆")
         { [unowned self] _, indexPath in
-            let station = self.stations[indexPath.row]
-            var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.network)
-            favedStations.append(station)
-            UserDefaults.bikeShareGroup.setFavoriteStations(for: self.network, favorites: favedStations)
+            let station = self.dataSource[indexPath.row]
+            UserDefaults.bikeShareGroup.addStationToFavorites(station: station, network: self.network)
         }
+        favorite.backgroundColor = UIColor.app_blue
+        
         let unfavorite = UITableViewRowAction(style: .default, title: "★")
         { [unowned self] _, indexPath in
-            let station = self.stations[indexPath.row]
-            var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.network)
-            let favedS = favedStations.filter { $0.id == station.id }.last
-            guard let favedStation = favedS,
-                  let index = favedStations.index(of: favedStation) else { return }
-            favedStations.remove(at: index)
-            UserDefaults.bikeShareGroup.setFavoriteStations(for: self.network, favorites: favedStations)
+            let station = self.dataSource[indexPath.row]
+            UserDefaults.bikeShareGroup.removeStationFromFavorites(station: station, network: self.network)
         }
-        return UserDefaults.bikeShareGroup.favoriteStations(for: self.network).contains(where: { $0.id == s.id }) ? [share, unfavorite] : [share, favorite]
+        unfavorite.backgroundColor = UIColor.app_blue
+        
+        return UserDefaults.bikeShareGroup.isStationFavorited(station: s, network: self.network) ? [share, unfavorite] : [share, favorite]
     }
     #endif
     
@@ -283,7 +361,7 @@ class StationsTableViewController: UITableViewController
                 #if !os(tvOS)
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 self?.navigationItem.prompt = nil
-                self?.refreshControl?.endRefreshing()
+                self?.refresh.endRefreshing()
                 self?.navigationItem.titleView = nil
                 self?.title = self?.network.name
                 #endif
@@ -313,10 +391,10 @@ class StationsTableViewController: UITableViewController
     func updateStationsData(stations: [ BikeStation], fromUserLocationUpdate: Bool = false)
     {
         guard let stationsSearchController = self.searchController.searchResultsController as? StationsSearchController else { return }
-        stationsSearchController.all = stations
+        stationsSearchController.all = self.dataSource
         guard self.userManager.currentLocation != nil else
         {
-            self.stations = stations
+            self.dataSource = stations
             self.mapViewController?.stations = stations
             if !stations.isEmpty
             {
@@ -440,12 +518,13 @@ class StationsTableViewController: UITableViewController
     //MARK: - UI Helper
     func configureTableView()
     {
+        self.tableView.backgroundColor = .clear
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        
+        self.automaticallyAdjustsScrollViewInsets = false
         self.definesPresentationContext = true
         #if !os(tvOS)
-        self.refreshControl = refresh
+        self.tableView.addSubview(refresh)
         self.refresh.beginRefreshing()
         self.tableView.tableHeaderView = self.searchController.searchBar
         #endif
@@ -513,7 +592,7 @@ extension StationsTableViewController: MapViewControllerDelegate
 {
     func didRequestCallout(forMapBikeStation: MapBikeStation)
     {
-        guard let index = self.stations.index(of: forMapBikeStation.bikeStation) else { return }
+        guard let index = self.dataSource.index(of: forMapBikeStation.bikeStation) else { return }
         let indexPath = IndexPath(row: index, section: 0)
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
     }
@@ -581,7 +660,7 @@ extension StationsTableViewController: UIViewControllerPreviewingDelegate
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController?
     {
         guard let indexPath = self.tableView.indexPathForRow(at: location) else { return nil }
-        let station = self.stations[indexPath.row]
+        let station = self.dataSource[indexPath.row]
         let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
         return stationDetailViewController
     }

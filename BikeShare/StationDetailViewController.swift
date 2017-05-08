@@ -25,14 +25,19 @@ class StationDetailViewController: UIViewController
     }
     
     let network: BikeNetwork
-    let hasGraph: Bool
+    var hasGraph: Bool
     var station: BikeStation
     var stations: [BikeStation]
     var stationStatuses: [BikeStationStatus]?
     {
         didSet
         {
-            guard self.stationStatuses != nil else { return }
+            guard self.stationStatuses != nil else
+            {
+                self.hasGraph = false
+                self.tableView.deleteSections(IndexSet([0]), with: .automatic)
+                return
+            }
             let bikeStationStatus = BikeStationStatus(numberOfBikesAvailable: self.station.freeBikes ?? 0, stationID: self.station.id, id: 0, networkID: self.network.id, timestamp: Date(), numberOfDocksDisabled: self.station.gbfsStationInformation?.stationStatus?.numberOfDocksDisabled, numberOfDocksAvailable: self.station.emptySlots, numberOfBikesDisabled: self.station.gbfsStationInformation?.stationStatus?.numberOfBikesDisabled, isRenting: self.station.gbfsStationInformation?.stationStatus?.isRenting, isReturning: self.station.gbfsStationInformation?.stationStatus?.isReturning, isInstalled: self.station.gbfsStationInformation?.stationStatus?.isInstalled)
             self.stationStatuses?.append(bikeStationStatus)
             let indexPath = IndexPath(row: 0, section: self.sectionIndex(for: .graph) ?? 0)
@@ -246,7 +251,10 @@ class StationDetailViewController: UIViewController
     func didPressAction()
     {
         guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(self.network.id)/station/\(self.station.id)") else { return }
-        let activityController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        
+        let customActivity = ActivityViewCustomActivity.stationFavoriteActivity(station: self.station, network: self.network)
+        
+        let activityController = UIActivityViewController(activityItems: [url], applicationActivities: [customActivity])
         if let presenter = activityController.popoverPresentationController
         {
             presenter.barButtonItem = self.actionBarButton
@@ -341,6 +349,7 @@ class StationDetailViewController: UIViewController
                 switch response
                 {
                 case .error(let errorMessage):
+                    self.stationStatuses = nil
                     let alert = UIAlertController(errorMessage: errorMessage)
                     alert.modalPresentationStyle = .overFullScreen
                     self.present(alert, animated: true)
@@ -541,4 +550,117 @@ class DateValueFormatter: NSObject, IAxisValueFormatter
         return DateValueFormatter.dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }
 }
+    
+    final class ActivityViewCustomActivity: UIActivity
+    {
+        static func networkFavoriteActivity(with network: BikeNetwork) -> ActivityViewCustomActivity
+        {
+            let isHomeNetwork = UserDefaults.bikeShareGroup.isNetworkHomeNetwork(network: network)
+            
+            let image = isHomeNetwork ? #imageLiteral(resourceName: "Star") : #imageLiteral(resourceName: "Star Filled")
+            let title = isHomeNetwork ? "Unmake Home Network" : "Make Home Network"
+            
+            let customActivity = ActivityViewCustomActivity(title: title, image: image)
+            {
+                if isHomeNetwork
+                {
+                    UserDefaults.bikeShareGroup.setHomeNetwork(nil)
+                }
+                else
+                {
+                    UserDefaults.bikeShareGroup.setHomeNetwork(network)
+                }
+            }
+            return customActivity
+        }
+        
+        static func stationFavoriteActivity(station: BikeStation, network: BikeNetwork) -> ActivityViewCustomActivity
+        {
+            let isFavorite = UserDefaults.bikeShareGroup.isStationFavorited(station: station, network: network)
+            let image = isFavorite ? #imageLiteral(resourceName: "Star") : #imageLiteral(resourceName: "Star Filled")
+            let title = isFavorite ? "Unstar Station" : "Star Station"
+            
+            let customActivity = ActivityViewCustomActivity(title: title, image: image)
+            {
+                if isFavorite
+                {
+                    UserDefaults.bikeShareGroup.removeStationFromFavorites(station: station, network: network)
+                }
+                else
+                {
+                    UserDefaults.bikeShareGroup.addStationToFavorites(station: station, network: network)
+                }
+            }
+            return customActivity
+        }
+        
+        // MARK: Properties
+        
+        var customActivityType: UIActivityType
+        var activityName: String
+        var image: UIImage
+        var customActionWhenTapped: () -> Void
+        
+        
+        // MARK: Initializer
+        
+        init(title: String, image: UIImage, performAction: @escaping () -> Void) {
+            self.activityName = title
+            self.image = image
+            self.customActivityType = UIActivityType(rawValue: "Action \(title)")
+            self.customActionWhenTapped = performAction
+            super.init()
+        }
+        
+        
+        
+        // MARK: Overrides
+        
+        override var activityType: UIActivityType?
+        {
+            return customActivityType
+        }
+        
+        
+        
+        override var activityTitle: String?
+        {
+            return activityName
+        }
+        
+        
+        
+        override class var activityCategory: UIActivityCategory
+        {
+            return .action
+        }
+        
+        
+        
+        override var activityImage: UIImage?
+        {
+            return self.image
+        }
+        
+        
+        
+        override func canPerform(withActivityItems activityItems: [Any]) -> Bool
+        {
+            return true
+        }
+        
+        
+        
+        override func prepare(withActivityItems activityItems: [Any])
+        {
+            // Nothing to prepare
+        }
+        
+        
+        
+        override func perform()
+        {
+            customActionWhenTapped()
+        }
+    }
 #endif

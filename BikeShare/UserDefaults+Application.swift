@@ -31,6 +31,12 @@ extension UserDefaults
         NSUbiquitousKeyValueStore.default().set(homeNetwork.jsonDict, forKey: Constants.HomeNetworkKey)
     }
     
+    func isNetworkHomeNetwork(network: BikeNetwork) -> Bool
+    {
+        guard let homeNetwork = self.homeNetwork else { return false }
+        return homeNetwork.id == network.id
+    }
+    
     func setLocation(_ location: CLLocationCoordinate2D)
     {
         self.set(location.latitude, forKey: Constants.LocationLatitudeKey)
@@ -64,6 +70,28 @@ extension UserDefaults
     {
         guard let stations = self.object(forKey: bikeNetwork.id) as? [JSONDictionary] else { return [BikeStation]() }
         return stations.flatMap(BikeStation.init)
+    }
+    
+    func removeStationFromFavorites(station: BikeStation, network: BikeNetwork)
+    {
+        var favedStations = self.favoriteStations(for: network)
+        let favedS = favedStations.filter { $0.id == station.id }.last
+        guard let favedStation = favedS,
+            let index = favedStations.index(of: favedStation) else { return }
+        favedStations.remove(at: index)
+        self.setFavoriteStations(for: network, favorites: favedStations)
+    }
+    
+    func addStationToFavorites(station: BikeStation, network: BikeNetwork)
+    {
+        var favedStations = self.favoriteStations(for: network)
+        favedStations.append(station)
+        self.setFavoriteStations(for: network, favorites: favedStations)
+    }
+    
+    func isStationFavorited(station: BikeStation, network: BikeNetwork) -> Bool
+    {
+        return self.favoriteStations(for: network).contains(where: { $0.id == station.id })
     }
     
     func setFavoriteStations(for bikeNetwork: BikeNetwork, favorites: [BikeStation])

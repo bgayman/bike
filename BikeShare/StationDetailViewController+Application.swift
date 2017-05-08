@@ -18,8 +18,8 @@ extension StationDetailViewController
             guard let viewController = viewController as? StationDetailViewController,
                 let url = URL(string: "\(Constants.WebSiteDomain)/network/\(viewController.network.id)/station/\(viewController.station.id)")
                 else { return }
-            
-            let controller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            let activity = ActivityViewCustomActivity.stationFavoriteActivity(station: self.station, network: self.network)
+            let controller = UIActivityViewController(activityItems: [url], applicationActivities: [activity])
             UIApplication.shared.keyWindow?.rootViewController?.present(controller, animated: true)
         }
         let mapsActionItem = UIPreviewAction(title: "Open in Maps", style: .default)

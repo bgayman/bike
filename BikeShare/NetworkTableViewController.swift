@@ -250,7 +250,9 @@ class NetworkTableViewController: UITableViewController
             let rect = tableView.rectForRow(at: indexPath)
             let network = self.networks[indexPath.row]
             guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(network.id)") else { return }
-            let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            
+            let activity = ActivityViewCustomActivity.networkFavoriteActivity(with: network)
+            let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: [activity])
             if let presenter = activityViewController.popoverPresentationController
             {
                 presenter.sourceRect = rect

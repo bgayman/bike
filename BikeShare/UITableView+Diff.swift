@@ -10,7 +10,7 @@ import UIKit
 
 extension UITableView
 {
-    func animateUpdate<T: Hashable>(with oldDataSource: [T], newDataSource: [T], section: Int)
+    func animateUpdate<T: Hashable>(with oldDataSource: [T], newDataSource: [T], section: Int = 0)
     {
         let oldArray = oldDataSource
         let oldSet = Set(oldArray)
