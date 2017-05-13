@@ -7,6 +7,9 @@
 //
 
 import WatchConnectivity
+#if os(iOS)
+import UIKit
+#endif
 
 class WatchSessionManager: NSObject, WCSessionDelegate {
     
@@ -38,7 +41,8 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
         // consider prompting the user to install it for a better experience
         
         #if os(iOS)
-            if let session = session, session.isPaired && session.isWatchAppInstalled {
+            if let session = session, session.isPaired && session.isWatchAppInstalled
+            {
                 return session
             }
             return nil
@@ -74,14 +78,15 @@ extension WatchSessionManager {
         // handle receiving application context
         DispatchQueue.main.async
         {
-            guard let homeNetwork = applicationContext[Constants.HomeNetworkKey] as? JSONDictionary,
+            if let homeNetwork = applicationContext[Constants.HomeNetworkKey] as? JSONDictionary,
                   let bikeNetwork = BikeNetwork(json: homeNetwork)
-            else
             {
-                UserDefaults.standard.setHomeNetwork(nil)
-                return
+                UserDefaults.standard.setHomeNetwork(bikeNetwork)
             }
-            UserDefaults.standard.setHomeNetwork(bikeNetwork)
+            else if let stations = applicationContext["stations"] as? [JSONDictionary]
+            {
+                UserDefaults.standard.setClosebyStations(with: stations)
+            }
         }
     }
 }
@@ -161,10 +166,9 @@ extension WatchSessionManager {
     
     // Receiver
     func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        // handle receiving message
-        DispatchQueue.main.async {
-            // make sure to put on the main queue to update UI!
-        }
+        #if os(iOS)
+            self.fetchStations(completion: replyHandler)
+        #endif
     }
     
     func session(_ session: WCSession, didReceiveMessageData messageData: Data) {
@@ -174,3 +178,7 @@ extension WatchSessionManager {
         }
     }
 }
+
+#if os(iOS)
+
+#endif

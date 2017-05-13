@@ -98,7 +98,6 @@ class NetworkTableViewController: UITableViewController
         self.navigationItem.titleView = activityIndicator
         activityIndicator.startAnimating()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.navigationItem.rightBarButtonItem = self.mapBarButton
         self.view.backgroundColor = .app_beige
         self.mapBarButton.isEnabled = !self.networks.isEmpty
         #else
@@ -137,6 +136,15 @@ class NetworkTableViewController: UITableViewController
     {
         NotificationCenter.default.removeObserver(self)
         super.viewDidDisappear(animated)
+    }
+    
+    override func viewDidLayoutSubviews()
+    {
+        super.viewDidLayoutSubviews()
+        if self.splitViewController?.traitCollection.isSmallerDevice == true
+        {
+            self.navigationItem.rightBarButtonItem = self.mapBarButton
+        }
     }
     
     //MARK: - UI Helpers
@@ -227,7 +235,7 @@ class NetworkTableViewController: UITableViewController
                 #if os(iOS) || os(watchOS)
                     try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [Constants.HomeNetworkKey: NSNull() as AnyObject])
                 #endif
-                tableView.reloadRows(at: [indexPath], with: .automatic)
+                tableView.setEditing(false, animated: true)
             }
         }
         else
@@ -239,7 +247,7 @@ class NetworkTableViewController: UITableViewController
                 #if os(iOS) || os(watchOS)
                     try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [Constants.HomeNetworkKey: network.jsonDict as AnyObject])
                 #endif
-                tableView.reloadRows(at: [indexPath], with: .automatic)
+                tableView.setEditing(false, animated: true)
             }
         }
         favorite.backgroundColor = UIColor.app_blue
@@ -366,6 +374,7 @@ class NetworkTableViewController: UITableViewController
             guard let mapViewController = navVC.topViewController as? MapViewController else { return }
             mapViewController.delegate = self
             mapViewController.networks = self.networks
+            self.networkMapViewController = mapViewController
         }
     }
     
@@ -439,7 +448,7 @@ extension NetworkTableViewController: NetworkSearchControllerDelegate
         #if os(tvOS)
             self.dismiss(animated: false)
         #endif
-        
+        self.isTransitioning = true
         guard !self.searchController.isActive else
         {
             self.searchController.isActive = false
@@ -460,7 +469,7 @@ extension NetworkTableViewController: NetworkSearchControllerDelegate
         }
         
         navVC.pushViewController(stationsTableViewController, animated: true)
-        
+        self.isTransitioning = false
     }
 }
 
@@ -477,6 +486,13 @@ extension NetworkTableViewController: MapViewControllerDelegate
     func didSelect(mapBikeNetwork: MapBikeNetwork)
     {
         self.didSelect(network: mapBikeNetwork.bikeNetwork)
+    }
+    
+    func didChange(searchText: String)
+    {
+        guard let controller = searchController.searchResultsController as? NetworkSearchController else { return }
+        controller.searchString = searchText
+        self.networkMapViewController?.networks = controller.searchResults
     }
 }
 

@@ -2,6 +2,7 @@ import UIKit
 import CoreLocation
 #if !os(tvOS)
 import Hero
+import DZNEmptyDataSet
 #endif
 
 enum FilterState: Int
@@ -10,15 +11,32 @@ enum FilterState: Int
     case favorites
 }
 
-//MARK: - StationsTableViewController
+// MARK: - StationsTableViewController
 class StationsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-    //MARK: - Properties
+    // MARK: - Properties
     let network: BikeNetwork
     var bikeStationDiffs = [BikeStationDiff]()
     var mapViewController: MapViewController? = nil
     var isHomeNetworkTransition = false
     fileprivate var filterState = FilterState.all
+    {
+        didSet
+        {
+            self.mapViewController?.filterState = self.filterState
+            switch self.filterState
+            {
+            case .all:
+                self.tableView.tableFooterView = nil
+                self.dataSource = self.stations
+                
+            case .favorites:
+                let favoriteStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.network)
+                let favoriteStationIDs = favoriteStations.map { $0.id }
+                self.dataSource = self.stations.filter { favoriteStationIDs.contains($0.id) }
+            }
+        }
+    }
     var stations = [BikeStation]()
     {
         didSet
@@ -76,7 +94,6 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         let segmentedControl = UISegmentedControl(items: ["All", "★"])
         segmentedControl.addTarget(self, action: #selector(self.segmentedControlDidChange(_:)), for: .valueChanged)
         segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.frame.size.width = 310.0
         return segmentedControl
     }()
     
@@ -108,32 +125,19 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         return tableView
     }()
     
-    func segmentedControlDidChange(_ sender: UISegmentedControl)
-    {
-        guard let filterState = FilterState(rawValue: sender.selectedSegmentIndex) else { return }
-        switch filterState
-        {
-        case .all:
-            self.dataSource = self.stations
-        case .favorites:
-            let favoriteStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.network)
-            let favoriteStationIDs = favoriteStations.map { $0.id }
-            self.dataSource = self.stations.filter { favoriteStationIDs.contains($0.id) }
-        }
-    }
-    
     #if !os(tvOS)
     lazy var refresh: UIRefreshControl =
     {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(self.fetchStations), for: .valueChanged)
+        refresh.backgroundColor = .clear
         return refresh
     }()
     
     
     lazy var mapBarButton: UIBarButtonItem =
     {
-        let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "World Map"), style: .plain, target: self, action: #selector(self.showMapViewController))
+        let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "World Map"), style: .plain, target: self, action: #selector(self.didPressMapButton))
         return barButtonItem
     }()
     
@@ -150,7 +154,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         return barButtonItem
     }()
     
-    //MARK: - Computed Properties
+    // MARK: - Computed Properties
     var userManager: UserManager
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return UserManager() }
@@ -204,7 +208,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         return [search, back]
     }
     
-    //MARK: - Lifecycle
+    // MARK: - Lifecycle
     init(with bikeNetwork: BikeNetwork)
     {
         self.network = bikeNetwork
@@ -219,6 +223,8 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.emptyDataSetSource = self
         self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
         
         #if !os(tvOS)
@@ -245,26 +251,11 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
             self.registerForPreviewing(with: self, sourceView: self.tableView)
         }
         self.fetchStations()
-        if self.splitViewController?.traitCollection.isSmallerDevice == true && self.isHomeNetworkTransition
+        if self.splitViewController?.traitCollection.userInterfaceIdiom == .phone && self.isHomeNetworkTransition
         {
             self.isHomeNetworkTransition = false
             self.showMapViewController(animated: false)
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool)
-    {
-        super.viewWillAppear(animated)
-        #if !os(tvOS)
-        if self.splitViewController?.traitCollection.isSmallerDevice ?? false
-        {
-            self.navigationItem.setRightBarButtonItems([self.mapBarButton, self.diffBarButton], animated: true)
-        }
-        else
-        {
-            self.navigationItem.setRightBarButtonItems([self.diffBarButton], animated: true)
-        }
-        #endif
     }
     
     override func viewDidAppear(_ animated: Bool)
@@ -279,6 +270,39 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     {
         NotificationCenter.default.removeObserver(self)
         super.viewDidDisappear(animated)
+    }
+    
+    override func viewDidLayoutSubviews()
+    {
+        #if !os(tvOS)
+        segmentedControl.frame.size.width = self.view.frame.width * 0.9
+        if self.splitViewController?.traitCollection.isSmallerDevice ?? false
+        {
+            self.navigationItem.setRightBarButtonItems([self.mapBarButton, self.diffBarButton], animated: true)
+        }
+        else
+        {
+            self.navigationItem.setRightBarButtonItems([self.diffBarButton], animated: true)
+        }
+        #endif
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
+    {
+        let isSmallerDevice = self.splitViewController?.traitCollection.isSmallerDevice == true
+        coordinator.animate(alongsideTransition: { (_) in
+            
+        }) { (_) in
+            if self.splitViewController?.traitCollection.isSmallerDevice == false && isSmallerDevice
+            {
+                guard var viewControllers = self.splitViewController?.viewControllers,
+                      let mapVC = self.mapViewController else { return }
+                viewControllers.remove(at: viewControllers.count - 1)
+                viewControllers.append(UINavigationController(rootViewController:mapVC))
+                self.segmentedControl.frame.size.width = size.width * 0.9
+                self.splitViewController?.viewControllers = viewControllers
+            }
+        }
     }
     
     //MARK: - TableView
@@ -329,14 +353,14 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
             self.present(activityViewController, animated: true)
         }
         share.backgroundColor = UIColor.app_green
-        let favorite = UITableViewRowAction(style: .default, title: "☆")
+        let favorite = UITableViewRowAction(style: .default, title: " ☆ ")
         { [unowned self] _, indexPath in
             let station = self.dataSource[indexPath.row]
             UserDefaults.bikeShareGroup.addStationToFavorites(station: station, network: self.network)
         }
         favorite.backgroundColor = UIColor.app_blue
         
-        let unfavorite = UITableViewRowAction(style: .default, title: "★")
+        let unfavorite = UITableViewRowAction(style: .default, title: " ★ ")
         { [unowned self] _, indexPath in
             let station = self.dataSource[indexPath.row]
             UserDefaults.bikeShareGroup.removeStationFromFavorites(station: station, network: self.network)
@@ -394,7 +418,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         stationsSearchController.all = self.dataSource
         guard self.userManager.currentLocation != nil else
         {
-            self.dataSource = stations
+            self.stations = stations
             self.mapViewController?.stations = stations
             if !stations.isEmpty
             {
@@ -443,6 +467,11 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     //MARK: - Navigation
+    func didPressMapButton()
+    {
+        self.showMapViewController(animated: true)
+    }
+    
     func showMapViewController(animated: Bool = true)
     {
         guard let mapVC = self.mapViewController else
@@ -454,6 +483,8 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
             self.splitViewController?.showDetailViewController(mapVC, sender: nil)
             return
         }
+        mapVC.filterState = filterState
+        mapVC.stations = self.dataSource
         self.navigationController?.pushViewController(mapVC, animated: animated)
     }
     
@@ -539,6 +570,22 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     {
         _ = self.navigationController?.popViewController(animated: true)
     }
+    
+    func segmentedControlDidChange(_ sender: UISegmentedControl)
+    {
+        guard let filterState = FilterState(rawValue: sender.selectedSegmentIndex) else { return }
+        switch filterState
+        {
+        case .all:
+            self.tableView.tableFooterView = nil
+            
+        case .favorites:
+            self.tableView.tableFooterView = UIView()
+            
+        }
+        
+        self.filterState = filterState
+    }
 }
 
 //MARK: - Current Location Update
@@ -622,6 +669,31 @@ extension StationsTableViewController: MapViewControllerDelegate
         #endif
         
     }
+    
+    func didSet(filterState: FilterState)
+    {
+        if let controller = searchController.searchResultsController as? StationsSearchController,
+            controller.searchString.isEmpty == false
+        {
+            let searchString = controller.searchString
+            self.segmentedControl.selectedSegmentIndex = filterState.rawValue
+            self.filterState = filterState
+            controller.searchString = searchString
+            self.mapViewController?.stations = controller.searchResults
+        }
+        else
+        {
+            self.segmentedControl.selectedSegmentIndex = filterState.rawValue
+            self.filterState = filterState
+        }
+    }
+    
+    func didChange(searchText: String)
+    {
+        guard let controller = searchController.searchResultsController as? StationsSearchController else { return }
+        controller.searchString = searchText
+        self.mapViewController?.stations = controller.searchResults
+    }
 }
 
 //MARK: - UISearchResultsUpdating
@@ -671,8 +743,29 @@ extension StationsTableViewController: UIViewControllerPreviewingDelegate
     }
 }
 
-//MARK: - Station
+
 #if !os(tvOS)
+    
+extension StationsTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+{
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let title = NSAttributedString(string: "★\nStations to Access Them More Quickly.", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .title2), NSForegroundColorAttributeName: UIColor.gray])
+        return title
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let description = NSAttributedString(string: "Swipe left on bike stations to see options.", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .subheadline), NSForegroundColorAttributeName: UIColor.lightGray])
+        return description
+    }
+    
+    func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool
+    {
+        return self.filterState == .favorites
+    }
+}
+    // MARK: - StationDiffViewControllerDelegate
 extension StationsTableViewController: StationDiffViewControllerDelegate
 {
     func didUpdateBikeStations(stations: [BikeStation])

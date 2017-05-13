@@ -10,7 +10,25 @@ import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate
 {
-
+    var watchConnectivityBackgroundTasks: [WKWatchConnectivityRefreshBackgroundTask] = []
+    
+    override init()
+    {
+        super.init()
+        WatchSessionManager.sharedManager.startSession()
+        let validSession = WatchSessionManager.sharedManager.validSession
+        validSession?.addObserver(self, forKeyPath: "activationState", options: [], context: nil)
+        validSession?.addObserver(self, forKeyPath: "hasContentPending", options: [], context: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
+    {
+        DispatchQueue.main.async
+        {
+            self.completeAllTasksIfReady()
+        }
+    }
+    
     func applicationDidFinishLaunching()
     {
         let store = NSUbiquitousKeyValueStore.default()
@@ -53,6 +71,21 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate
                 // make sure to complete unhandled task types
                 task.setTaskCompleted()
             }
+        }
+    }
+    
+    func handleWatchConnectivityBackgroundTask(_ backgroundTask: WKWatchConnectivityRefreshBackgroundTask)
+    {
+        self.watchConnectivityBackgroundTasks.append(backgroundTask)
+    }
+    
+    func completeAllTasksIfReady()
+    {
+        let validSession = WatchSessionManager.sharedManager.validSession
+        if validSession?.activationState == .activated && validSession?.hasContentPending == false
+        {
+            watchConnectivityBackgroundTasks.forEach { $0.setTaskCompleted() }
+            watchConnectivityBackgroundTasks.removeAll()
         }
     }
     

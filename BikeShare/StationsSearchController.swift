@@ -93,7 +93,7 @@ class StationsSearchController: UITableViewController
             self.present(activityViewController, animated: true)
         }
         share.backgroundColor = UIColor.app_green
-        let favorite = UITableViewRowAction(style: .default, title: "☆")
+        let favorite = UITableViewRowAction(style: .default, title: " ☆ ")
         { [unowned self] _, indexPath in
             let station = self.searchResults[indexPath.row]
             var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: network)
@@ -102,7 +102,7 @@ class StationsSearchController: UITableViewController
         }
         favorite.backgroundColor = UIColor.app_blue
         
-        let unfavorite = UITableViewRowAction(style: .default, title: "★")
+        let unfavorite = UITableViewRowAction(style: .default, title: " ★ ")
         { [unowned self] _, indexPath in
             let station = self.searchResults[indexPath.row]
             var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: network)

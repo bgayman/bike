@@ -38,6 +38,15 @@
                             </items>
                         </table>
                     </items>
+                    <menu key="menu" id="SMc-0v-Zh6">
+                        <items>
+                            <menuItem title="Update" icon="repeat" id="ncn-rN-4cr">
+                                <connections>
+                                    <action selector="didPressUpdate" destination="xfU-Bp-gAD" id="olR-lR-Ue7"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                     <connections>
                         <outlet property="table" destination="rRG-1v-oER" id="baX-l4-BDH"/>
                     </connections>

@@ -100,4 +100,15 @@ extension UserDefaults
         self.set(jsonDictionaries, forKey: bikeNetwork.id)
         NSUbiquitousKeyValueStore.default().set(jsonDictionaries, forKey: bikeNetwork.id)
     }
+    
+    func setClosebyStations(with stations: [JSONDictionary])
+    {
+        self.set(stations, forKey: Constants.ClosebyStations)
+    }
+    
+    var closebyStations: [BikeStation]
+    {
+        let stationsDict = self.array(forKey: Constants.ClosebyStations) as? [JSONDictionary]
+        return stationsDict?.flatMap(BikeStation.init) ?? []
+    }
 }

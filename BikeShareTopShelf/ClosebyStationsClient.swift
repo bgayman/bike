@@ -18,8 +18,8 @@ struct ClosebyStationsClient
     
     //MARK: - Properties
     lazy var session: URLSession? =
-        {
-            return URLSession(configuration: URLSessionConfiguration.default)
+    {
+        return URLSession(configuration: URLSessionConfiguration.default)
     }()
     
     //MARK: - Networking

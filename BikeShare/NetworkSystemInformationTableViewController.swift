@@ -237,6 +237,10 @@ class NetworkSystemInformationTableViewController: UITableViewController
         let customActivity = ActivityViewCustomActivity.networkFavoriteActivity(with: self.network)
 
         let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: [customActivity])
+        if let popover = activityViewController.popoverPresentationController
+        {
+            popover.barButtonItem = self.actionButton
+        }
         self.present(activityViewController, animated: true)
         #endif
     }

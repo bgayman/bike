@@ -83,6 +83,7 @@ class TodayViewController: UIViewController, NCWidgetProviding
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        WatchSessionManager.sharedManager.startSession()
         NotificationCenter.default.addObserver(self, selector: #selector(self.didUpdateCurrentLocation), name: Notification.Name(Constants.DidUpdatedUserLocationNotification), object: nil)
         self.userManager.getUserLocation()
         self.view.backgroundColor = .clear
@@ -151,24 +152,28 @@ class TodayViewController: UIViewController, NCWidgetProviding
         { [weak self] response in
             DispatchQueue.main.async
             {
+                guard let strongSelf = self else { completion?(.noData); return }
                 switch response
                 {
                 case .error(let errorMessage):
-                    self?.emptyStateLabel.text = errorMessage
+                    strongSelf.emptyStateLabel.text = errorMessage
                 case .success(let stations):
                     guard !stations.isEmpty,
-                        self?.stations ?? [] != stations
+                        strongSelf.stations ?? [] != stations
                         else
                     {
                         completion?(.noData)
                         return
                     }
                     
-                    self?.stations = stations
+                    strongSelf.stations = stations
+                    strongSelf.closebyStations = nil
+                    try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: ["network": network.jsonDict as AnyObject, "stations": strongSelf.closebyStations.map { $0.jsonDict } as AnyObject])
                     if stations.count > 1
                     {
-                        self?.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+                        strongSelf.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
                     }
+                    completion?(.newData)
                 }
             }
             

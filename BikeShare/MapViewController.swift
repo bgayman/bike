@@ -19,6 +19,8 @@ protocol MapViewControllerDelegate: class
     func didRequestCallout(forMapBikeStation: MapBikeStation)
     func didSelect(mapBikeNetwork: MapBikeNetwork)
     func didSelect(mapBikeStation: MapBikeStation)
+    func didSet(filterState: FilterState)
+    func didChange(searchText: String)
 }
 
 //MARK: - MapViewControllerDelegate Defaults
@@ -28,6 +30,8 @@ extension MapViewControllerDelegate
     func didRequestCallout(forMapBikeStation mapBikeStation: MapBikeStation){}
     func didSelect(mapBikeNetwork: MapBikeNetwork){}
     func didSelect(mapBikeStation: MapBikeStation){}
+    func didSet(filterState: FilterState){}
+    func didChange(searchText: String){}
 }
 
 //MARK: - MapViewController
@@ -50,14 +54,22 @@ class MapViewController: BaseMapViewController
         mapView.showsZoomControls = true
         mapView.showsCompass = true
         mapView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         #else
+        self.view.subviews.forEach { if $0 is MKMapView { $0.removeFromSuperview() } }
         self.view.addSubview(mapView)
         mapView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        self.mapBottomLayoutConstraint = mapView.bottomAnchor.constraint(equalTo: self.toolbar.bottomAnchor)
+        self.mapBottomLayoutConstraint?.isActive = true
+            
+        self.toolbarBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : 44.0
+        self.mapBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : -44.0
+        self.view.bringSubview(toFront: self.toolbar)
         #endif
         mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         mapView.showsUserLocation = true
+        mapView.delegate = self
         return mapView
     }()
     
@@ -65,6 +77,8 @@ class MapViewController: BaseMapViewController
     @IBOutlet weak var activityIndicator: NSProgressIndicator!
     @IBOutlet weak var mapKeyView: MapKeyView!
     #elseif !os(macOS)
+    var filterState = FilterState.all
+
     lazy var mapKeyView: MapKeyView =
     {
         let mapKeyView = MapKeyView(frame: CGRect(x: 0, y: 0, width: 255
@@ -95,6 +109,69 @@ class MapViewController: BaseMapViewController
         return mapKeyView
     }()
     
+    lazy var segmentedControl: UISegmentedControl =
+    {
+        let segmentedControl = UISegmentedControl(items: ["All", " ★ "])
+        segmentedControl.addTarget(self, action: #selector(self.segmentedControlDidChange(_:)), for: .valueChanged)
+        segmentedControl.selectedSegmentIndex = self.filterState.rawValue
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        segmentedControl.heightAnchor.constraint(equalToConstant: 40.0)
+        return segmentedControl
+    }()
+    
+    lazy var searchBar: UISearchBar =
+    {
+        let searchBar = UISearchBar(frame: CGRect(x: 0.0, y: 0.0, width: 210.0, height: 14.0))
+        searchBar.searchBarStyle = .minimal
+        searchBar.returnKeyType = .done
+        searchBar.delegate = self
+        return searchBar
+    }()
+    
+    var toolbarBottomLayoutConstraint: NSLayoutConstraint?
+    var mapBottomLayoutConstraint: NSLayoutConstraint?
+    
+    lazy var toolbarStackView: UIStackView =
+    {
+        let toolbarStackView = UIStackView()
+        toolbarStackView.axis = .horizontal
+        toolbarStackView.spacing = 8.0
+        return toolbarStackView
+    }()
+    
+    lazy var toolbar: UIView =
+    {
+        let toolbar = UIView()
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.backgroundColor = UIColor.app_beige.withAlphaComponent(0.5)
+        self.view.addSubview(toolbar)
+        self.view.bringSubview(toFront: toolbar)
+        toolbar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        toolbar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        toolbar.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        
+        self.toolbarBottomLayoutConstraint = toolbar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 44.0)
+        self.toolbarBottomLayoutConstraint?.isActive = true
+        
+        let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        toolbar.addSubview(visualEffectView)
+        visualEffectView.translatesAutoresizingMaskIntoConstraints = false
+        visualEffectView.topAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
+        visualEffectView.leadingAnchor.constraint(equalTo: toolbar.leadingAnchor).isActive = true
+        visualEffectView.trailingAnchor.constraint(equalTo: toolbar.trailingAnchor).isActive = true
+        visualEffectView.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor).isActive = true
+        
+        toolbar.addSubview(self.toolbarStackView)
+        
+        self.toolbarStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.toolbarStackView.topAnchor.constraint(equalTo: toolbar.topAnchor, constant: 8.0).isActive = true
+        self.toolbarStackView.leadingAnchor.constraint(equalTo: toolbar.leadingAnchor, constant: 8.0).isActive = true
+        self.toolbarStackView.trailingAnchor.constraint(equalTo: toolbar.trailingAnchor, constant: -8.0).isActive = true
+        self.toolbarStackView.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor, constant: -8.0).isActive = true
+
+        return toolbar
+    }()
+    
     lazy var settingsBarButton: UIBarButtonItem =
     {
         let settingsBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(self.didPressSettings(_:)))
@@ -117,7 +194,6 @@ class MapViewController: BaseMapViewController
         {
             guard let network = self.network else { return }
             self.title = network.name
-            
             #if os(macOS)
                 
             guard let windowController = self.view.window?.windowController as? WindowController else { return }
@@ -125,11 +201,7 @@ class MapViewController: BaseMapViewController
                 
             #elseif os(iOS)
                 
-            guard let url = self.network?.gbfsHref else
-            {
-                self.navigationItem.rightBarButtonItems = [self.locationBarButton, self.settingsBarButton]
-                return
-            }
+            guard let url = self.network?.gbfsHref else { return }
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
             var feedClient = GBFSFeedClient()
             feedClient.fetchGBFFeeds(with: url)
@@ -139,22 +211,15 @@ class MapViewController: BaseMapViewController
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     if case .success(let feeds) = response
                     {
-                        let systemInfoFeed = feeds.filter { $0.name == "system_information" }.first
                         self.networkFeeds = feeds
-                        self.navigationItem.rightBarButtonItems = systemInfoFeed == nil ? [self.locationBarButton, self.settingsBarButton] : [self.infoBarButton, self.locationBarButton, self.settingsBarButton]
                         if self.deeplink != nil && self.view.window != nil
                         {
                             self.deeplink = nil
                             self.didPressInfo(nil)
                         }
                     }
-                    else
-                    {
-                        self.navigationItem.rightBarButtonItems = [self.locationBarButton, self.settingsBarButton]
-                    }
                 }
             }
-                
             #endif
         }
     }
@@ -185,7 +250,7 @@ class MapViewController: BaseMapViewController
                 self.setupForStations()
                 return
             }
-            guard oldValue != self.stations else { return }
+            //guard oldValue != self.stations else { return }
             self.configureForUpdatedStations(oldValue: oldValue)
         }
     }
@@ -222,12 +287,19 @@ class MapViewController: BaseMapViewController
     {
         super.viewDidLoad()
         self.userManager.getUserLocation()
-        self.mapView.delegate = self
+        self.mapView.isHidden = false
         #if !os(macOS)
         #if !os(tvOS)
+        self.view.setNeedsLayout()
         self.navigationItem.hidesBackButton = false
         self.navigationItem.leftItemsSupplementBackButton = true
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        if self.splitViewController?.traitCollection.isSmallerDevice ?? true
+        {
+            self.setupNotifications()
+        }
+        self.toolbarBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : 44.0
+        self.mapBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : -44.0
         #else
         self.navigationItem.leftBarButtonItems = nil
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -246,11 +318,27 @@ class MapViewController: BaseMapViewController
         #endif
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
+    {
+        coordinator.animate(alongsideTransition: { (_) in })
+        { (_) in
+            self.toolbarBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : 44.0
+            self.mapBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : -44.0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     #if !os(macOS)
+    func setupNotifications()
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillAppear(notification:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
-        self.mapView.delegate = self
+        self.view.bringSubview(toFront: self.toolbar)
         if case State.stations = self.state
         {
             self.title = self.network?.name ?? ""
@@ -260,7 +348,15 @@ class MapViewController: BaseMapViewController
                 self.didPressInfo(nil)
             }
         }
+        self.segmentedControl.selectedSegmentIndex = self.filterState.rawValue
+        self.view.layoutIfNeeded()
     }
+    
+    deinit
+    {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     #endif
     //MARK: - UI Helpers
     func setupForStations()
@@ -270,6 +366,12 @@ class MapViewController: BaseMapViewController
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.configureForUpdatedStations(oldValue: [])
         self.initialDrop = false
+        #if os(iOS)
+        self.navigationItem.rightBarButtonItems = (self.network?.gbfsHref == nil) ? [self.locationBarButton, self.settingsBarButton] : [self.infoBarButton, self.locationBarButton, self.settingsBarButton]
+        self.toolbarStackView.arrangedSubviews.forEach { self.toolbarStackView.removeArrangedSubview($0) }
+        self.toolbarStackView.addArrangedSubview(self.searchBar)
+        self.toolbarStackView.addArrangedSubview(self.segmentedControl)
+        #endif
     }
     
     func setupForNetworks()
@@ -280,6 +382,10 @@ class MapViewController: BaseMapViewController
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.configureForUpdatedNetworks(oldValue: [])
         self.initialDrop = false
+        #if os(iOS)
+        self.toolbarStackView.arrangedSubviews.forEach { self.toolbarStackView.removeArrangedSubview($0) }
+        self.toolbarStackView.addArrangedSubview(self.searchBar)
+        #endif
     }
     
     func configureForUpdatedNetworks(oldValue: [BikeNetwork])
@@ -349,6 +455,12 @@ class MapViewController: BaseMapViewController
         self.present(navVC, animated: true)
     }
     
+    func segmentedControlDidChange(_ segmentedControl: UISegmentedControl)
+    {
+        guard let filterState = FilterState(rawValue: segmentedControl.selectedSegmentIndex) else { return }
+        self.delegate?.didSet(filterState: filterState)
+    }
+    
     @objc func didPressSettings(_ sender: UIBarButtonItem)
     {
         let settingsViewController = MapSettingsViewController()
@@ -364,8 +476,7 @@ class MapViewController: BaseMapViewController
     {
         guard CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways else
         {
-            let alert = UIAlertController(errorMessage: "Please adjust your privacy settings to focus on your current location")
-            self.present(alert, animated: true)
+            self.showLocationSettingsAlert()
             return
         }
         switch self.state
@@ -389,6 +500,57 @@ class MapViewController: BaseMapViewController
         }
     }
     
+    private func showLocationSettingsAlert()
+    {
+        let alertController = UIAlertController (title: "Location Settings", message: "Allow Bear Bike Share to access you current location to use this feature.", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default)
+        { (_) in
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(settingsUrl)
+            {
+                UIApplication.shared.open(settingsUrl)
+            }
+        }
+        alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true)
+    }
+    
+    func keyboardWillAppear(notification: Notification)
+    {
+        let userInfo = notification.userInfo
+        guard let frame = userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect,
+            let duration = userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else
+        {
+            return
+        }
+        UIView.animate(withDuration: duration, animations:
+            { [unowned self] in
+                self.toolbarBottomLayoutConstraint?.constant = -frame.height
+        }) { (_) in
+            self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+        }
+        self.view.layoutIfNeeded()
+    }
+    
+    func keyboardWillHide(notification: Notification)
+    {
+        let userInfo = notification.userInfo
+        guard let duration = userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else
+        {
+            return
+        }
+        UIView.animate(withDuration: duration, animations:
+            { [unowned self] in
+                self.toolbarBottomLayoutConstraint?.constant = 0.0
+        }) { (_) in
+            self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+        }
+        self.view.layoutIfNeeded()
+    }
     
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?)
     {
@@ -489,6 +651,10 @@ extension MapViewController: MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
     {
+        #if !os(macOS)
+            self.searchBar.showsCancelButton = false
+            self.searchBar.resignFirstResponder()
+        #endif
         switch self.state
         {
         case .networks:
@@ -502,7 +668,32 @@ extension MapViewController: MKMapViewDelegate
 }
 
 #if !os(macOS)
-//MARK: - UIViewControllerPreviewingDelegate
+extension MapViewController: UISearchBarDelegate
+{
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
+    {
+        self.delegate?.didChange(searchText: searchBar.text ?? "")
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
+    {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar)
+    {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+}
+    
+// MARK: - UIViewControllerPreviewingDelegate
 extension MapViewController: UIViewControllerPreviewingDelegate
 {
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController?

@@ -31,4 +31,24 @@ class StationRowObject: NSObject
             self.subtitleLabel.setText(bikeNetwork.locationDisplayName)
         }
     }
+    
+    var isEmptyRow: Bool = false
+    {
+        didSet
+        {
+            guard self.isEmptyRow else { return }
+            self.titleLabel.setText("Updating")
+            self.subtitleLabel.setText("Fetching Stations...")
+        }
+    }
+    
+    var errorMessage: String?
+    {
+        didSet
+        {
+            guard let errorMessage = errorMessage else { return }
+            self.titleLabel.setText("Error")
+            self.subtitleLabel.setText(errorMessage)
+        }
+    }
 }

@@ -43,5 +43,6 @@ struct Constants
     static let LocationLatitudeKey = "latitude"
     static let LocationLongitudeKey = "longitude"
     static let WebSiteDomain = "https://bike-share.mybluemix.net"
+    static let ClosebyStations = "closebyStations"
 }
 

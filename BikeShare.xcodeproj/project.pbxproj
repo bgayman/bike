@@ -95,6 +95,8 @@
 		CD2BA3D21EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */; };
 		CD2BA3D31EABFE8D00C26F90 /* StationDetailGraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */; };
 		CD3932361EBF63C7009427E6 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3932351EBF63C7009427E6 /* LocationControl.swift */; };
+		CD3932391EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */; };
+		CD39323A1EC0031A009427E6 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3932381EC0031A009427E6 /* DZNEmptyDataSet.framework */; };
 		CD6276EB1EB4E712008666AC /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
 		CD6276EC1EB4E784008666AC /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
 		CD6276ED1EB4E794008666AC /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
@@ -130,6 +132,11 @@
 		CD6A6BA61EAD5A000042ABE5 /* SloppySwipePanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */; };
 		CD6A6BA91EAD76EF0042ABE5 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6733211EAAECC10070E69B /* Charts.framework */; };
 		CD6A6BAA1EAD76FC0042ABE5 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6733241EAAECCE0070E69B /* Hero.framework */; };
+		CD791DE61EC74EF7009A6DB7 /* ClosebyStationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C311E2B1D890062CBA5 /* ClosebyStationsClient.swift */; };
+		CD791DE81EC75891009A6DB7 /* WatchSessionManager+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD791DE71EC75891009A6DB7 /* WatchSessionManager+iOS.swift */; };
+		CD791DEA1EC758DA009A6DB7 /* WatchSessionManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD791DE91EC758DA009A6DB7 /* WatchSessionManager+Extension.swift */; };
+		CD791DEB1EC7592C009A6DB7 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD72F1E3D2DB900C751D7 /* WatchSessionManager.swift */; };
+		CD791DEC1EC7593F009A6DB7 /* ClosebyStationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C311E2B1D890062CBA5 /* ClosebyStationsClient.swift */; };
 		CD80AA4E1E624C9900C1E9B6 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
 		CD80AA4F1E624C9B00C1E9B6 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
 		CD80AA501E624CA000C1E9B6 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
@@ -533,6 +540,8 @@
 		CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNetworksManager.swift; sourceTree = "<group>"; };
 		CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDetailGraphTableViewCell.swift; sourceTree = "<group>"; };
 		CD3932351EBF63C7009427E6 /* LocationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationControl.swift; sourceTree = "<group>"; };
+		CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap"; sourceTree = "<group>"; };
+		CD3932381EC0031A009427E6 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DZNEmptyDataSet.framework; sourceTree = "<group>"; };
 		CD6733201EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap"; sourceTree = "<group>"; };
 		CD6733211EAAECC10070E69B /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
 		CD6733241EAAECCE0070E69B /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hero.framework; sourceTree = "<group>"; };
@@ -540,6 +549,8 @@
 		CD67332D1EAAEE220070E69B /* StationsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsClient.swift; sourceTree = "<group>"; };
 		CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SloppySwipePanGesture.swift; sourceTree = "<group>"; };
 		CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SloppySwiper.swift; sourceTree = "<group>"; };
+		CD791DE71EC75891009A6DB7 /* WatchSessionManager+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WatchSessionManager+iOS.swift"; sourceTree = "<group>"; };
+		CD791DE91EC758DA009A6DB7 /* WatchSessionManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WatchSessionManager+Extension.swift"; sourceTree = "<group>"; };
 		CD80AA971E626E9F00C1E9B6 /* NetworkInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkInformationViewController.swift; sourceTree = "<group>"; };
 		CD80AA9A1E62753300C1E9B6 /* InfoTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoTableCellView.swift; sourceTree = "<group>"; };
 		CD80AAAA1E6BA81F00C1E9B6 /* MapKeyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapKeyView.swift; sourceTree = "<group>"; };
@@ -700,6 +711,7 @@
 			files = (
 				CD6A6BAA1EAD76FC0042ABE5 /* Hero.framework in Frameworks */,
 				CD6A6BA91EAD76EF0042ABE5 /* Charts.framework in Frameworks */,
+				CD39323A1EC0031A009427E6 /* DZNEmptyDataSet.framework in Frameworks */,
 				CDF6E7AD1E0DBC6600C3C6CA /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -777,6 +789,7 @@
 			children = (
 				CD121DFD1E115F03004F78E2 /* UserManager.swift */,
 				CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */,
+				CD791DE71EC75891009A6DB7 /* WatchSessionManager+iOS.swift */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -854,6 +867,7 @@
 				CDEF3D1F1E174A7F0002063F /* BikeShareWidget.entitlements */,
 				CDEF3D021E1737110002063F /* TodayViewController.swift */,
 				CDA134A71E2A9392005542DE /* ExtensionConstants.swift */,
+				CD791DE91EC758DA009A6DB7 /* WatchSessionManager+Extension.swift */,
 				CDEF3D041E1737110002063F /* MainInterface.storyboard */,
 				CDEF3D071E1737110002063F /* Info.plist */,
 			);
@@ -925,6 +939,8 @@
 				CDF6E79D1E0DBC3000C3C6CA /* Main.storyboard */,
 				CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */,
 				CDF6E7A21E0DBC3000C3C6CA /* LaunchScreen.storyboard */,
+				CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */,
+				CD3932381EC0031A009427E6 /* DZNEmptyDataSet.framework */,
 				CD6733241EAAECCE0070E69B /* Hero.framework */,
 				CD6733201EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap */,
 				CD6733211EAAECC10070E69B /* Charts.framework */,
@@ -1433,6 +1449,7 @@
 				CD6733221EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap in Resources */,
 				CD1ED2E91EB6D3BC00806D97 /* MapPinTableViewCell.xib in Resources */,
 				CDEC201E1E512E6A0044D923 /* PricingPlanTableViewCell.xib in Resources */,
+				CD3932391EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1465,6 +1482,7 @@
 			inputPaths = (
 				"$(SRCROOT)/BikeShare/Hero.framework",
 				"$(SRCROOT)/BikeShare/Charts.framework",
+				"$(SRCROOT)/BikeShare/DZNEmptyDataSet.framework",
 			);
 			name = "Embed Carthage Frameworks";
 			outputPaths = (
@@ -1680,6 +1698,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD67332F1EAAEE220070E69B /* StationsClient.swift in Sources */,
+				CD791DEC1EC7593F009A6DB7 /* ClosebyStationsClient.swift in Sources */,
 				CDFED5D61E6214D400D5C4BF /* GBFSStationStatus.swift in Sources */,
 				CD80AA541E624CBD00C1E9B6 /* GBFSSystemInformation.swift in Sources */,
 				CDA1349D1E2A906D005542DE /* StationDetailTableViewCell.swift in Sources */,
@@ -1707,7 +1726,9 @@
 				CDEF3D161E1737AE0002063F /* ClientResponse.swift in Sources */,
 				CDEF3D151E1737A30002063F /* UserDefaults+Application.swift in Sources */,
 				CD80AA701E624D1C00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
+				CD791DEA1EC758DA009A6DB7 /* WatchSessionManager+Extension.swift in Sources */,
 				CDFED5DA1E6214E200D5C4BF /* GBFSStationStatusClient.swift in Sources */,
+				CD791DEB1EC7592C009A6DB7 /* WatchSessionManager.swift in Sources */,
 				CD80AA761E624D2600C1E9B6 /* GBFSFeedClient.swift in Sources */,
 				CD80AA601E624CD400C1E9B6 /* GBFSSystemAlert.swift in Sources */,
 			);
@@ -1789,8 +1810,10 @@
 				CDF6E7BF1E0EB6FB00C3C6CA /* NetworksClient.swift in Sources */,
 				CDA134A21E2A9124005542DE /* StationDetailViewController+Application.swift in Sources */,
 				CDA1D2C61E22B632008B2AE8 /* UIFont+Application.swift in Sources */,
+				CD791DE81EC75891009A6DB7 /* WatchSessionManager+iOS.swift in Sources */,
 				CD121DF41E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift in Sources */,
 				CDEC200A1E4D4E8D0044D923 /* GBFSFeed.swift in Sources */,
+				CD791DE61EC74EF7009A6DB7 /* ClosebyStationsClient.swift in Sources */,
 				CD121DFE1E115F03004F78E2 /* UserManager.swift in Sources */,
 				CDEC20141E50D9AC0044D923 /* SystemInfoTableViewContent.swift in Sources */,
 				CD121DF81E1040D7004F78E2 /* DispatchQueue+Helper.swift in Sources */,
