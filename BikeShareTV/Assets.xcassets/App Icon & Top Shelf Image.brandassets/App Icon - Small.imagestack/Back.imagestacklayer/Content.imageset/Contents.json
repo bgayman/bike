@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "tv",
+      "filename" : "tvOSbackSmall.png",
       "scale" : "1x"
     }
   ],

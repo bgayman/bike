@@ -9,10 +9,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
     </dependencies>
     <scenes>
-        <!--Stations-->
+        <!--Closeby Stations-->
         <scene sceneID="lvZ-q4-C57">
             <objects>
-                <controller identifier="Stations" title="Stations" id="xfU-Bp-gAD" customClass="StationsInterfaceController" customModule="BikeShareWatch_Extension">
+                <controller identifier="Stations" title="Closeby Stations" id="xfU-Bp-gAD" customClass="StationsInterfaceController" customModule="BikeShareWatch_Extension">
                     <items>
                         <table alignment="left" id="rRG-1v-oER">
                             <items>

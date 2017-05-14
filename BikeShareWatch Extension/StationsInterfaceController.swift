@@ -54,7 +54,6 @@ class StationsInterfaceController: WKInterfaceController
             self.didJustPressUpdate = false
             return
         }
-        self.lastLocationUpdate = nil
         let stations = self.stations
         self.stations = stations
     }
@@ -67,30 +66,8 @@ class StationsInterfaceController: WKInterfaceController
     
     func update()
     {
+        self.lastLocationUpdate = nil
         ExtensionConstants.userManager.getUserLocation()
-//        if WatchSessionManager.sharedManager.validSession != nil
-//        {
-//            WatchSessionManager.sharedManager.sendMessage(message: ["": "" as AnyObject], replyHandler:
-//            { (dictionary) in
-//                if let networkDict = dictionary["network"] as? JSONDictionary,
-//                    let stationDicts = dictionary["stations"] as? [JSONDictionary]
-//                    
-//                {
-//                    self.network = BikeNetwork(json: networkDict)
-//                    self.stations = stationDicts.flatMap(BikeStation.init)
-//                }
-//                else
-//                {
-//                    self.fetchStations()
-//                }
-//            }, errorHandler: { (error) in
-//                self.fetchStations()
-//            })
-//        }
-//        else
-//        {
-            self.fetchStations()
-//        }
     }
     
     @IBAction private func didPressUpdate()
