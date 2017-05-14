@@ -28,11 +28,13 @@ class StationsInterfaceController: WKInterfaceController
     @IBOutlet var table: WKInterfaceTable!
     let rowType = "StationRow"
     var isUpdating = false
+    var didJustPressUpdate = false
+    var lastLocationUpdate: CLLocation?
     
     override func awake(withContext context: Any?)
     {
         super.awake(withContext: context)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.fetchStations), name: Notification.Name(Constants.DidUpdatedUserLocationNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didGetLocation(notification:)), name: Notification.Name(Constants.DidUpdatedUserLocationNotification), object: nil)
         self.network = UserDefaults.standard.homeNetwork
         self.stations = UserDefaults.standard.closebyStations
         self.update()
@@ -44,6 +46,19 @@ class StationsInterfaceController: WKInterfaceController
         return station
     }
     
+    override func didAppear()
+    {
+        super.didAppear()
+        guard !self.didJustPressUpdate else
+        {
+            self.didJustPressUpdate = false
+            return
+        }
+        self.lastLocationUpdate = nil
+        let stations = self.stations
+        self.stations = stations
+    }
+    
     override func didDeactivate()
     {
         NotificationCenter.default.removeObserver(self)
@@ -53,33 +68,34 @@ class StationsInterfaceController: WKInterfaceController
     func update()
     {
         ExtensionConstants.userManager.getUserLocation()
-        if WatchSessionManager.sharedManager.validSession != nil
-        {
-            WatchSessionManager.sharedManager.sendMessage(message: ["": "" as AnyObject], replyHandler:
-            { (dictionary) in
-                if let networkDict = dictionary["network"] as? JSONDictionary,
-                    let stationDicts = dictionary["stations"] as? [JSONDictionary]
-                    
-                {
-                    self.network = BikeNetwork(json: networkDict)
-                    self.stations = stationDicts.flatMap(BikeStation.init)
-                }
-                else
-                {
-                    self.fetchStations()
-                }
-            }, errorHandler: { (error) in
-                self.fetchStations()
-            })
-        }
-        else
-        {
+//        if WatchSessionManager.sharedManager.validSession != nil
+//        {
+//            WatchSessionManager.sharedManager.sendMessage(message: ["": "" as AnyObject], replyHandler:
+//            { (dictionary) in
+//                if let networkDict = dictionary["network"] as? JSONDictionary,
+//                    let stationDicts = dictionary["stations"] as? [JSONDictionary]
+//                    
+//                {
+//                    self.network = BikeNetwork(json: networkDict)
+//                    self.stations = stationDicts.flatMap(BikeStation.init)
+//                }
+//                else
+//                {
+//                    self.fetchStations()
+//                }
+//            }, errorHandler: { (error) in
+//                self.fetchStations()
+//            })
+//        }
+//        else
+//        {
             self.fetchStations()
-        }
+//        }
     }
     
     @IBAction private func didPressUpdate()
     {
+        self.didJustPressUpdate = true
         self.table.removeRows(at: IndexSet(Set(0..<self.stations.count)))
         self.table.setNumberOfRows(1, withRowType: self.rowType)
         guard let controller = self.table.rowController(at: 0) as? StationRowObject else { return }
@@ -87,12 +103,31 @@ class StationsInterfaceController: WKInterfaceController
         self.update()
     }
     
+    func didGetLocation(notification: Notification)
+    {
+        guard let location = notification.object as? CLLocation else { return }
+        if let lastLocation = self.lastLocationUpdate
+        {
+            let distance = location.distance(from: lastLocation)
+            if distance >= 100
+            {
+                self.lastLocationUpdate = location
+                self.fetchStations()
+            }
+        }
+        else
+        {
+            self.lastLocationUpdate = location
+            self.fetchStations()
+        }
+    }
+    
     @objc private func fetchStations()
     {
         guard !self.isUpdating else { return }
+        guard let location = ExtensionConstants.userManager.currentLocation else { return }
         self.isUpdating = true
         var closebyStationsClient = ClosebyStationsClient()
-        guard let location = ExtensionConstants.userManager.currentLocation else { return }
         closebyStationsClient.fetchStations(lat: location.latitude, long: location.longitude, networkID: UserDefaults.standard.homeNetwork?.id)
         { [weak self] (response) in
             DispatchQueue.main.async

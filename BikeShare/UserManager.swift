@@ -92,7 +92,7 @@ extension UserManager: CLLocationManagerDelegate
         #if os(tvOS) || os(macOS)
             UserDefaults.bikeShareGroup.setLocation(location.coordinate)
         #endif
-        NotificationCenter.default.post(name: Notification.Name(Constants.DidUpdatedUserLocationNotification), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(Constants.DidUpdatedUserLocationNotification), object: location)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
