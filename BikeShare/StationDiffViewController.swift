@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import DZNEmptyDataSet
 
 protocol StationDiffViewControllerDelegate: class
 {
@@ -57,6 +58,13 @@ class StationDiffViewController: UITableViewController
         return activityIndicator
     }()
     
+    lazy var footerView: BikeTableFooterView =
+    {
+        let height: CGFloat = max(BikeTableFooterView(reuseIdentifier: "thing").poweredByButton.intrinsicContentSize.height, 44.0)
+        let footerView = BikeTableFooterView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: height))
+        return footerView
+    }()
+    
     //MARK: - Lifecycle
     init(bikeNetwork: BikeNetwork, bikeStations: [BikeStation], bikeStationDiffs: [BikeStationDiff])
     {
@@ -91,10 +99,6 @@ class StationDiffViewController: UITableViewController
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.register(BikeTableFooterView.self, forHeaderFooterViewReuseIdentifier: "thing")
-        let height: CGFloat = max(BikeTableFooterView(reuseIdentifier: "thing").poweredByButton.intrinsicContentSize.height, 44.0)
-        let footerView = BikeTableFooterView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: height))
-        self.tableView.tableFooterView = footerView
-        
         
         #if !os(tvOS)
             footerView.poweredByButton.addTarget(self, action: #selector(self.poweredByPressed), for: .touchUpInside)
@@ -138,6 +142,16 @@ class StationDiffViewController: UITableViewController
                     self.title = self.network.name
                     let newDiffs = BikeStationDiff.performDiff(with: self.bikeStations, newDataSource: stations) ?? [BikeStationDiff]()
                     let diffs =  newDiffs + self.bikeStationDiffs
+                    if diffs.isEmpty
+                    {
+                        self.tableView.emptyDataSetDelegate = self
+                        self.tableView.emptyDataSetSource = self
+                        self.tableView.tableFooterView = UIView()
+                    }
+                    else
+                    {
+                        self.tableView.tableFooterView = self.footerView
+                    }
                     self.bikeStationDiffs = diffs.sorted()
                     self.bikeStations = stations
                     self.delegate?.didUpdateBikeStations(stations: stations)
@@ -199,5 +213,25 @@ class StationDiffViewController: UITableViewController
     {
         let diff = self.bikeStationDiffs[indexPath.row]
         self.delegate?.didSelectBikeStation(station: diff.bikeStation)
+    }
+}
+
+extension StationDiffViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
+{
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let title = NSAttributedString(string: "No Changes", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .title2), NSForegroundColorAttributeName: UIColor.gray])
+        return title
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
+    {
+        let description = NSAttributedString(string: "No changes have been logged. Try reloading in a few moments.", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .subheadline), NSForegroundColorAttributeName: UIColor.lightGray])
+        return description
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage!
+    {
+        return #imageLiteral(resourceName: "seatedBear")
     }
 }

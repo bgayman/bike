@@ -111,4 +111,15 @@ extension UserDefaults
         let stationsDict = self.array(forKey: Constants.ClosebyStations) as? [JSONDictionary]
         return stationsDict?.flatMap(BikeStation.init) ?? []
     }
+    
+    var hasPreviouslySelectedNetwork: Bool
+    {
+        return self.bool(forKey: Constants.PreviouslySelectedNetwork)
+    }
+    
+    func setPreviouslySelectedNetwork(selected: Bool)
+    {
+        self.set(selected, forKey: Constants.PreviouslySelectedNetwork)
+        NSUbiquitousKeyValueStore.default().set(selected, forKey: Constants.PreviouslySelectedNetwork)
+    }
 }

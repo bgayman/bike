@@ -2,6 +2,7 @@ import UIKit
 import MapKit
 #if !os(tvOS)
 import SafariServices
+import SDCAlertView
 #endif
 
 //MARK: - NetworkTableViewController
@@ -438,6 +439,65 @@ class NetworkTableViewController: UITableViewController
             stationVC.handleDeeplink(deeplink)
         }
     }
+    
+    fileprivate func showAppleTVSelectionAlert(network: BikeNetwork)
+    {
+        let alertController = UIAlertController(title: "Set Home Network", message: "Would you like to set this network as your home network?\n\nSetting a home network will improve accuracy and get you to the stations you care about faster.", preferredStyle: .alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: .default)
+        { (_) in
+            UserDefaults.bikeShareGroup.setHomeNetwork(network)
+            self.didSelect(network: network)
+        }
+        
+        let noAction = UIAlertAction(title: "No", style: .default)
+        { (_) in
+            self.didSelect(network: network)
+        }
+        
+        alertController.addAction(yesAction)
+        alertController.addAction(noAction)
+        
+        self.present(alertController, animated: true)
+    }
+    
+    fileprivate func showSelectionAlert(network: BikeNetwork)
+    {
+        let alertController = AlertController(title: "Set Home Network", message: "Would you like to set this network as your home network?\n\nSetting a home network will improve accuracy and get you to the stations you care about faster.", preferredStyle: .alert)
+        
+        let yesAction = AlertAction(title: "Yes", style: .preferred)
+        { (_) in
+            UserDefaults.bikeShareGroup.setHomeNetwork(network)
+            self.didSelect(network: network)
+        }
+        
+        let noAction = AlertAction(title: "No", style: .normal)
+        { (_) in
+            self.didSelect(network: network)
+        }
+        
+        alertController.add(yesAction)
+        alertController.add(noAction)
+        alertController.actionLayout = .automatic
+        
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "bearSign"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        alertController.contentView.addSubview(imageView)
+        imageView.centerXAnchor.constraint(equalTo: alertController.contentView.centerXAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: alertController.contentView.topAnchor, constant: 2.0).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: alertController.contentView.bottomAnchor, constant: -2.0).isActive = true
+        
+        alertController.present()
+    }
+    
+    fileprivate func showFirstSelectionAlert(network: BikeNetwork)
+    {
+        #if os(tvOS)
+            self.showAppleTVSelectionAlert(network: network)
+        #else
+            self.showSelectionAlert(network: network)
+        #endif
+    }
 }
 
 //MARK: - NetworkSearchControllerDelegate
@@ -445,6 +505,12 @@ extension NetworkTableViewController: NetworkSearchControllerDelegate
 {
     func didSelect(network: BikeNetwork)
     {
+        guard UserDefaults.bikeShareGroup.hasPreviouslySelectedNetwork else
+        {
+            UserDefaults.bikeShareGroup.setPreviouslySelectedNetwork(selected: true)
+            self.showFirstSelectionAlert(network: network)
+            return
+        }
         #if os(tvOS)
             self.dismiss(animated: false)
         #endif

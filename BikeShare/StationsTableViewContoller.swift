@@ -556,7 +556,6 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         self.definesPresentationContext = true
         #if !os(tvOS)
         self.tableView.addSubview(refresh)
-        self.refresh.beginRefreshing()
         self.tableView.tableHeaderView = self.searchController.searchBar
         #endif
     }
@@ -758,6 +757,11 @@ extension StationsTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
     {
         let description = NSAttributedString(string: "Swipe left on bike stations to see options.", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .subheadline), NSForegroundColorAttributeName: UIColor.lightGray])
         return description
+    }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage!
+    {
+        return #imageLiteral(resourceName: "seatedBear")
     }
     
     func emptyDataSetShouldDisplay(_ scrollView: UIScrollView!) -> Bool
