@@ -5,12 +5,6 @@ import Hero
 import DZNEmptyDataSet
 #endif
 
-enum FilterState: Int
-{
-    case all
-    case favorites
-}
-
 // MARK: - StationsTableViewController
 class StationsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
@@ -96,7 +90,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         segmentedControl.selectedSegmentIndex = 0
         return segmentedControl
     }()
-    
+    #if !os(tvOS)
     lazy var toolbar: UIToolbar =
     {
         let toolbar = UIToolbar()
@@ -110,6 +104,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         toolbar.items = [UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil), UIBarButtonItem(customView: self.segmentedControl), UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)]
         return toolbar
     }()
+    #endif
     
     lazy var tableView: UITableView =
     {
@@ -121,7 +116,11 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        #if !os(tvOS)
         tableView.bottomAnchor.constraint(equalTo: self.toolbar.topAnchor).isActive = true
+        #else
+        tableView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+        #endif
         return tableView
     }()
     
@@ -147,6 +146,20 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         return barButtonItem
     }()
     #endif
+    
+    lazy var settingsBarButton: UIBarButtonItem =
+    {
+        let settingsBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(self.didPressSettings(_:)))
+        return settingsBarButton
+    }()
+    
+    lazy var locationBarButton: UIBarButtonItem =
+    {
+        let locationControl = TVLocationButton(frame: CGRect(x: 0.0, y: 0.0, width: 44.0, height: 44.0))
+        locationControl.addTarget(self, action: #selector(self.didPressLocationButton), for: .primaryActionTriggered)
+        let locationBarButton = UIBarButtonItem(customView: locationControl)
+        return locationBarButton
+    }()
     
     lazy var networkBarButton: UIBarButtonItem =
     {
@@ -223,11 +236,10 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.tableView.emptyDataSetDelegate = self
-        self.tableView.emptyDataSetSource = self
         self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
-        
         #if !os(tvOS)
+            self.tableView.emptyDataSetDelegate = self
+            self.tableView.emptyDataSetSource = self
             if let homeNetwork = UserDefaults.bikeShareGroup.homeNetwork, homeNetwork.id == self.network.id
             {
                 self.navigationItem.hidesBackButton = true
@@ -237,7 +249,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
             self.navigationItem.titleView = activityIndicator
             activityIndicator.startAnimating()
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-            self.view.backgroundColor = .app_beige
+            self.tableView.backgroundColor = .app_beige
             self.mapBarButton.isEnabled = false
         #else
             self.title = "  Stations"
@@ -284,6 +296,8 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         {
             self.navigationItem.setRightBarButtonItems([self.diffBarButton], animated: true)
         }
+        #else
+            self.navigationItem.setRightBarButtonItems([self.locationBarButton], animated: true)
         #endif
     }
     
@@ -544,6 +558,46 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         searchContainer.modalPresentationStyle = .overFullScreen
         let searchNavVC = UINavigationController(rootViewController: searchContainer)
         self.present(searchNavVC, animated: true)
+    }
+    
+    @objc func didPressSettings(_ sender: UIBarButtonItem)
+    {
+        let settingsViewController = MapSettingsViewController()
+        let navVC = UINavigationController(rootViewController: settingsViewController)
+        #if !os(tvOS)
+            navVC.modalPresentationStyle = .formSheet
+        #endif
+        navVC.modalTransitionStyle = .coverVertical
+        self.present(navVC, animated: true)
+    }
+    
+    @objc fileprivate func didPressLocationButton()
+    {
+        guard CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways else
+        {
+            self.showLocationSettingsAlert()
+            return
+        }
+        self.mapViewController?.didPressLocationButton()
+    }
+    
+    private func showLocationSettingsAlert()
+    {
+        let alertController = UIAlertController (title: "Location Settings", message: "Allow Bear Bike Share to access you current location to use this feature.", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default)
+        { (_) in
+            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(settingsUrl)
+            {
+                UIApplication.shared.open(settingsUrl)
+            }
+        }
+        alertController.addAction(settingsAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true)
     }
     
     //MARK: - UI Helper

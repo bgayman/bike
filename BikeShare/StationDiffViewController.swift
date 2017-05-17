@@ -65,6 +65,15 @@ class StationDiffViewController: UITableViewController
         return footerView
     }()
     
+    lazy var searchController: UISearchController =
+    {
+        let searchResultsController = StationDiffViewControllerSearchController()
+        searchResultsController.delegate = self
+        let searchController = UISearchController(searchResultsController: searchResultsController)
+        searchController.searchResultsUpdater = self
+        return searchController
+    }()
+    
     //MARK: - Lifecycle
     init(bikeNetwork: BikeNetwork, bikeStations: [BikeStation], bikeStationDiffs: [BikeStationDiff])
     {
@@ -102,6 +111,7 @@ class StationDiffViewController: UITableViewController
         
         #if !os(tvOS)
             footerView.poweredByButton.addTarget(self, action: #selector(self.poweredByPressed), for: .touchUpInside)
+            self.tableView.tableHeaderView = self.searchController.searchBar
             self.definesPresentationContext = true
             self.refreshControl = refresh
         #endif
@@ -121,7 +131,7 @@ class StationDiffViewController: UITableViewController
                 #if !os(tvOS)
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     self.refreshControl?.endRefreshing()
-                    self.title = self.network.name
+                    self.title = "\(self.network.name) Recent Activity"
                 #endif
                 stationsClient.invalidate()
                 switch response
@@ -153,6 +163,10 @@ class StationDiffViewController: UITableViewController
                         self.tableView.tableFooterView = self.footerView
                     }
                     self.bikeStationDiffs = diffs.sorted()
+                    if let diffSearchController = self.searchController.searchResultsController as? StationDiffViewControllerSearchController
+                    {
+                        diffSearchController.all = self.bikeStationDiffs
+                    }
                     self.bikeStations = stations
                     self.delegate?.didUpdateBikeStations(stations: stations)
                     self.delegate?.didUpdateBikeStationDiffs(bikeStationDiffs: self.bikeStationDiffs)
@@ -233,5 +247,23 @@ extension StationDiffViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage!
     {
         return #imageLiteral(resourceName: "seatedBear")
+    }
+}
+
+extension StationDiffViewController: UISearchResultsUpdating
+{
+    func updateSearchResults(for searchController: UISearchController)
+    {
+        guard let controller = searchController.searchResultsController as? StationDiffViewControllerSearchController else { return }
+        guard let text = searchController.searchBar.text else { return }
+        controller.searchString = text
+    }
+}
+
+extension StationDiffViewController: StationDiffViewControllerSearchControllerDelegate
+{
+    func didSelect(diff: BikeStationDiff)
+    {
+        self.delegate?.didSelectBikeStation(station: diff.bikeStation)
     }
 }

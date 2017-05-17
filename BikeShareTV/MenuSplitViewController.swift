@@ -8,7 +8,8 @@
 
 import UIKit
 
-class MenuSplitViewController: UISplitViewController {
+class MenuSplitViewController: UISplitViewController
+{
     // MARK: Properties
     
     /**
@@ -21,7 +22,8 @@ class MenuSplitViewController: UISplitViewController {
     
     // MARK: UIFocusEnvironment
     
-    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+    override var preferredFocusEnvironments: [UIFocusEnvironment]
+    {
         let environments: [UIFocusEnvironment]
         
         /*

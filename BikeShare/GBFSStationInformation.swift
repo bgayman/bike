@@ -15,7 +15,6 @@ enum RentalMethod: String
     case creditCard = "CREDITCARD"
     case payPass = "PAYPASS"
     case applePay = "APPLEPAY"
-    case androidPay = "ANDROIDPAY"
     case transitCard = "TRANSITCARD"
     case accountNumber = "ACCOUNTNUMBER"
     case phone = "PHONE"
@@ -32,8 +31,6 @@ enum RentalMethod: String
             return "🛂"
         case .applePay:
             return ""
-        case .androidPay:
-            return "🤖"
         case .transitCard:
             return "🚍"
         case .accountNumber:
@@ -55,8 +52,6 @@ enum RentalMethod: String
             return "Pay Pass"
         case .applePay:
             return "Apple Pay"
-        case .androidPay:
-            return "Android Pay"
         case .transitCard:
             return "Transit Card"
         case .accountNumber:
@@ -68,7 +63,7 @@ enum RentalMethod: String
     
     static var all: [RentalMethod]
     {
-        return [.key, .creditCard, .payPass, .applePay, .androidPay, .transitCard, .accountNumber, .phone]
+        return [.key, .creditCard, .payPass, .applePay, .transitCard, .accountNumber, .phone]
     }
 }
 

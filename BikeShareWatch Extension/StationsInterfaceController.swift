@@ -58,10 +58,9 @@ class StationsInterfaceController: WKInterfaceController
         self.stations = stations
     }
     
-    override func didDeactivate()
+    deinit
     {
         NotificationCenter.default.removeObserver(self)
-        super.didDeactivate()
     }
     
     func update()

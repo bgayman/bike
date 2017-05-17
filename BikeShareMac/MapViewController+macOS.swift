@@ -277,7 +277,7 @@ extension MapViewController
             
             annotationView?.rightCalloutAccessoryView = button
             annotationView?.leftCalloutAccessoryView = homeButton
-            annotationView?.animatesDrop = true
+            annotationView?.animatesDrop = self.mapView.annotations.count < 15
         case .stations:
             guard annotation is MapBikeStation else { return nil }
             annotationView?.annotation = annotation
@@ -289,7 +289,7 @@ extension MapViewController
             button.sendAction(on: .leftMouseDown)
             annotationView?.rightCalloutAccessoryView = button
             annotationView?.leftCalloutAccessoryView = nil
-            annotationView?.animatesDrop = false
+            annotationView?.animatesDrop = self.mapView.annotations.count < 15
         }
         
         annotationView?.canShowCallout = true
@@ -336,6 +336,46 @@ extension MapViewController
         else { return }
         let picker = NSSharingServicePicker(items: [url])
         picker.show(relativeTo: .zero, of: sender, preferredEdge: .minY)
+    }
+    
+    func bouncePin(for station: BikeStation)
+    {
+        let annotations = self.mapView.annotations.filter
+        { annotation in
+            guard let annot = annotation as? MapBikeStation,
+                annot.bikeStation.id == station.id
+                else { return false }
+            return true
+        }
+        guard let annotation = annotations.last else { return }
+        guard let view = self.mapView.view(for: annotation) else { return }
+        let frame = view.frame
+        NSAnimationContext.current().duration = 0.2
+        NSAnimationContext.current().completionHandler =
+            { _ in
+                view.animator().frame = frame
+        }
+        view.animator().frame.origin.y = frame.origin.y - 50.0
+    }
+    
+    func bouncePin(for network: BikeNetwork)
+    {
+        let annotations = self.mapView.annotations.filter
+        { annotation in
+            guard let annot = annotation as? MapBikeNetwork,
+                annot.bikeNetwork.id == network.id
+                else { return false }
+            return true
+        }
+        guard let annotation = annotations.last else { return }
+        guard let view = self.mapView.view(for: annotation) else { return }
+        let frame = view.frame
+        NSAnimationContext.current().duration = 0.2
+        NSAnimationContext.current().completionHandler =
+        { _ in
+            view.animator().frame = frame
+        }
+        view.animator().frame.origin.y = frame.origin.y - 50.0
     }
     
 }

@@ -41,6 +41,14 @@ class NetworkTableViewController: UITableViewController
         return searchController
     }()
     
+    lazy var locationBarButton: UIBarButtonItem =
+    {
+        let locationControl = TVLocationButton(frame: CGRect(x: 0.0, y: 0.0, width: 44.0, height: 44.0))
+        locationControl.addTarget(self, action: #selector(self.didPressLocationButton), for: .primaryActionTriggered)
+        let locationBarButton = UIBarButtonItem(customView: locationControl)
+        return locationBarButton
+    }()
+    
     #if !os(tvOS)
     lazy var refresh: UIRefreshControl =
     {
@@ -125,6 +133,8 @@ class NetworkTableViewController: UITableViewController
         {
             self.navigationItem.setRightBarButton(self.mapBarButton, animated: true)
         }
+        #else
+            self.navigationItem.setRightBarButton(self.locationBarButton, animated: true)
         #endif
         
         self.networkMapViewController?.delegate = self
@@ -133,19 +143,20 @@ class NetworkTableViewController: UITableViewController
         
     }
     
-    override func viewDidDisappear(_ animated: Bool)
+    deinit
     {
         NotificationCenter.default.removeObserver(self)
-        super.viewDidDisappear(animated)
     }
     
     override func viewDidLayoutSubviews()
     {
         super.viewDidLayoutSubviews()
+        #if !os(tvOS)
         if self.splitViewController?.traitCollection.isSmallerDevice == true
         {
             self.navigationItem.rightBarButtonItem = self.mapBarButton
         }
+        #endif
     }
     
     //MARK: - UI Helpers
@@ -200,6 +211,11 @@ class NetworkTableViewController: UITableViewController
     func search()
     {
         self.searchController.searchBar.becomeFirstResponder()
+    }
+    
+    func didPressLocationButton()
+    {
+        self.networkMapViewController?.didPressLocationButton()
     }
     
     //MARK: - TableView
@@ -461,6 +477,7 @@ class NetworkTableViewController: UITableViewController
         self.present(alertController, animated: true)
     }
     
+    #if !os(tvOS)
     fileprivate func showSelectionAlert(network: BikeNetwork)
     {
         let alertController = AlertController(title: "Set Home Network", message: "Would you like to set this network as your home network?\n\nSetting a home network will improve accuracy and get you to the stations you care about faster.", preferredStyle: .alert)
@@ -489,6 +506,7 @@ class NetworkTableViewController: UITableViewController
         
         alertController.present()
     }
+    #endif
     
     fileprivate func showFirstSelectionAlert(network: BikeNetwork)
     {

@@ -143,6 +143,14 @@ class BikeTableViewCell: UITableViewCell
             self.titleLabel.attributedText = self.searchHightlighted(attribString: titleAttribString, searchString: searchString)
             self.subtitleLabel.attributedText = self.searchHightlighted(attribString: subtitleAttribString, searchString: searchString)
         }
+        else
+        {
+            let titleAttribString = NSMutableAttributedString(string: self.titleLabel.text ?? "", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .body)])
+            let subtitleAttribString = NSMutableAttributedString(string: self.subtitleLabel.text ?? "", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .caption1)])
+            
+            self.titleLabel.attributedText = self.searchHightlighted(attribString: titleAttribString, searchString: searchString)
+            self.subtitleLabel.attributedText = self.searchHightlighted(attribString: subtitleAttribString, searchString: searchString)
+        }
         
     }
     

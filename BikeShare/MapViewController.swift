@@ -12,6 +12,12 @@ import UIKit
 #endif
 import MapKit
 
+enum FilterState: Int
+{
+    case all
+    case favorites
+}
+
 //MARK: - MapViewControllerDelegate
 protocol MapViewControllerDelegate: class
 {
@@ -119,6 +125,7 @@ class MapViewController: BaseMapViewController
         return segmentedControl
     }()
     
+    #if !os(tvOS)
     lazy var searchBar: UISearchBar =
     {
         let searchBar = UISearchBar(frame: CGRect(x: 0.0, y: 0.0, width: 210.0, height: 14.0))
@@ -127,6 +134,7 @@ class MapViewController: BaseMapViewController
         searchBar.delegate = self
         return searchBar
     }()
+    #endif
     
     var toolbarBottomLayoutConstraint: NSLayoutConstraint?
     var mapBottomLayoutConstraint: NSLayoutConstraint?
@@ -250,7 +258,7 @@ class MapViewController: BaseMapViewController
                 self.setupForStations()
                 return
             }
-            //guard oldValue != self.stations else { return }
+            guard oldValue != self.stations else { return }
             self.configureForUpdatedStations(oldValue: oldValue)
         }
     }
@@ -318,6 +326,7 @@ class MapViewController: BaseMapViewController
         #endif
     }
     
+    #if !os(macOS)
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator)
     {
         coordinator.animate(alongsideTransition: { (_) in })
@@ -328,11 +337,12 @@ class MapViewController: BaseMapViewController
         }
     }
     
-    #if !os(macOS)
     func setupNotifications()
     {
+        #if !os(tvOS)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillAppear(notification:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
+        #endif
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -378,11 +388,11 @@ class MapViewController: BaseMapViewController
     {
         self.title = "Networks"
         self.state = .networks
-        self.navigationItem.rightBarButtonItems = [self.locationBarButton]
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.configureForUpdatedNetworks(oldValue: [])
         self.initialDrop = false
         #if os(iOS)
+        self.navigationItem.rightBarButtonItems = [self.locationBarButton]
         self.toolbarStackView.arrangedSubviews.forEach { self.toolbarStackView.removeArrangedSubview($0) }
         self.toolbarStackView.addArrangedSubview(self.searchBar)
         #endif
@@ -472,7 +482,7 @@ class MapViewController: BaseMapViewController
         self.present(navVC, animated: true)
     }
     
-    @objc fileprivate func didPressLocationButton()
+    @objc func didPressLocationButton()
     {
         guard CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways else
         {
@@ -519,6 +529,7 @@ class MapViewController: BaseMapViewController
         present(alertController, animated: true)
     }
     
+    #if !os(tvOS)
     func keyboardWillAppear(notification: Notification)
     {
         let userInfo = notification.userInfo
@@ -551,6 +562,7 @@ class MapViewController: BaseMapViewController
         }
         self.view.layoutIfNeeded()
     }
+    #endif
     
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?)
     {
@@ -638,7 +650,7 @@ extension MapViewController: MKMapViewDelegate
         }
         
         annotationView?.canShowCallout = true
-        annotationView?.animatesDrop = self.initialDrop
+        annotationView?.animatesDrop = self.mapView.annotations.count < 15
         
         if self.traitCollection.forceTouchCapability == .available
         {
@@ -651,7 +663,7 @@ extension MapViewController: MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
     {
-        #if !os(macOS)
+        #if !(os(macOS) || os(tvOS))
             self.searchBar.showsCancelButton = false
             self.searchBar.resignFirstResponder()
         #endif
@@ -668,6 +680,7 @@ extension MapViewController: MKMapViewDelegate
 }
 
 #if !os(macOS)
+    #if !os(tvOS)
 extension MapViewController: UISearchBarDelegate
 {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
@@ -692,6 +705,7 @@ extension MapViewController: UISearchBarDelegate
         searchBar.resignFirstResponder()
     }
 }
+    #endif
     
 // MARK: - UIViewControllerPreviewingDelegate
 extension MapViewController: UIViewControllerPreviewingDelegate

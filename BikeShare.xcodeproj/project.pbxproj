@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD029C6F1ECBD67E0091A0A9 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3932351EBF63C7009427E6 /* LocationControl.swift */; };
+		CD029C701ECBD7250091A0A9 /* MapSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */; };
+		CD029C711ECBD7670091A0A9 /* MapPinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E61EB6D3BC00806D97 /* MapPinTableViewCell.swift */; };
+		CD029C731ECBDA3A0091A0A9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD029C721ECBDA390091A0A9 /* CloudKit.framework */; };
+		CD029C751ECBDA470091A0A9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD029C741ECBDA470091A0A9 /* CloudKit.framework */; };
+		CD029C771ECBDA7A0091A0A9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD029C761ECBDA7A0091A0A9 /* CloudKit.framework */; };
+		CD029C781ECC6B2B0091A0A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
+		CD029C791ECC6B2C0091A0A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
 		CD121DF41E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */; };
 		CD121DF81E1040D7004F78E2 /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */; };
 		CD121DFA1E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */; };
@@ -105,11 +113,6 @@
 		CD6276EF1EB4E7AC008666AC /* GBFSStationStatusClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */; };
 		CD6276F11EB4EDA5008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
 		CD6276F21EB4EDA5008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
-		CD6276F31EB4EDA6008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
-		CD6276F41EB4EDA7008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
-		CD6276F51EB4EDA8008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
-		CD6276F61EB4EDA9008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
-		CD6276F71EB4EDAB008666AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
 		CD6733221EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = CD6733201EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap */; };
 		CD67332C1EAAEDBB0070E69B /* BikeStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */; };
 		CD67332E1EAAEE220070E69B /* StationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332D1EAAEE220070E69B /* StationsClient.swift */; };
@@ -251,6 +254,7 @@
 		CD8C1B891E218427000F9A9D /* Deeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B871E218427000F9A9D /* Deeplink.swift */; };
 		CD8C1B8B1E21BE73000F9A9D /* MenuSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */; };
 		CD8C1B8C1E21BEC9000F9A9D /* MenuSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */; };
+		CD9E81EC1ECA7D8B00FF2EB4 /* StationDiffViewControllerSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */; };
 		CDA134821E2A8E57005542DE /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
 		CDA134831E2A8E5C005542DE /* MapBikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */; };
 		CDA134841E2A8E61005542DE /* BikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7CE1E0ED98200C3C6CA /* BikeStation.swift */; };
@@ -500,6 +504,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CD029C721ECBDA390091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		CD029C741ECBDA470091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		CD029C761ECBDA7A0091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailAccessoryTableViewCell.swift; sourceTree = "<group>"; };
 		CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helper.swift"; sourceTree = "<group>"; };
 		CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailCalloutAccessoryView.swift; sourceTree = "<group>"; };
@@ -567,6 +574,7 @@
 		CD8C1B6A1E218069000F9A9D /* BikeShareTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeShareTV.entitlements; sourceTree = "<group>"; };
 		CD8C1B871E218427000F9A9D /* Deeplink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deeplink.swift; sourceTree = "<group>"; };
 		CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSplitViewController.swift; sourceTree = "<group>"; };
+		CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDiffViewControllerSearchController.swift; sourceTree = "<group>"; };
 		CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StationDetailViewController+Application.swift"; sourceTree = "<group>"; };
 		CDA134A31E2A91F5005542DE /* StationDetailViewController+Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StationDetailViewController+Messages.swift"; path = "../BikeShare/StationDetailViewController+Messages.swift"; sourceTree = "<group>"; };
 		CDA134A51E2A9346005542DE /* BikeStation+Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BikeStation+Distance.swift"; sourceTree = "<group>"; };
@@ -670,6 +678,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD164C541E2C38F40062CBA5 /* MapKit.framework in Frameworks */,
+				CD029C731ECBDA3A0091A0A9 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -687,6 +696,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD8C1B691E218062000F9A9D /* MapKit.framework in Frameworks */,
+				CD029C771ECBDA7A0091A0A9 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -714,6 +724,7 @@
 				CD6A6BAA1EAD76FC0042ABE5 /* Hero.framework in Frameworks */,
 				CD6A6BA91EAD76EF0042ABE5 /* Charts.framework in Frameworks */,
 				CD39323A1EC0031A009427E6 /* DZNEmptyDataSet.framework in Frameworks */,
+				CD029C751ECBDA470091A0A9 /* CloudKit.framework in Frameworks */,
 				CD2185FF1EC9451800B11ADB /* SDCAlertView.framework in Frameworks */,
 				CDF6E7AD1E0DBC6600C3C6CA /* MapKit.framework in Frameworks */,
 			);
@@ -842,6 +853,7 @@
 				CDF6E7B61E0DBDA800C3C6CA /* StationsSearchController.swift */,
 				CDF6E7B71E0DBDA800C3C6CA /* StationsTableViewContoller.swift */,
 				CDEF3CF31E1301DE0002063F /* StationDetailViewController.swift */,
+				CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */,
 				CDF6F5C11E7DFCAA009CBD32 /* StationDiffViewController.swift */,
 				CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */,
 				CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */,
@@ -956,6 +968,9 @@
 		CDF6E7AB1E0DBC6600C3C6CA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CD029C761ECBDA7A0091A0A9 /* CloudKit.framework */,
+				CD029C741ECBDA470091A0A9 /* CloudKit.framework */,
+				CD029C721ECBDA390091A0A9 /* CloudKit.framework */,
 				CDFBD7321E3D2E6300C751D7 /* MapKit.framework */,
 				CD164C531E2C38F40062CBA5 /* MapKit.framework */,
 				CD8C1B681E218062000F9A9D /* MapKit.framework */,
@@ -1248,6 +1263,9 @@
 							com.apple.Maps.Mac = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -1278,6 +1296,9 @@
 								enabled = 1;
 							};
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 							com.apple.SafariKeychain = {
@@ -1320,6 +1341,9 @@
 								enabled = 1;
 							};
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 							com.apple.SafariKeychain = {
@@ -1389,7 +1413,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD6276F41EB4EDA7008666AC /* Assets.xcassets in Resources */,
+				CD029C791ECC6B2C0091A0A9 /* Assets.xcassets in Resources */,
 				CD164C3E1E2BEC650062CBA5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1399,7 +1423,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD164C4A1E2C385D0062CBA5 /* Assets.xcassets in Resources */,
-				CD6276F51EB4EDA8008666AC /* Assets.xcassets in Resources */,
 				CD164C4D1E2C385D0062CBA5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1409,7 +1432,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD164C881E33C3540062CBA5 /* TodayViewController.xib in Resources */,
-				CD6276F61EB4EDA9008666AC /* Assets.xcassets in Resources */,
 				CD164C8C1E33C3540062CBA5 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1419,7 +1441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD8C1B631E218056000F9A9D /* Assets.xcassets in Resources */,
-				CD6276F31EB4EDA6008666AC /* Assets.xcassets in Resources */,
+				CD029C781ECC6B2B0091A0A9 /* Assets.xcassets in Resources */,
 				CD8C1B611E218056000F9A9D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1470,7 +1492,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD6276F71EB4EDAB008666AC /* Assets.xcassets in Resources */,
 				CDFBD71F1E3849A000C751D7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1641,7 +1662,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD029C701ECBD7250091A0A9 /* MapSettingsViewController.swift in Sources */,
 				CD8C1B6E1E2181AB000F9A9D /* MapBikeNetwork.swift in Sources */,
+				CD029C6F1ECBD67E0091A0A9 /* LocationControl.swift in Sources */,
 				CD8C1B731E2181C0000F9A9D /* Constants.swift in Sources */,
 				CD80AA6B1E624CF000C1E9B6 /* GBFSStationStatus.swift in Sources */,
 				CD80AA8C1E624D4E00C1E9B6 /* GBFSStationStatusClient.swift in Sources */,
@@ -1655,6 +1678,7 @@
 				CDA1D2C71E22B9A4008B2AE8 /* UIFont+Application.swift in Sources */,
 				CD80AA5C1E624CCB00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */,
 				CD80AA661E624CE200C1E9B6 /* GBFSStationInformation.swift in Sources */,
+				CD029C711ECBD7670091A0A9 /* MapPinTableViewCell.swift in Sources */,
 				CD8C1B7C1E2182FA000F9A9D /* NetworksClient.swift in Sources */,
 				CD80AA621E624CD700C1E9B6 /* GBFSSystemAlert.swift in Sources */,
 				CD8C1B741E2181C3000F9A9D /* StationDetailTableViewCell.swift in Sources */,
@@ -1849,6 +1873,7 @@
 				CDF6E7B11E0DBD8300C3C6CA /* BikeTableViewCell.swift in Sources */,
 				CDFED5D31E62132500D5C4BF /* GBFSStationStatusClient.swift in Sources */,
 				CD121DFC1E106AC1004F78E2 /* UILabel+Sizing.swift in Sources */,
+				CD9E81EC1ECA7D8B00FF2EB4 /* StationDiffViewControllerSearchController.swift in Sources */,
 				CDEC200E1E4F61790044D923 /* GBFSSystemInformationClient.swift in Sources */,
 				CDF6E7981E0DBC3000C3C6CA /* AppDelegate.swift in Sources */,
 				CDEC20221E52A3BB0044D923 /* GBFSSystemAlertClient.swift in Sources */,

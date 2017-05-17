@@ -137,9 +137,12 @@ class StationDetailViewController: UIViewController
         let actionBarButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.didPressAction))
         return actionBarButton
     }()
-    
-    
     #endif
+    
+    override var preferredFocusEnvironments: [UIFocusEnvironment]
+    {
+        return [self.tableView]
+    }
     
     var mapHeight: CGFloat
     {
@@ -361,6 +364,32 @@ class StationDetailViewController: UIViewController
             }
         }
     }
+    
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?)
+    {
+        guard let press = presses.first,
+            press.type == .menu
+            else
+        {
+            super.pressesBegan(presses, with: event)
+            return
+        }
+        setNeedsFocusUpdate()
+        updateFocusIfNeeded()
+    }
+    
+    override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?)
+    {
+        guard let press = presses.first,
+            press.type == .menu
+            else
+        {
+            super.pressesEnded(presses, with: event)
+            return
+        }
+        setNeedsFocusUpdate()
+        updateFocusIfNeeded()
+    }
 }
 
 //MARK: - MKMapViewDelegate
@@ -397,7 +426,9 @@ extension StationDetailViewController: MKMapViewDelegate
         if annotationView == nil
         {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            #if !os(tvOS)
             annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            #endif
         }
         guard let station = annotation as? MapBikeStation else
         {

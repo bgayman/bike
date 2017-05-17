@@ -75,6 +75,7 @@ extension NetworkViewController: NSTableViewDelegate, NSTableViewDataSource
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
     {
         guard let cell = tableView.make(withIdentifier: tableColumn!.identifier, owner: self) as? NetworkTableCell else { return  nil }
+        cell.delegate = self
         let attributes = cell.backgroundStyle == .dark ? [NSForegroundColorAttributeName: NSColor.white] : [NSForegroundColorAttributeName: NSColor.darkGray]
         switch self.state
         {
@@ -139,6 +140,24 @@ extension NetworkViewController: NSTableViewDelegate, NSTableViewDataSource
                 else { return }
             let station = self.stations[self.tableView.selectedRow]
             mapViewController.focus(on: [station])
+        }
+    }
+}
+
+extension NetworkViewController: NetworkTableCellDelegate
+{
+    func mouseDidEnter(cell: NetworkTableCell)
+    {
+        guard let mapVC = self.parent as? MapViewController else { return }
+        let index = self.tableView.row(for: cell)
+        switch self.state
+        {
+        case .networks:
+            let network = self.networks[index]
+            mapVC.bouncePin(for: network)
+        case .stations:
+            let station = self.stations[index]
+            mapVC.bouncePin(for: station)
         }
     }
 }

@@ -72,3 +72,68 @@ final class LocationControl: UIControl
         }
     }
 }
+
+final class TVLocationButton: UIButton
+{
+    var color = UIColor.black
+    {
+        didSet
+        {
+            self.setNeedsDisplay()
+        }
+    }
+    
+    override init(frame: CGRect)
+    {
+        super.init(frame: frame)
+        self.commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder)
+    {
+        super.init(coder: aDecoder)
+        self.commonInit()
+    }
+    
+    private func commonInit()
+    {
+        self.backgroundColor = .clear
+        self.isOpaque = false
+    }
+    
+    override func draw(_ rect: CGRect)
+    {
+        super.draw(rect)
+        let path = UIBezierPath()
+        path.move(to: CGPoint(x: 0.0, y: self.bounds.midY))
+        path.addLine(to: CGPoint(x: self.bounds.maxX, y: 0.0))
+        path.addLine(to: CGPoint(x: self.bounds.midX, y: self.bounds.maxY))
+        path.addLine(to: CGPoint(x: self.bounds.midX, y: self.bounds.midY))
+        path.close()
+        path.lineWidth = 1.0
+        path.lineJoinStyle = .round
+        path.lineCapStyle = .round
+        self.color.set()
+        path.stroke()
+        if self.isFocused
+        {
+            path.fill()
+        }
+    }
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator)
+    {
+        self.setNeedsDisplay()
+        coordinator.addCoordinatedAnimations(
+        {
+            if self.isFocused
+            {
+                self.transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
+            }
+            else
+            {
+                self.transform = .identity
+            }
+        }, completion: nil)
+    }
+}
