@@ -98,6 +98,11 @@ class StationsSearchController: UITableViewController
             let station = self.searchResults[indexPath.row]
             var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: network)
             favedStations.append(station)
+            if let network = self.network
+            {
+                let jsonDicts = favedStations.map { $0.jsonDict }
+                try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [network.id: jsonDicts as AnyObject])
+            }
             UserDefaults.bikeShareGroup.setFavoriteStations(for: network, favorites: favedStations)
         }
         favorite.backgroundColor = UIColor.app_blue
@@ -110,6 +115,12 @@ class StationsSearchController: UITableViewController
             guard let favedStation = favedS,
                 let index = favedStations.index(of: favedStation) else { return }
             favedStations.remove(at: index)
+            if let network = self.network
+            {
+                let jsonDicts = favedStations.map { $0.jsonDict }
+                try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [network.id: jsonDicts as AnyObject])
+            }
+            
             UserDefaults.bikeShareGroup.setFavoriteStations(for: network, favorites: favedStations)
         }
         unfavorite.backgroundColor = UIColor.app_blue

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>BikeShareMacWidget</string>
+	<string>Bike Bear</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -39,6 +39,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2017 B Gay. All rights reserved.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We&apos;d like to use your location 🗺 to get you to a 🚲 faster 💥.</string>
+	<string>We'd like to use your location 🗺 to get you to a 🚲 faster 💥.</string>
 </dict>
 </plist>

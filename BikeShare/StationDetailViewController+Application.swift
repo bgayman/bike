@@ -35,6 +35,8 @@ extension StationDetailViewController
             let station = viewController.station
             var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.network)
             favedStations.append(station)
+            let jsonDicts = favedStations.map { $0.jsonDict }
+            try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [self.network.id: jsonDicts as AnyObject])
             UserDefaults.bikeShareGroup.setFavoriteStations(for: self.network, favorites: favedStations)
         }
         let unfavorite = UIPreviewAction(title: "★", style: .default)
@@ -47,6 +49,8 @@ extension StationDetailViewController
             guard let favedStation = favedS,
                 let index = favedStations.index(of: favedStation) else { return }
             favedStations.remove(at: index)
+            let jsonDicts = favedStations.map { $0.jsonDict }
+            try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [self.network.id: jsonDicts as AnyObject])
             UserDefaults.bikeShareGroup.setFavoriteStations(for: self.network, favorites: favedStations)
         }
         

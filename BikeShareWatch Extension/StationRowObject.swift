@@ -17,7 +17,9 @@ class StationRowObject: NSObject
         didSet
         {
             guard let bikeStation = bikeStation else { return }
-            self.titleLabel.setText(bikeStation.name)
+            let dotString = NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: bikeStation.pinTintColor])
+            let titleString = NSAttributedString(string: bikeStation.name)
+            self.titleLabel.setAttributedText(dotString + titleString)
             self.subtitleLabel.setText("\(bikeStation.statusDisplayText) - \(bikeStation.dateComponentText)")
         }
     }

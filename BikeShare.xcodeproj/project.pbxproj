@@ -15,6 +15,12 @@
 		CD029C771ECBDA7A0091A0A9 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD029C761ECBDA7A0091A0A9 /* CloudKit.framework */; };
 		CD029C781ECC6B2B0091A0A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
 		CD029C791ECC6B2C0091A0A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */; };
+		CD029C7C1ECDC6C60091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
+		CD029C7D1ECDC6D00091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
+		CD029C7E1ECDC6D10091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
+		CD029C7F1ECDC6D20091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
+		CD029C801ECDC6D30091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
+		CD029C811ECDC6EA0091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
 		CD121DF41E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */; };
 		CD121DF81E1040D7004F78E2 /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */; };
 		CD121DFA1E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */; };
@@ -507,6 +513,7 @@
 		CD029C721ECBDA390091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		CD029C741ECBDA470091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CD029C761ECBDA7A0091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Application.swift"; sourceTree = "<group>"; };
 		CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailAccessoryTableViewCell.swift; sourceTree = "<group>"; };
 		CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helper.swift"; sourceTree = "<group>"; };
 		CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailCalloutAccessoryView.swift; sourceTree = "<group>"; };
@@ -1011,6 +1018,7 @@
 				CD121DFB1E106AC1004F78E2 /* UILabel+Sizing.swift */,
 				CDEF3CF11E12FA110002063F /* UITraitCollection+Helper.swift */,
 				CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */,
+				CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1556,6 +1564,7 @@
 				CD6276EE1EB4E79E008666AC /* GBFSStationInformationClient.swift in Sources */,
 				CD164C301E2B1BFF0062CBA5 /* ClientResponse.swift in Sources */,
 				CD164C2A1E2B1BD00062CBA5 /* BikeStation.swift in Sources */,
+				CD029C801ECDC6D30091A0A9 /* NSAttributedString+Application.swift in Sources */,
 				CD164C1F1E2B1A7A0062CBA5 /* ServiceProvider.swift in Sources */,
 				CD6733321EAAEE220070E69B /* StationsClient.swift in Sources */,
 				CD2BA3CD1EABFDBB00C26F90 /* HistoryNetworksManager.swift in Sources */,
@@ -1666,6 +1675,7 @@
 				CD8C1B6E1E2181AB000F9A9D /* MapBikeNetwork.swift in Sources */,
 				CD029C6F1ECBD67E0091A0A9 /* LocationControl.swift in Sources */,
 				CD8C1B731E2181C0000F9A9D /* Constants.swift in Sources */,
+				CD029C7F1ECDC6D20091A0A9 /* NSAttributedString+Application.swift in Sources */,
 				CD80AA6B1E624CF000C1E9B6 /* GBFSStationStatus.swift in Sources */,
 				CD80AA8C1E624D4E00C1E9B6 /* GBFSStationStatusClient.swift in Sources */,
 				CD80AA911E625A8300C1E9B6 /* SystemInfoTableViewContent.swift in Sources */,
@@ -1751,6 +1761,7 @@
 				CD6733361EAAEE3F0070E69B /* BikeStationStatus.swift in Sources */,
 				CD2BA3CA1EABFDB600C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CDF6F5BB1E7D7F80009CBD32 /* WidgetStationClient.swift in Sources */,
+				CD029C7D1ECDC6D00091A0A9 /* NSAttributedString+Application.swift in Sources */,
 				CDA134A91E2A939C005542DE /* ExtensionConstants.swift in Sources */,
 				CDEF3D161E1737AE0002063F /* ClientResponse.swift in Sources */,
 				CDEF3D151E1737A30002063F /* UserDefaults+Application.swift in Sources */,
@@ -1797,6 +1808,7 @@
 				CDA134921E2A8F54005542DE /* DispatchQueue+Helper.swift in Sources */,
 				CDA134901E2A8F4C005542DE /* UIColor+Application.swift in Sources */,
 				CDF347591E2A8BE800241A8A /* MessagesViewController.swift in Sources */,
+				CD029C7E1ECDC6D10091A0A9 /* NSAttributedString+Application.swift in Sources */,
 				CDA134861E2A8E6A005542DE /* BikeNetwork.swift in Sources */,
 				CD80AA771E624D2700C1E9B6 /* GBFSFeedClient.swift in Sources */,
 				CDA1348C1E2A8F35005542DE /* UITableView+Diff.swift in Sources */,
@@ -1851,6 +1863,7 @@
 				CDF6E7C11E0EBAC300C3C6CA /* UIAlertController+Helper.swift in Sources */,
 				CD1ED2E81EB6D3BC00806D97 /* MapPinTableViewCell.swift in Sources */,
 				CDF6E7D11E0ED9FF00C3C6CA /* MapBikeNetwork.swift in Sources */,
+				CD029C7C1ECDC6C60091A0A9 /* NSAttributedString+Application.swift in Sources */,
 				CDF6E7D31E0EDA5F00C3C6CA /* MapBikeStation.swift in Sources */,
 				CDF6E7C91E0ED8CD00C3C6CA /* UIColor+Application.swift in Sources */,
 				CDEC20201E529E790044D923 /* GBFSSystemAlert.swift in Sources */,
@@ -1913,6 +1926,7 @@
 				CDFBD7401E3D31E200C751D7 /* BikeNetworkLocation.swift in Sources */,
 				CDFBD7361E3D2F3900C751D7 /* UserManager.swift in Sources */,
 				CDFBD71D1E3849A000C751D7 /* ComplicationController.swift in Sources */,
+				CD029C811ECDC6EA0091A0A9 /* NSAttributedString+Application.swift in Sources */,
 				CD6733351EAAEE220070E69B /* StationsClient.swift in Sources */,
 				CD2BA3D01EABFDC200C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CDFBD7411E3D31E500C751D7 /* BikeNetwork.swift in Sources */,

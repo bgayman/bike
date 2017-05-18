@@ -87,6 +87,11 @@ extension WatchSessionManager {
             {
                 UserDefaults.standard.setClosebyStations(with: stations)
             }
+            else if let homeNetwork = UserDefaults.standard.homeNetwork,
+                    let favedStations = applicationContext[homeNetwork.id] as? [JSONDictionary]
+            {
+                UserDefaults.standard.setFavoriteStations(for: homeNetwork, favorites: favedStations.flatMap(BikeStation.init))
+            }
         }
     }
 }
