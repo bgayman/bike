@@ -87,7 +87,8 @@ class NetworkTableViewController: UITableViewController
     override var keyCommands: [UIKeyCommand]?
     {
         let search = UIKeyCommand(input: "f", modifierFlags: .command, action: #selector(self.search), discoverabilityTitle: "Search")
-        return [search]
+        let refresh = UIKeyCommand(input: "r", modifierFlags: .command, action: #selector(self.fetchNetworks), discoverabilityTitle: "Refresh")
+        return [search, refresh]
     }
     
     //MARK: - Lifecycle
@@ -583,6 +584,11 @@ extension NetworkTableViewController: MapViewControllerDelegate
         guard let controller = searchController.searchResultsController as? NetworkSearchController else { return }
         controller.searchString = searchText
         self.networkMapViewController?.networks = controller.searchResults
+    }
+    
+    func didRequestUpdate()
+    {
+        self.fetchNetworks()
     }
 }
 

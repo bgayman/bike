@@ -55,7 +55,6 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         didSet
         {
             self.tableView.animateUpdate(with: oldValue, newDataSource: self.dataSource)
-            self.mapViewController?.stations = self.dataSource
             guard let stationsSearchController = self.searchController.searchResultsController as? StationsSearchController else { return }
             stationsSearchController.all = self.dataSource
         }
@@ -218,7 +217,8 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     {
         let search = UIKeyCommand(input: "f", modifierFlags: .command, action: #selector(self.search), discoverabilityTitle: "Search")
         let back = UIKeyCommand(input: "b", modifierFlags: .command, action: #selector(self.back), discoverabilityTitle: "Back")
-        return [search, back]
+        let refresh = UIKeyCommand(input: "r", modifierFlags: .command, action: #selector(self.fetchStations), discoverabilityTitle: "Refresh")
+        return [search, back, refresh]
     }
     
     // MARK: - Lifecycle
@@ -392,7 +392,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     #endif
     
     //MARK: - Networking
-    @objc private func fetchStations()
+    @objc fileprivate func fetchStations()
     {
         #if !os(tvOS)
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -439,7 +439,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         guard self.userManager.currentLocation != nil else
         {
             self.stations = stations
-            self.mapViewController?.stations = stations
+            self.mapViewController?.stations = self.dataSource
             if !stations.isEmpty
             {
                 self.didFetchStationsCallback?()
@@ -476,12 +476,12 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
                 if !fromUserLocationUpdate
                 {
                     
-                    self.mapViewController?.stations = sortedStations
+                    self.mapViewController?.stations = self.dataSource
                 }
                 else
                 {
                     self.mapViewController?.shouldAnimateAnnotationUpdates = false
-                    self.mapViewController?.stations = sortedStations
+                    self.mapViewController?.stations = self.dataSource
                     self.mapViewController?.shouldAnimateAnnotationUpdates = true
                 }
                 if !sortedStations.isEmpty
@@ -751,6 +751,7 @@ extension StationsTableViewController: MapViewControllerDelegate
         {
             self.segmentedControl.selectedSegmentIndex = filterState.rawValue
             self.filterState = filterState
+            self.mapViewController?.stations = self.dataSource
         }
     }
     
@@ -759,6 +760,11 @@ extension StationsTableViewController: MapViewControllerDelegate
         guard let controller = searchController.searchResultsController as? StationsSearchController else { return }
         controller.searchString = searchText
         self.mapViewController?.stations = controller.searchResults
+    }
+    
+    func didRequestUpdate()
+    {
+        self.fetchStations()
     }
 }
 

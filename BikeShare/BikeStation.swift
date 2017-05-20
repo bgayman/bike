@@ -65,7 +65,7 @@ struct BikeStation
             return .orange
         }
         let totalDocks = freeBikes + emptySlots
-        if freeBikes == 0 || emptySlots == 0
+        if freeBikes == 0 || emptySlots == 0 || self.gbfsStationInformation?.stationStatus?.isRenting == false
         {
             return NSColor.app_red
         }
@@ -86,7 +86,7 @@ struct BikeStation
               let emptySlots = self.emptySlots
         else { return .app_orange }
         let totalDocks = freeBikes + emptySlots
-        if freeBikes == 0 || emptySlots == 0
+        if freeBikes == 0 || emptySlots == 0 || self.gbfsStationInformation?.stationStatus?.isRenting == false
         {
             return UIColor.app_red
         }

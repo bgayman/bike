@@ -27,6 +27,7 @@ protocol MapViewControllerDelegate: class
     func didSelect(mapBikeStation: MapBikeStation)
     func didSet(filterState: FilterState)
     func didChange(searchText: String)
+    func didRequestUpdate()
 }
 
 //MARK: - MapViewControllerDelegate Defaults
@@ -146,6 +147,15 @@ class MapViewController: BaseMapViewController
         toolbarStackView.axis = .horizontal
         toolbarStackView.spacing = 8.0
         return toolbarStackView
+    }()
+    
+    lazy var refreshButton: UIButton =
+    {
+        let refreshButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 22.0, height: 22.0))
+        refreshButton.setImage(#imageLiteral(resourceName: "refresh"), for: .normal)
+        refreshButton.addTarget(self, action: #selector(self.didPressRefresh), for: .touchUpInside)
+        refreshButton.tintColor = UIColor.app_blue
+        return refreshButton
     }()
     
     lazy var toolbar: UIView =
@@ -363,6 +373,11 @@ class MapViewController: BaseMapViewController
         self.view.layoutIfNeeded()
     }
     
+    @objc private func didPressRefresh()
+    {
+        self.delegate?.didRequestUpdate()
+    }
+    
     deinit
     {
         NotificationCenter.default.removeObserver(self)
@@ -382,6 +397,7 @@ class MapViewController: BaseMapViewController
         self.toolbarStackView.arrangedSubviews.forEach { self.toolbarStackView.removeArrangedSubview($0) }
         self.toolbarStackView.addArrangedSubview(self.searchBar)
         self.toolbarStackView.addArrangedSubview(self.segmentedControl)
+        self.toolbarStackView.addArrangedSubview(self.refreshButton)
         #endif
     }
     
@@ -396,6 +412,7 @@ class MapViewController: BaseMapViewController
         self.navigationItem.rightBarButtonItems = [self.locationBarButton]
         self.toolbarStackView.arrangedSubviews.forEach { self.toolbarStackView.removeArrangedSubview($0) }
         self.toolbarStackView.addArrangedSubview(self.searchBar)
+        self.toolbarStackView.addArrangedSubview(self.refreshButton)
         #endif
     }
     
