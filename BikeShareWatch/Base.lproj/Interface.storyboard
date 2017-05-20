@@ -27,7 +27,7 @@
                                             </label>
                                         </items>
                                         <connections>
-                                            <segue destination="Erm-bu-fvd" kind="push" id="aiI-cP-e5J"/>
+                                            <segue destination="Erm-bu-fvd" kind="modal" id="aiI-cP-e5J"/>
                                         </connections>
                                     </group>
                                     <connections>
@@ -49,6 +49,7 @@
                     </menu>
                     <connections>
                         <outlet property="table" destination="rRG-1v-oER" id="baX-l4-BDH"/>
+                        <segue destination="RSm-9Q-vPN" kind="relationship" relationship="nextPage" id="8Cj-ZM-eUl"/>
                     </connections>
                 </controller>
             </objects>
@@ -66,7 +67,53 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="555" y="37"/>
+            <point key="canvasLocation" x="597" y="-138"/>
+        </scene>
+        <!--Favorite Stations-->
+        <scene sceneID="QHJ-eH-vLq">
+            <objects>
+                <controller title="Favorite Stations" id="RSm-9Q-vPN" customClass="FavoriteStationInterfaceController" customModule="BikeShareWatch_Extension">
+                    <items>
+                        <table alignment="left" id="wkO-kH-v5r">
+                            <items>
+                                <tableRow identifier="StationRow" id="zPv-yP-6Us" customClass="StationRowObject" customModule="BikeShareWatch_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="0dc-j2-g5W">
+                                        <items>
+                                            <label alignment="left" text="Label" numberOfLines="0" id="ruz-Zk-2qH">
+                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                            </label>
+                                            <label alignment="left" text="Label" numberOfLines="0" id="AQf-aA-B3i">
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="subtitleLabel" destination="AQf-aA-B3i" id="TGx-Xb-y1P"/>
+                                        <outlet property="titleLabel" destination="ruz-Zk-2qH" id="jXT-jW-qc0"/>
+                                        <segue destination="Erm-bu-fvd" kind="modal" id="bAS-zV-sti"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <menu key="menu" id="kXS-tD-Qlx">
+                        <items>
+                            <menuItem title="Update" icon="repeat" id="UY8-Fx-DW9">
+                                <connections>
+                                    <action selector="didPressUpdate" destination="RSm-9Q-vPN" id="KGM-zo-7fw"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="tableView" destination="wkO-kH-v5r" id="GmD-pr-UhJ"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="616" y="178"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="bAS-zV-sti"/>
+    </inferredMetricsTieBreakers>
 </document>

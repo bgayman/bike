@@ -79,6 +79,7 @@ class MapViewController: BaseMapViewController
         return mapView
     }()
     
+    var shouldAnimateAnnotationUpdates = true
     #if os(macOS)
     @IBOutlet weak var activityIndicator: NSProgressIndicator!
     @IBOutlet weak var mapKeyView: MapKeyView!
@@ -398,7 +399,7 @@ class MapViewController: BaseMapViewController
         #endif
     }
     
-    func configureForUpdatedNetworks(oldValue: [BikeNetwork])
+    func configureForUpdatedNetworks(oldValue: [BikeNetwork], animated: Bool = true)
     {
         let oldArray = oldValue
         let oldSet = Set(oldArray)
@@ -414,10 +415,13 @@ class MapViewController: BaseMapViewController
         }
         self.mapView.removeAnnotations(annotationsToRemove)
         self.mapView.addAnnotations(inserted.map(MapBikeNetwork.init))
-        self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+        if self.shouldAnimateAnnotationUpdates
+        {
+            self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+        }
     }
     
-    func configureForUpdatedStations(oldValue: [BikeStation])
+    func configureForUpdatedStations(oldValue: [BikeStation], animated: Bool = true)
     {
         let oldArray = oldValue
         let oldSet = Set(oldArray)
@@ -433,7 +437,10 @@ class MapViewController: BaseMapViewController
         }
         self.mapView.removeAnnotations(annotationsToRemove)
         self.mapView.addAnnotations(inserted.map(MapBikeStation.init))
-        self.mapView.showAnnotations(self.mapView.annotations.filter({ $0 is MapBikeStation }), animated: true)
+        if self.shouldAnimateAnnotationUpdates
+        {
+            self.mapView.showAnnotations(self.mapView.annotations.filter({ $0 is MapBikeStation }), animated: true)
+        }
     }
     
     func focus(on stations: [BikeStation])
@@ -493,19 +500,21 @@ class MapViewController: BaseMapViewController
         {
         case .networks:
             let closeNetworks = self.networks.prefix(3)
-            let closeAnnotations = self.mapView.annotations.filter
+            var closeAnnotations = self.mapView.annotations.filter
             {
                 guard let network = $0 as? MapBikeNetwork else { return false}
                 return closeNetworks.contains(network.bikeNetwork)
             }
+            closeAnnotations.append(self.mapView.userLocation)
             self.mapView.showAnnotations(closeAnnotations, animated: true)
         case .stations:
             let closeStations = self.stations.prefix(2)
-            let closeAnnotations = self.mapView.annotations.filter
+            var closeAnnotations = self.mapView.annotations.filter
             {
                 guard let station = $0 as? MapBikeStation else { return false}
                 return closeStations.contains(station.bikeStation)
             }
+            closeAnnotations.append(self.mapView.userLocation)
             self.mapView.showAnnotations(closeAnnotations, animated: true)
         }
     }

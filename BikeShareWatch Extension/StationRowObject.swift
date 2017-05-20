@@ -53,4 +53,13 @@ class StationRowObject: NSObject
             self.subtitleLabel.setText(errorMessage)
         }
     }
+    
+    var message: (String?, String?)
+    {
+        didSet
+        {
+            self.titleLabel.setText(self.message.0)
+            self.subtitleLabel.setText(self.message.1)
+        }
+    }
 }

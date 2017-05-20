@@ -371,6 +371,9 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         { [unowned self] _, indexPath in
             let station = self.dataSource[indexPath.row]
             UserDefaults.bikeShareGroup.addStationToFavorites(station: station, network: self.network)
+            let jsonDicts = UserDefaults.bikeShareGroup.favoriteStations(for: self.network).map { $0.jsonDict }
+            try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [self.network.id: jsonDicts as AnyObject])
+            tableView.setEditing(false, animated: true)
         }
         favorite.backgroundColor = UIColor.app_blue
         
@@ -378,6 +381,9 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         { [unowned self] _, indexPath in
             let station = self.dataSource[indexPath.row]
             UserDefaults.bikeShareGroup.removeStationFromFavorites(station: station, network: self.network)
+            let jsonDicts = UserDefaults.bikeShareGroup.favoriteStations(for: self.network).map { $0.jsonDict }
+            try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [self.network.id: jsonDicts as AnyObject])
+            tableView.setEditing(false, animated: true)
         }
         unfavorite.backgroundColor = UIColor.app_blue
         
@@ -469,7 +475,14 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
                 self.stations = sortedStations
                 if !fromUserLocationUpdate
                 {
+                    
                     self.mapViewController?.stations = sortedStations
+                }
+                else
+                {
+                    self.mapViewController?.shouldAnimateAnnotationUpdates = false
+                    self.mapViewController?.stations = sortedStations
+                    self.mapViewController?.shouldAnimateAnnotationUpdates = true
                 }
                 if !sortedStations.isEmpty
                 {

@@ -21,6 +21,7 @@
 		CD029C7F1ECDC6D20091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
 		CD029C801ECDC6D30091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
 		CD029C811ECDC6EA0091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
+		CD029C831ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C821ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift */; };
 		CD121DF41E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */; };
 		CD121DF81E1040D7004F78E2 /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */; };
 		CD121DFA1E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */; };
@@ -514,6 +515,7 @@
 		CD029C741ECBDA470091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CD029C761ECBDA7A0091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Application.swift"; sourceTree = "<group>"; };
+		CD029C821ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStationInterfaceController.swift; sourceTree = "<group>"; };
 		CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailAccessoryTableViewCell.swift; sourceTree = "<group>"; };
 		CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helper.swift"; sourceTree = "<group>"; };
 		CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailCalloutAccessoryView.swift; sourceTree = "<group>"; };
@@ -1063,6 +1065,7 @@
 				CDFBD71A1E3849A000C751D7 /* ExtensionDelegate.swift */,
 				CDFBD7181E3849A000C751D7 /* InterfaceController.swift */,
 				CDFBD7481E3D6ADA00C751D7 /* StationsInterfaceController.swift */,
+				CD029C821ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift */,
 				CDFBD74A1E3ED0EB00C751D7 /* MapInterfaceController.swift */,
 				CDFBD73B1E3D30AD00C751D7 /* StationRowObject.swift */,
 				CDFBD71C1E3849A000C751D7 /* ComplicationController.swift */,
@@ -1909,6 +1912,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDFBD7451E3D320700C751D7 /* ClosebyStationsClient.swift in Sources */,
+				CD029C831ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift in Sources */,
 				CD80AA651E624CDC00C1E9B6 /* GBFSSystemAlert.swift in Sources */,
 				CDFBD71B1E3849A000C751D7 /* ExtensionDelegate.swift in Sources */,
 				CD80AA501E624CA000C1E9B6 /* GBFSFeed.swift in Sources */,

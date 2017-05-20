@@ -75,7 +75,7 @@ struct ClosebyStationsClient
     mutating func fetchStations(networkID: String, stationIDs: [String], completion: @escaping (ClientResponse<(BikeNetwork, [BikeStation])>) -> ())
     {
         let url: URL
-        let stationsString = stationIDs.joined(separator: "|")
+        guard let stationsString = stationIDs.joined(separator: "|").addingPercentEncoding(withAllowedCharacters: CharacterSet.urlPathAllowed) else { return }
         url = URL(string: "\(Constants.BaseURL)/json/network/\(networkID)/stations/\(stationsString)")!
         
         let task = self.session?.dataTask(with: url)

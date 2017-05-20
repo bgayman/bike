@@ -365,6 +365,12 @@ class NetworkTableViewController: UITableViewController
                     {
                         self.networkMapViewController?.networks = sortedNetworks
                     }
+                    else
+                    {
+                        self.networkMapViewController?.shouldAnimateAnnotationUpdates = false
+                        self.networkMapViewController?.networks = sortedNetworks
+                        self.networkMapViewController?.shouldAnimateAnnotationUpdates = true
+                    }
                     if !sortedNetworks.isEmpty
                     {
                         self.didFetchNetworkCallback?()

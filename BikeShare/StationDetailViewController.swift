@@ -320,14 +320,14 @@ class StationDetailViewController: UIViewController
                         self.present(alert, animated: true)
                         return
                     }
-                    if let bikeStation = stations.filter({ $0.id == self.station.id }).first
+                    if let bikeStation = stations.first(where: { $0.id == self.station.id })
                     {
                         self.station = bikeStation
                         let index = stations.index(of: bikeStation)!
                         stations.remove(at: index)
                         let oldValue = self.closebyStations
-                        self.closebyStations = nil
                         self.stations = stations
+                        self.closebyStations = nil
                         self.tableView.animateUpdate(with: oldValue!, newDataSource: self.closebyStations, section: self.sectionIndex(for: .nearBy) ?? 0)
                     }
                 }
