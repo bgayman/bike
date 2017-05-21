@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>Bike Bear</string>
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
@@ -37,6 +37,6 @@
 		<string>$(PRODUCT_MODULE_NAME).ServiceProvider</string>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We'd like to use your location 🗺 to get you to a 🚲 faster 💥.</string>
+	<string>We'd 🐻 like to use your location 🗺 to get you to a 🚲 faster 💥.</string>
 </dict>
 </plist>

@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>Bike Bear</string>
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
@@ -39,6 +39,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2017 B Gay. All rights reserved.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We'd like to use your location 🗺 to get you to a 🚲 faster 💥.</string>
+	<string>We'd 🐻 like to use your location 🗺 to get you to a 🚲 faster 💥.</string>
 </dict>
 </plist>

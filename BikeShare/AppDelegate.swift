@@ -167,7 +167,7 @@ extension AppDelegate
             guard let networkVC = navController.viewControllers.first as? NetworkTableViewController else { return }
             navController.popToRootViewController(animated: true)
             networkVC.handleDeeplink(deeplink)
-        case .station(_, let stationID):
+        case .station(let networkID, let stationID):
             if navController.presentedViewController != nil
             {
                 navController.dismiss(animated: false)
@@ -184,8 +184,9 @@ extension AppDelegate
                     _ = navController.popToViewController(navController.viewControllers[1], animated: false)
                     
                 }
-                guard let stationVC = navController.viewControllers[1] as? StationsTableViewController else
+                guard let stationVC = navController.viewControllers[1] as? StationsTableViewController, networkID == stationVC.network.id else
                 {
+                    _ = navController.popToRootViewController(animated: false)
                     guard let networkVC = navController.viewControllers.first as? NetworkTableViewController else { return }
                     networkVC.handleDeeplink(deeplink)
                     return

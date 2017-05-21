@@ -45,5 +45,6 @@ struct Constants
     static let WebSiteDomain = "https://bike-share.mybluemix.net"
     static let ClosebyStations = "closebyStations"
     static let PreviouslySelectedNetwork = "PreviouslySelectedNetwork"
+    static let HasSeenWelcomeScreen = "HasSeenWelcomeScreen"
 }
 

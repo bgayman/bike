@@ -403,12 +403,12 @@ class MapViewController: BaseMapViewController
     
     func setupForNetworks()
     {
-        self.title = "Networks"
         self.state = .networks
         self.mapView.removeAnnotations(self.mapView.annotations)
         self.configureForUpdatedNetworks(oldValue: [])
         self.initialDrop = false
         #if os(iOS)
+        self.title = self.splitViewController?.traitCollection.isSmallerDevice ?? true ? "Networks" : ""
         self.navigationItem.rightBarButtonItems = [self.locationBarButton]
         self.toolbarStackView.arrangedSubviews.forEach { self.toolbarStackView.removeArrangedSubview($0) }
         self.toolbarStackView.addArrangedSubview(self.searchBar)
@@ -692,6 +692,10 @@ extension MapViewController: MKMapViewDelegate
         #if !(os(macOS) || os(tvOS))
             self.searchBar.showsCancelButton = false
             self.searchBar.resignFirstResponder()
+            if self.traitCollection.forceTouchCapability == .available, let annotationView = view as? MKPinAnnotationView
+            {
+                self.registerForPreviewing(with: self, sourceView: annotationView.detailCalloutAccessoryView!)
+            }
         #endif
         switch self.state
         {

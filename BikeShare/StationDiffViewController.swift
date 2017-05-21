@@ -100,6 +100,10 @@ class StationDiffViewController: UITableViewController
         self.configureTableView()
         self.fetchStations()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        if self.traitCollection.forceTouchCapability == .available
+        {
+            self.registerForPreviewing(with: self, sourceView: self.tableView)
+        }
     }
     
     private func configureTableView()
@@ -227,6 +231,23 @@ class StationDiffViewController: UITableViewController
     {
         let diff = self.bikeStationDiffs[indexPath.row]
         self.delegate?.didSelectBikeStation(station: diff.bikeStation)
+    }
+}
+
+//MARK: - UIViewControllerPreviewingDelegate
+extension StationDiffViewController: UIViewControllerPreviewingDelegate
+{
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController?
+    {
+        guard let indexPath = self.tableView.indexPathForRow(at: location) else { return nil }
+        let station = self.bikeStationDiffs[indexPath.row].bikeStation
+        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.bikeStations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
+        return stationDetailViewController
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)
+    {
+        self.navigationController?.show(viewControllerToCommit, sender: nil)
     }
 }
 

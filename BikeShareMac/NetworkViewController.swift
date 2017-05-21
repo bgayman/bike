@@ -164,6 +164,10 @@ extension NetworkViewController: NetworkTableCellDelegate
 
 extension NetworkViewController: MapViewControllerDelegate
 {
+    func didRequestUpdate()
+    {
+    }
+
     func didRequestCallout(forMapBikeNetwork: MapBikeNetwork)
     {
         guard let index = self.networks.index(of: forMapBikeNetwork.bikeNetwork) else { return }

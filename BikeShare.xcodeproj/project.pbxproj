@@ -96,6 +96,8 @@
 		CD164CA11E33C58C0062CBA5 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
 		CD164CA21E33CA960062CBA5 /* NetworkTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C761E2F24E20062CBA5 /* NetworkTableCell.swift */; };
 		CD164CA31E33CF870062CBA5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD164C531E2C38F40062CBA5 /* MapKit.framework */; };
+		CD1DA7C41ED0D8C400ED19BC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DA7C31ED0D8C400ED19BC /* WelcomeViewController.swift */; };
+		CD1DA7C51ED0D8CF00ED19BC /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1DA7C31ED0D8C400ED19BC /* WelcomeViewController.swift */; };
 		CD1ED2E51EB6CB6600806D97 /* MapSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */; };
 		CD1ED2E81EB6D3BC00806D97 /* MapPinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E61EB6D3BC00806D97 /* MapPinTableViewCell.swift */; };
 		CD1ED2E91EB6D3BC00806D97 /* MapPinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1ED2E71EB6D3BC00806D97 /* MapPinTableViewCell.xib */; };
@@ -551,6 +553,7 @@
 		CD164C871E33C3540062CBA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
 		CD164C891E33C3540062CBA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD164C8B1E33C3540062CBA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CD1DA7C31ED0D8C400ED19BC /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSettingsViewController.swift; sourceTree = "<group>"; };
 		CD1ED2E61EB6D3BC00806D97 /* MapPinTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPinTableViewCell.swift; sourceTree = "<group>"; };
 		CD1ED2E71EB6D3BC00806D97 /* MapPinTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapPinTableViewCell.xib; sourceTree = "<group>"; };
@@ -868,6 +871,7 @@
 				CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */,
 				CD164C631E2C3DBC0062CBA5 /* BaseMapViewController.swift */,
 				CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */,
+				CD1DA7C31ED0D8C400ED19BC /* WelcomeViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1685,6 +1689,7 @@
 				CD8C1B751E2181CF000F9A9D /* BikeTableViewCell.swift in Sources */,
 				CD8C1B791E218224000F9A9D /* StationDetailViewController.swift in Sources */,
 				CD8C1B6F1E2181AF000F9A9D /* BikeStation.swift in Sources */,
+				CD1DA7C51ED0D8CF00ED19BC /* WelcomeViewController.swift in Sources */,
 				CD8C1B701E2181B3000F9A9D /* BikeNetworkLocation.swift in Sources */,
 				CD8C1B6C1E21819E000F9A9D /* NetworkSearchController.swift in Sources */,
 				CD80AA561E624CBF00C1E9B6 /* GBFSSystemInformation.swift in Sources */,
@@ -1887,6 +1892,7 @@
 				CD121DFA1E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift in Sources */,
 				CD1ED2E51EB6CB6600806D97 /* MapSettingsViewController.swift in Sources */,
 				CDF6E7B11E0DBD8300C3C6CA /* BikeTableViewCell.swift in Sources */,
+				CD1DA7C41ED0D8C400ED19BC /* WelcomeViewController.swift in Sources */,
 				CDFED5D31E62132500D5C4BF /* GBFSStationStatusClient.swift in Sources */,
 				CD121DFC1E106AC1004F78E2 /* UILabel+Sizing.swift in Sources */,
 				CD9E81EC1ECA7D8B00FF2EB4 /* StationDiffViewControllerSearchController.swift in Sources */,

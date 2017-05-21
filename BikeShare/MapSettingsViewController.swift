@@ -100,6 +100,7 @@ class MapSettingsViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.app_beige
         self.tableView.isHidden = false
         self.automaticallyAdjustsScrollViewInsets = false
         self.title = "Map Symbols"

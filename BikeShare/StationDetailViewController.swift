@@ -71,8 +71,8 @@ class StationDetailViewController: UIViewController
         tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        tableView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         #if !os(tvOS)
+        tableView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
         tableView.allowsSelection = false
         tableView.register(StationDetailGraphTableViewCell.self, forCellReuseIdentifier: "\(StationDetailGraphTableViewCell.self)")
         #endif
@@ -198,6 +198,7 @@ class StationDetailViewController: UIViewController
             self.addToSpotlight()
         #else
             self.view.backgroundColor = .clear
+            self.tableView.backgroundColor = .clear
         #endif
         self.mapView.delegate = self
         self.title = self.station.name
@@ -323,13 +324,21 @@ class StationDetailViewController: UIViewController
                     }
                     if let bikeStation = stations.first(where: { $0.id == self.station.id })
                     {
-                        self.station = bikeStation
                         let index = stations.index(of: bikeStation)!
                         stations.remove(at: index)
                         let oldValue = self.closebyStations
                         self.stations = stations
                         self.closebyStations = nil
-                        self.tableView.animateUpdate(with: oldValue!, newDataSource: self.closebyStations, section: self.sectionIndex(for: .nearBy) ?? 0)
+                        UIView.animate(withDuration: 0.2, animations: { 
+                            self.tableView.animateUpdate(with: oldValue!, newDataSource: self.closebyStations, section: self.sectionIndex(for: .nearBy) ?? 0)
+                        }, completion: { (_) in
+                            if self.station != bikeStation
+                            {
+                                self.station = bikeStation
+                                self.tableView.reloadRows(at: [IndexPath(row: 0, section: self.sections.index(of: StationDetailSection.station) ?? 0)], with: .automatic)
+                            }
+                        })
+                        
                     }
                 }
             }

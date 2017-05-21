@@ -122,4 +122,15 @@ extension UserDefaults
         self.set(selected, forKey: Constants.PreviouslySelectedNetwork)
         NSUbiquitousKeyValueStore.default().set(selected, forKey: Constants.PreviouslySelectedNetwork)
     }
+    
+    var hasSeenWelcomeScreen: Bool
+    {
+        return self.bool(forKey: Constants.HasSeenWelcomeScreen)
+    }
+    
+    func setHasSeenWelcomeScreen(seen: Bool)
+    {
+        self.set(seen, forKey: Constants.HasSeenWelcomeScreen)
+        NSUbiquitousKeyValueStore.default().set(seen, forKey: Constants.HasSeenWelcomeScreen)
+    }
 }

@@ -160,6 +160,14 @@ class NetworkTableViewController: UITableViewController
         #endif
     }
     
+    override func viewDidAppear(_ animated: Bool)
+    {
+        if !UserDefaults.bikeShareGroup.hasSeenWelcomeScreen
+        {
+            self.present(WelcomeViewController(), animated: animated)
+        }
+    }
+    
     //MARK: - UI Helpers
     private func configureTableView()
     {
@@ -441,11 +449,12 @@ class NetworkTableViewController: UITableViewController
                 }
                 return
             }
-            guard let network = self.networks.filter({ $0.id == networkID }).first
-                else { return }
-            self.didSelect(network: network)
-            guard let stationVC = self.navigationController?.topViewController as? StationsTableViewController else { return }
-            stationVC.handleDeeplink(deeplink)
+            guard let network = self.networks.first(where:{ $0.id == networkID }) else { return }
+            let stationsTableViewController = StationsTableViewController(with: network)
+            stationsTableViewController.mapViewController = self.networkMapViewController
+            stationsTableViewController.mapViewController?.network = network
+            self.navigationController?.pushViewController(stationsTableViewController, animated: false)
+            stationsTableViewController.handleDeeplink(deeplink)
         case .systemInfo(let networkID):
             guard !self.networks.isEmpty else
             {

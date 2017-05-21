@@ -17,6 +17,7 @@ extension NSColor
     static let app_orange = NSColor.orange
     static let app_sandyBrown = NSColor(hex: 0xf6b530)
     static let app_beige = NSColor(hex: 0xf8f5f1)
+    static let app_lightBlue = NSColor(hex: 0xaadced)
     
     convenience init(hex:Int)
     {
@@ -38,6 +39,7 @@ extension UIColor
     static let app_orange = UIColor.orange
     static let app_sandyBrown = UIColor(hex: 0xf6b530)
     static let app_beige = UIColor(hex: 0xf8f5f1)
+    static let app_lightBlue = UIColor(hex: 0xaadced)
     
     convenience init(hex:Int)
     {

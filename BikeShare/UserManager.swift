@@ -45,6 +45,7 @@ class UserManager: NSObject
             break
         case .notDetermined:
         #if !os(macOS)
+            guard UserDefaults.bikeShareGroup.hasSeenWelcomeScreen else { return }
             self.locationManager.requestWhenInUseAuthorization()
         #endif
         }

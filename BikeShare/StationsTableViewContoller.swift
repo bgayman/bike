@@ -113,11 +113,13 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(tableView)
         tableView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        #if !os(tvOS)
         tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        #if !os(tvOS)
         tableView.bottomAnchor.constraint(equalTo: self.toolbar.topAnchor).isActive = true
         #else
+        tableView.leadingAnchor.constraint(equalTo: self.view.readableContentGuide.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: self.view.readableContentGuide.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
         #endif
         return tableView
@@ -251,11 +253,11 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
             self.tableView.backgroundColor = .app_beige
             self.mapBarButton.isEnabled = false
+            self.view.backgroundColor = UIColor.app_beige
         #else
             self.title = "  Stations"
             self.navigationItem.leftBarButtonItem = self.searchBarButton
         #endif
-        self.view.backgroundColor = UIColor.app_beige
         self.configureTableView()
         NotificationCenter.default.addObserver(self, selector: #selector(self.didUpdateCurrentLocation), name: Notification.Name(Constants.DidUpdatedUserLocationNotification), object: nil)
         if self.traitCollection.forceTouchCapability == .available
@@ -387,7 +389,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         }
         unfavorite.backgroundColor = UIColor.app_blue
         
-        return UserDefaults.bikeShareGroup.isStationFavorited(station: s, network: self.network) ? [share, unfavorite] : [share, favorite]
+        return UserDefaults.bikeShareGroup.isStationFavorited(station: s, network: self.network) ? [unfavorite, share] : [favorite, share]
     }
     #endif
     
@@ -510,6 +512,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
             self.splitViewController?.showDetailViewController(mapVC, sender: nil)
             return
         }
+        mapVC.delegate = self
         mapVC.filterState = filterState
         mapVC.stations = self.dataSource
         self.navigationController?.pushViewController(mapVC, animated: animated)
