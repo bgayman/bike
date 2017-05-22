@@ -49,7 +49,7 @@ class StationRowObject: NSObject
         didSet
         {
             guard let errorMessage = errorMessage else { return }
-            self.titleLabel.setText("Error")
+            self.titleLabel.setText("🙈")
             self.subtitleLabel.setText(errorMessage)
         }
     }

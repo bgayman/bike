@@ -65,9 +65,12 @@ class TodayViewController: UIViewController, NCWidgetProviding
     
     lazy var closebyStations: [BikeStation]! =
     {
-        guard ExtensionConstants.userManager.currentLocation != nil else
+        if ExtensionConstants.userManager.currentLocation == nil,
+           let homeNetwork = UserDefaults.bikeShareGroup.homeNetwork
         {
-            return Array(self.stations?.prefix(5) ?? [])
+            let favoriteStations = UserDefaults.bikeShareGroup.favoriteStations(for: homeNetwork)
+            let favoriteIDs = favoriteStations.map { $0.id }
+            return Array(self.stations?.filter { favoriteIDs.contains($0.id) }.prefix(5) ?? self.stations?.prefix(5) ?? [])
         }
         let sortedStations = self.stations?.sorted{ $0.0.distance < $0.1.distance } ?? []
         let closebyStations = Array(sortedStations.prefix(5))
