@@ -1,7 +1,6 @@
 import UIKit
 import CoreLocation
 #if !os(tvOS)
-import Hero
 import DZNEmptyDataSet
 #endif
 
@@ -11,8 +10,8 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Properties
     let network: BikeNetwork
     var bikeStationDiffs = [BikeStationDiff]()
-    var mapViewController: MapViewController? = nil
-    var isHomeNetworkTransition = false
+    @objc var mapViewController: MapViewController? = nil
+    @objc var isHomeNetworkTransition = false
     fileprivate var filterState = FilterState.all
     {
         didSet
@@ -60,10 +59,10 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    var didFetchStationsCallback: (() -> ())?
+    @objc var didFetchStationsCallback: (() -> ())?
     
     // MARK: - Lazy Vars
-    lazy var searchController: UISearchController =
+    @objc lazy var searchController: UISearchController =
     {
         
         let searchResultsController = StationsSearchController()
@@ -76,13 +75,13 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         return searchController
     }()
     
-    lazy var searchBarButton: UIBarButtonItem =
+    @objc lazy var searchBarButton: UIBarButtonItem =
     {
         let searchBarButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.presentSearch))
         return searchBarButton
     }()
     
-    lazy var segmentedControl: UISegmentedControl =
+    @objc lazy var segmentedControl: UISegmentedControl =
     {
         let segmentedControl = UISegmentedControl(items: ["All", "★"])
         segmentedControl.addTarget(self, action: #selector(self.segmentedControlDidChange(_:)), for: .valueChanged)
@@ -90,7 +89,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         return segmentedControl
     }()
     #if !os(tvOS)
-    lazy var toolbar: UIToolbar =
+    @objc lazy var toolbar: UIToolbar =
     {
         let toolbar = UIToolbar()
         toolbar.translatesAutoresizingMaskIntoConstraints = false
@@ -105,7 +104,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     }()
     #endif
     
-    lazy var tableView: UITableView =
+    @objc lazy var tableView: UITableView =
     {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.dataSource = self
@@ -126,7 +125,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     }()
     
     #if !os(tvOS)
-    lazy var refresh: UIRefreshControl =
+    @objc lazy var refresh: UIRefreshControl =
     {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(self.fetchStations), for: .valueChanged)
@@ -135,26 +134,26 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     }()
     
     
-    lazy var mapBarButton: UIBarButtonItem =
+    @objc lazy var mapBarButton: UIBarButtonItem =
     {
         let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "World Map"), style: .plain, target: self, action: #selector(self.didPressMapButton))
         return barButtonItem
     }()
     
-    lazy var diffBarButton: UIBarButtonItem =
+    @objc lazy var diffBarButton: UIBarButtonItem =
     {
         let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Point Objects"), style: .plain, target: self, action: #selector(self.showStationsDiffViewController))
         return barButtonItem
     }()
     #endif
     
-    lazy var settingsBarButton: UIBarButtonItem =
+    @objc lazy var settingsBarButton: UIBarButtonItem =
     {
         let settingsBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(self.didPressSettings(_:)))
         return settingsBarButton
     }()
     
-    lazy var locationBarButton: UIBarButtonItem =
+    @objc lazy var locationBarButton: UIBarButtonItem =
     {
         let locationControl = TVLocationButton(frame: CGRect(x: 0.0, y: 0.0, width: 44.0, height: 44.0))
         locationControl.addTarget(self, action: #selector(self.didPressLocationButton), for: .primaryActionTriggered)
@@ -162,14 +161,14 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         return locationBarButton
     }()
     
-    lazy var networkBarButton: UIBarButtonItem =
+    @objc lazy var networkBarButton: UIBarButtonItem =
     {
         let barButtonItem = UIBarButtonItem(title: "Networks", style: .plain, target: self, action: #selector(self.showNetworksViewController))
         return barButtonItem
     }()
     
     // MARK: - Computed Properties
-    var userManager: UserManager
+    @objc var userManager: UserManager
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return UserManager() }
         return appDelegate.userManager
@@ -239,7 +238,11 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     {
         super.viewDidLoad()
         self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.navigationItem.searchController = self.searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+
         #if !os(tvOS)
+            self.navigationItem.largeTitleDisplayMode = .never
             self.tableView.emptyDataSetDelegate = self
             self.tableView.emptyDataSetSource = self
             if let homeNetwork = UserDefaults.bikeShareGroup.homeNetwork, homeNetwork.id == self.network.id
@@ -270,14 +273,6 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
             self.isHomeNetworkTransition = false
             self.showMapViewController(animated: false)
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool)
-    {
-        super.viewDidAppear(animated)
-        #if !os(tvOS)
-        self.navigationController?.isHeroEnabled = false
-        #endif
     }
     
     override func viewDidDisappear(_ animated: Bool)
@@ -496,12 +491,12 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     //MARK: - Navigation
-    func didPressMapButton()
+    @objc func didPressMapButton()
     {
         self.showMapViewController(animated: true)
     }
     
-    func showMapViewController(animated: Bool = true)
+    @objc func showMapViewController(animated: Bool = true)
     {
         guard let mapVC = self.mapViewController else
         {
@@ -518,12 +513,12 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         self.navigationController?.pushViewController(mapVC, animated: animated)
     }
     
-    func showNetworksViewController()
+    @objc func showNetworksViewController()
     {
         _ = self.navigationController?.popViewController(animated: true)
     }
     
-    func showStationsDiffViewController()
+    @objc func showStationsDiffViewController()
     {
         #if !os(tvOS)
         let stationDiffViewController = StationDiffViewController(bikeNetwork: self.network, bikeStations: self.stations, bikeStationDiffs: self.bikeStationDiffs)
@@ -567,7 +562,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func presentSearch()
+    @objc func presentSearch()
     {
         let searchContainer = UISearchContainerViewController(searchController: self.searchController)
         searchController.searchBar.placeholder = "Search Stations"
@@ -617,7 +612,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     //MARK: - UI Helper
-    func configureTableView()
+    @objc func configureTableView()
     {
         self.tableView.backgroundColor = .clear
         self.tableView.estimatedRowHeight = 65.0
@@ -626,21 +621,20 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         self.definesPresentationContext = true
         #if !os(tvOS)
         self.tableView.addSubview(refresh)
-        self.tableView.tableHeaderView = self.searchController.searchBar
         #endif
     }
     
-    func search()
+    @objc func search()
     {
         self.searchController.searchBar.becomeFirstResponder()
     }
     
-    func back()
+    @objc func back()
     {
         _ = self.navigationController?.popViewController(animated: true)
     }
     
-    func segmentedControlDidChange(_ sender: UISegmentedControl)
+    @objc func segmentedControlDidChange(_ sender: UISegmentedControl)
     {
         guard let filterState = FilterState(rawValue: sender.selectedSegmentIndex) else { return }
         switch filterState
@@ -660,7 +654,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
 //MARK: - Current Location Update
 extension StationsTableViewController
 {
-    func didUpdateCurrentLocation()
+    @objc func didUpdateCurrentLocation()
     {
         self.updateStationsData(stations: self.stations, fromUserLocationUpdate: true)
     }
@@ -706,20 +700,19 @@ extension StationsTableViewController: StationsSearchControllerDelegate
 //MARK: - MapViewControllerDelegate
 extension StationsTableViewController: MapViewControllerDelegate
 {
-    func didRequestCallout(forMapBikeStation: MapBikeStation)
+    @objc func didRequestCallout(forMapBikeStation: MapBikeStation)
     {
         guard let index = self.dataSource.index(of: forMapBikeStation.bikeStation) else { return }
         let indexPath = IndexPath(row: index, section: 0)
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
     }
     
-    func didSelect(mapBikeStation: MapBikeStation)
+    @objc func didSelect(mapBikeStation: MapBikeStation)
     {
         #if !os(tvOS)
             let stationDetailViewController = StationDetailViewController(with: self.network, station: mapBikeStation.bikeStation, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
             if self.splitViewController?.traitCollection.isSmallerDevice ?? false
             {
-                self.navigationController?.isHeroEnabled = true
                 self.navigationController?.pushViewController(stationDetailViewController, animated: true)
             }
             else
@@ -758,14 +751,14 @@ extension StationsTableViewController: MapViewControllerDelegate
         }
     }
     
-    func didChange(searchText: String)
+    @objc func didChange(searchText: String)
     {
         guard let controller = searchController.searchResultsController as? StationsSearchController else { return }
         controller.searchString = searchText
         self.mapViewController?.stations = controller.searchResults
     }
     
-    func didRequestUpdate()
+    @objc func didRequestUpdate()
     {
         self.fetchStations()
     }
@@ -825,13 +818,13 @@ extension StationsTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
 {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let title = NSAttributedString(string: "★\nStations to Access Them More Quickly.", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .title2), NSForegroundColorAttributeName: UIColor.gray])
+        let title = NSAttributedString(string: "★\nStations to Access Them More Quickly.", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .title2), NSAttributedStringKey.foregroundColor: UIColor.gray])
         return title
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let description = NSAttributedString(string: "Swipe left on bike stations to see options.", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .subheadline), NSForegroundColorAttributeName: UIColor.lightGray])
+        let description = NSAttributedString(string: "Swipe left on bike stations to see options.", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .subheadline), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         return description
     }
     

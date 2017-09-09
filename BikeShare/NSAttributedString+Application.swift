@@ -10,21 +10,21 @@ import UIKit
 
 extension NSAttributedString
 {
-    public var mutable: NSMutableAttributedString
+    @objc public var mutable: NSMutableAttributedString
     {
         return mutableCopy() as! NSMutableAttributedString
     }
     
-    public var range: NSRange
+    @objc public var range: NSRange
     {
         return NSRange(location: 0, length: (string as NSString).length)
     }
     
-    public convenience init(string: String, alignment: NSTextAlignment)
+    @objc public convenience init(string: String, alignment: NSTextAlignment)
     {
         let style = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
         style.alignment = alignment
-        self.init(string: string, attributes: [NSParagraphStyleAttributeName: style])
+        self.init(string: string, attributes: [NSAttributedStringKey.paragraphStyle: style])
     }
 }
 

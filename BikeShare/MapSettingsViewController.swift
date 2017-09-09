@@ -77,7 +77,7 @@ enum StationStatus: Int
 
 class MapSettingsViewController: UIViewController
 {
-    lazy var tableView: UITableView =
+    @objc lazy var tableView: UITableView =
     {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -108,7 +108,7 @@ class MapSettingsViewController: UIViewController
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.didPressDone(sender:)))
     }
     
-    func didPressDone(sender: UIBarButtonItem)
+    @objc func didPressDone(sender: UIBarButtonItem)
     {
         self.dismiss(animated: true)
     }

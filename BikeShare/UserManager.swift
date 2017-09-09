@@ -12,7 +12,7 @@ import CoreLocation
 class UserManager: NSObject
 {
     var currentLocation: CLLocationCoordinate2D?
-    let locationManager: CLLocationManager =
+    @objc let locationManager: CLLocationManager =
     {
         let locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -26,12 +26,12 @@ class UserManager: NSObject
         self.setupLocationManager()
     }
     
-    func setupLocationManager()
+    @objc func setupLocationManager()
     {
         locationManager.delegate = self
     }
     
-    func getUserLocation()
+    @objc func getUserLocation()
     {
         switch CLLocationManager.authorizationStatus()
         {
@@ -51,7 +51,7 @@ class UserManager: NSObject
         }
     }
     
-    func stopUpdatingLocation()
+    @objc func stopUpdatingLocation()
     {
         switch CLLocationManager.authorizationStatus()
         {

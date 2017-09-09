@@ -21,7 +21,7 @@ class MessagesNetworkTableViewController: UITableViewController {
         }
     }
     
-    lazy var refresh: UIRefreshControl =
+    @objc lazy var refresh: UIRefreshControl =
     {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(self.fetchNetworks), for: .valueChanged)
@@ -29,8 +29,8 @@ class MessagesNetworkTableViewController: UITableViewController {
     }()
     
     var networksClient = NetworksClient()
-    let userManager = ExtensionConstants.userManager
-    var didFetchNetworkCallback: (() -> ())?
+    @objc let userManager = ExtensionConstants.userManager
+    @objc var didFetchNetworkCallback: (() -> ())?
 
     
     override func viewDidLoad()
@@ -70,7 +70,7 @@ class MessagesNetworkTableViewController: UITableViewController {
         self.didSelect(network: homeNetwork)
     }
     
-    func poweredByPressed()
+    @objc func poweredByPressed()
     {
         let safariVC = SFSafariViewController(url: URL(string: "https://citybik.es/#about")!)
         self.present(safariVC, animated: true)
@@ -112,7 +112,7 @@ class MessagesNetworkTableViewController: UITableViewController {
         }
         DispatchQueue.global(qos: .userInitiated).async
         {
-            let sortedNetworks = networks.sorted { $0.0.location.distance < $0.1.location.distance }
+            let sortedNetworks = networks.sorted { $0.location.distance < $1.location.distance }
             DispatchQueue.main.async
             {
                 self.networks = sortedNetworks

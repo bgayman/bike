@@ -13,7 +13,7 @@ import CoreSpotlight
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
 
     var window: UIWindow?
-    let userManager = UserManager()
+    @objc let userManager = UserManager()
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         navigationController.navigationBar.barTintColor = .app_beige
         splitViewController.delegate = self
         
-        let store = NSUbiquitousKeyValueStore.default()
+        let store = NSUbiquitousKeyValueStore.default
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateKVStoreItems(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: store)
         
         WatchSessionManager.sharedManager.startSession()
@@ -132,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
 extension AppDelegate
 {
-    func updateKVStoreItems(notification: Notification)
+    @objc func updateKVStoreItems(notification: Notification)
     {
         let userInfo = notification.userInfo
         guard let reasonForChange = userInfo?[NSUbiquitousKeyValueStoreChangeReasonKey] as? NSNumber else { return }
@@ -141,7 +141,7 @@ extension AppDelegate
         {
             if let changedKeys = userInfo?[NSUbiquitousKeyValueStoreChangedKeysKey] as? [String]
             {
-                let store = NSUbiquitousKeyValueStore.default()
+                let store = NSUbiquitousKeyValueStore.default
                 let userDefaults = UserDefaults.bikeShareGroup
                 for key in changedKeys
                 {

@@ -58,7 +58,7 @@ extension StationDetailViewController
     }
     
     //MARK: - QuickAction
-    func addQuickAction()
+    @objc func addQuickAction()
     {
         var quickActions = UIApplication.shared.shortcutItems ?? [UIApplicationShortcutItem]()
         for quickAction in quickActions
@@ -77,12 +77,12 @@ extension StationDetailViewController
         UIApplication.shared.shortcutItems = quickActions
     }
     
-    func setNetworkActivityIndicator(shown: Bool)
+    @objc func setNetworkActivityIndicator(shown: Bool)
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = shown
     }
     
-    func setupNavigationBar()
+    @objc func setupNavigationBar()
     {
         if self.navigationController?.viewControllers.count ?? 0 == 1
         {

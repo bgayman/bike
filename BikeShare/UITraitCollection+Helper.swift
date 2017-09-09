@@ -10,7 +10,7 @@ import UIKit
 
 extension UITraitCollection
 {
-    var isSmallerDevice: Bool
+    @objc var isSmallerDevice: Bool
     {
         return self.horizontalSizeClass == .compact || self.verticalSizeClass == .compact
     }

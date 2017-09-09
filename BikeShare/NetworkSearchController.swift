@@ -20,7 +20,7 @@ class NetworkSearchController: UITableViewController
         }
     }
     
-    var searchString = ""
+    @objc var searchString = ""
     {
         didSet
         {

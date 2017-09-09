@@ -10,10 +10,10 @@ import Foundation
 
 class HistoryNetworksManager: NSObject
 {
-    var historyNetworks = [String]()
-    static let shared = HistoryNetworksManager()
+    @objc var historyNetworks = [String]()
+    @objc static let shared = HistoryNetworksManager()
     
-    func getHistoryNetworks()
+    @objc func getHistoryNetworks()
     {
         var networkClient = NetworksClient()
         networkClient.fetchHistoryNetworks

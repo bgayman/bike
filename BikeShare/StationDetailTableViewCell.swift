@@ -43,7 +43,7 @@ class StationDetailTableViewCell: UITableViewCell
         }
     }
     
-    lazy var titleLabel: UILabel =
+    @objc lazy var titleLabel: UILabel =
     {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +58,7 @@ class StationDetailTableViewCell: UITableViewCell
         return titleLabel
     }()
     
-    lazy var subtitleLabel: UILabel =
+    @objc lazy var subtitleLabel: UILabel =
     {
         let subtitleLabel = UILabel()
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false

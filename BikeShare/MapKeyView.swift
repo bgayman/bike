@@ -10,7 +10,7 @@ import UIKit
 
 class MapKeyView: UIView
 {
-    lazy var visualEffectView: UIVisualEffectView =
+    @objc lazy var visualEffectView: UIVisualEffectView =
     {
         let blurEffect = UIBlurEffect(style: .dark)
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
@@ -25,7 +25,7 @@ class MapKeyView: UIView
         return visualEffectView
     }()
     
-    lazy var greenPin: PinView =
+    @objc lazy var greenPin: PinView =
     {
         let greenPin = PinView(frame: CGRect(x: 0, y: 0, width: 20, height: 60))
         greenPin.backgroundColor = .clear
@@ -37,7 +37,7 @@ class MapKeyView: UIView
         return greenPin
     }()
     
-    lazy var orangePin: PinView =
+    @objc lazy var orangePin: PinView =
     {
         let orangePin = PinView(frame: CGRect(x: 0, y: 0, width: 20, height: 60))
         orangePin.backgroundColor = .clear
@@ -49,7 +49,7 @@ class MapKeyView: UIView
         return orangePin
     }()
     
-    lazy var redPin: PinView =
+    @objc lazy var redPin: PinView =
     {
         let redPin = PinView(frame: CGRect(x: 0, y: 0, width: 20, height: 60))
         redPin.backgroundColor = .clear
@@ -61,7 +61,7 @@ class MapKeyView: UIView
         return redPin
     }()
     
-    lazy var greenLabel: UILabel =
+    @objc lazy var greenLabel: UILabel =
     {
         let greenLabel = UILabel()
         greenLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
@@ -73,7 +73,7 @@ class MapKeyView: UIView
         return greenLabel
     }()
     
-    lazy var orangeLabel: UILabel =
+    @objc lazy var orangeLabel: UILabel =
     {
         let orangeLabel = UILabel()
         orangeLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
@@ -85,7 +85,7 @@ class MapKeyView: UIView
         return orangeLabel
     }()
     
-    lazy var redLabel: UILabel =
+    @objc lazy var redLabel: UILabel =
     {
         let redLabel = UILabel()
         redLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
@@ -97,7 +97,7 @@ class MapKeyView: UIView
         return redLabel
     }()
     
-    lazy var stackView: UIStackView =
+    @objc lazy var stackView: UIStackView =
     {
         let stackView = UIStackView(arrangedSubviews: [self.greenPin, self.greenLabel, self.orangePin, self.orangeLabel, self.redPin, self.redLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -121,7 +121,7 @@ class MapKeyView: UIView
         self.commonInit()
     }
     
-    func commonInit()
+    @objc func commonInit()
     {
         self.backgroundColor = .clear
         self.stackView.axis = .horizontal

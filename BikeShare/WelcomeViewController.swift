@@ -10,14 +10,14 @@ import UIKit
 
 final class WelcomeViewController: UIViewController
 {
-    let gradientLayer: CAGradientLayer =
+    @objc let gradientLayer: CAGradientLayer =
     {
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = [UIColor.app_lightBlue.cgColor, UIColor.app_beige.cgColor]
         return gradientLayer
     }()
     
-    lazy var stackView: UIStackView =
+    @objc lazy var stackView: UIStackView =
     {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +35,7 @@ final class WelcomeViewController: UIViewController
         return stackView
     }()
     
-    lazy var welcomeLabel: UILabel =
+    @objc lazy var welcomeLabel: UILabel =
     {
         let welcomeLabel = UILabel()
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -48,16 +48,16 @@ final class WelcomeViewController: UIViewController
         return welcomeLabel
     }()
     
-    lazy var waveImageView: UIImageView =
+    @objc lazy var waveImageView: UIImageView =
     {
         let waveImageView = UIImageView(image: #imageLiteral(resourceName: "waveBear"))
         waveImageView.translatesAutoresizingMaskIntoConstraints = false
         waveImageView.contentMode = .scaleAspectFit
-        waveImageView.setContentCompressionResistancePriority(250, for: .vertical)
+        waveImageView.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 250), for: .vertical)
         return waveImageView
     }()
     
-    lazy var descriptionLabel: UILabel =
+    @objc lazy var descriptionLabel: UILabel =
     {
         let descriptionLabel = UILabel()
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -67,11 +67,11 @@ final class WelcomeViewController: UIViewController
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textAlignment = .center
         descriptionLabel.lineBreakMode = .byWordWrapping
-        descriptionLabel.setContentCompressionResistancePriority(1000, for: .vertical)
+        descriptionLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         return descriptionLabel
     }()
     
-    lazy var seatedImageView: UIImageView =
+    @objc lazy var seatedImageView: UIImageView =
     {
         let seatedImageView = UIImageView(image: #imageLiteral(resourceName: "seatedBear"))
         seatedImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +79,7 @@ final class WelcomeViewController: UIViewController
         return seatedImageView
     }()
     
-    lazy var aboveDescriptionLabel: UILabel =
+    @objc lazy var aboveDescriptionLabel: UILabel =
     {
         let aboveDescriptionLabel = UILabel()
         aboveDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -89,11 +89,11 @@ final class WelcomeViewController: UIViewController
         aboveDescriptionLabel.numberOfLines = 0
         aboveDescriptionLabel.textAlignment = .center
         aboveDescriptionLabel.lineBreakMode = .byWordWrapping
-        aboveDescriptionLabel.setContentCompressionResistancePriority(1000, for: .vertical)
+        aboveDescriptionLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         return aboveDescriptionLabel
     }()
     
-    lazy var bikeImageView: UIImageView =
+    @objc lazy var bikeImageView: UIImageView =
     {
         let bikeImageView = UIImageView(image: #imageLiteral(resourceName: "bikeBear"))
         bikeImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -101,7 +101,7 @@ final class WelcomeViewController: UIViewController
         return bikeImageView
     }()
     
-    lazy var subdescriptionLabel: UILabel =
+    @objc lazy var subdescriptionLabel: UILabel =
     {
         let subdescriptionLabel = UILabel()
         subdescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -111,11 +111,11 @@ final class WelcomeViewController: UIViewController
         subdescriptionLabel.numberOfLines = 0
         subdescriptionLabel.textAlignment = .center
         subdescriptionLabel.lineBreakMode = .byWordWrapping
-        subdescriptionLabel.setContentCompressionResistancePriority(1000, for: .vertical)
+        subdescriptionLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         return subdescriptionLabel
     }()
     
-    lazy var continueButton: UIButton =
+    @objc lazy var continueButton: UIButton =
     {
         let continueButton = UIButton()
         continueButton.setTitle("Continue", for: .normal)
@@ -133,12 +133,12 @@ final class WelcomeViewController: UIViewController
         #else
             continueButton.addTarget(self, action: #selector(self.didPressContinue), for: .primaryActionTriggered)
         #endif
-        continueButton.setContentHuggingPriority(1000, for: .vertical)
-        continueButton.setContentCompressionResistancePriority(1000, for: .vertical)
+        continueButton.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
+        continueButton.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .vertical)
         return continueButton
     }()
     
-    lazy var scrollView: UIScrollView =
+    @objc lazy var scrollView: UIScrollView =
     {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -150,7 +150,7 @@ final class WelcomeViewController: UIViewController
         return scrollView
     }()
     
-    var userManager: UserManager
+    @objc var userManager: UserManager
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return UserManager() }
         return appDelegate.userManager
@@ -181,7 +181,7 @@ final class WelcomeViewController: UIViewController
         self.gradientLayer.frame = self.view.bounds
     }
     
-    func didPressContinue()
+    @objc func didPressContinue()
     {
         UserDefaults.bikeShareGroup.setHasSeenWelcomeScreen(seen: true)
         self.userManager.getUserLocation()

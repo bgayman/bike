@@ -24,7 +24,7 @@ import UIKit
 
 extension UILabel
 {
-    static func labelSize(with string: String?) -> CGSize
+    @objc static func labelSize(with string: String?) -> CGSize
     {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)

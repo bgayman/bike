@@ -32,7 +32,7 @@ class BikeTableViewCell: UITableViewCell
         return stackView
     }()
     
-    lazy var titleLabel: UILabel =
+    @objc lazy var titleLabel: UILabel =
     {
         let networkNameLabel = UILabel()
         networkNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -41,7 +41,7 @@ class BikeTableViewCell: UITableViewCell
         return networkNameLabel
     }()
     
-    lazy var subtitleLabel: UILabel =
+    @objc lazy var subtitleLabel: UILabel =
     {
         let networkLocationLabel = UILabel()
         networkLocationLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +79,7 @@ class BikeTableViewCell: UITableViewCell
         }
     }
     
-    var searchString: String?
+    @objc var searchString: String?
     {
         didSet
         {
@@ -122,7 +122,7 @@ class BikeTableViewCell: UITableViewCell
     
     private func configureCell(bikeStation: BikeStation)
     {
-        let bullet = NSAttributedString(string: "• ", attributes: [NSForegroundColorAttributeName: bikeStation.pinTintColor, NSFontAttributeName: self.titleLabel.font ?? UIFont.app_font(forTextStyle: .title1)])
+        let bullet = NSAttributedString(string: "• ", attributes: [NSAttributedStringKey.foregroundColor: bikeStation.pinTintColor, NSAttributedStringKey.font: self.titleLabel.font ?? UIFont.app_font(forTextStyle: .title1)])
         let name = NSAttributedString(string: bikeStation.name)
         self.titleLabel.attributedText = bullet + name
         self.subtitleLabel.text = "\(bikeStation.statusDisplayText)\n\(bikeStation.dateComponentText)"
@@ -132,23 +132,23 @@ class BikeTableViewCell: UITableViewCell
     {
         if let bikeStation = self.bikeStation
         {
-            let titleAttribString = NSMutableAttributedString(string: bikeStation.name, attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .title1)])
+            let titleAttribString = NSMutableAttributedString(string: bikeStation.name, attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .title1)])
             
             self.titleLabel.attributedText = self.searchHightlighted(attribString: titleAttribString, searchString: searchString)
             self.subtitleLabel.text = "\(bikeStation.statusDisplayText)\n\(bikeStation.dateComponentText)"
         }
         else if let bikeNetwork = self.bikeNetwork
         {
-            let titleAttribString = NSMutableAttributedString(string: bikeNetwork.name, attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .title1)])
-            let subtitleAttribString = NSMutableAttributedString(string: bikeNetwork.locationDisplayName, attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .caption1)])
+            let titleAttribString = NSMutableAttributedString(string: bikeNetwork.name, attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .title1)])
+            let subtitleAttribString = NSMutableAttributedString(string: bikeNetwork.locationDisplayName, attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .caption1)])
             
             self.titleLabel.attributedText = self.searchHightlighted(attribString: titleAttribString, searchString: searchString)
             self.subtitleLabel.attributedText = self.searchHightlighted(attribString: subtitleAttribString, searchString: searchString)
         }
         else
         {
-            let titleAttribString = NSMutableAttributedString(string: self.titleLabel.text ?? "", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .body)])
-            let subtitleAttribString = NSMutableAttributedString(string: self.subtitleLabel.text ?? "", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .caption1)])
+            let titleAttribString = NSMutableAttributedString(string: self.titleLabel.text ?? "", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .body)])
+            let subtitleAttribString = NSMutableAttributedString(string: self.subtitleLabel.text ?? "", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .caption1)])
             
             self.titleLabel.attributedText = self.searchHightlighted(attribString: titleAttribString, searchString: searchString)
             self.subtitleLabel.attributedText = self.searchHightlighted(attribString: subtitleAttribString, searchString: searchString)
@@ -159,7 +159,7 @@ class BikeTableViewCell: UITableViewCell
     private func searchHightlighted(attribString: NSMutableAttributedString, searchString: String) -> NSAttributedString
     {
         let range = (attribString.string.lowercased() as NSString).range(of: searchString.lowercased())
-        attribString.addAttributes([NSForegroundColorAttributeName: UIColor.app_blue], range: range)
+        attribString.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.app_blue], range: range)
         return attribString
     }
 }

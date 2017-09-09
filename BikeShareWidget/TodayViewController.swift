@@ -15,7 +15,7 @@ class TodayViewController: UIViewController, NCWidgetProviding
     var stationsWidgetClient = StationsClient()
     var networksClient = NetworksClient()
     var network = UserDefaults.bikeShareGroup.homeNetwork
-    let userManager = ExtensionConstants.userManager
+    @objc let userManager = ExtensionConstants.userManager
     fileprivate let height: CGFloat = 105.0
     var stations: [BikeStation]?
     {
@@ -34,16 +34,16 @@ class TodayViewController: UIViewController, NCWidgetProviding
         }
     }
     
-    var completion: ((NCUpdateResult) -> Void)?
+    @objc var completion: ((NCUpdateResult) -> Void)?
     
     @IBOutlet weak var emptyStateLabel: UILabel!
     
-    lazy var annotations: [MapBikeStation] =
+    @objc lazy var annotations: [MapBikeStation] =
     {
         return self.closebyStations.map(MapBikeStation.init)
     }()
     
-    lazy var tableView: UITableView =
+    @objc lazy var tableView: UITableView =
     {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -72,12 +72,12 @@ class TodayViewController: UIViewController, NCWidgetProviding
             let favoriteIDs = favoriteStations.map { $0.id }
             return Array(self.stations?.filter { favoriteIDs.contains($0.id) }.prefix(5) ?? self.stations?.prefix(5) ?? [])
         }
-        let sortedStations = self.stations?.sorted{ $0.0.distance < $0.1.distance } ?? []
+        let sortedStations = self.stations?.sorted{ $0.distance < $1.distance } ?? []
         let closebyStations = Array(sortedStations.prefix(5))
         return closebyStations
     }()
     
-    var mapHeight: CGFloat
+    @objc var mapHeight: CGFloat
     {
         return self.view.bounds.height * 0.4
     }
@@ -193,7 +193,7 @@ class TodayViewController: UIViewController, NCWidgetProviding
             case .error:
                 break
             case .success(let networks):
-                let sortedNetworks = networks.sorted { $0.0.location.distance < $0.1.location.distance }
+                let sortedNetworks = networks.sorted { $0.location.distance < $1.location.distance }
                 self?.network = sortedNetworks.first
                 DispatchQueue.main.async
                 {
@@ -204,7 +204,7 @@ class TodayViewController: UIViewController, NCWidgetProviding
     }
     
     //MARK: - Location Update
-    func didUpdateCurrentLocation()
+    @objc func didUpdateCurrentLocation()
     {
         self.closebyStations = nil
         self.tableView.reloadData()

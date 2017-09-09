@@ -10,7 +10,7 @@ import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate
 {
-    var watchConnectivityBackgroundTasks: [WKWatchConnectivityRefreshBackgroundTask] = []
+    @objc var watchConnectivityBackgroundTasks: [WKWatchConnectivityRefreshBackgroundTask] = []
     
     override init()
     {
@@ -31,9 +31,6 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate
     
     func applicationDidFinishLaunching()
     {
-        let store = NSUbiquitousKeyValueStore.default()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.updateKVStoreItems(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: store)
-        
         WatchSessionManager.sharedManager.startSession()
     }
 
@@ -75,38 +72,18 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate
         }
     }
     
-    func handleWatchConnectivityBackgroundTask(_ backgroundTask: WKWatchConnectivityRefreshBackgroundTask)
+    @objc func handleWatchConnectivityBackgroundTask(_ backgroundTask: WKWatchConnectivityRefreshBackgroundTask)
     {
         self.watchConnectivityBackgroundTasks.append(backgroundTask)
     }
     
-    func completeAllTasksIfReady()
+    @objc func completeAllTasksIfReady()
     {
         let validSession = WatchSessionManager.sharedManager.validSession
         if validSession?.activationState == .activated && validSession?.hasContentPending == false
         {
             watchConnectivityBackgroundTasks.forEach { $0.setTaskCompleted() }
             watchConnectivityBackgroundTasks.removeAll()
-        }
-    }
-    
-    func updateKVStoreItems(notification: Notification)
-    {
-        let userInfo = notification.userInfo
-        guard let reasonForChange = userInfo?[NSUbiquitousKeyValueStoreChangeReasonKey] as? NSNumber else { return }
-        let reason = reasonForChange.intValue
-        if reason == NSUbiquitousKeyValueStoreServerChange || reason == NSUbiquitousKeyValueStoreInitialSyncChange
-        {
-            if let changedKeys = userInfo?[NSUbiquitousKeyValueStoreChangedKeysKey] as? [String]
-            {
-                let store = NSUbiquitousKeyValueStore.default()
-                let userDefaults = UserDefaults.bikeShareGroup
-                for key in changedKeys
-                {
-                    let value = store.object(forKey: key)
-                    userDefaults.set(value, forKey: key)
-                }
-            }
         }
     }
 

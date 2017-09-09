@@ -10,7 +10,7 @@ import UIKit
 
 final class LocationControl: UIControl
 {
-    var color = UIColor.app_blue
+    @objc var color = UIColor.app_blue
     {
         didSet
         {
@@ -75,7 +75,7 @@ final class LocationControl: UIControl
 
 final class TVLocationButton: UIButton
 {
-    var color = UIColor.black
+    @objc var color = UIColor.black
     {
         didSet
         {

@@ -15,7 +15,7 @@ class MapInterfaceController: WKInterfaceController
 {
 
     @IBOutlet var map: WKInterfaceMap!
-    var currentSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+    @objc var currentSpan = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     
     override func awake(withContext context: Any?)
     {
@@ -39,7 +39,7 @@ class MapInterfaceController: WKInterfaceController
         self.map.addAnnotation(station.coordinates, with: color)
     }
     
-    func setMapTo(coordinate: CLLocationCoordinate2D) {
+    @objc func setMapTo(coordinate: CLLocationCoordinate2D) {
         let region = MKCoordinateRegionMake(coordinate, currentSpan)
         let newCenterPoint = MKMapPointForCoordinate(coordinate)
         

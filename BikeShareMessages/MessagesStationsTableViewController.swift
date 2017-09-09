@@ -21,15 +21,15 @@ class MessagesStationsTableViewController: UITableViewController
         }
     }
     
-    lazy var refresh: UIRefreshControl =
+    @objc lazy var refresh: UIRefreshControl =
     {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(self.fetchStations), for: .valueChanged)
         return refresh
     }()
     
-    let userManager = ExtensionConstants.userManager
-    var didFetchStationsCallback: (() -> ())?
+    @objc let userManager = ExtensionConstants.userManager
+    @objc var didFetchStationsCallback: (() -> ())?
     
     //MARK: - Lifecycle
     init(with bikeNetwork: BikeNetwork)
@@ -63,7 +63,7 @@ class MessagesStationsTableViewController: UITableViewController
         super.viewDidDisappear(animated)
     }
     
-    func configureTableView()
+    @objc func configureTableView()
     {
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
@@ -73,7 +73,7 @@ class MessagesStationsTableViewController: UITableViewController
         self.refresh.beginRefreshing()
     }
     
-    func didUpdateCurrentLocation()
+    @objc func didUpdateCurrentLocation()
     {
         guard !self.stations.isEmpty else { return }
         self.updateStationsData(stations: self.stations)

@@ -42,7 +42,7 @@ class MapBikeStation: NSObject, MKAnnotation
         return strings.joined(separator: "\n")
     }
     
-    var dateComponentText: String
+    @objc var dateComponentText: String
     {
         return "\(self.bikeStation.dateComponentText)"
     }

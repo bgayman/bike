@@ -24,9 +24,9 @@ import UIKit
 
 extension UIFont
 {
-    static let app_fontName = "AvenirNext-Medium"
+    @objc static let app_fontName = "AvenirNext-Medium"
     
-    static func app_font(forTextStyle textStyle: UIFontTextStyle) -> UIFont
+    @objc static func app_font(forTextStyle textStyle: UIFontTextStyle) -> UIFont
     {
         let preferredFont = UIFont.preferredFont(forTextStyle: textStyle)
         return preferredFont

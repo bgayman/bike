@@ -8,9 +8,6 @@
 
 import UIKit
 import MapKit
-#if !os(tvOS)
-import Hero
-#endif
 
 protocol BikeDetailCalloutAccessoryViewDelegate: class
 {
@@ -28,10 +25,10 @@ enum BikeDetailCalloutAnnotation
 class BikeDetailCalloutAccessoryView: UIView
 {
     let annotation: BikeDetailCalloutAnnotation
-    let imageWidthHeight: CGFloat = 250.0
+    @objc let imageWidthHeight: CGFloat = 250.0
     weak var delegate: BikeDetailCalloutAccessoryViewDelegate?
     
-    var rowHeight: CGFloat
+    @objc var rowHeight: CGFloat
     {
         let label = UILabel()
         label.font = BikeDetailAccessoryTableViewCell.Constants.LabelFont
@@ -64,13 +61,13 @@ class BikeDetailCalloutAccessoryView: UIView
         return [self.tableView]
     }
     
-    var userManager: UserManager
+    @objc var userManager: UserManager
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return UserManager() }
         return appDelegate.userManager
     }
     
-    lazy var tableView: UITableView =
+    @objc lazy var tableView: UITableView =
     {
         let tableView = UITableView(frame: CGRect.zero)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -89,7 +86,7 @@ class BikeDetailCalloutAccessoryView: UIView
         return tableView
     }()
     
-    lazy var snapshotOptions: MKMapSnapshotOptions =
+    @objc lazy var snapshotOptions: MKMapSnapshotOptions =
     {
         let options = MKMapSnapshotOptions()
         options.size = CGSize(width: self.imageWidthHeight, height: self.imageWidthHeight)
@@ -106,10 +103,10 @@ class BikeDetailCalloutAccessoryView: UIView
         return options
     }()
     
-    lazy var faveButton: UIButton =
+    @objc lazy var faveButton: UIButton =
     {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44.0, height: 44.0))
-        let attributes = [NSFontAttributeName: UIFont.app_font(forTextStyle: .title1), NSForegroundColorAttributeName: UIColor.app_blue]
+        let attributes = [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .title1), NSAttributedStringKey.foregroundColor: UIColor.app_blue]
         let normalAttribString = NSAttributedString(string: "☆", attributes: attributes)
         let selectedAttribString = NSAttributedString(string: "★", attributes: attributes)
         button.setAttributedTitle(normalAttribString, for: .normal)
@@ -163,7 +160,6 @@ extension BikeDetailCalloutAccessoryView: UITableViewDelegate, UITableViewDataSo
             cell.calloutSubtitleLabel.text = station.dateComponentText
             cell.calloutSubtitleLabel.isHidden = false
             #if !os(tvOS)
-            cell.calloutLabel.heroID = "Station"
             cell.stackView.addArrangedSubview(self.faveButton)
             #endif
             self.faveButton.isSelected = UserDefaults.bikeShareGroup.isStationFavorited(station: station.bikeStation, network: network.bikeNetwork)
@@ -201,7 +197,7 @@ extension BikeDetailCalloutAccessoryView: UITableViewDelegate, UITableViewDataSo
 
 extension BikeDetailCalloutAccessoryView
 {
-    func configureImageView(with cell: BikeDetailAccessoryTableViewCell)
+    @objc func configureImageView(with cell: BikeDetailAccessoryTableViewCell)
     {
         cell.bikeImageView.isHidden = true
         cell.bikeImageView.alpha = 0
@@ -213,7 +209,6 @@ extension BikeDetailCalloutAccessoryView
         { (snapshot, _) in
             cell.bikeImageView.image = snapshot?.image
             #if !os(tvOS)
-            cell.bikeImageView.heroID = "Map"
             cell.activityIndicator.stopAnimating()
             cell.stackView.removeArrangedSubview(cell.activityIndicator)
             #endif
@@ -227,7 +222,7 @@ extension BikeDetailCalloutAccessoryView
     }
     
     //MARK: - Actions
-    func didPressHomeNetwork(_ sender: UIButton)
+    @objc func didPressHomeNetwork(_ sender: UIButton)
     {
         switch self.annotation
         {

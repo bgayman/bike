@@ -26,12 +26,11 @@ class NetworkTableViewController: UITableViewController
         }
     }
     
-    var networkMapViewController: MapViewController? = nil
-    var isTransitioning = false
+    @objc var networkMapViewController: MapViewController? = nil
+    @objc var isTransitioning = false
     
-    lazy var searchController: UISearchController =
+    @objc lazy var searchController: UISearchController =
     {
-        
         let searchResultsController = NetworkSearchController()
         searchResultsController.delegate = self
         let searchController = UISearchController(searchResultsController: searchResultsController)
@@ -41,7 +40,7 @@ class NetworkTableViewController: UITableViewController
         return searchController
     }()
     
-    lazy var locationBarButton: UIBarButtonItem =
+    @objc lazy var locationBarButton: UIBarButtonItem =
     {
         let locationControl = TVLocationButton(frame: CGRect(x: 0.0, y: 0.0, width: 44.0, height: 44.0))
         locationControl.addTarget(self, action: #selector(self.didPressLocationButton), for: .primaryActionTriggered)
@@ -50,7 +49,7 @@ class NetworkTableViewController: UITableViewController
     }()
     
     #if !os(tvOS)
-    lazy var refresh: UIRefreshControl =
+    @objc lazy var refresh: UIRefreshControl =
     {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(self.fetchNetworks), for: .valueChanged)
@@ -58,22 +57,22 @@ class NetworkTableViewController: UITableViewController
     }()
     
     
-    lazy var mapBarButton: UIBarButtonItem =
+    @objc lazy var mapBarButton: UIBarButtonItem =
     {
         let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "World Map"), style: .plain, target: self, action: #selector(self.showMapViewController))
         return barButtonItem
     }()
     #endif
     
-    lazy var searchBarButton: UIBarButtonItem =
+    @objc lazy var searchBarButton: UIBarButtonItem =
     {
         let searchBarButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.presentSearch))
         return searchBarButton
     }()
     
-    var didFetchNetworkCallback: (() -> ())?
+    @objc var didFetchNetworkCallback: (() -> ())?
     
-    var userManager: UserManager
+    @objc var userManager: UserManager
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return UserManager() }
         return appDelegate.userManager
@@ -103,7 +102,11 @@ class NetworkTableViewController: UITableViewController
             self.networkMapViewController?.delegate = self
         }
         self.title = "Networks"
+        self.navigationItem.searchController = self.searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+
         #if !os(tvOS)
+        self.navigationItem.largeTitleDisplayMode = .always
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         self.navigationItem.titleView = activityIndicator
         activityIndicator.startAnimating()
@@ -141,7 +144,6 @@ class NetworkTableViewController: UITableViewController
         self.networkMapViewController?.delegate = self
         self.networkMapViewController?.networks = self.networks
         NotificationCenter.default.addObserver(self, selector: #selector(self.didUpdateCurrentLocation), name: Notification.Name(Constants.DidUpdatedUserLocationNotification), object: nil)
-        
     }
     
     deinit
@@ -181,7 +183,6 @@ class NetworkTableViewController: UITableViewController
     
         #if !os(tvOS)
         footerView.poweredByButton.addTarget(self, action: #selector(self.poweredByPressed), for: .touchUpInside)
-        self.tableView.tableHeaderView = self.searchController.searchBar
         self.definesPresentationContext = true
         self.refreshControl = refresh
         #endif
@@ -201,7 +202,7 @@ class NetworkTableViewController: UITableViewController
     }
     
     #if !os(tvOS)
-    func poweredByPressed()
+    @objc func poweredByPressed()
     {
         let safariVC = SFSafariViewController(url: URL(string: "https://citybik.es/#about")!)
         self.present(safariVC, animated: true)
@@ -217,12 +218,12 @@ class NetworkTableViewController: UITableViewController
         return super.shouldUpdateFocus(in: context)
     }*/
     
-    func search()
+    @objc func search()
     {
         self.searchController.searchBar.becomeFirstResponder()
     }
     
-    func didPressLocationButton()
+    @objc func didPressLocationButton()
     {
         self.networkMapViewController?.didPressLocationButton()
     }
@@ -363,7 +364,7 @@ class NetworkTableViewController: UITableViewController
         }
         DispatchQueue.global(qos: .userInitiated).async
         {
-            let sortedNetworks = networks.sorted { $0.0.location.distance < $0.1.location.distance }
+            let sortedNetworks = networks.sorted { $0.location.distance < $1.location.distance }
             DispatchQueue.main.async
             {
                 self.networks = sortedNetworks
@@ -390,7 +391,7 @@ class NetworkTableViewController: UITableViewController
         }
     }
     
-    func didUpdateCurrentLocation()
+    @objc func didUpdateCurrentLocation()
     {
         self.updateNetworksData(networks: self.networks, fromUserLocationUpdate: true)
     }
@@ -410,12 +411,12 @@ class NetworkTableViewController: UITableViewController
         }
     }
     
-    func showMapViewController()
+    @objc func showMapViewController()
     {
         self.performSegue(withIdentifier: Segue.showMapViewController.rawValue, sender: nil)
     }
     
-    func presentSearch()
+    @objc func presentSearch()
     {
         let searchContainer = UISearchContainerViewController(searchController: self.searchController)
         searchController.searchBar.placeholder = "Search Networks"
@@ -576,26 +577,26 @@ extension NetworkTableViewController: NetworkSearchControllerDelegate
 //MARK: - MapViewControllerDelegate
 extension NetworkTableViewController: MapViewControllerDelegate
 {
-    func didRequestCallout(forMapBikeNetwork: MapBikeNetwork)
+    @objc func didRequestCallout(forMapBikeNetwork: MapBikeNetwork)
     {
         guard let index = self.networks.index(of: forMapBikeNetwork.bikeNetwork) else { return }
         let indexPath = IndexPath(row: index, section: 0)
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
     }
     
-    func didSelect(mapBikeNetwork: MapBikeNetwork)
+    @objc func didSelect(mapBikeNetwork: MapBikeNetwork)
     {
         self.didSelect(network: mapBikeNetwork.bikeNetwork)
     }
     
-    func didChange(searchText: String)
+    @objc func didChange(searchText: String)
     {
         guard let controller = searchController.searchResultsController as? NetworkSearchController else { return }
         controller.searchString = searchText
         self.networkMapViewController?.networks = controller.searchResults
     }
     
-    func didRequestUpdate()
+    @objc func didRequestUpdate()
     {
         self.fetchNetworks()
     }

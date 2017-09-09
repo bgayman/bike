@@ -33,39 +33,39 @@ class StationDiffViewController: UITableViewController
         }
     }
     
-    lazy var refresh: UIRefreshControl =
+    @objc lazy var refresh: UIRefreshControl =
     {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(self.fetchStations), for: .valueChanged)
         return refresh
     }()
     
-    lazy var refreshButton: UIBarButtonItem =
+    @objc lazy var refreshButton: UIBarButtonItem =
     {
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(self.didPressRefresh(sender:)))
         return refresh
     }()
     
-    lazy var doneButton: UIBarButtonItem =
+    @objc lazy var doneButton: UIBarButtonItem =
     {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.didPressDone(sender:)))
         return doneButton
     }()
     
-    lazy var activityIndicator: UIActivityIndicatorView =
+    @objc lazy var activityIndicator: UIActivityIndicatorView =
     {
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         return activityIndicator
     }()
     
-    lazy var footerView: BikeTableFooterView =
+    @objc lazy var footerView: BikeTableFooterView =
     {
         let height: CGFloat = max(BikeTableFooterView(reuseIdentifier: "thing").poweredByButton.intrinsicContentSize.height, 44.0)
         let footerView = BikeTableFooterView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: height))
         return footerView
     }()
     
-    lazy var searchController: UISearchController =
+    @objc lazy var searchController: UISearchController =
     {
         let searchResultsController = StationDiffViewControllerSearchController()
         searchResultsController.delegate = self
@@ -104,6 +104,7 @@ class StationDiffViewController: UITableViewController
         {
             self.registerForPreviewing(with: self, sourceView: self.tableView)
         }
+        self.navigationItem.largeTitleDisplayMode = .never
     }
     
     private func configureTableView()
@@ -180,19 +181,19 @@ class StationDiffViewController: UITableViewController
     }
     
     //MARK: - Actions
-    func didPressRefresh(sender: UIBarButtonItem)
+    @objc func didPressRefresh(sender: UIBarButtonItem)
     {
         self.navigationItem.titleView = self.activityIndicator
         self.activityIndicator.startAnimating()
         self.fetchStations()
     }
     
-    func didPressDone(sender: UIBarButtonItem)
+    @objc func didPressDone(sender: UIBarButtonItem)
     {
         self.presentingViewController?.dismiss(animated: true)
     }
 
-    func poweredByPressed()
+    @objc func poweredByPressed()
     {
         let safariVC = SFSafariViewController(url: URL(string: "https://citybik.es/#about")!)
         self.present(safariVC, animated: true)
@@ -255,13 +256,13 @@ extension StationDiffViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
 {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let title = NSAttributedString(string: "No Changes", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .title2), NSForegroundColorAttributeName: UIColor.gray])
+        let title = NSAttributedString(string: "No Changes", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .title2), NSAttributedStringKey.foregroundColor: UIColor.gray])
         return title
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let description = NSAttributedString(string: "No changes have been logged. Try reloading in a few moments.", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .subheadline), NSForegroundColorAttributeName: UIColor.lightGray])
+        let description = NSAttributedString(string: "No changes have been logged. Try reloading in a few moments.", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .subheadline), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         return description
     }
     

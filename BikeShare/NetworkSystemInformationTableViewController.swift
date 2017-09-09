@@ -29,19 +29,19 @@ class NetworkSystemInformationTableViewController: UITableViewController
         }
     }
     
-    lazy var doneButton: UIBarButtonItem =
+    @objc lazy var doneButton: UIBarButtonItem =
     {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.didPressDone(sender:)))
         return doneButton
     }()
     
-    lazy var actionButton: UIBarButtonItem =
+    @objc lazy var actionButton: UIBarButtonItem =
     {
         let actionButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.didPressAction(sender:)))
         return actionButton
     }()
     
-    lazy var mapView: MKMapView =
+    @objc lazy var mapView: MKMapView =
     {
         let mapView = MKMapView()
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -52,12 +52,12 @@ class NetworkSystemInformationTableViewController: UITableViewController
         return mapView
     }()
     
-    var annotation: MapBikeNetwork
+    @objc var annotation: MapBikeNetwork
     {
         return MapBikeNetwork(bikeNetwork: self.network)
     }
     
-    var mapHeight: CGFloat
+    @objc var mapHeight: CGFloat
     {
         return self.view.bounds.height * 0.3
     }
@@ -85,6 +85,7 @@ class NetworkSystemInformationTableViewController: UITableViewController
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         self.navigationItem.titleView = activityIndicator
         activityIndicator.startAnimating()
+        self.navigationItem.largeTitleDisplayMode = .never
         #endif
         self.navigationItem.rightBarButtonItem = self.doneButton
         self.navigationItem.leftBarButtonItem = self.actionButton
@@ -102,7 +103,7 @@ class NetworkSystemInformationTableViewController: UITableViewController
         self.tableView.tableHeaderView?.frame = CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: self.mapHeight)
     }
     
-    func fetchSystemInfo()
+    @objc func fetchSystemInfo()
     {
         let systemInfoFeed = self.feeds.filter { $0.type == .systemInformation }.first
         guard systemInfoFeed != nil else { return }
@@ -224,12 +225,12 @@ class NetworkSystemInformationTableViewController: UITableViewController
         }
     }
     
-    func didPressDone(sender: UIBarButtonItem)
+    @objc func didPressDone(sender: UIBarButtonItem)
     {
         self.presentingViewController?.dismiss(animated: true)
     }
     
-    func didPressAction(sender: UIBarButtonItem)
+    @objc func didPressAction(sender: UIBarButtonItem)
     {
         guard let url = URL(string: Constants.WebSiteDomain + "/systemInfo/" + self.network.id) else { return }
         #if !os(tvOS)

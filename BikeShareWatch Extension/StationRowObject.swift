@@ -17,7 +17,7 @@ class StationRowObject: NSObject
         didSet
         {
             guard let bikeStation = bikeStation else { return }
-            let dotString = NSAttributedString(string: " • ", attributes: [NSForegroundColorAttributeName: bikeStation.pinTintColor])
+            let dotString = NSAttributedString(string: " • ", attributes: [NSAttributedStringKey.foregroundColor: bikeStation.pinTintColor])
             let titleString = NSAttributedString(string: bikeStation.name)
             self.titleLabel.setAttributedText(dotString + titleString)
             self.subtitleLabel.setText("\(bikeStation.statusDisplayText) - \(bikeStation.dateComponentText)")
@@ -34,7 +34,7 @@ class StationRowObject: NSObject
         }
     }
     
-    var isEmptyRow: Bool = false
+    @objc var isEmptyRow: Bool = false
     {
         didSet
         {
@@ -44,7 +44,7 @@ class StationRowObject: NSObject
         }
     }
     
-    var errorMessage: String?
+    @objc var errorMessage: String?
     {
         didSet
         {

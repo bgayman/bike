@@ -10,13 +10,13 @@ import UIKit
 
 extension WatchSessionManager
 {
-    var userManager: UserManager
+    @objc var userManager: UserManager
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return UserManager() }
         return appDelegate.userManager
     }
     
-    func fetchStations(completion: @escaping ([String: Any]) -> ())
+    @objc func fetchStations(completion: @escaping ([String: Any]) -> ())
     {
         var closebyStationsClient = ClosebyStationsClient()
         guard let location = self.userManager.currentLocation else

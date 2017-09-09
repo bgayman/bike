@@ -1,0 +1,6 @@
+framework module Pods_BikeShareTopShelf {
+  umbrella header "Pods-BikeShareTopShelf-umbrella.h"
+
+  export *
+  module * { export * }
+}

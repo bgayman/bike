@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BF21C987A7154723187D7EA /* Pods_BikeShareMacWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D436DAF9BBC3D41AC1B8A0D /* Pods_BikeShareMacWidget.framework */; };
+		36E90F0EF9EB34A00ACFBA5D /* Pods_BikeShareWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE140FEB25DB310A48E0926 /* Pods_BikeShareWidget.framework */; };
+		39E3243E62C16526D0DD2A8A /* Pods_BikeShareWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B55B10FA61E2E218E33A9D /* Pods_BikeShareWatch.framework */; };
+		3CFFE35D0A77FB7BEE3BD66E /* Pods_BikeShareMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257E51A3BF0D4F3F5A306D1E /* Pods_BikeShareMac.framework */; };
+		4A38F2C5C187C736B3790FCA /* Pods_BikeShareTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B789BA8A90D1DF5A37C2230D /* Pods_BikeShareTV.framework */; };
+		4D4FE232046D3362C5B9BFAF /* Pods_BikeShareTopShelf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 209C2F591A7448EF7AC9BD85 /* Pods_BikeShareTopShelf.framework */; };
+		4E2821C2E1CBAA93A5B972BA /* Pods_BikeShareMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAA1533E791D957495AA2DA /* Pods_BikeShareMessages.framework */; };
+		72ACF70747D355E95FA8393F /* Pods_BikeShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F157F03C868D2638AE4589CB /* Pods_BikeShare.framework */; };
+		C104E8A3CF39CB999E1446EE /* Pods_BikeShareWatch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFC9BE33BF768232C21681D /* Pods_BikeShareWatch_Extension.framework */; };
 		CD029C6F1ECBD67E0091A0A9 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3932351EBF63C7009427E6 /* LocationControl.swift */; };
 		CD029C701ECBD7250091A0A9 /* MapSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */; };
 		CD029C711ECBD7670091A0A9 /* MapPinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E61EB6D3BC00806D97 /* MapPinTableViewCell.swift */; };
@@ -101,7 +110,6 @@
 		CD1ED2E51EB6CB6600806D97 /* MapSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */; };
 		CD1ED2E81EB6D3BC00806D97 /* MapPinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E61EB6D3BC00806D97 /* MapPinTableViewCell.swift */; };
 		CD1ED2E91EB6D3BC00806D97 /* MapPinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1ED2E71EB6D3BC00806D97 /* MapPinTableViewCell.xib */; };
-		CD2185FF1EC9451800B11ADB /* SDCAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2185FE1EC9451800B11ADB /* SDCAlertView.framework */; };
 		CD2BA3C91EABFD5500C26F90 /* HistoryNetworksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */; };
 		CD2BA3CA1EABFDB600C26F90 /* HistoryNetworksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */; };
 		CD2BA3CB1EABFDB700C26F90 /* HistoryNetworksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */; };
@@ -114,7 +122,6 @@
 		CD2BA3D31EABFE8D00C26F90 /* StationDetailGraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */; };
 		CD3932361EBF63C7009427E6 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3932351EBF63C7009427E6 /* LocationControl.swift */; };
 		CD3932391EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */; };
-		CD39323A1EC0031A009427E6 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3932381EC0031A009427E6 /* DZNEmptyDataSet.framework */; };
 		CD6276EB1EB4E712008666AC /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
 		CD6276EC1EB4E784008666AC /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
 		CD6276ED1EB4E794008666AC /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
@@ -139,12 +146,7 @@
 		CD67333A1EAAEE420070E69B /* BikeStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */; };
 		CD67333B1EAAEE430070E69B /* BikeStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */; };
 		CD67333C1EAAEE440070E69B /* BikeStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */; };
-		CD6A6BA21EAD584F0042ABE5 /* SloppySwipePanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */; };
-		CD6A6BA41EAD59A10042ABE5 /* SloppySwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */; };
-		CD6A6BA51EAD59A60042ABE5 /* SloppySwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */; };
-		CD6A6BA61EAD5A000042ABE5 /* SloppySwipePanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */; };
-		CD6A6BA91EAD76EF0042ABE5 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6733211EAAECC10070E69B /* Charts.framework */; };
-		CD6A6BAA1EAD76FC0042ABE5 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6733241EAAECCE0070E69B /* Hero.framework */; };
+		CD7547D01F637EB4004EDA2A /* UserDefaults+Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7547CF1F637EB4004EDA2A /* UserDefaults+Watch.swift */; };
 		CD791DE61EC74EF7009A6DB7 /* ClosebyStationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C311E2B1D890062CBA5 /* ClosebyStationsClient.swift */; };
 		CD791DE81EC75891009A6DB7 /* WatchSessionManager+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD791DE71EC75891009A6DB7 /* WatchSessionManager+iOS.swift */; };
 		CD791DEA1EC758DA009A6DB7 /* WatchSessionManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD791DE91EC758DA009A6DB7 /* WatchSessionManager+Extension.swift */; };
@@ -381,7 +383,6 @@
 		CDFBD7311E3D2DC900C751D7 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD72F1E3D2DB900C751D7 /* WatchSessionManager.swift */; };
 		CDFBD7331E3D2E6300C751D7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDFBD7321E3D2E6300C751D7 /* MapKit.framework */; };
 		CDFBD7361E3D2F3900C751D7 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
-		CDFBD7371E3D2F4400C751D7 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
 		CDFBD7381E3D2F4B00C751D7 /* ExtensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA134A71E2A9392005542DE /* ExtensionConstants.swift */; };
 		CDFBD73C1E3D30AD00C751D7 /* StationRowObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD73B1E3D30AD00C751D7 /* StationRowObject.swift */; };
 		CDFBD73D1E3D31D600C751D7 /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
@@ -513,6 +514,26 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00C58CD34357F0D6AC974C94 /* Pods-BikeShareMac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareMac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareMac/Pods-BikeShareMac.debug.xcconfig"; sourceTree = "<group>"; };
+		03245E6EA6C5EB1614A0ADC7 /* Pods-BikeShareWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareWidget/Pods-BikeShareWidget.debug.xcconfig"; sourceTree = "<group>"; };
+		16B6E30C42D48A70BEEEDB54 /* Pods-BikeShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShare/Pods-BikeShare.debug.xcconfig"; sourceTree = "<group>"; };
+		1EAC615F7C606208BE31871E /* Pods-BikeShareMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareMac.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareMac/Pods-BikeShareMac.release.xcconfig"; sourceTree = "<group>"; };
+		209C2F591A7448EF7AC9BD85 /* Pods_BikeShareTopShelf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareTopShelf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		257E51A3BF0D4F3F5A306D1E /* Pods_BikeShareMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		268D06BB54CA68ACAA385451 /* Pods-BikeShareTopShelf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareTopShelf.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareTopShelf/Pods-BikeShareTopShelf.debug.xcconfig"; sourceTree = "<group>"; };
+		2CA58BA986CC94660ACE2871 /* Pods-BikeShareMacWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareMacWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareMacWidget/Pods-BikeShareMacWidget.debug.xcconfig"; sourceTree = "<group>"; };
+		3132EE50C7E178187528904A /* Pods-BikeShareWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareWatch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareWatch Extension/Pods-BikeShareWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		4EAA1533E791D957495AA2DA /* Pods_BikeShareMessages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareMessages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B721E7221592F38F3551633 /* Pods-BikeShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShare.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShare/Pods-BikeShare.release.xcconfig"; sourceTree = "<group>"; };
+		67F9A54FDF3F5A1317E80D33 /* Pods-BikeShareMacWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareMacWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareMacWidget/Pods-BikeShareMacWidget.release.xcconfig"; sourceTree = "<group>"; };
+		86F0483AF277B9B6DC4353E7 /* Pods-BikeShareMessages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareMessages.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareMessages/Pods-BikeShareMessages.release.xcconfig"; sourceTree = "<group>"; };
+		8D436DAF9BBC3D41AC1B8A0D /* Pods_BikeShareMacWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareMacWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96F03230204D7D994C80EF7E /* Pods-BikeShareWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareWatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareWatch/Pods-BikeShareWatch.release.xcconfig"; sourceTree = "<group>"; };
+		A91F2744FFA12DAAEC837865 /* Pods-BikeShareTopShelf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareTopShelf.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareTopShelf/Pods-BikeShareTopShelf.release.xcconfig"; sourceTree = "<group>"; };
+		B2F2EAF2612961EF738D4C2E /* Pods-BikeShareWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareWidget/Pods-BikeShareWidget.release.xcconfig"; sourceTree = "<group>"; };
+		B789BA8A90D1DF5A37C2230D /* Pods_BikeShareTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCEA5FA537A60F148267AEA2 /* Pods-BikeShareWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareWatch/Pods-BikeShareWatch.debug.xcconfig"; sourceTree = "<group>"; };
+		C325B018F5A81E40DF29BB69 /* Pods-BikeShareTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareTV.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareTV/Pods-BikeShareTV.release.xcconfig"; sourceTree = "<group>"; };
 		CD029C721ECBDA390091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		CD029C741ECBDA470091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CD029C761ECBDA7A0091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -557,19 +578,14 @@
 		CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSettingsViewController.swift; sourceTree = "<group>"; };
 		CD1ED2E61EB6D3BC00806D97 /* MapPinTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPinTableViewCell.swift; sourceTree = "<group>"; };
 		CD1ED2E71EB6D3BC00806D97 /* MapPinTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapPinTableViewCell.xib; sourceTree = "<group>"; };
-		CD2185FE1EC9451800B11ADB /* SDCAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDCAlertView.framework; sourceTree = "<group>"; };
 		CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNetworksManager.swift; sourceTree = "<group>"; };
 		CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDetailGraphTableViewCell.swift; sourceTree = "<group>"; };
 		CD3932351EBF63C7009427E6 /* LocationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationControl.swift; sourceTree = "<group>"; };
 		CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap"; sourceTree = "<group>"; };
-		CD3932381EC0031A009427E6 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DZNEmptyDataSet.framework; sourceTree = "<group>"; };
 		CD6733201EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap"; sourceTree = "<group>"; };
-		CD6733211EAAECC10070E69B /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
-		CD6733241EAAECCE0070E69B /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hero.framework; sourceTree = "<group>"; };
 		CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationStatus.swift; sourceTree = "<group>"; };
 		CD67332D1EAAEE220070E69B /* StationsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsClient.swift; sourceTree = "<group>"; };
-		CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SloppySwipePanGesture.swift; sourceTree = "<group>"; };
-		CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SloppySwiper.swift; sourceTree = "<group>"; };
+		CD7547CF1F637EB4004EDA2A /* UserDefaults+Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Watch.swift"; sourceTree = "<group>"; };
 		CD791DE71EC75891009A6DB7 /* WatchSessionManager+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WatchSessionManager+iOS.swift"; sourceTree = "<group>"; };
 		CD791DE91EC758DA009A6DB7 /* WatchSessionManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WatchSessionManager+Extension.swift"; sourceTree = "<group>"; };
 		CD80AA971E626E9F00C1E9B6 /* NetworkInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkInformationViewController.swift; sourceTree = "<group>"; };
@@ -674,14 +690,30 @@
 		CDFBD74A1E3ED0EB00C751D7 /* MapInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInterfaceController.swift; sourceTree = "<group>"; };
 		CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSStationStatus.swift; sourceTree = "<group>"; };
 		CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSStationStatusClient.swift; sourceTree = "<group>"; };
+		CEFC9BE33BF768232C21681D /* Pods_BikeShareWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAE140FEB25DB310A48E0926 /* Pods_BikeShareWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3128EE3E6927AFD36AABADE /* Pods-BikeShareMessages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareMessages.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareMessages/Pods-BikeShareMessages.debug.xcconfig"; sourceTree = "<group>"; };
+		E7B10F8ADBD2C0CD2AF3D5CB /* Pods-BikeShareTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareTV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareTV/Pods-BikeShareTV.debug.xcconfig"; sourceTree = "<group>"; };
+		EE38B93AF0F376FFBA548DE7 /* Pods-BikeShareWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareWatch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareWatch Extension/Pods-BikeShareWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		F0B55B10FA61E2E218E33A9D /* Pods_BikeShareWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F157F03C868D2638AE4589CB /* Pods_BikeShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		69E303B94BC4183C6211B877 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39E3243E62C16526D0DD2A8A /* Pods_BikeShareWatch.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD164C171E2B1A7A0062CBA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CD164C1C1E2B1A7A0062CBA5 /* TVServices.framework in Frameworks */,
+				4D4FE232046D3362C5B9BFAF /* Pods_BikeShareTopShelf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +723,7 @@
 			files = (
 				CD164C541E2C38F40062CBA5 /* MapKit.framework in Frameworks */,
 				CD029C731ECBDA3A0091A0A9 /* CloudKit.framework in Frameworks */,
+				3CFFE35D0A77FB7BEE3BD66E /* Pods_BikeShareMac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +733,7 @@
 			files = (
 				CD164CA31E33CF870062CBA5 /* MapKit.framework in Frameworks */,
 				CD164C801E33C3540062CBA5 /* NotificationCenter.framework in Frameworks */,
+				0BF21C987A7154723187D7EA /* Pods_BikeShareMacWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +743,7 @@
 			files = (
 				CD8C1B691E218062000F9A9D /* MapKit.framework in Frameworks */,
 				CD029C771ECBDA7A0091A0A9 /* CloudKit.framework in Frameworks */,
+				4A38F2C5C187C736B3790FCA /* Pods_BikeShareTV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +752,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDEF3D001E1737110002063F /* NotificationCenter.framework in Frameworks */,
+				36E90F0EF9EB34A00ACFBA5D /* Pods_BikeShareWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,6 +762,7 @@
 			files = (
 				CDF347661E2A8C2F00241A8A /* MapKit.framework in Frameworks */,
 				CDF347561E2A8BE800241A8A /* Messages.framework in Frameworks */,
+				4E2821C2E1CBAA93A5B972BA /* Pods_BikeShareMessages.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,12 +770,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD6A6BAA1EAD76FC0042ABE5 /* Hero.framework in Frameworks */,
-				CD6A6BA91EAD76EF0042ABE5 /* Charts.framework in Frameworks */,
-				CD39323A1EC0031A009427E6 /* DZNEmptyDataSet.framework in Frameworks */,
 				CD029C751ECBDA470091A0A9 /* CloudKit.framework in Frameworks */,
-				CD2185FF1EC9451800B11ADB /* SDCAlertView.framework in Frameworks */,
 				CDF6E7AD1E0DBC6600C3C6CA /* MapKit.framework in Frameworks */,
+				72ACF70747D355E95FA8393F /* Pods_BikeShare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,12 +781,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDFBD7331E3D2E6300C751D7 /* MapKit.framework in Frameworks */,
+				C104E8A3CF39CB999E1446EE /* Pods_BikeShareWatch_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C41EDAE5B242687AA012ADA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16B6E30C42D48A70BEEEDB54 /* Pods-BikeShare.debug.xcconfig */,
+				5B721E7221592F38F3551633 /* Pods-BikeShare.release.xcconfig */,
+				00C58CD34357F0D6AC974C94 /* Pods-BikeShareMac.debug.xcconfig */,
+				1EAC615F7C606208BE31871E /* Pods-BikeShareMac.release.xcconfig */,
+				2CA58BA986CC94660ACE2871 /* Pods-BikeShareMacWidget.debug.xcconfig */,
+				67F9A54FDF3F5A1317E80D33 /* Pods-BikeShareMacWidget.release.xcconfig */,
+				E3128EE3E6927AFD36AABADE /* Pods-BikeShareMessages.debug.xcconfig */,
+				86F0483AF277B9B6DC4353E7 /* Pods-BikeShareMessages.release.xcconfig */,
+				E7B10F8ADBD2C0CD2AF3D5CB /* Pods-BikeShareTV.debug.xcconfig */,
+				C325B018F5A81E40DF29BB69 /* Pods-BikeShareTV.release.xcconfig */,
+				268D06BB54CA68ACAA385451 /* Pods-BikeShareTopShelf.debug.xcconfig */,
+				A91F2744FFA12DAAEC837865 /* Pods-BikeShareTopShelf.release.xcconfig */,
+				BCEA5FA537A60F148267AEA2 /* Pods-BikeShareWatch.debug.xcconfig */,
+				96F03230204D7D994C80EF7E /* Pods-BikeShareWatch.release.xcconfig */,
+				3132EE50C7E178187528904A /* Pods-BikeShareWatch Extension.debug.xcconfig */,
+				EE38B93AF0F376FFBA548DE7 /* Pods-BikeShareWatch Extension.release.xcconfig */,
+				03245E6EA6C5EB1614A0ADC7 /* Pods-BikeShareWidget.debug.xcconfig */,
+				B2F2EAF2612961EF738D4C2E /* Pods-BikeShareWidget.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CD164C1D1E2B1A7A0062CBA5 /* BikeShareTopShelf */ = {
 			isa = PBXGroup;
 			children = (
@@ -824,8 +884,6 @@
 			isa = PBXGroup;
 			children = (
 				CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */,
-				CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */,
-				CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -932,6 +990,7 @@
 				CDFBD7171E3849A000C751D7 /* BikeShareWatch Extension */,
 				CDF6E7951E0DBC3000C3C6CA /* Products */,
 				CDF6E7AB1E0DBC6600C3C6CA /* Frameworks */,
+				0C41EDAE5B242687AA012ADA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -968,11 +1027,7 @@
 				CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */,
 				CDF6E7A21E0DBC3000C3C6CA /* LaunchScreen.storyboard */,
 				CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */,
-				CD3932381EC0031A009427E6 /* DZNEmptyDataSet.framework */,
-				CD6733241EAAECCE0070E69B /* Hero.framework */,
-				CD2185FE1EC9451800B11ADB /* SDCAlertView.framework */,
 				CD6733201EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap */,
-				CD6733211EAAECC10070E69B /* Charts.framework */,
 				CDF6E7A51E0DBC3000C3C6CA /* Info.plist */,
 			);
 			path = BikeShare;
@@ -991,6 +1046,15 @@
 				CDEF3CFF1E1737110002063F /* NotificationCenter.framework */,
 				CDF347551E2A8BE800241A8A /* Messages.framework */,
 				CD164C1B1E2B1A7A0062CBA5 /* TVServices.framework */,
+				F157F03C868D2638AE4589CB /* Pods_BikeShare.framework */,
+				257E51A3BF0D4F3F5A306D1E /* Pods_BikeShareMac.framework */,
+				8D436DAF9BBC3D41AC1B8A0D /* Pods_BikeShareMacWidget.framework */,
+				4EAA1533E791D957495AA2DA /* Pods_BikeShareMessages.framework */,
+				B789BA8A90D1DF5A37C2230D /* Pods_BikeShareTV.framework */,
+				209C2F591A7448EF7AC9BD85 /* Pods_BikeShareTopShelf.framework */,
+				F0B55B10FA61E2E218E33A9D /* Pods_BikeShareWatch.framework */,
+				CEFC9BE33BF768232C21681D /* Pods_BikeShareWatch_Extension.framework */,
+				DAE140FEB25DB310A48E0926 /* Pods_BikeShareWidget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1074,6 +1138,7 @@
 				CDFBD73B1E3D30AD00C751D7 /* StationRowObject.swift */,
 				CDFBD71C1E3849A000C751D7 /* ComplicationController.swift */,
 				CDFBD72F1E3D2DB900C751D7 /* WatchSessionManager.swift */,
+				CD7547CF1F637EB4004EDA2A /* UserDefaults+Watch.swift */,
 				CDFBD71E1E3849A000C751D7 /* Assets.xcassets */,
 				CDFBD7201E3849A000C751D7 /* Info.plist */,
 			);
@@ -1087,9 +1152,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD164C261E2B1A7A0062CBA5 /* Build configuration list for PBXNativeTarget "BikeShareTopShelf" */;
 			buildPhases = (
+				9DC7678DE22CAA625A7CDD15 /* [CP] Check Pods Manifest.lock */,
 				CD164C161E2B1A7A0062CBA5 /* Sources */,
 				CD164C171E2B1A7A0062CBA5 /* Frameworks */,
 				CD164C181E2B1A7A0062CBA5 /* Resources */,
+				BF2F0D5C46598CBCAB58B69D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1104,10 +1171,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD164C4F1E2C385E0062CBA5 /* Build configuration list for PBXNativeTarget "BikeShareMac" */;
 			buildPhases = (
+				3536A4D8CEFB045ED5D5E6D2 /* [CP] Check Pods Manifest.lock */,
 				CD164C3F1E2C385D0062CBA5 /* Sources */,
 				CD164C401E2C385D0062CBA5 /* Frameworks */,
 				CD164C411E2C385D0062CBA5 /* Resources */,
 				CD164C931E33C3540062CBA5 /* Embed App Extensions */,
+				10D65B5AB75B09580DABECA4 /* [CP] Embed Pods Frameworks */,
+				79E824B0999B8C4DC3477E41 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1123,9 +1193,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD164C901E33C3540062CBA5 /* Build configuration list for PBXNativeTarget "BikeShareMacWidget" */;
 			buildPhases = (
+				E2270F1E6C32A4227C26E3B5 /* [CP] Check Pods Manifest.lock */,
 				CD164C7B1E33C3540062CBA5 /* Sources */,
 				CD164C7C1E33C3540062CBA5 /* Frameworks */,
 				CD164C7D1E33C3540062CBA5 /* Resources */,
+				1193BAE61EAA99CA00DF44F3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1140,10 +1212,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD8C1B671E218056000F9A9D /* Build configuration list for PBXNativeTarget "BikeShareTV" */;
 			buildPhases = (
+				9B16402D71043FE2A1A5FEBC /* [CP] Check Pods Manifest.lock */,
 				CD8C1B551E218056000F9A9D /* Sources */,
 				CD8C1B561E218056000F9A9D /* Frameworks */,
 				CD8C1B571E218056000F9A9D /* Resources */,
 				CD164C271E2B1A7A0062CBA5 /* Embed App Extensions */,
+				AAE3866E80A5D334CDB5303E /* [CP] Embed Pods Frameworks */,
+				49658609DB94CAC9ECF85AA1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1159,9 +1234,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDEF3D0B1E1737110002063F /* Build configuration list for PBXNativeTarget "BikeShareWidget" */;
 			buildPhases = (
+				668AB5CE6633CE737B0D4305 /* [CP] Check Pods Manifest.lock */,
 				CDEF3CFA1E1737110002063F /* Sources */,
 				CDEF3CFB1E1737110002063F /* Frameworks */,
 				CDEF3CFC1E1737110002063F /* Resources */,
+				8F1726C1F0D2FD2074C5AA1C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1176,10 +1253,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDF347651E2A8BE800241A8A /* Build configuration list for PBXNativeTarget "BikeShareMessages" */;
 			buildPhases = (
+				9F6C21335D7005B7851F9D37 /* [CP] Check Pods Manifest.lock */,
 				CDF347501E2A8BE800241A8A /* Sources */,
 				CDF347511E2A8BE800241A8A /* Frameworks */,
 				CDF347521E2A8BE800241A8A /* Resources */,
 				CD6A6BAB1EAD77200042ABE5 /* Embed Carthage Frameworks */,
+				C9C00AA3F01149BCDED7E216 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1194,12 +1273,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDF6E7A81E0DBC3000C3C6CA /* Build configuration list for PBXNativeTarget "BikeShare" */;
 			buildPhases = (
+				8304B1DFDA094BE19940CC40 /* [CP] Check Pods Manifest.lock */,
 				CDF6E7901E0DBC3000C3C6CA /* Sources */,
 				CDF6E7911E0DBC3000C3C6CA /* Frameworks */,
 				CDF6E7921E0DBC3000C3C6CA /* Resources */,
 				CDEF3D0E1E1737110002063F /* Embed App Extensions */,
 				CDFBD72B1E3849A000C751D7 /* Embed Watch Content */,
-				CD6A6BA81EAD765A0042ABE5 /* Embed Carthage Frameworks */,
+				A31D064453539E20E8425156 /* [CP] Embed Pods Frameworks */,
+				40015366F00105DA160965E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1217,8 +1298,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDFBD72A1E3849A000C751D7 /* Build configuration list for PBXNativeTarget "BikeShareWatch" */;
 			buildPhases = (
+				DD92DF29BF3663F622A40EAE /* [CP] Check Pods Manifest.lock */,
 				CDFBD7051E3849A000C751D7 /* Resources */,
 				CDFBD7291E3849A000C751D7 /* Embed App Extensions */,
+				69E303B94BC4183C6211B877 /* Frameworks */,
+				66852C86984D6066B586E3F5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1234,9 +1318,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDFBD7281E3849A000C751D7 /* Build configuration list for PBXNativeTarget "BikeShareWatch Extension" */;
 			buildPhases = (
+				80C09FC9B890CA6D01335FEC /* [CP] Check Pods Manifest.lock */,
 				CDFBD70F1E3849A000C751D7 /* Sources */,
 				CDFBD7101E3849A000C751D7 /* Frameworks */,
 				CDFBD7111E3849A000C751D7 /* Resources */,
+				EB379CD113C024B9AB5B3924 /* [CP] Embed Pods Frameworks */,
+				2BC17D1295264DDC9C4E968C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1254,7 +1341,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "B Gay";
 				TargetAttributes = {
 					CD164C191E2B1A7A0062CBA5 = {
@@ -1327,6 +1414,7 @@
 					CDEF3CFD1E1737110002063F = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 8DDUQH2RUD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1337,6 +1425,7 @@
 					CDF347531E2A8BE800241A8A = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 8DDUQH2RUD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1350,6 +1439,7 @@
 					CDF6E7931E0DBC3000C3C6CA = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 8DDUQH2RUD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1372,6 +1462,7 @@
 					CDFBD7061E3849A000C751D7 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 8DDUQH2RUD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1382,6 +1473,7 @@
 					CDFBD7121E3849A000C751D7 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 8DDUQH2RUD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1514,23 +1606,321 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CD6A6BA81EAD765A0042ABE5 /* Embed Carthage Frameworks */ = {
+		10D65B5AB75B09580DABECA4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/BikeShare/Hero.framework",
-				"$(SRCROOT)/BikeShare/Charts.framework",
-				"$(SRCROOT)/BikeShare/DZNEmptyDataSet.framework",
-				"$(SRCROOT)/BikeShare/SDCAlertView.framework",
 			);
-			name = "Embed Carthage Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareMac/Pods-BikeShareMac-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1193BAE61EAA99CA00DF44F3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareMacWidget/Pods-BikeShareMacWidget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2BC17D1295264DDC9C4E968C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareWatch Extension/Pods-BikeShareWatch Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3536A4D8CEFB045ED5D5E6D2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareMac-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40015366F00105DA160965E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShare/Pods-BikeShare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49658609DB94CAC9ECF85AA1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareTV/Pods-BikeShareTV-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66852C86984D6066B586E3F5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareWatch/Pods-BikeShareWatch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		668AB5CE6633CE737B0D4305 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareWidget-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79E824B0999B8C4DC3477E41 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareMac/Pods-BikeShareMac-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80C09FC9B890CA6D01335FEC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareWatch Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8304B1DFDA094BE19940CC40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShare-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F1726C1F0D2FD2074C5AA1C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareWidget/Pods-BikeShareWidget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B16402D71043FE2A1A5FEBC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareTV-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9DC7678DE22CAA625A7CDD15 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareTopShelf-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9F6C21335D7005B7851F9D37 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareMessages-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A31D064453539E20E8425156 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BikeShare/Pods-BikeShare-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts-iOS/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/SDCAlertView/SDCAlertView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCAlertView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShare/Pods-BikeShare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AAE3866E80A5D334CDB5303E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareTV/Pods-BikeShareTV-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts-tvOS/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareTV/Pods-BikeShareTV-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF2F0D5C46598CBCAB58B69D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareTopShelf/Pods-BikeShareTopShelf-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9C00AA3F01149BCDED7E216 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareMessages/Pods-BikeShareMessages-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		CD6A6BAB1EAD77200042ABE5 /* Embed Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1545,6 +1935,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		DD92DF29BF3663F622A40EAE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareWatch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2270F1E6C32A4227C26E3B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareMacWidget-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB379CD113C024B9AB5B3924 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareWatch Extension/Pods-BikeShareWatch Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1821,7 +2262,6 @@
 				CD80AA771E624D2700C1E9B6 /* GBFSFeedClient.swift in Sources */,
 				CDA1348C1E2A8F35005542DE /* UITableView+Diff.swift in Sources */,
 				CD80AA711E624D1D00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
-				CD6A6BA51EAD59A60042ABE5 /* SloppySwiper.swift in Sources */,
 				CDA1349E1E2A9089005542DE /* ClientResponse.swift in Sources */,
 				CD6733301EAAEE220070E69B /* StationsClient.swift in Sources */,
 				CDA134A01E2A9091005542DE /* NetworksClient.swift in Sources */,
@@ -1833,7 +2273,6 @@
 				CDA134881E2A8E75005542DE /* Constants.swift in Sources */,
 				CDA134911E2A8F4F005542DE /* UIFont+Application.swift in Sources */,
 				CDA134A41E2A91F5005542DE /* StationDetailViewController+Messages.swift in Sources */,
-				CD6A6BA61EAD5A000042ABE5 /* SloppySwipePanGesture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1881,12 +2320,10 @@
 				CD2BA3D21EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift in Sources */,
 				CDEC200C1E4D50250044D923 /* GBFSSystemInformation.swift in Sources */,
 				CDF6E7B51E0DBD9500C3C6CA /* NetworkTableViewController.swift in Sources */,
-				CD6A6BA41EAD59A10042ABE5 /* SloppySwiper.swift in Sources */,
 				CDEF3D1A1E173B030002063F /* UITableView+Diff.swift in Sources */,
 				CDF6F5BE1E7DB46B009CBD32 /* BikeStationDiff.swift in Sources */,
 				CDEF3CF21E12FA110002063F /* UITraitCollection+Helper.swift in Sources */,
 				CDEC20121E4F69010044D923 /* NetworkSystemInformationTableViewController.swift in Sources */,
-				CD6A6BA21EAD584F0042ABE5 /* SloppySwipePanGesture.swift in Sources */,
 				CDF6E7CB1E0ED8FE00C3C6CA /* BikeNetwork.swift in Sources */,
 				CDF6E7B91E0DBDA800C3C6CA /* StationsTableViewContoller.swift in Sources */,
 				CD121DFA1E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift in Sources */,
@@ -1926,6 +2363,7 @@
 				CDFBD7191E3849A000C751D7 /* InterfaceController.swift in Sources */,
 				CDFBD73C1E3D30AD00C751D7 /* StationRowObject.swift in Sources */,
 				CDFBD7421E3D31EC00C751D7 /* NetworksClient.swift in Sources */,
+				CD7547D01F637EB4004EDA2A /* UserDefaults+Watch.swift in Sources */,
 				CDFBD7491E3D6ADA00C751D7 /* StationsInterfaceController.swift in Sources */,
 				CDFBD7381E3D2F4B00C751D7 /* ExtensionConstants.swift in Sources */,
 				CD80AA7B1E624D2B00C1E9B6 /* GBFSFeedClient.swift in Sources */,
@@ -1941,7 +2379,6 @@
 				CD2BA3D01EABFDC200C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CDFBD7411E3D31E500C751D7 /* BikeNetwork.swift in Sources */,
 				CD80AA6F1E624D0200C1E9B6 /* GBFSStationStatus.swift in Sources */,
-				CDFBD7371E3D2F4400C751D7 /* UserDefaults+Application.swift in Sources */,
 				CDFBD7471E3D45E400C751D7 /* UIColor+Application.swift in Sources */,
 				CD80AA871E624D3F00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */,
 				CD80AA811E624D3500C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */,
@@ -2070,6 +2507,7 @@
 /* Begin XCBuildConfiguration section */
 		CD164C241E2B1A7A0062CBA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 268D06BB54CA68ACAA385451 /* Pods-BikeShareTopShelf.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BikeShareTopShelf/BikeShareTopShelf.entitlements;
 				DEVELOPMENT_TEAM = 8DDUQH2RUD;
@@ -2080,12 +2518,13 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
 		};
 		CD164C251E2B1A7A0062CBA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A91F2744FFA12DAAEC837865 /* Pods-BikeShareTopShelf.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BikeShareTopShelf/BikeShareTopShelf.entitlements;
 				DEVELOPMENT_TEAM = 8DDUQH2RUD;
@@ -2096,12 +2535,13 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
 		CD164C501E2C385E0062CBA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00C58CD34357F0D6AC974C94 /* Pods-BikeShareMac.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2121,6 +2561,7 @@
 		};
 		CD164C511E2C385E0062CBA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EAC615F7C606208BE31871E /* Pods-BikeShareMac.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2140,6 +2581,7 @@
 		};
 		CD164C911E33C3540062CBA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CA58BA986CC94660ACE2871 /* Pods-BikeShareMacWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BikeShareMacWidget/BikeShareMacWidget.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -2158,6 +2600,7 @@
 		};
 		CD164C921E33C3540062CBA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67F9A54FDF3F5A1317E80D33 /* Pods-BikeShareMacWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BikeShareMacWidget/BikeShareMacWidget.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -2176,6 +2619,7 @@
 		};
 		CD8C1B651E218056000F9A9D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7B10F8ADBD2C0CD2AF3D5CB /* Pods-BikeShareTV.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
@@ -2189,12 +2633,13 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
 		};
 		CD8C1B661E218056000F9A9D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C325B018F5A81E40DF29BB69 /* Pods-BikeShareTV.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
@@ -2208,40 +2653,45 @@
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
 		CDEF3D0C1E1737110002063F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03245E6EA6C5EB1614A0ADC7 /* Pods-BikeShareWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BikeShareWidget/BikeShareWidget.entitlements;
 				DEVELOPMENT_TEAM = 8DDUQH2RUD;
 				INFOPLIST_FILE = BikeShareWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		CDEF3D0D1E1737110002063F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2F2EAF2612961EF738D4C2E /* Pods-BikeShareWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BikeShareWidget/BikeShareWidget.entitlements;
 				DEVELOPMENT_TEAM = 8DDUQH2RUD;
 				INFOPLIST_FILE = BikeShareWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 		CDF347631E2A8BE800241A8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3128EE3E6927AFD36AABADE /* Pods-BikeShareMessages.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CODE_SIGN_ENTITLEMENTS = BikeShareMessages/BikeShareMessages.entitlements;
@@ -2251,16 +2701,18 @@
 					"$(PROJECT_DIR)/BikeShare",
 				);
 				INFOPLIST_FILE = BikeShareMessages/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareMessages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		CDF347641E2A8BE800241A8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86F0483AF277B9B6DC4353E7 /* Pods-BikeShareMessages.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CODE_SIGN_ENTITLEMENTS = BikeShareMessages/BikeShareMessages.entitlements;
@@ -2270,11 +2722,12 @@
 					"$(PROJECT_DIR)/BikeShare",
 				);
 				INFOPLIST_FILE = BikeShareMessages/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareMessages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -2287,7 +2740,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2295,7 +2750,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2337,7 +2796,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2345,7 +2806,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2373,6 +2838,7 @@
 		};
 		CDF6E7A91E0DBC3000C3C6CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16B6E30C42D48A70BEEEDB54 /* Pods-BikeShare.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2383,15 +2849,17 @@
 					"$(PROJECT_DIR)/BikeShare",
 				);
 				INFOPLIST_FILE = BikeShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		CDF6E7AA1E0DBC3000C3C6CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B721E7221592F38F3551633 /* Pods-BikeShare.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2402,15 +2870,17 @@
 					"$(PROJECT_DIR)/BikeShare",
 				);
 				INFOPLIST_FILE = BikeShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 		CDFBD7241E3849A000C751D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCEA5FA537A60F148267AEA2 /* Pods-BikeShareWatch.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2422,14 +2892,15 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
 		CDFBD7251E3849A000C751D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96F03230204D7D994C80EF7E /* Pods-BikeShareWatch.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2441,14 +2912,15 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
 		CDFBD7261E3849A000C751D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3132EE50C7E178187528904A /* Pods-BikeShareWatch Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "BikeShareWatch Extension/BikeShareWatch Extension.entitlements";
@@ -2459,7 +2931,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.1;
 			};
@@ -2467,6 +2939,7 @@
 		};
 		CDFBD7271E3849A000C751D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE38B93AF0F376FFBA548DE7 /* Pods-BikeShareWatch Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "BikeShareWatch Extension/BikeShareWatch Extension.entitlements";
@@ -2477,7 +2950,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.1;
 			};

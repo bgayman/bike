@@ -26,7 +26,7 @@ class InterfaceController: WKInterfaceController
         }
     }
     @IBOutlet var table: WKInterfaceTable!
-    let rowType = "StationRow"
+    @objc let rowType = "StationRow"
     
     override func awake(withContext context: Any?)
     {
@@ -51,7 +51,7 @@ class InterfaceController: WKInterfaceController
         super.didDeactivate()
     }
     
-    func fetchNetworks()
+    @objc func fetchNetworks()
     {
         var networksClient = NetworksClient()
         networksClient.fetchNetworks
@@ -80,7 +80,7 @@ class InterfaceController: WKInterfaceController
         }
         DispatchQueue.global(qos: .userInitiated).async
         { [weak self] in
-            let sortedNetworks = networks.sorted { $0.0.location.distance < $0.1.location.distance }
+            let sortedNetworks = networks.sorted { $0.location.distance < $1.location.distance }
             DispatchQueue.main.async
             {
                 self?.networks = sortedNetworks

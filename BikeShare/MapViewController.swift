@@ -52,7 +52,7 @@ class MapViewController: BaseMapViewController
     }
     
     //MARK: - Properties
-    lazy var mapView: MKMapView =
+    @objc lazy var mapView: MKMapView =
     {
         let mapView = MKMapView()
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -80,14 +80,14 @@ class MapViewController: BaseMapViewController
         return mapView
     }()
     
-    var shouldAnimateAnnotationUpdates = true
+    @objc var shouldAnimateAnnotationUpdates = true
     #if os(macOS)
     @IBOutlet weak var activityIndicator: NSProgressIndicator!
     @IBOutlet weak var mapKeyView: MapKeyView!
     #elseif !os(macOS)
     var filterState = FilterState.all
 
-    lazy var mapKeyView: MapKeyView =
+    @objc lazy var mapKeyView: MapKeyView =
     {
         let mapKeyView = MapKeyView(frame: CGRect(x: 0, y: 0, width: 255
             , height: 70))
@@ -117,7 +117,7 @@ class MapViewController: BaseMapViewController
         return mapKeyView
     }()
     
-    lazy var segmentedControl: UISegmentedControl =
+    @objc lazy var segmentedControl: UISegmentedControl =
     {
         let segmentedControl = UISegmentedControl(items: ["All", " ★ "])
         segmentedControl.addTarget(self, action: #selector(self.segmentedControlDidChange(_:)), for: .valueChanged)
@@ -128,7 +128,7 @@ class MapViewController: BaseMapViewController
     }()
     
     #if !os(tvOS)
-    lazy var searchBar: UISearchBar =
+    @objc lazy var searchBar: UISearchBar =
     {
         let searchBar = UISearchBar(frame: CGRect(x: 0.0, y: 0.0, width: 210.0, height: 14.0))
         searchBar.searchBarStyle = .minimal
@@ -138,10 +138,10 @@ class MapViewController: BaseMapViewController
     }()
     #endif
     
-    var toolbarBottomLayoutConstraint: NSLayoutConstraint?
-    var mapBottomLayoutConstraint: NSLayoutConstraint?
+    @objc var toolbarBottomLayoutConstraint: NSLayoutConstraint?
+    @objc var mapBottomLayoutConstraint: NSLayoutConstraint?
     
-    lazy var toolbarStackView: UIStackView =
+    @objc lazy var toolbarStackView: UIStackView =
     {
         let toolbarStackView = UIStackView()
         toolbarStackView.axis = .horizontal
@@ -149,7 +149,7 @@ class MapViewController: BaseMapViewController
         return toolbarStackView
     }()
     
-    lazy var refreshButton: UIButton =
+    @objc lazy var refreshButton: UIButton =
     {
         let refreshButton = UIButton(frame: CGRect(x: 0.0, y: 0.0, width: 22.0, height: 22.0))
         refreshButton.setImage(#imageLiteral(resourceName: "refresh"), for: .normal)
@@ -158,7 +158,7 @@ class MapViewController: BaseMapViewController
         return refreshButton
     }()
     
-    lazy var toolbar: UIView =
+    @objc lazy var toolbar: UIView =
     {
         let toolbar = UIView()
         toolbar.translatesAutoresizingMaskIntoConstraints = false
@@ -191,13 +191,13 @@ class MapViewController: BaseMapViewController
         return toolbar
     }()
     
-    lazy var settingsBarButton: UIBarButtonItem =
+    @objc lazy var settingsBarButton: UIBarButtonItem =
     {
         let settingsBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(self.didPressSettings(_:)))
         return settingsBarButton
     }()
     
-    lazy var locationBarButton: UIBarButtonItem =
+    @objc lazy var locationBarButton: UIBarButtonItem =
     {
         let locationControl = LocationControl(frame: CGRect(x: 0.0, y: 0.0, width: 22.0, height: 22.0))
         locationControl.addTarget(self, action: #selector(self.didPressLocationButton), for: .touchUpInside)
@@ -243,7 +243,7 @@ class MapViewController: BaseMapViewController
         }
     }
     
-    var initialDrop = true
+    @objc var initialDrop = true
     var networkFeeds: [GBFSFeed]?
     var deeplink: Deeplink? = nil
     
@@ -252,7 +252,7 @@ class MapViewController: BaseMapViewController
     weak var delegate: MapViewControllerDelegate?
     
     #if !os(macOS)
-    lazy var infoBarButton: UIBarButtonItem =
+    @objc lazy var infoBarButton: UIBarButtonItem =
     {
         let btn = UIButton(type: .infoLight)
         btn.addTarget(self, action: #selector(self.didPressInfo), for: .touchUpInside)
@@ -291,7 +291,7 @@ class MapViewController: BaseMapViewController
         }
     }
     
-    var userManager: UserManager
+    @objc var userManager: UserManager
     {
         #if os(macOS)
         guard let appDelegate = NSApplication.shared().delegate as? AppDelegate else { return UserManager() }
@@ -310,6 +310,8 @@ class MapViewController: BaseMapViewController
         #if !os(macOS)
         #if !os(tvOS)
         self.view.setNeedsLayout()
+        self.navigationItem.largeTitleDisplayMode = .never
+
         self.navigationItem.hidesBackButton = false
         self.navigationItem.leftItemsSupplementBackButton = true
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -348,7 +350,7 @@ class MapViewController: BaseMapViewController
         }
     }
     
-    func setupNotifications()
+    @objc func setupNotifications()
     {
         #if !os(tvOS)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillAppear(notification:)), name: .UIKeyboardWillShow, object: nil)
@@ -385,7 +387,7 @@ class MapViewController: BaseMapViewController
     
     #endif
     //MARK: - UI Helpers
-    func setupForStations()
+    @objc func setupForStations()
     {
         self.title = self.network?.name ?? ""
         self.state = .stations
@@ -401,7 +403,7 @@ class MapViewController: BaseMapViewController
         #endif
     }
     
-    func setupForNetworks()
+    @objc func setupForNetworks()
     {
         self.state = .networks
         self.mapView.removeAnnotations(self.mapView.annotations)
@@ -489,7 +491,7 @@ class MapViewController: BaseMapViewController
         self.present(navVC, animated: true)
     }
     
-    func segmentedControlDidChange(_ segmentedControl: UISegmentedControl)
+    @objc func segmentedControlDidChange(_ segmentedControl: UISegmentedControl)
     {
         guard let filterState = FilterState(rawValue: segmentedControl.selectedSegmentIndex) else { return }
         self.delegate?.didSet(filterState: filterState)
@@ -556,7 +558,7 @@ class MapViewController: BaseMapViewController
     }
     
     #if !os(tvOS)
-    func keyboardWillAppear(notification: Notification)
+    @objc func keyboardWillAppear(notification: Notification)
     {
         let userInfo = notification.userInfo
         guard let frame = userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect,
@@ -573,7 +575,7 @@ class MapViewController: BaseMapViewController
         self.view.layoutIfNeeded()
     }
     
-    func keyboardWillHide(notification: Notification)
+    @objc func keyboardWillHide(notification: Notification)
     {
         let userInfo = notification.userInfo
         guard let duration = userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval else
@@ -820,12 +822,12 @@ extension MapViewController: UIViewControllerPreviewingDelegate
 //MARK: - BikeDetailCalloutAccessoryViewDelegate
 extension MapViewController: BikeDetailCalloutAccessoryViewDelegate
 {
-    func didSelectNetworkCallout(with mapBikeNetwork: MapBikeNetwork)
+    @objc func didSelectNetworkCallout(with mapBikeNetwork: MapBikeNetwork)
     {
         self.delegate?.didSelect(mapBikeNetwork: mapBikeNetwork)
     }
     
-    func didSelectStationCallout(with mapBikeStation: MapBikeStation)
+    @objc func didSelectStationCallout(with mapBikeStation: MapBikeStation)
     {
         self.delegate?.didSelect(mapBikeStation: mapBikeStation)
     }

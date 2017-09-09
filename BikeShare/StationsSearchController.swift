@@ -20,7 +20,7 @@ class StationsSearchController: UITableViewController
         }
     }
     
-    var searchString = ""
+    @objc var searchString = ""
     {
         didSet
         {
