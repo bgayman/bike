@@ -19,7 +19,7 @@ class MapBikeStation: NSObject, MKAnnotation
     
     var title: String?
     {
-        return self.bikeStation.name
+        return self.bikeStation.statusDisplayText
     }
     
     var coordinate: CLLocationCoordinate2D
@@ -33,11 +33,11 @@ class MapBikeStation: NSObject, MKAnnotation
         let strings: [String]
         if let rentalMethods = rentalMethods
         {
-            strings = [self.bikeStation.statusDisplayText, "Accepts: \(rentalMethods.joined(separator: ", "))"]
+            strings = [self.bikeStation.name, "Accepts: \(rentalMethods.joined(separator: ", "))"]
         }
         else
         {
-            strings = [self.bikeStation.statusDisplayText]
+            strings = [self.bikeStation.name]
         }
         return strings.joined(separator: "\n")
     }

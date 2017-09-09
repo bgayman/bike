@@ -21,7 +21,6 @@ class TodayViewController: UIViewController, NCWidgetProviding
     {
         didSet
         {
-            self.closebyStations = nil
             self.tableView.reloadData()
             if oldValue ?? [] != self.stations ?? []
             {
@@ -63,7 +62,7 @@ class TodayViewController: UIViewController, NCWidgetProviding
         return tableView
     }()
     
-    lazy var closebyStations: [BikeStation]! =
+    var closebyStations: [BikeStation]
     {
         if ExtensionConstants.userManager.currentLocation == nil,
            let homeNetwork = UserDefaults.bikeShareGroup.homeNetwork
@@ -75,7 +74,7 @@ class TodayViewController: UIViewController, NCWidgetProviding
         let sortedStations = self.stations?.sorted{ $0.distance < $1.distance } ?? []
         let closebyStations = Array(sortedStations.prefix(5))
         return closebyStations
-    }()
+    }
     
     @objc var mapHeight: CGFloat
     {
@@ -170,7 +169,6 @@ class TodayViewController: UIViewController, NCWidgetProviding
                     }
                     
                     strongSelf.stations = stations
-                    strongSelf.closebyStations = nil
                     try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: ["network": network.jsonDict as AnyObject, "stations": strongSelf.closebyStations.map { $0.jsonDict } as AnyObject])
                     if stations.count > 1
                     {
@@ -206,7 +204,6 @@ class TodayViewController: UIViewController, NCWidgetProviding
     //MARK: - Location Update
     @objc func didUpdateCurrentLocation()
     {
-        self.closebyStations = nil
         self.tableView.reloadData()
     }
 
