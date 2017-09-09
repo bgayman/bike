@@ -648,10 +648,21 @@ extension MapViewController: MKMapViewDelegate
     {
         let identifier = "Bike"
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+        if annotation is MKClusterAnnotation
+        {
+            switch state
+            {
+            case .networks:
+                return nil
+            case .stations:
+                break
+            }
+        }
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
         if annotationView == nil
         {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         }
         
         switch self.state
@@ -659,11 +670,13 @@ extension MapViewController: MKMapViewDelegate
         case .networks:
             guard annotation is MapBikeNetwork else { return nil }
             annotationView?.annotation = annotation
-            annotationView?.pinTintColor = UIColor.app_blue
+            annotationView?.markerTintColor = UIColor.app_blue
             let network = annotation as! MapBikeNetwork
             let bikeNetworkDetailView = BikeDetailCalloutAccessoryView(annotation: BikeDetailCalloutAnnotation.mapBikeNetwork(network: network))
             bikeNetworkDetailView.delegate = self
             annotationView?.detailCalloutAccessoryView = bikeNetworkDetailView
+            annotationView?.clusteringIdentifier = "network"
+            annotationView?.displayPriority = MKFeatureDisplayPriority(rawValue: MKFeatureDisplayPriority.RawValue(UserDefaults.standard.isNetworkHomeNetwork(network: network.bikeNetwork) ? 1000 : 500))
             
         case .stations:
             guard annotation is MapBikeStation,
@@ -671,14 +684,16 @@ extension MapViewController: MKMapViewDelegate
             else { return nil }
             annotationView?.annotation = annotation
             let station = annotation as! MapBikeStation
-            annotationView?.pinTintColor = station.bikeStation.pinTintColor
+            annotationView?.markerTintColor = station.bikeStation.pinTintColor
             let bikeStationDetailView = BikeDetailCalloutAccessoryView(annotation: .mapBikeStation(network: MapBikeNetwork(bikeNetwork: network),station: station))
             bikeStationDetailView.delegate = self
             annotationView?.detailCalloutAccessoryView = bikeStationDetailView
+            annotationView?.clusteringIdentifier = "\(station.bikeStation.pinTintColor)"
+            let capacity = (station.bikeStation.emptySlots ?? 0) + (station.bikeStation.freeBikes ?? 0)
+            annotationView?.displayPriority = MKFeatureDisplayPriority(rawValue: MKFeatureDisplayPriority.RawValue(UserDefaults.standard.isStationFavorited(station: station.bikeStation, network: network) ? 1000 : capacity))
         }
         
         annotationView?.canShowCallout = true
-        annotationView?.animatesDrop = self.mapView.annotations.count < 15
         
         if self.traitCollection.forceTouchCapability == .available
         {
@@ -694,9 +709,10 @@ extension MapViewController: MKMapViewDelegate
         #if !(os(macOS) || os(tvOS))
             self.searchBar.showsCancelButton = false
             self.searchBar.resignFirstResponder()
-            if self.traitCollection.forceTouchCapability == .available, let annotationView = view as? MKPinAnnotationView
+            if self.traitCollection.forceTouchCapability == .available, let annotationView = view as? MKMarkerAnnotationView,
+               let detailCalloutAccessoryView = annotationView.detailCalloutAccessoryView
             {
-                self.registerForPreviewing(with: self, sourceView: annotationView.detailCalloutAccessoryView!)
+                self.registerForPreviewing(with: self, sourceView: detailCalloutAccessoryView)
             }
         #endif
         switch self.state

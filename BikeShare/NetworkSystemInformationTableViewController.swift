@@ -349,14 +349,13 @@ extension NetworkSystemInformationTableViewController: MKMapViewDelegate
     {
         let identifier = "Bike"
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
         if annotationView == nil
         {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         }
-        annotationView?.pinTintColor = UIColor.app_blue
+        annotationView?.markerTintColor = UIColor.app_blue
         annotationView?.canShowCallout = true
-        annotationView?.animatesDrop = true
         return annotationView
     }
 }

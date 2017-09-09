@@ -428,10 +428,10 @@ extension StationDetailViewController: MKMapViewDelegate
     {
         let identifier = "Bike"
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
         if annotationView == nil
         {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             #if !os(tvOS)
             annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             #endif
@@ -440,9 +440,8 @@ extension StationDetailViewController: MKMapViewDelegate
         {
             return nil
         }
-        annotationView?.pinTintColor = station.bikeStation.pinTintColor
+        annotationView?.markerTintColor = station.bikeStation.pinTintColor
         annotationView?.canShowCallout = true
-        annotationView?.animatesDrop = false
         return annotationView
     }
 }

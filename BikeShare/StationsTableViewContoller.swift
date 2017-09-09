@@ -462,10 +462,11 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
                 prompt = nil
             }
             #endif
-            let sortedStations = stations.sorted{ $0.distance < $1.distance }
-            self.bikeStationDiffs += BikeStationDiff.performDiff(with: self.stations, newDataSource: sortedStations) ?? [BikeStationDiff]()
+            
             DispatchQueue.main.async
             {
+                let sortedStations = stations.sorted{ $0.distance < $1.distance }
+                self.bikeStationDiffs += BikeStationDiff.performDiff(with: self.stations, newDataSource: sortedStations) ?? [BikeStationDiff]()
                 #if !os(tvOS)
                 self.mapViewController?.navigationItem.prompt = prompt
                 #endif

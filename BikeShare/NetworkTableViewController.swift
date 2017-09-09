@@ -362,30 +362,27 @@ class NetworkTableViewController: UITableViewController
             }
             return
         }
-        DispatchQueue.global(qos: .userInitiated).async
+        DispatchQueue.main.async
         {
             let sortedNetworks = networks.sorted { $0.location.distance < $1.location.distance }
-            DispatchQueue.main.async
+            self.networks = sortedNetworks
+            UserDefaults.bikeShareGroup.setNetworks(networks: sortedNetworks)
+            if self.navigationController?.topViewController === self
             {
-                self.networks = sortedNetworks
-                UserDefaults.bikeShareGroup.setNetworks(networks: sortedNetworks)
-                if self.navigationController?.topViewController === self
+                if !fromUserLocationUpdate
                 {
-                    if !fromUserLocationUpdate
-                    {
-                        self.networkMapViewController?.networks = sortedNetworks
-                    }
-                    else
-                    {
-                        self.networkMapViewController?.shouldAnimateAnnotationUpdates = false
-                        self.networkMapViewController?.networks = sortedNetworks
-                        self.networkMapViewController?.shouldAnimateAnnotationUpdates = true
-                    }
-                    if !sortedNetworks.isEmpty
-                    {
-                        self.didFetchNetworkCallback?()
-                        self.didFetchNetworkCallback = nil
-                    }
+                    self.networkMapViewController?.networks = sortedNetworks
+                }
+                else
+                {
+                    self.networkMapViewController?.shouldAnimateAnnotationUpdates = false
+                    self.networkMapViewController?.networks = sortedNetworks
+                    self.networkMapViewController?.shouldAnimateAnnotationUpdates = true
+                }
+                if !sortedNetworks.isEmpty
+                {
+                    self.didFetchNetworkCallback?()
+                    self.didFetchNetworkCallback = nil
                 }
             }
         }
