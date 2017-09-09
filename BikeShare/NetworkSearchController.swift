@@ -44,7 +44,6 @@ class NetworkSearchController: UITableViewController
         self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.automaticallyAdjustsScrollViewInsets = true
     }
     
     //MARK: - TableView

@@ -65,7 +65,7 @@ class MapViewController: BaseMapViewController
         #else
         self.view.subviews.forEach { if $0 is MKMapView { $0.removeFromSuperview() } }
         self.view.addSubview(mapView)
-        mapView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        mapView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         self.mapBottomLayoutConstraint = mapView.bottomAnchor.constraint(equalTo: self.toolbar.bottomAnchor)
         self.mapBottomLayoutConstraint?.isActive = true
             
@@ -101,7 +101,7 @@ class MapViewController: BaseMapViewController
         #else
             mapKeyView.widthAnchor.constraint(equalToConstant: 300).isActive = true
             mapKeyView.heightAnchor.constraint(equalToConstant: 70).isActive = true
-            mapKeyView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor, constant: -20).isActive = true
+            mapKeyView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
         #endif
         
         
@@ -655,7 +655,12 @@ extension MapViewController: MKMapViewDelegate
             case .networks:
                 return nil
             case .stations:
-                break
+                var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "cluster") as? StationClusterView
+                if annotationView == nil
+                {
+                    annotationView = StationClusterView(annotation: annotation, reuseIdentifier: "cluster")
+                }
+                return annotationView
             }
         }
         
@@ -688,7 +693,7 @@ extension MapViewController: MKMapViewDelegate
             let bikeStationDetailView = BikeDetailCalloutAccessoryView(annotation: .mapBikeStation(network: MapBikeNetwork(bikeNetwork: network),station: station))
             bikeStationDetailView.delegate = self
             annotationView?.detailCalloutAccessoryView = bikeStationDetailView
-            annotationView?.clusteringIdentifier = "\(station.bikeStation.pinTintColor)"
+            annotationView?.clusteringIdentifier = "station"
             let capacity = (station.bikeStation.emptySlots ?? 0) + (station.bikeStation.freeBikes ?? 0)
             annotationView?.displayPriority = MKFeatureDisplayPriority(rawValue: MKFeatureDisplayPriority.RawValue(UserDefaults.standard.isStationFavorited(station: station.bikeStation, network: network) ? 1000 : capacity))
         }

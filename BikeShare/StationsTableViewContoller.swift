@@ -97,7 +97,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         self.view.addSubview(toolbar)
         toolbar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         toolbar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        toolbar.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+        toolbar.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         toolbar.items = [UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil), UIBarButtonItem(customView: self.segmentedControl), UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)]
         return toolbar
@@ -111,7 +111,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(tableView)
-        tableView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         #if !os(tvOS)
         tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true

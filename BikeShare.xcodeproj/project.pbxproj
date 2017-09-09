@@ -122,6 +122,7 @@
 		CD2BA3D31EABFE8D00C26F90 /* StationDetailGraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */; };
 		CD3932361EBF63C7009427E6 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3932351EBF63C7009427E6 /* LocationControl.swift */; };
 		CD3932391EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */; };
+		CD57C1371F6447F900BF3BB1 /* StationClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */; };
 		CD6276EB1EB4E712008666AC /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
 		CD6276EC1EB4E784008666AC /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
 		CD6276ED1EB4E794008666AC /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
@@ -582,6 +583,7 @@
 		CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDetailGraphTableViewCell.swift; sourceTree = "<group>"; };
 		CD3932351EBF63C7009427E6 /* LocationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationControl.swift; sourceTree = "<group>"; };
 		CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap"; sourceTree = "<group>"; };
+		CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationClusterView.swift; sourceTree = "<group>"; };
 		CD6733201EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap"; sourceTree = "<group>"; };
 		CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationStatus.swift; sourceTree = "<group>"; };
 		CD67332D1EAAEE220070E69B /* StationsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsClient.swift; sourceTree = "<group>"; };
@@ -910,6 +912,7 @@
 				CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */,
 				CD80AAAA1E6BA81F00C1E9B6 /* MapKeyView.swift */,
 				CD3932351EBF63C7009427E6 /* LocationControl.swift */,
+				CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2326,6 +2329,7 @@
 				CDEC20121E4F69010044D923 /* NetworkSystemInformationTableViewController.swift in Sources */,
 				CDF6E7CB1E0ED8FE00C3C6CA /* BikeNetwork.swift in Sources */,
 				CDF6E7B91E0DBDA800C3C6CA /* StationsTableViewContoller.swift in Sources */,
+				CD57C1371F6447F900BF3BB1 /* StationClusterView.swift in Sources */,
 				CD121DFA1E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift in Sources */,
 				CD1ED2E51EB6CB6600806D97 /* MapSettingsViewController.swift in Sources */,
 				CDF6E7B11E0DBD8300C3C6CA /* BikeTableViewCell.swift in Sources */,
