@@ -72,6 +72,7 @@ class MapViewController: BaseMapViewController
         self.toolbarBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : 44.0
         self.mapBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : -44.0
         self.view.bringSubview(toFront: self.toolbar)
+        mapView.mapType = .mutedStandard
         #endif
         mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
@@ -420,20 +421,20 @@ class MapViewController: BaseMapViewController
     
     func configureForUpdatedNetworks(oldValue: [BikeNetwork], animated: Bool = true)
     {
-        let oldArray = oldValue
-        let oldSet = Set(oldArray)
-        let newArray = self.networks
-        let newSet = Set(newArray)
-        
-        let removed = oldSet.subtracting(newSet)
-        let inserted = newSet.subtracting(oldSet)
-        let annotationsToRemove = self.mapView.annotations.filter
-        {
-            guard let annotation = $0 as? MapBikeNetwork else { return false }
-            return removed.contains(annotation.bikeNetwork)
-        }
-        self.mapView.removeAnnotations(annotationsToRemove)
-        self.mapView.addAnnotations(inserted.map(MapBikeNetwork.init))
+//        let oldArray = oldValue
+//        let oldSet = Set(oldArray)
+//        let newArray = self.networks
+//        let newSet = Set(newArray)
+//
+//        let removed = oldSet.subtracting(newSet)
+//        let inserted = newSet.subtracting(oldSet)
+//        let annotationsToRemove = self.mapView.annotations.filter
+//        {
+//            guard let annotation = $0 as? MapBikeNetwork else { return false }
+//            return removed.contains(annotation.bikeNetwork)
+//        }
+        self.mapView.removeAnnotations(mapView.annotations)
+        self.mapView.addAnnotations(self.networks.map(MapBikeNetwork.init))
         if self.shouldAnimateAnnotationUpdates
         {
             self.mapView.showAnnotations(self.mapView.annotations, animated: true)
@@ -442,20 +443,20 @@ class MapViewController: BaseMapViewController
     
     func configureForUpdatedStations(oldValue: [BikeStation], animated: Bool = true)
     {
-        let oldArray = oldValue
-        let oldSet = Set(oldArray)
-        let newArray = self.stations
-        let newSet = Set(newArray)
-        
-        let removed = oldSet.subtracting(newSet)
-        let inserted = newSet.subtracting(oldSet)
-        let annotationsToRemove = self.mapView.annotations.filter
-        {
-            guard let annotation = $0 as? MapBikeStation else { return false }
-            return removed.contains(annotation.bikeStation)
-        }
-        self.mapView.removeAnnotations(annotationsToRemove)
-        self.mapView.addAnnotations(inserted.map(MapBikeStation.init))
+//        let oldArray = oldValue
+//        let oldSet = Set(oldArray)
+//        let newArray = self.stations
+//        let newSet = Set(newArray)
+//
+//        let removed = oldSet.subtracting(newSet)
+//        let inserted = newSet.subtracting(oldSet)
+//        let annotationsToRemove = self.mapView.annotations.filter
+//        {
+//            guard let annotation = $0 as? MapBikeStation else { return false }
+//            return removed.contains(annotation.bikeStation)
+//        }
+        self.mapView.removeAnnotations(mapView.annotations)
+        self.mapView.addAnnotations(self.stations.map(MapBikeStation.init))
         if self.shouldAnimateAnnotationUpdates
         {
             self.mapView.showAnnotations(self.mapView.annotations.filter({ $0 is MapBikeStation }), animated: true)
@@ -646,14 +647,17 @@ extension MapViewController: MKMapViewDelegate
     #if !os(macOS)
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        let identifier = "Bike"
-        
         if annotation is MKClusterAnnotation
         {
             switch state
             {
             case .networks:
-                return nil
+                var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "networkCluster") as? NetworkClusterView
+                if annotationView == nil
+                {
+                    annotationView = NetworkClusterView(annotation: annotation, reuseIdentifier: "networkCluster")
+                }
+                return annotationView
             case .stations:
                 var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "cluster") as? StationClusterView
                 if annotationView == nil
@@ -663,17 +667,16 @@ extension MapViewController: MKMapViewDelegate
                 return annotationView
             }
         }
-        
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView
-        if annotationView == nil
-        {
-            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        }
-        
+        var annotationView: MKMarkerAnnotationView?
         switch self.state
         {
         case .networks:
             guard annotation is MapBikeNetwork else { return nil }
+            annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "network") as? MKMarkerAnnotationView
+            if annotationView == nil
+            {
+                annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "network")
+            }
             annotationView?.annotation = annotation
             annotationView?.markerTintColor = UIColor.app_blue
             let network = annotation as! MapBikeNetwork
@@ -687,6 +690,11 @@ extension MapViewController: MKMapViewDelegate
             guard annotation is MapBikeStation,
                   let network = self.network
             else { return nil }
+            annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "station") as? MKMarkerAnnotationView
+            if annotationView == nil
+            {
+                annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "station")
+            }
             annotationView?.annotation = annotation
             let station = annotation as! MapBikeStation
             annotationView?.markerTintColor = station.bikeStation.pinTintColor
@@ -720,6 +728,10 @@ extension MapViewController: MKMapViewDelegate
                 self.registerForPreviewing(with: self, sourceView: detailCalloutAccessoryView)
             }
         #endif
+        if let cluster = view.annotation as? MKClusterAnnotation
+        {
+            mapView.showAnnotations(cluster.memberAnnotations, animated: true)
+        }
         switch self.state
         {
         case .networks:

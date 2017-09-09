@@ -113,6 +113,7 @@ class NetworkTableViewController: UITableViewController
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.view.backgroundColor = .app_beige
         self.mapBarButton.isEnabled = !self.networks.isEmpty
+        self.tableView.dragDelegate = self
         #else
         self.navigationItem.leftBarButtonItem = self.searchBarButton
         #endif
@@ -638,14 +639,35 @@ extension NetworkTableViewController: UIViewControllerPreviewingDelegate
         guard let indexPath = self.tableView.indexPathForRow(at: location) else { return nil }
         let network = self.networks[indexPath.row]
         let stationTableViewController = StationsTableViewController(with: network)
+        stationTableViewController.mapViewController = self.networkMapViewController
         return stationTableViewController
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)
     {
+        if let stationTableViewController = viewControllerToCommit as? StationsTableViewController
+        {
+            networkMapViewController?.stations = stationTableViewController.stations
+            networkMapViewController?.delegate = stationTableViewController
+        }
         self.navigationController?.show(viewControllerToCommit, sender: nil)
     }
 }
+
+// MARK: - UITableViewDragDelegate
+#if !os(tvOS)
+    extension NetworkTableViewController: UITableViewDragDelegate
+    {
+        func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
+        {
+            let network = self.networks[indexPath.row]
+            guard let url = URL(string: "\(Constants.WebSiteDomain)/stations/\(network.id)") else { return [] }
+            let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
+            let dragStringItem = UIDragItem(itemProvider: NSItemProvider(object: "\(network.name)" as NSString))
+            return [dragURLItem, dragStringItem]
+        }
+    }
+#endif
 
 extension BikeNetworkLocation
 {

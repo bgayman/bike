@@ -116,6 +116,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.toolbar.topAnchor).isActive = true
+        tableView.dragDelegate = self
         #else
         tableView.leadingAnchor.constraint(equalTo: self.view.readableContentGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.readableContentGuide.trailingAnchor).isActive = true
@@ -794,6 +795,20 @@ extension StationsTableViewController: UISearchControllerDelegate, UISearchBarDe
     }
     #endif
 }
+
+#if !os(tvOS)
+extension StationsTableViewController: UITableViewDragDelegate
+{
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
+    {
+        let station = self.stations[indexPath.row]
+        guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(self.network.id)/station/\(station.id)") else { return [] }
+        let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
+        let dragStringItem = UIDragItem(itemProvider: NSItemProvider(object: "\(station.name) \(station.statusDisplayText)" as NSString))
+        return [dragURLItem, dragStringItem]
+    }
+}
+#endif
 
 //MARK: - UIViewControllerPreviewingDelegate
 extension StationsTableViewController: UIViewControllerPreviewingDelegate

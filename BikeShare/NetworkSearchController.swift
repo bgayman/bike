@@ -44,6 +44,9 @@ class NetworkSearchController: UITableViewController
         self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
+        #if !os(tvOS)
+            self.tableView.dragDelegate = self
+        #endif
     }
     
     //MARK: - TableView
@@ -117,3 +120,18 @@ class NetworkSearchController: UITableViewController
     }
     #endif
 }
+
+// MARK: - UITableViewDragDelegate
+#if !os(tvOS)
+    extension NetworkSearchController: UITableViewDragDelegate
+    {
+        func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
+        {
+            let network = self.searchResults[indexPath.row]
+            guard let url = URL(string: "\(Constants.WebSiteDomain)/stations/\(network.id)") else { return [] }
+            let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
+            let dragStringItem = UIDragItem(itemProvider: NSItemProvider(object: "\(network.name)" as NSString))
+            return [dragURLItem, dragStringItem]
+        }
+    }
+#endif

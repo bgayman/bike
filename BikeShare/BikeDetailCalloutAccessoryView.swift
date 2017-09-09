@@ -82,6 +82,7 @@ class BikeDetailCalloutAccessoryView: UIView
         tableView.backgroundColor = .clear
         #if !os(tvOS)
             tableView.separatorStyle = .none
+            tableView.dragDelegate = self
         #endif
         return tableView
     }()
@@ -194,6 +195,28 @@ extension BikeDetailCalloutAccessoryView: UITableViewDelegate, UITableViewDataSo
         return self.rowHeight
     }
 }
+
+#if !os(tvOS)
+extension BikeDetailCalloutAccessoryView: UITableViewDragDelegate
+{
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
+    {
+        switch annotation
+        {
+        case .mapBikeNetwork(let network):
+            guard let url = URL(string: "\(Constants.WebSiteDomain)/stations/\(network.bikeNetwork.id)") else { return [] }
+            let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
+            let dragStringItem = UIDragItem(itemProvider: NSItemProvider(object: "\(network.bikeNetwork.name)" as NSString))
+            return [dragURLItem, dragStringItem]
+        case .mapBikeStation(let network, let station):
+            guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(network.bikeNetwork.id)/station/\(station.bikeStation.id)") else { return [] }
+            let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
+            let dragStringItem = UIDragItem(itemProvider: NSItemProvider(object: "\(station.bikeStation.name) \(station.bikeStation.statusDisplayText)" as NSString))
+            return [dragURLItem, dragStringItem]
+        }
+    }
+}
+#endif
 
 extension BikeDetailCalloutAccessoryView
 {
