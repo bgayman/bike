@@ -68,7 +68,6 @@ class MessagesStationsTableViewController: UITableViewController
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        self.definesPresentationContext = true
         self.refreshControl = refresh
         self.refresh.beginRefreshing()
     }
