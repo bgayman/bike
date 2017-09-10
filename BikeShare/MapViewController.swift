@@ -422,20 +422,20 @@ class MapViewController: BaseMapViewController
     
     func configureForUpdatedNetworks(oldValue: [BikeNetwork], animated: Bool = true)
     {
-//        let oldArray = oldValue
-//        let oldSet = Set(oldArray)
-//        let newArray = self.networks
-//        let newSet = Set(newArray)
-//
-//        let removed = oldSet.subtracting(newSet)
-//        let inserted = newSet.subtracting(oldSet)
-//        let annotationsToRemove = self.mapView.annotations.filter
-//        {
-//            guard let annotation = $0 as? MapBikeNetwork else { return false }
-//            return removed.contains(annotation.bikeNetwork)
-//        }
-        self.mapView.removeAnnotations(mapView.annotations)
-        self.mapView.addAnnotations(self.networks.map(MapBikeNetwork.init))
+        let oldArray = oldValue
+        let oldSet = Set(oldArray)
+        let newArray = self.networks
+        let newSet = Set(newArray)
+
+        let removed = oldSet.subtracting(newSet)
+        let inserted = newSet.subtracting(oldSet)
+        let annotationsToRemove = self.mapView.annotations.filter
+        {
+            guard let annotation = $0 as? MapBikeNetwork else { return false }
+            return removed.contains(annotation.bikeNetwork)
+        }
+        self.mapView.removeAnnotations(annotationsToRemove)
+        self.mapView.addAnnotations(inserted.map(MapBikeNetwork.init))
         if self.shouldAnimateAnnotationUpdates
         {
             self.mapView.showAnnotations(self.mapView.annotations, animated: true)
@@ -444,20 +444,20 @@ class MapViewController: BaseMapViewController
     
     func configureForUpdatedStations(oldValue: [BikeStation], animated: Bool = true)
     {
-//        let oldArray = oldValue
-//        let oldSet = Set(oldArray)
-//        let newArray = self.stations
-//        let newSet = Set(newArray)
-//
-//        let removed = oldSet.subtracting(newSet)
-//        let inserted = newSet.subtracting(oldSet)
-//        let annotationsToRemove = self.mapView.annotations.filter
-//        {
-//            guard let annotation = $0 as? MapBikeStation else { return false }
-//            return removed.contains(annotation.bikeStation)
-//        }
-        self.mapView.removeAnnotations(mapView.annotations)
-        self.mapView.addAnnotations(self.stations.map(MapBikeStation.init))
+        let oldArray = oldValue
+        let oldSet = Set(oldArray)
+        let newArray = self.stations
+        let newSet = Set(newArray)
+
+        let removed = oldSet.subtracting(newSet)
+        let inserted = newSet.subtracting(oldSet)
+        let annotationsToRemove = self.mapView.annotations.filter
+        {
+            guard let annotation = $0 as? MapBikeStation else { return false }
+            return removed.contains(annotation.bikeStation)
+        }
+        self.mapView.removeAnnotations(annotationsToRemove)
+        self.mapView.addAnnotations(inserted.map(MapBikeStation.init))
         if self.shouldAnimateAnnotationUpdates
         {
             self.mapView.showAnnotations(self.mapView.annotations.filter({ $0 is MapBikeStation }), animated: true)
