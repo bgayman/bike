@@ -238,7 +238,8 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: "\(BikeStationTableViewCell.self)", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "Cell")
 
         #if !os(tvOS)
             self.navigationItem.searchController = self.searchController
@@ -325,7 +326,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeStationTableViewCell
         cell.bikeStation = self.dataSource[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -896,7 +897,7 @@ extension BikeStation
         guard self.distance > 0 else { return "" }
         let measurement = Measurement<UnitLength>(value: self.distance, unit: UnitLength.meters)
         let string = Constants.measurementFormatter.string(from: measurement)
-        return "\(string) away"
+        return string
     }
 }
 

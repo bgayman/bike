@@ -44,7 +44,8 @@ class StationsSearchController: UITableViewController
     {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.app_beige
-        self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: "\(BikeStationTableViewCell.self)", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "Cell")
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         #if !os(tvOS)
@@ -60,7 +61,7 @@ class StationsSearchController: UITableViewController
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeStationTableViewCell
         cell.bikeStation = self.searchResults[indexPath.row]
         cell.searchString = self.searchString
         cell.accessoryType = .disclosureIndicator

@@ -29,6 +29,6 @@ extension BikeStation
         guard self.distance > 0 else { return "" }
         let measurement = Measurement<UnitLength>(value: self.distance, unit: UnitLength.meters)
         let string = Constants.measurementFormatter.string(from: measurement)
-        return "\(string) away"
+        return string
     }
 }

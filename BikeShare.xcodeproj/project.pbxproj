@@ -314,6 +314,16 @@
 		CDC4D8281F659A2E00885E0F /* BikeStation+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8251F659A2800885E0F /* BikeStation+AttributedString.swift */; };
 		CDC4D8291F659A2F00885E0F /* BikeStation+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8251F659A2800885E0F /* BikeStation+AttributedString.swift */; };
 		CDC4D82A1F659A2F00885E0F /* BikeStation+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8251F659A2800885E0F /* BikeStation+AttributedString.swift */; };
+		CDC4D82D1F65D8FA00885E0F /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */; };
+		CDC4D82E1F65D8FA00885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
+		CDC4D82F1F65E1CD00885E0F /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */; };
+		CDC4D8301F65E1CD00885E0F /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */; };
+		CDC4D8311F65E1CE00885E0F /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */; };
+		CDC4D8321F65E1D000885E0F /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */; };
+		CDC4D8331F65E7D000885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
+		CDC4D8341F65E7D100885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
+		CDC4D8351F65E7D200885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
+		CDC4D8361F65E7D300885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
 		CDDE92881F658C5B00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
 		CDDE92891F65904B00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
 		CDDE928A1F65904C00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
@@ -628,6 +638,8 @@
 		CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Application.swift"; sourceTree = "<group>"; };
 		CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeTableFooterView.swift; sourceTree = "<group>"; };
 		CDC4D8251F659A2800885E0F /* BikeStation+AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BikeStation+AttributedString.swift"; sourceTree = "<group>"; };
+		CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationTableViewCell.swift; sourceTree = "<group>"; };
+		CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationTableViewCell.xib; sourceTree = "<group>"; };
 		CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+Application.swift"; sourceTree = "<group>"; };
 		CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSFeed.swift; sourceTree = "<group>"; };
 		CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemInformation.swift; sourceTree = "<group>"; };
@@ -918,6 +930,8 @@
 				CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */,
 				CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */,
 				CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */,
+				CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */,
+				CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */,
 			);
 			name = "TableView Views";
 			sourceTree = "<group>";
@@ -1542,6 +1556,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDC4D8361F65E7D300885E0F /* BikeStationTableViewCell.xib in Resources */,
 				CD029C791ECC6B2C0091A0A9 /* Assets.xcassets in Resources */,
 				CD164C3E1E2BEC650062CBA5 /* Assets.xcassets in Resources */,
 			);
@@ -1570,6 +1585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD8C1B631E218056000F9A9D /* Assets.xcassets in Resources */,
+				CDC4D8351F65E7D200885E0F /* BikeStationTableViewCell.xib in Resources */,
 				CD029C781ECC6B2B0091A0A9 /* Assets.xcassets in Resources */,
 				CD8C1B611E218056000F9A9D /* Main.storyboard in Resources */,
 			);
@@ -1579,6 +1595,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDC4D8331F65E7D000885E0F /* BikeStationTableViewCell.xib in Resources */,
 				CD6276F11EB4EDA5008666AC /* Assets.xcassets in Resources */,
 				CDEF3D061E1737110002063F /* MainInterface.storyboard in Resources */,
 			);
@@ -1589,6 +1606,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDF3475E1E2A8BE800241A8A /* Assets.xcassets in Resources */,
+				CDC4D8341F65E7D100885E0F /* BikeStationTableViewCell.xib in Resources */,
 				CD6276F21EB4EDA5008666AC /* Assets.xcassets in Resources */,
 				CDF3475C1E2A8BE800241A8A /* MainInterface.storyboard in Resources */,
 			);
@@ -1603,6 +1621,7 @@
 				CDF6E79F1E0DBC3000C3C6CA /* Main.storyboard in Resources */,
 				CD6733221EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap in Resources */,
 				CD1ED2E91EB6D3BC00806D97 /* MapPinTableViewCell.xib in Resources */,
+				CDC4D82E1F65D8FA00885E0F /* BikeStationTableViewCell.xib in Resources */,
 				CDEC201E1E512E6A0044D923 /* PricingPlanTableViewCell.xib in Resources */,
 				CD3932391EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap in Resources */,
 			);
@@ -2041,6 +2060,7 @@
 				CD2BA3CD1EABFDBB00C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CD6276EC1EB4E784008666AC /* NetworksClient.swift in Sources */,
 				CDC4D82A1F659A2F00885E0F /* BikeStation+AttributedString.swift in Sources */,
+				CDC4D8321F65E1D000885E0F /* BikeStationTableViewCell.swift in Sources */,
 				CD164C281E2B1BC80062CBA5 /* BikeNetwork.swift in Sources */,
 				CD164C3A1E2BE3E60062CBA5 /* TopShelfView.swift in Sources */,
 				CD164C2E1E2B1BF30062CBA5 /* Constants.swift in Sources */,
@@ -2168,6 +2188,7 @@
 				CD8C1B741E2181C3000F9A9D /* StationDetailTableViewCell.swift in Sources */,
 				CD8C1B7B1E21822D000F9A9D /* StationsSearchController.swift in Sources */,
 				CD8C1B781E21821E000F9A9D /* BikeDetailCalloutAccessoryView.swift in Sources */,
+				CDC4D8311F65E1CE00885E0F /* BikeStationTableViewCell.swift in Sources */,
 				CD80AA881E624D4500C1E9B6 /* GBFSStationInformationClient.swift in Sources */,
 				CD8C1B851E218320000F9A9D /* UITraitCollection+Helper.swift in Sources */,
 				CD8C1B6B1E218199000F9A9D /* NetworkTableViewController.swift in Sources */,
@@ -2240,6 +2261,7 @@
 				CD6733361EAAEE3F0070E69B /* BikeStationStatus.swift in Sources */,
 				CD2BA3CA1EABFDB600C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CDF6F5BB1E7D7F80009CBD32 /* WidgetStationClient.swift in Sources */,
+				CDC4D82F1F65E1CD00885E0F /* BikeStationTableViewCell.swift in Sources */,
 				CD029C7D1ECDC6D00091A0A9 /* NSAttributedString+Application.swift in Sources */,
 				CDA134A91E2A939C005542DE /* ExtensionConstants.swift in Sources */,
 				CDEF3D161E1737AE0002063F /* ClientResponse.swift in Sources */,
@@ -2268,6 +2290,7 @@
 				CD80AA551E624CBE00C1E9B6 /* GBFSSystemInformation.swift in Sources */,
 				CDFED5D91E6214DB00D5C4BF /* GBFSStationInformationClient.swift in Sources */,
 				CD80AA5B1E624CCA00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */,
+				CDC4D8301F65E1CD00885E0F /* BikeStationTableViewCell.swift in Sources */,
 				CDA134941E2A8F69005542DE /* UITraitCollection+Helper.swift in Sources */,
 				CD80AA611E624CD500C1E9B6 /* GBFSSystemAlert.swift in Sources */,
 				CDA134841E2A8E61005542DE /* BikeStation.swift in Sources */,
@@ -2329,6 +2352,7 @@
 				CDFBD7311E3D2DC900C751D7 /* WatchSessionManager.swift in Sources */,
 				CDF6E7BF1E0EB6FB00C3C6CA /* NetworksClient.swift in Sources */,
 				CDA134A21E2A9124005542DE /* StationDetailViewController+Application.swift in Sources */,
+				CDC4D82D1F65D8FA00885E0F /* BikeStationTableViewCell.swift in Sources */,
 				CDA1D2C61E22B632008B2AE8 /* UIFont+Application.swift in Sources */,
 				CD791DE81EC75891009A6DB7 /* WatchSessionManager+iOS.swift in Sources */,
 				CD121DF41E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift in Sources */,

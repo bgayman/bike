@@ -37,7 +37,10 @@ extension BikeStation
         brokenSlotTextAttachment.image = #imageLiteral(resourceName: "icBrokenStationSmall")
         brokenSlotTextAttachment.setImageHeight(height: size)
         
-        var status = NSAttributedString(string: "\(freeBikes) ") + NSAttributedString(attachment: bikeTextAttachment) + NSAttributedString(string: ", \(emptySlots) ") + NSAttributedString(attachment: emptySlotTextAttachment)
+        let status: NSMutableAttributedString = NSMutableAttributedString(string: "\(freeBikes) ")
+        status.append(NSAttributedString(attachment: bikeTextAttachment))
+        status.append(NSAttributedString(string: ", \(emptySlots) "))
+        status.append(NSAttributedString(attachment: emptySlotTextAttachment))
         
         if self.gbfsStationInformation?.stationStatus?.isRenting == false ||
             self.gbfsStationInformation?.stationStatus?.isInstalled == false
@@ -47,11 +50,13 @@ extension BikeStation
         else if self.gbfsStationInformation?.stationStatus?.numberOfBikesDisabled ?? 0 > 0
             
         {
-            status = status + NSAttributedString(string: ", \(self.gbfsStationInformation?.stationStatus?.numberOfBikesDisabled ?? 0) ") + NSAttributedString(attachment: brokenBikeTextAttachment)
+            status.append(NSAttributedString(string: ", \(self.gbfsStationInformation?.stationStatus?.numberOfBikesDisabled ?? 0) "))
+            status.append(NSAttributedString(attachment: brokenBikeTextAttachment))
         }
         else if self.gbfsStationInformation?.stationStatus?.numberOfDocksDisabled ?? 0 > 0
         {
-            status = status + NSAttributedString(string: ", \(self.gbfsStationInformation?.stationStatus?.numberOfDocksDisabled ?? 0) ") + NSAttributedString(attachment: brokenSlotTextAttachment)
+            status.append(NSAttributedString(string: ", \(self.gbfsStationInformation?.stationStatus?.numberOfDocksDisabled ?? 0) "))
+            status.append(NSAttributedString(attachment: brokenSlotTextAttachment))
         }
         
         return status

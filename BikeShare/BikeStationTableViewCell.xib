@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="KGk-i7-Jjw" customClass="BikeStationTableViewCell" customModule="BikeShare" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="434" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="434" height="73.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwI-4k-fs1">
+                        <rect key="frame" x="92" y="8" width="103.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="748" text="Station Status" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="7Ex-1d-ecc">
+                        <rect key="frame" x="92" y="37" width="107.5" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Nq-sZ-mBB">
+                        <rect key="frame" x="338" y="30" width="96" height="35"/>
+                        <subviews>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8I-4L-w6q">
+                                <rect key="frame" x="0.0" y="0.0" width="46" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="vII-QF-IyZ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYq-H9-462">
+                                <rect key="frame" x="50" y="0.0" width="46" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="dJ7-X1-C2s"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GO!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNh-qT-Wlj">
+                        <rect key="frame" x="16" y="19.5" width="60" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="35" id="5LA-dw-btH"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="60" id="dat-P7-nCU"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7Ex-1d-ecc" firstAttribute="top" secondItem="rwI-4k-fs1" secondAttribute="bottom" constant="8" symbolic="YES" id="0Du-xw-ct2"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="rwI-4k-fs1" secondAttribute="trailing" id="1i2-JU-mQ0"/>
+                    <constraint firstItem="uNh-qT-Wlj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ER0-2G-bpM"/>
+                    <constraint firstItem="7Ex-1d-ecc" firstAttribute="leading" secondItem="uNh-qT-Wlj" secondAttribute="trailing" constant="16" id="Shp-Y4-tZ7"/>
+                    <constraint firstItem="0Nq-sZ-mBB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Ex-1d-ecc" secondAttribute="trailing" constant="8" symbolic="YES" id="WFb-F7-Tgf"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7Ex-1d-ecc" secondAttribute="bottom" constant="8" id="g1z-mr-p01"/>
+                    <constraint firstItem="uNh-qT-Wlj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="mDW-Bf-Oa9"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="0Nq-sZ-mBB" secondAttribute="trailing" constant="-8" id="sDR-rR-wVx"/>
+                    <constraint firstItem="fYq-H9-462" firstAttribute="baseline" secondItem="7Ex-1d-ecc" secondAttribute="baseline" id="vhA-GZ-naF"/>
+                    <constraint firstItem="rwI-4k-fs1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="xF1-cN-8p8"/>
+                    <constraint firstItem="7Ex-1d-ecc" firstAttribute="leading" secondItem="rwI-4k-fs1" secondAttribute="leading" id="xyk-6D-1B8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <inset key="separatorInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="distanceButton" destination="fYq-H9-462" id="cOL-7F-Kn8"/>
+                <outlet property="stationStatusLabel" destination="7Ex-1d-ecc" id="QM7-tr-VOb"/>
+                <outlet property="summaryLabel" destination="uNh-qT-Wlj" id="vZt-3s-DqB"/>
+                <outlet property="timeButton" destination="I8I-4L-w6q" id="x5C-UY-iO3"/>
+                <outlet property="titleLabel" destination="rwI-4k-fs1" id="Bsx-x8-bMB"/>
+            </connections>
+            <point key="canvasLocation" x="65" y="69"/>
+        </tableViewCell>
+    </objects>
+</document>
