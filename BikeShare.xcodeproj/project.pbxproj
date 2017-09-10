@@ -307,6 +307,9 @@
 		CDA1D2C71E22B9A4008B2AE8 /* UIFont+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */; };
 		CDA1D2C81E22B9A7008B2AE8 /* UIFont+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */; };
 		CDA1D2CA1E230243008B2AE8 /* BikeTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */; };
+		CDDE92881F658C5B00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
+		CDDE92891F65904B00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
+		CDDE928A1F65904C00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
 		CDEC200A1E4D4E8D0044D923 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
 		CDEC200C1E4D50250044D923 /* GBFSSystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */; };
 		CDEC200E1E4F61790044D923 /* GBFSSystemInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */; };
@@ -617,6 +620,7 @@
 		CDA134AC1E2A9C19005542DE /* MessagesStationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesStationsTableViewController.swift; sourceTree = "<group>"; };
 		CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Application.swift"; sourceTree = "<group>"; };
 		CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeTableFooterView.swift; sourceTree = "<group>"; };
+		CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+Application.swift"; sourceTree = "<group>"; };
 		CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSFeed.swift; sourceTree = "<group>"; };
 		CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemInformation.swift; sourceTree = "<group>"; };
 		CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemInformationClient.swift; sourceTree = "<group>"; };
@@ -1097,6 +1101,7 @@
 				CDEF3CF11E12FA110002063F /* UITraitCollection+Helper.swift */,
 				CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */,
 				CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */,
+				CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -2206,6 +2211,7 @@
 				CDFED5D81E6214DB00D5C4BF /* GBFSStationInformationClient.swift in Sources */,
 				CD80AA7C1E624D2F00C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */,
 				CDFED5D41E6214C900D5C4BF /* GBFSStationInformation.swift in Sources */,
+				CDDE92891F65904B00D01E8C /* NSTextAttachment+Application.swift in Sources */,
 				CDEF3D141E17379A0002063F /* BikeNetwork.swift in Sources */,
 				CDEF3D211E1985C40002063F /* NetworksClient.swift in Sources */,
 				CDEF3D111E1737820002063F /* UserManager.swift in Sources */,
@@ -2256,6 +2262,7 @@
 				CDA134871E2A8E71005542DE /* UserManager.swift in Sources */,
 				CD2BA3CB1EABFDB700C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CD80AA7D1E624D3000C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */,
+				CDDE928A1F65904C00D01E8C /* NSTextAttachment+Application.swift in Sources */,
 				CDA134951E2A8F6F005542DE /* UserDefaults+Application.swift in Sources */,
 				CDA1349B1E2A8FBA005542DE /* BikeTableViewCell.swift in Sources */,
 				CDA134821E2A8E57005542DE /* MapBikeStation.swift in Sources */,
@@ -2317,6 +2324,7 @@
 				CD100FEA1F64890F0031EFF6 /* NetworkClusterView.swift in Sources */,
 				CD121DF81E1040D7004F78E2 /* DispatchQueue+Helper.swift in Sources */,
 				CD80AAA81E6BA7AC00C1E9B6 /* PinView.swift in Sources */,
+				CDDE92881F658C5B00D01E8C /* NSTextAttachment+Application.swift in Sources */,
 				CDF6F5C21E7DFCAA009CBD32 /* StationDiffViewController.swift in Sources */,
 				CDF6E7C11E0EBAC300C3C6CA /* UIAlertController+Helper.swift in Sources */,
 				CD1ED2E81EB6D3BC00806D97 /* MapPinTableViewCell.swift in Sources */,

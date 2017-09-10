@@ -11,6 +11,7 @@
     import UIKit
 #endif
 import CoreLocation
+import CoreText
 
 struct BikeStation
 {
@@ -22,7 +23,6 @@ struct BikeStation
     let id: String
     let address: String?
     var gbfsStationInformation: GBFSStationInformation? = nil
-    
     
     var statusDisplayText: String
     {
