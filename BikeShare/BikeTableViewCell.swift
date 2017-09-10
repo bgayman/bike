@@ -125,7 +125,7 @@ class BikeTableViewCell: UITableViewCell
         let bullet = NSAttributedString(string: "• ", attributes: [NSAttributedStringKey.foregroundColor: bikeStation.pinTintColor, NSAttributedStringKey.font: self.titleLabel.font ?? UIFont.app_font(forTextStyle: .title1)])
         let name = NSAttributedString(string: bikeStation.name)
         self.titleLabel.attributedText = bullet + name
-        self.subtitleLabel.text = /*bikeStation.statusAttributedString*/"\(bikeStation.statusDisplayText)\n\(bikeStation.dateComponentText)"
+        self.subtitleLabel.attributedText = bikeStation.statusAttributedString//"\(bikeStation.statusDisplayText)\n\(bikeStation.dateComponentText)"
     }
     
     private func configureCell(searchString: String)
