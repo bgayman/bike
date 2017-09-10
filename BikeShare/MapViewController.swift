@@ -384,6 +384,7 @@ class MapViewController: BaseMapViewController
     deinit
     {
         NotificationCenter.default.removeObserver(self)
+        mapView.delegate = nil
     }
     
     #endif

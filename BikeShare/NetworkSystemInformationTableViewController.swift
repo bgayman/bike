@@ -77,6 +77,11 @@ class NetworkSystemInformationTableViewController: UITableViewController
         fatalError("Don't use a coder use `init(network:)`")
     }
     
+    deinit
+    {
+        mapView.delegate = nil
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()

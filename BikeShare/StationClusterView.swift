@@ -10,6 +10,21 @@ import MapKit
 
 class StationClusterView: MKAnnotationView
 {
+    lazy var countLabel: UILabel =
+    {
+        let countLabel = UILabel()
+        countLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(countLabel)
+        countLabel.minimumScaleFactor = 0.25
+        countLabel.adjustsFontSizeToFitWidth = true
+        countLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        countLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14.0).isActive = true
+        countLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -14.0).isActive = true
+        countLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        countLabel.textAlignment = .center
+        return countLabel
+    }()
+    
     override init(annotation: MKAnnotation?, reuseIdentifier: String?)
     {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -30,6 +45,7 @@ class StationClusterView: MKAnnotationView
             guard let cluster = newValue as? MKClusterAnnotation,
                   let annotations = cluster.memberAnnotations as? [MapBikeStation] else { return }
             let renderer = UIGraphicsImageRenderer(size: CGSize(width: 40, height: 40))
+            countLabel.text = "\(cluster.memberAnnotations.count)"
             let count = CGFloat(cluster.memberAnnotations.count)
             let redCount = CGFloat(annotations.filter { $0.bikeStation.pinTintColor == .app_red }.count)
             let orangeCount = CGFloat(annotations.filter { $0.bikeStation.pinTintColor == .app_orange }.count)
@@ -69,13 +85,6 @@ class StationClusterView: MKAnnotationView
                 
                 UIColor.app_beige.setFill()
                 UIBezierPath(ovalIn: CGRect(x: 8, y: 8, width: 24, height: 24)).fill()
-                
-                let attributes = [ NSAttributedStringKey.foregroundColor: UIColor.black,
-                                   NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 13)]
-                let text = "\(Int(count))"
-                let size = text.size(withAttributes: attributes)
-                let rect = CGRect(x: 20 - size.width / 2, y: 20 - size.height / 2, width: size.width, height: size.height)
-                text.draw(in: rect, withAttributes: attributes)
             }
         }
     }

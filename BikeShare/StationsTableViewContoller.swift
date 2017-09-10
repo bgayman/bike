@@ -239,10 +239,10 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     {
         super.viewDidLoad()
         self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.navigationItem.searchController = self.searchController
-        self.navigationItem.hidesSearchBarWhenScrolling = false
 
         #if !os(tvOS)
+            self.navigationItem.searchController = self.searchController
+            self.navigationItem.hidesSearchBarWhenScrolling = false
             self.navigationItem.largeTitleDisplayMode = .never
             self.tableView.emptyDataSetDelegate = self
             self.tableView.emptyDataSetSource = self
@@ -818,6 +818,7 @@ extension StationsTableViewController: UIViewControllerPreviewingDelegate
         guard let indexPath = self.tableView.indexPathForRow(at: location) else { return nil }
         let station = self.dataSource[indexPath.row]
         let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
+        previewingContext.sourceRect = self.tableView.rectForRow(at: indexPath)
         return stationDetailViewController
     }
     

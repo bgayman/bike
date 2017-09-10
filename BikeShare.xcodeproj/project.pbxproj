@@ -32,6 +32,9 @@
 		CD029C811ECDC6EA0091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
 		CD029C831ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C821ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift */; };
 		CD100FEA1F64890F0031EFF6 /* NetworkClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100FE91F64890F0031EFF6 /* NetworkClusterView.swift */; };
+		CD100FEB1F64AD630031EFF6 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
+		CD100FEC1F64AE440031EFF6 /* StationClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */; };
+		CD100FED1F64AE480031EFF6 /* NetworkClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100FE91F64890F0031EFF6 /* NetworkClusterView.swift */; };
 		CD121DF41E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */; };
 		CD121DF81E1040D7004F78E2 /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */; };
 		CD121DFA1E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */; };
@@ -52,7 +55,6 @@
 		CD164C321E2B1D890062CBA5 /* ClosebyStationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C311E2B1D890062CBA5 /* ClosebyStationsClient.swift */; };
 		CD164C331E2B1EF20062CBA5 /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */; };
 		CD164C341E2B240A0062CBA5 /* UIColor+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C81E0ED8CD00C3C6CA /* UIColor+Application.swift */; };
-		CD164C351E2BC2020062CBA5 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
 		CD164C381E2BE3C90062CBA5 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C371E2BE3C90062CBA5 /* PinView.swift */; };
 		CD164C3A1E2BE3E60062CBA5 /* TopShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C391E2BE3E60062CBA5 /* TopShelfView.swift */; };
 		CD164C3B1E2BE5330062CBA5 /* UIFont+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */; };
@@ -2027,7 +2029,7 @@
 				CD164C3A1E2BE3E60062CBA5 /* TopShelfView.swift in Sources */,
 				CD164C2E1E2B1BF30062CBA5 /* Constants.swift in Sources */,
 				CD6276ED1EB4E794008666AC /* GBFSFeedClient.swift in Sources */,
-				CD164C351E2BC2020062CBA5 /* UserDefaults+Application.swift in Sources */,
+				CD100FEB1F64AD630031EFF6 /* UserDefaults+Application.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2161,8 +2163,10 @@
 				CD8C1B6D1E2181A7000F9A9D /* MapBikeStation.swift in Sources */,
 				CD80AAA91E6BA7B500C1E9B6 /* PinView.swift in Sources */,
 				CD8C1B7F1E218306000F9A9D /* UITableViewController+Diff.swift in Sources */,
+				CD100FED1F64AE480031EFF6 /* NetworkClusterView.swift in Sources */,
 				CD6733311EAAEE220070E69B /* StationsClient.swift in Sources */,
 				CD80AA841E624D3C00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */,
+				CD100FEC1F64AE440031EFF6 /* StationClusterView.swift in Sources */,
 				CD8C1B7E1E218302000F9A9D /* ClientResponse.swift in Sources */,
 				CD8C1B771E218218000F9A9D /* BikeDetailAccessoryTableViewCell.swift in Sources */,
 				CD80AA721E624D1E00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
@@ -2525,7 +2529,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
@@ -2542,7 +2546,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
@@ -2639,7 +2643,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
@@ -2659,7 +2663,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareTV;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};

@@ -102,10 +102,10 @@ class NetworkTableViewController: UITableViewController
             self.networkMapViewController?.delegate = self
         }
         self.title = "Networks"
-        self.navigationItem.searchController = self.searchController
-        self.navigationItem.hidesSearchBarWhenScrolling = false
 
         #if !os(tvOS)
+        self.navigationItem.searchController = self.searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
         self.navigationItem.largeTitleDisplayMode = .always
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         self.navigationItem.titleView = activityIndicator
@@ -640,6 +640,7 @@ extension NetworkTableViewController: UIViewControllerPreviewingDelegate
         let network = self.networks[indexPath.row]
         let stationTableViewController = StationsTableViewController(with: network)
         stationTableViewController.mapViewController = self.networkMapViewController
+        previewingContext.sourceRect = self.tableView.rectForRow(at: indexPath)
         return stationTableViewController
     }
     

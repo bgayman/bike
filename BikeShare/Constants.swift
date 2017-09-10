@@ -26,6 +26,8 @@ struct Constants
         let measurementFormatter = MeasurementFormatter()
         measurementFormatter.unitStyle = .short
         measurementFormatter.numberFormatter.roundingMode = .halfUp
+        measurementFormatter.numberFormatter.maximumFractionDigits = 1
+        measurementFormatter.numberFormatter.minimumFractionDigits = 0
         return measurementFormatter
     }()
     

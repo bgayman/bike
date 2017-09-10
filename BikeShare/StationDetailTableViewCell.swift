@@ -39,7 +39,7 @@ class StationDetailTableViewCell: UITableViewCell
                 return
             }
             self.titleLabel.text = bikeStation.statusDisplayText
-            self.subtitleLabel.text = "\(bikeStation.name) — \(bikeStation.dateComponentText)" + (bikeStation.distance > 0 ? "— \(bikeStation.distanceDescription)" : "")
+            self.subtitleLabel.text = "\(bikeStation.name) — \(bikeStation.dateComponentText)" + (bikeStation.distance > 0 ? " — \(bikeStation.distanceDescription)" : "")
         }
     }
     

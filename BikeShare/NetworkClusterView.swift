@@ -10,6 +10,22 @@ import MapKit
 
 class NetworkClusterView: MKAnnotationView
 {
+    lazy var countLabel: UILabel =
+    {
+        let countLabel = UILabel()
+        countLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(countLabel)
+        countLabel.minimumScaleFactor = 0.25
+        countLabel.adjustsFontSizeToFitWidth = true
+        countLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        countLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14).isActive = true
+        countLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -14).isActive = true
+        countLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        countLabel.textColor = .white
+        countLabel.textAlignment = .center
+        return countLabel
+    }()
+    
     override init(annotation: MKAnnotation?, reuseIdentifier: String?)
     {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -24,25 +40,19 @@ class NetworkClusterView: MKAnnotationView
     }
     
     override var annotation: MKAnnotation?
-        {
+    {
         willSet
         {
             guard let cluster = newValue as? MKClusterAnnotation,
                 let _ = cluster.memberAnnotations as? [MapBikeNetwork] else { return }
             let renderer = UIGraphicsImageRenderer(size: CGSize(width: 40, height: 40))
             let count = cluster.memberAnnotations.count
+            countLabel.text = "\(count)"
             image = renderer.image
             { (_) in
                 UIColor.app_blue.setFill()
                 let bluePath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: 40, height: 40))
                 bluePath.fill()
-                
-                let attributes = [ NSAttributedStringKey.foregroundColor: UIColor.white,
-                                   NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 13)]
-                let text = "\(count)"
-                let size = text.size(withAttributes: attributes)
-                let rect = CGRect(x: 20 - size.width / 2, y: 20 - size.height / 2, width: size.width, height: size.height)
-                text.draw(in: rect, withAttributes: attributes)
             }
         }
     }

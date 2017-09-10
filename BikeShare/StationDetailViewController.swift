@@ -64,10 +64,11 @@ class StationDetailViewController: UIViewController
         let mapView = MKMapView()
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.removeAnnotations(mapView.annotations)
-        mapView.showsUserLocation = true
+        mapView.showsUserLocation = false
         mapView.addAnnotation(self.annotation)
         mapView.showAnnotations([self.annotation], animated: false)
         mapView.delegate = self
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "Bike")
         return mapView
     }()
     
@@ -186,6 +187,11 @@ class StationDetailViewController: UIViewController
     required init?(coder aDecoder: NSCoder)
     {
         fatalError("Don't use a coder")
+    }
+    
+    deinit
+    {
+        mapView.delegate = nil
     }
     
     override func viewDidLoad()
@@ -410,6 +416,10 @@ class StationDetailViewController: UIViewController
     {
         let sortedStations = stations.sorted{ $0.distance(to: self.station) < $1.distance(to: self.station) }
         let closebyStations = Array(sortedStations.prefix(8))
+        self.mapView.showsUserLocation = false
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        self.mapView.addAnnotations(closebyStations.map(MapBikeStation.init) + [self.annotation])
+        self.mapView.showsUserLocation = true
         return closebyStations
     }
 }
@@ -442,22 +452,16 @@ extension StationDetailViewController: MKMapViewDelegate
     
     @objc func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        let identifier = "Bike"
-        
-        var annotationView: MKMarkerAnnotationView?
-        if annotationView == nil
-        {
-            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        #if !os(tvOS)
-            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        #endif
-        }
         guard let station = annotation as? MapBikeStation else
         {
             return nil
         }
-        annotationView?.markerTintColor = station.bikeStation.pinTintColor
-        annotationView?.canShowCallout = true
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "Bike")
+        #if !os(tvOS)
+            annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        #endif
+        annotationView.markerTintColor = station.bikeStation.pinTintColor
+        annotationView.canShowCallout = true
         return annotationView
     }
 }

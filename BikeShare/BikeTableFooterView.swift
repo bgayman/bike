@@ -29,7 +29,7 @@ class BikeTableFooterView: UITableViewHeaderFooterView
         shapeLayer.path = path.cgPath
         self.contentView.layer.addSublayer(shapeLayer)
         #else
-        let attribTitle = NSMutableAttributedString(string: "Powered by Citybikes @ citybik.es", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .body)])
+            let attribTitle = NSMutableAttributedString(string: "Powered by Citybikes @ citybik.es", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .body)])
         #endif
         button.setAttributedTitle(attribTitle, for: .normal)
         

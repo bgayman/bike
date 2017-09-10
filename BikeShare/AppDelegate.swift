@@ -10,11 +10,10 @@ import UIKit
 import CoreSpotlight
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate
+{
     var window: UIWindow?
     @objc let userManager = UserManager()
-    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

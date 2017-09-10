@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
         
-        let store = NSUbiquitousKeyValueStore.default()
+        let store = NSUbiquitousKeyValueStore.default
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateKVStoreItems(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: store)
         return true
     }
@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return true
     }
     
-    func updateKVStoreItems(notification: Notification)
+    @objc func updateKVStoreItems(notification: Notification)
     {
         let userInfo = notification.userInfo
         guard let reasonForChange = userInfo?[NSUbiquitousKeyValueStoreChangeReasonKey] as? NSNumber else { return }
@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         {
             if let changedKeys = userInfo?[NSUbiquitousKeyValueStoreChangedKeysKey] as? [String]
             {
-                let store = NSUbiquitousKeyValueStore.default()
+                let store = NSUbiquitousKeyValueStore.default
                 let userDefaults = UserDefaults.bikeShareGroup
                 for key in changedKeys
                 {
