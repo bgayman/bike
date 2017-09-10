@@ -55,7 +55,8 @@ class TodayViewController: UIViewController, NCWidgetProviding
         tableView.allowsSelection = true
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(StationDetailTableViewCell.self, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: "\(BikeStationTableViewCell.self)", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "Cell")
         tableView.estimatedRowHeight = 65.0
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.backgroundColor = .clear
@@ -219,7 +220,7 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationDetailTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeStationTableViewCell
         
         cell.bikeStation = self.closebyStations[indexPath.row]
         cell.contentView.backgroundColor = .clear

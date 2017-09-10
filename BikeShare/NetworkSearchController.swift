@@ -41,7 +41,8 @@ class NetworkSearchController: UITableViewController
         super.viewDidLoad()
         
         self.view.backgroundColor = .app_beige
-        self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: "\(BikeNetworkTableViewCell.self)", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "Cell")
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         #if !os(tvOS)
@@ -57,7 +58,7 @@ class NetworkSearchController: UITableViewController
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeNetworkTableViewCell
         cell.bikeNetwork = self.searchResults[indexPath.row]
         cell.searchString = self.searchString
         cell.accessoryType = .disclosureIndicator

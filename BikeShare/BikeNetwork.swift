@@ -24,15 +24,12 @@ struct BikeNetwork
     
     var jsonDict: JSONDictionary
     {
-        
-        let gbfs: String = self.gbfsHref == nil ? " " : self.gbfsHref!.absoluteString
         return ["company": self.company,
                 "href": self.href,
                 "id": self.id,
                 "location": self.location.jsonDict,
                 "name": self.name,
-                "gbfs_href": gbfs
-               ]
+                "gbfs_href": self.gbfsHref?.absoluteString ?? ""]
     }
 }
 
