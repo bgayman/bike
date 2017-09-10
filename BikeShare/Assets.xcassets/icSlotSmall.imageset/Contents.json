@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "icBrokenStation.png",
+      "filename" : "icSlotSmall.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icBrokenStation@2x.png",
+      "filename" : "icSlotSmall@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icBrokenStation@3x.png",
+      "filename" : "icSlotSmall@3x.png",
       "scale" : "3x"
     }
   ],

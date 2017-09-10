@@ -19,22 +19,22 @@ extension BikeStation
             let emptySlots = self.emptySlots else { return NSAttributedString(string: "🤷‍♀️") }
         
         let bikeTextAttachment = NSTextAttachment()
-        bikeTextAttachment.image = #imageLiteral(resourceName: "icBikeBear")
+        bikeTextAttachment.image = #imageLiteral(resourceName: "icBikeBearSmall")
         bikeTextAttachment.setImageHeight(height: size)
         let emptySlotTextAttachment = NSTextAttachment()
-        emptySlotTextAttachment.image = #imageLiteral(resourceName: "icSlot")
+        emptySlotTextAttachment.image = #imageLiteral(resourceName: "icSlotSmall")
         emptySlotTextAttachment.setImageHeight(height: size)
 
         let stationClosedTextAttachment = NSTextAttachment()
-        stationClosedTextAttachment.image = #imageLiteral(resourceName: "icClosedStation")
+        stationClosedTextAttachment.image = #imageLiteral(resourceName: "icClosedStationSmall")
         stationClosedTextAttachment.setImageHeight(height: size)
         
         let brokenBikeTextAttachment = NSTextAttachment()
-        brokenBikeTextAttachment.image = #imageLiteral(resourceName: "icBrokenBike")
+        brokenBikeTextAttachment.image = #imageLiteral(resourceName: "icBrokenBikeSmall")
         brokenBikeTextAttachment.setImageHeight(height: size)
         
         let brokenSlotTextAttachment = NSTextAttachment()
-        brokenSlotTextAttachment.image = #imageLiteral(resourceName: "icBrokenStation")
+        brokenSlotTextAttachment.image = #imageLiteral(resourceName: "icBrokenStationSmall")
         brokenSlotTextAttachment.setImageHeight(height: size)
         
         var status = NSAttributedString(string: "\(freeBikes) ") + NSAttributedString(attachment: bikeTextAttachment) + NSAttributedString(string: ", \(emptySlots) ") + NSAttributedString(attachment: emptySlotTextAttachment)
