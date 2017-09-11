@@ -682,7 +682,7 @@ extension StationsTableViewController: StationsSearchControllerDelegate
         }
         
         self.searchController.isActive = false
-        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
+        let stationDetailViewController = BikeStationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
         if self.splitViewController?.traitCollection.isSmallerDevice ?? false
         {
             self.navigationController?.pushViewController(stationDetailViewController, animated: true)
@@ -713,7 +713,7 @@ extension StationsTableViewController: MapViewControllerDelegate
     @objc func didSelect(mapBikeStation: MapBikeStation)
     {
         #if !os(tvOS)
-            let stationDetailViewController = StationDetailViewController(with: self.network, station: mapBikeStation.bikeStation, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
+            let stationDetailViewController = BikeStationDetailViewController(with: self.network, station: mapBikeStation.bikeStation, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
             if self.splitViewController?.traitCollection.isSmallerDevice ?? false
             {
                 self.navigationController?.pushViewController(stationDetailViewController, animated: true)
@@ -818,7 +818,7 @@ extension StationsTableViewController: UIViewControllerPreviewingDelegate
     {
         guard let indexPath = self.tableView.indexPathForRow(at: location) else { return nil }
         let station = self.dataSource[indexPath.row]
-        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
+        let stationDetailViewController = BikeStationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
         previewingContext.sourceRect = self.tableView.rectForRow(at: indexPath)
         return stationDetailViewController
     }

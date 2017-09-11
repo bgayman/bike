@@ -62,4 +62,57 @@ extension BikeStation
         return status
         
     }
+    
+    var statusDetailAttributedString: NSAttributedString
+    {
+        let font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
+        let size = font.pointSize * 1.0
+        
+        guard let freeBikes = self.freeBikes,
+            let emptySlots = self.emptySlots else { return NSAttributedString(string: "🤷‍♀️") }
+        
+        let bikeTextAttachment = NSTextAttachment()
+        bikeTextAttachment.image = #imageLiteral(resourceName: "icBikeBearSmall")
+        bikeTextAttachment.setImageHeight(height: size)
+        let emptySlotTextAttachment = NSTextAttachment()
+        emptySlotTextAttachment.image = #imageLiteral(resourceName: "icSlotSmall")
+        emptySlotTextAttachment.setImageHeight(height: size)
+        
+        let stationClosedTextAttachment = NSTextAttachment()
+        stationClosedTextAttachment.image = #imageLiteral(resourceName: "icClosedStationSmall")
+        stationClosedTextAttachment.setImageHeight(height: size)
+        
+        let brokenBikeTextAttachment = NSTextAttachment()
+        brokenBikeTextAttachment.image = #imageLiteral(resourceName: "icBrokenBikeSmall")
+        brokenBikeTextAttachment.setImageHeight(height: size)
+        
+        let brokenSlotTextAttachment = NSTextAttachment()
+        brokenSlotTextAttachment.image = #imageLiteral(resourceName: "icBrokenStationSmall")
+        brokenSlotTextAttachment.setImageHeight(height: size)
+        
+        let status: NSMutableAttributedString = NSMutableAttributedString(string: "\(freeBikes) ")
+        status.append(NSAttributedString(attachment: bikeTextAttachment))
+        status.append(NSAttributedString(string: "\n\(emptySlots) "))
+        status.append(NSAttributedString(attachment: emptySlotTextAttachment))
+        
+        if self.gbfsStationInformation?.stationStatus?.isRenting == false ||
+            self.gbfsStationInformation?.stationStatus?.isInstalled == false
+        {
+            return NSAttributedString(attachment: stationClosedTextAttachment) + NSAttributedString(string: "\nStation Closed")
+        }
+        else if self.gbfsStationInformation?.stationStatus?.numberOfBikesDisabled ?? 0 > 0
+            
+        {
+            status.append(NSAttributedString(string: "\n\(self.gbfsStationInformation?.stationStatus?.numberOfBikesDisabled ?? 0) "))
+            status.append(NSAttributedString(attachment: brokenBikeTextAttachment))
+        }
+        else if self.gbfsStationInformation?.stationStatus?.numberOfDocksDisabled ?? 0 > 0
+        {
+            status.append(NSAttributedString(string: "\n\(self.gbfsStationInformation?.stationStatus?.numberOfDocksDisabled ?? 0) "))
+            status.append(NSAttributedString(attachment: brokenSlotTextAttachment))
+        }
+        
+        return status
+        
+    }
 }

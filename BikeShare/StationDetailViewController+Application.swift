@@ -78,7 +78,7 @@ extension StationDetailViewController
             break
         case .nearBy:
             let station = closebyStations[indexPath.row]
-            let stationDetailVC = StationDetailViewController(with: network, station: station, stations: stations, hasGraph: hasGraph)
+            let stationDetailVC = BikeStationDetailViewController(with: network, station: station, stations: stations, hasGraph: hasGraph)
             self.navigationController?.pushViewController(stationDetailVC, animated: true)
         }
     }

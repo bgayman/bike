@@ -57,7 +57,6 @@ class StationDetailGraphTableViewCell: UITableViewCell
         xAxis.drawAxisLineEnabled = true
         xAxis.valueFormatter = DateValueFormatter()
         
-        
         let leftAxis = lineChartView.leftAxis
         leftAxis.labelPosition = .outsideChart
         leftAxis.labelFont = UIFont.app_font(forTextStyle: .caption1)
@@ -69,6 +68,7 @@ class StationDetailGraphTableViewCell: UITableViewCell
         
         lineChartView.rightAxis.enabled = false
         lineChartView.isUserInteractionEnabled = false
+        lineChartView.animate(xAxisDuration: 0)
         return lineChartView
     }()
     

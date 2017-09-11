@@ -242,7 +242,7 @@ extension StationDiffViewController: UIViewControllerPreviewingDelegate
     {
         guard let indexPath = self.tableView.indexPathForRow(at: location) else { return nil }
         let station = self.bikeStationDiffs[indexPath.row].bikeStation
-        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.bikeStations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
+        let stationDetailViewController = BikeStationDetailViewController(with: self.network, station: station, stations: self.bikeStations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
         return stationDetailViewController
     }
     

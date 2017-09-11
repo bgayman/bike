@@ -125,6 +125,10 @@
 		CD2BA3D31EABFE8D00C26F90 /* StationDetailGraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */; };
 		CD3932361EBF63C7009427E6 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3932351EBF63C7009427E6 /* LocationControl.swift */; };
 		CD3932391EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */; };
+		CD4A104A1F6614100098BE1C /* BikeStationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A10481F6614100098BE1C /* BikeStationDetailViewController.swift */; };
+		CD4A104B1F6614100098BE1C /* BikeStationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4A10491F6614100098BE1C /* BikeStationDetailViewController.xib */; };
+		CD4A10521F66C2440098BE1C /* BikeStationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A10501F66C2440098BE1C /* BikeStationCollectionViewCell.swift */; };
+		CD4A10531F66C2440098BE1C /* BikeStationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4A10511F66C2440098BE1C /* BikeStationCollectionViewCell.xib */; };
 		CD57C1371F6447F900BF3BB1 /* StationClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */; };
 		CD6276EB1EB4E712008666AC /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
 		CD6276EC1EB4E784008666AC /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
@@ -617,6 +621,10 @@
 		CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDetailGraphTableViewCell.swift; sourceTree = "<group>"; };
 		CD3932351EBF63C7009427E6 /* LocationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationControl.swift; sourceTree = "<group>"; };
 		CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap"; sourceTree = "<group>"; };
+		CD4A10481F6614100098BE1C /* BikeStationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationDetailViewController.swift; sourceTree = "<group>"; };
+		CD4A10491F6614100098BE1C /* BikeStationDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationDetailViewController.xib; sourceTree = "<group>"; };
+		CD4A10501F66C2440098BE1C /* BikeStationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationCollectionViewCell.swift; sourceTree = "<group>"; };
+		CD4A10511F66C2440098BE1C /* BikeStationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationCollectionViewCell.xib; sourceTree = "<group>"; };
 		CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationClusterView.swift; sourceTree = "<group>"; };
 		CD6733201EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap"; sourceTree = "<group>"; };
 		CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationStatus.swift; sourceTree = "<group>"; };
@@ -946,6 +954,8 @@
 				CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */,
 				CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */,
 				CDC4D8381F65F4D000885E0F /* BikeNetworkTableViewCell.xib */,
+				CD4A10501F66C2440098BE1C /* BikeStationCollectionViewCell.swift */,
+				CD4A10511F66C2440098BE1C /* BikeStationCollectionViewCell.xib */,
 			);
 			name = "TableView Views";
 			sourceTree = "<group>";
@@ -1030,6 +1040,8 @@
 			children = (
 				CDEF3CF31E1301DE0002063F /* StationDetailViewController.swift */,
 				CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */,
+				CD4A10481F6614100098BE1C /* BikeStationDetailViewController.swift */,
+				CD4A10491F6614100098BE1C /* BikeStationDetailViewController.xib */,
 			);
 			name = "Station Detail";
 			sourceTree = "<group>";
@@ -1698,6 +1710,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD4A10531F66C2440098BE1C /* BikeStationCollectionViewCell.xib in Resources */,
 				CDC4D83A1F65F4D000885E0F /* BikeNetworkTableViewCell.xib in Resources */,
 				CDF6E7A41E0DBC3000C3C6CA /* LaunchScreen.storyboard in Resources */,
 				CDF6E7A11E0DBC3000C3C6CA /* Assets.xcassets in Resources */,
@@ -1707,6 +1720,7 @@
 				CDC4D82E1F65D8FA00885E0F /* BikeStationTableViewCell.xib in Resources */,
 				CDEC201E1E512E6A0044D923 /* PricingPlanTableViewCell.xib in Resources */,
 				CD3932391EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap in Resources */,
+				CD4A104B1F6614100098BE1C /* BikeStationDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2449,6 +2463,7 @@
 				CD121DFE1E115F03004F78E2 /* UserManager.swift in Sources */,
 				CDEC20141E50D9AC0044D923 /* SystemInfoTableViewContent.swift in Sources */,
 				CD100FEA1F64890F0031EFF6 /* NetworkClusterView.swift in Sources */,
+				CD4A10521F66C2440098BE1C /* BikeStationCollectionViewCell.swift in Sources */,
 				CD121DF81E1040D7004F78E2 /* DispatchQueue+Helper.swift in Sources */,
 				CD80AAA81E6BA7AC00C1E9B6 /* PinView.swift in Sources */,
 				CDDE92881F658C5B00D01E8C /* NSTextAttachment+Application.swift in Sources */,
@@ -2483,6 +2498,7 @@
 				CD9E81EC1ECA7D8B00FF2EB4 /* StationDiffViewControllerSearchController.swift in Sources */,
 				CDEC200E1E4F61790044D923 /* GBFSSystemInformationClient.swift in Sources */,
 				CDF6E7981E0DBC3000C3C6CA /* AppDelegate.swift in Sources */,
+				CD4A104A1F6614100098BE1C /* BikeStationDetailViewController.swift in Sources */,
 				CDEC20221E52A3BB0044D923 /* GBFSSystemAlertClient.swift in Sources */,
 				CDA1D2CA1E230243008B2AE8 /* BikeTableFooterView.swift in Sources */,
 				CD164C641E2C3DBC0062CBA5 /* BaseMapViewController.swift in Sources */,

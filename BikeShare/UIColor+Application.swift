@@ -18,6 +18,7 @@ extension NSColor
     static let app_sandyBrown = NSColor(hex: 0xf6b530)
     static let app_beige = NSColor(hex: 0xf8f5f1)
     static let app_lightBlue = NSColor(hex: 0xaadced)
+    static let app_brown = NSColor(hex: 0x5b3b1c)
     
     convenience init(hex:Int)
     {
@@ -40,6 +41,7 @@ extension UIColor
     @objc static let app_sandyBrown = UIColor(hex: 0xf6b530)
     @objc static let app_beige = UIColor(hex: 0xf8f5f1)
     @objc static let app_lightBlue = UIColor(hex: 0xaadced)
+    @objc static let app_brown = UIColor(hex: 0x5b3b1c)
     
     @objc convenience init(hex:Int)
     {

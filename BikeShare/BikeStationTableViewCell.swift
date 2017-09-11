@@ -35,8 +35,8 @@ class BikeStationTableViewCell: UITableViewCell
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var stationStatusLabel: UILabel!
-    @IBOutlet weak var distanceButton: UIButton!
-    @IBOutlet weak var timeButton: UIButton!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     
     
@@ -46,11 +46,11 @@ class BikeStationTableViewCell: UITableViewCell
         contentView.backgroundColor = UIColor.app_beige
         backgroundColor = UIColor.app_beige
         titleLabel.font = UIFont.app_font(forTextStyle: .title2, weight: UIFont.Weight.semibold)
+        titleLabel.numberOfLines = 0
+        stationStatusLabel.numberOfLines = 1
         stationStatusLabel.font = UIFont.app_font(forTextStyle: .title1, weight: UIFont.Weight.light)
-        distanceButton.titleLabel?.font = UIFont.app_font(forTextStyle: .caption1, weight: UIFont.Weight.medium)
-        timeButton.titleLabel?.font = UIFont.app_font(forTextStyle: .caption1, weight: UIFont.Weight.medium)
-        distanceButton.setTitleColor(.black, for: .normal)
-        timeButton.setTitleColor(.black, for: .normal)
+        distanceLabel.font = UIFont.app_font(forTextStyle: .caption1, weight: UIFont.Weight.medium)
+        timeLabel.font = UIFont.app_font(forTextStyle: .caption1, weight: UIFont.Weight.medium)
         summaryLabel.font = UIFont.app_font(forTextStyle: .headline, weight: .heavy)
         summaryLabel.textColor = .white
         summaryLabel.layer.cornerRadius = 8.0
@@ -61,15 +61,15 @@ class BikeStationTableViewCell: UITableViewCell
     {
         self.titleLabel.text = bikeStation.name
         self.stationStatusLabel.attributedText = bikeStation.statusAttributedString
-        self.timeButton.setTitle(bikeStation.dateComponentText, for: .normal)
+        self.timeLabel.text = bikeStation.dateComponentText
         if bikeStation.distanceDescription.isEmpty == false
         {
-            self.distanceButton.isHidden = false
-            self.distanceButton.setTitle(bikeStation.distanceDescription, for: .normal)
+            self.distanceLabel.isHidden = false
+            self.distanceLabel.text = bikeStation.distanceDescription
         }
         else
         {
-            self.distanceButton.isHidden = true
+            self.distanceLabel.isHidden = true
         }
         summaryLabel.backgroundColor = bikeStation.pinTintColor
         switch bikeStation.pinTintColor
