@@ -31,6 +31,7 @@
 		CD029C801ECDC6D30091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
 		CD029C811ECDC6EA0091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
 		CD029C831ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C821ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift */; };
+		CD06F34B1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06F34A1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift */; };
 		CD100FEA1F64890F0031EFF6 /* NetworkClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100FE91F64890F0031EFF6 /* NetworkClusterView.swift */; };
 		CD100FEB1F64AD630031EFF6 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
 		CD100FEC1F64AE440031EFF6 /* StationClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */; };
@@ -577,6 +578,7 @@
 		CD029C761ECBDA7A0091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Application.swift"; sourceTree = "<group>"; };
 		CD029C821ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStationInterfaceController.swift; sourceTree = "<group>"; };
+		CD06F34A1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationDetailScrollView.swift; sourceTree = "<group>"; };
 		CD100FE91F64890F0031EFF6 /* NetworkClusterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClusterView.swift; sourceTree = "<group>"; };
 		CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailAccessoryTableViewCell.swift; sourceTree = "<group>"; };
 		CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helper.swift"; sourceTree = "<group>"; };
@@ -968,6 +970,7 @@
 				CD3932351EBF63C7009427E6 /* LocationControl.swift */,
 				CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */,
 				CD100FE91F64890F0031EFF6 /* NetworkClusterView.swift */,
+				CD06F34A1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2442,6 +2445,7 @@
 				CDF6E7CF1E0ED98200C3C6CA /* BikeStation.swift in Sources */,
 				CDC4D8391F65F4D000885E0F /* BikeNetworkTableViewCell.swift in Sources */,
 				CD80AAAB1E6BA81F00C1E9B6 /* MapKeyView.swift in Sources */,
+				CD06F34B1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift in Sources */,
 				CDF6E7C31E0EBBED00C3C6CA /* ClientResponse.swift in Sources */,
 				CD67332E1EAAEE220070E69B /* StationsClient.swift in Sources */,
 				CDEC20181E50E8930044D923 /* GBFSSystemPricingPlan.swift in Sources */,

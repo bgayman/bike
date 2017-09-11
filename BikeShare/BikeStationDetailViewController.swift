@@ -113,7 +113,7 @@ class BikeStationDetailViewController: UIViewController
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.rightBarButtonItem = actionBarButton
         titleLabel.font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
-        graphLabel.font = UIFont.app_font(forTextStyle: .title1, weight: .heavy)
+        graphLabel.font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
         titleLabel.alpha = labelAlpha
         titleLabel.textColor = .black
         descriptionLabel.font = UIFont.systemFont(ofSize: 35.0, weight: .heavy)
@@ -128,6 +128,7 @@ class BikeStationDetailViewController: UIViewController
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "marker")
         
         pageControl.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2.0)
+        pageControl.currentPageIndicatorTintColor = UIColor.app_blue
         
         graphVisualEffectView.alpha = 0.0
         
