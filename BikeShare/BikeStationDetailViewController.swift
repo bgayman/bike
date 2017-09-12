@@ -20,7 +20,6 @@ class BikeStationDetailViewController: UIViewController
     // MARK: - Outlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var overlayView: UIView!
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var lineChartView: LineChartView!
@@ -28,11 +27,13 @@ class BikeStationDetailViewController: UIViewController
     @IBOutlet weak var graphActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var descriptionLabelBottomConstrant: NSLayoutConstraint!
     @IBOutlet weak var graphVisualEffectView: UIVisualEffectView!
-    @IBOutlet weak var scrollViewTopSaveAreaConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var timeDistanceLabel: UILabel!
+    @IBOutlet var stackView: UIStackView!
+    @IBOutlet weak var collectionViewVisualEffectView: UIVisualEffectView!
+    @IBOutlet weak var nearbyStationsLabel: UILabel!
     
     // MARK: - Properties
     let bikeNetwork: BikeNetwork
@@ -73,6 +74,39 @@ class BikeStationDetailViewController: UIViewController
         }
     }
     
+    lazy var gradientLayer: CAGradientLayer =
+    {
+        let gradientLayer = CAGradientLayer()
+        let firstColor = UIColor.app_brown.withAlphaComponent(0.05)
+        let secondColor = UIColor.app_brown.withAlphaComponent(0.5)
+        gradientLayer.colors = [firstColor.cgColor, secondColor.cgColor]
+        return gradientLayer
+    }()
+    
+    lazy var scrollView: BikeStationDetailScrollView =
+    {
+        let scrollView = BikeStationDetailScrollView(frame: CGRect(x: 0, y: self.view.safeAreaInsets.top, width: self.view.bounds.width, height: 150.0))
+        self.view.insertSubview(scrollView, belowSubview: self.pageControl)
+        scrollView.addSubview(stackView)
+        scrollView.clipsToBounds = false
+        scrollView.isPagingEnabled = true
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.delegate = self
+        scrollView.bounces = false
+        
+        self.graphVisualEffectView.topAnchor.constraint(greaterThanOrEqualTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        self.collectionViewVisualEffectView.bottomAnchor.constraint(greaterThanOrEqualTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        return scrollView
+    }()
+    
+    lazy var doneButton: UIBarButtonItem =
+    {
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.didPressDone))
+        return doneButton
+    }()
+    
     @objc lazy var actionBarButton: UIBarButtonItem =
     {
         let actionBarButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.didPressAction))
@@ -98,6 +132,25 @@ class BikeStationDetailViewController: UIViewController
     {
         super.viewDidLoad()
         styleViews()
+        scrollView.translatesAutoresizingMaskIntoConstraints = true
+    }
+    
+    override func viewDidLayoutSubviews()
+    {
+        super.viewDidLayoutSubviews()
+        scrollView.frame = CGRect(x: 0.0, y: self.view.safeAreaInsets.top, width: self.view.bounds.width, height: 150.0)
+        gradientLayer.frame = overlayView.bounds
+        if hasGraph
+        {
+            scrollView.contentSize = CGSize(width: view.bounds.width, height: 3 * 150.0)
+            scrollView.setContentOffset(CGPoint(x: 0.0, y: 150.0), animated: false)
+            stackView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: (self.view.bounds.height - self.view.safeAreaInsets.top - self.view.safeAreaInsets.bottom) + 300.0)
+        }
+        else
+        {
+            scrollView.contentSize = CGSize(width: view.bounds.width, height: 2 * 150.0)
+            stackView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: (self.view.bounds.height - self.view.safeAreaInsets.top - self.view.safeAreaInsets.bottom) + 150.0)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool)
@@ -112,32 +165,47 @@ class BikeStationDetailViewController: UIViewController
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.rightBarButtonItem = actionBarButton
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         titleLabel.font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
         graphLabel.font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
         titleLabel.alpha = labelAlpha
         titleLabel.textColor = .black
+        
         descriptionLabel.font = UIFont.systemFont(ofSize: 35.0, weight: .heavy)
         descriptionLabel.alpha = labelAlpha
         descriptionLabel.textColor = .white
+        
+        nearbyStationsLabel.font = UIFont.systemFont(ofSize: 35.0, weight: .heavy)
+        nearbyStationsLabel.textColor = .white
+        
         timeDistanceLabel.font = UIFont.app_font(forTextStyle: .title2, weight: .semibold)
         timeDistanceLabel.alpha = labelAlpha
-        
-        overlayView.backgroundColor = UIColor.app_brown
-        overlayView.alpha = 0.25
         
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "marker")
         
         pageControl.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2.0)
         pageControl.currentPageIndicatorTintColor = UIColor.app_blue
-        
-        graphVisualEffectView.alpha = 0.0
-        
+                
         let nib = UINib(nibName: "\(BikeStationCollectionViewCell.self)", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
         scrollView.panGestureRecognizer.require(toFail: collectionView.panGestureRecognizer)
         
+        graphVisualEffectView.isHidden = !hasGraph
+        lineChartView.isHidden = true
+        
         setupChartView()
+        setupGradientLayer()
         updateUI()
+        
+        if !self.traitCollection.isSmallerDevice
+        {
+            self.navigationItem.leftBarButtonItem = self.doneButton
+        }
+    }
+    
+    private func setupGradientLayer()
+    {
+        overlayView.layer.addSublayer(gradientLayer)
     }
     
     private func setupChartView()
@@ -189,8 +257,6 @@ class BikeStationDetailViewController: UIViewController
         }
         else
         {
-            scrollViewTopSaveAreaConstraint.isActive = true
-            titleLabelTopConstraint.constant -= 115.0
             titleLabelTopOffset = titleLabelTopConstraint.constant
             pageControl.numberOfPages = 2
             pageControl.currentPage = 0
@@ -232,6 +298,7 @@ class BikeStationDetailViewController: UIViewController
         
         self.lineChartView.doubleTapToZoomEnabled = false
         self.lineChartView.data = chartData
+        self.lineChartView.isHidden = false
     }
     
     fileprivate func closebyStations(for stations: [BikeStation]) -> [BikeStation]
@@ -254,6 +321,11 @@ class BikeStationDetailViewController: UIViewController
             presenter.barButtonItem = self.actionBarButton
         }
         self.present(activityController, animated: true)
+    }
+    
+    @objc func didPressDone()
+    {
+        self.dismiss(animated: true)
     }
     
     // MARK: - Networking
@@ -336,40 +408,35 @@ extension BikeStationDetailViewController: UIScrollViewDelegate
 {
     func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
-        guard scrollView == self.scrollView else
+        guard scrollView == self.scrollView else { return }
+        
+        if hasGraph && scrollView.contentOffset.y < 150.0
         {
-            return
-        }
-        if scrollView.contentOffset.y < 0.0
-        {
-            let progress = scrollView.contentOffset.y / -115.0
+            let progress = (150.0 - scrollView.contentOffset.y) / 150.0
             titleLabel.alpha = labelAlpha - (progress * labelAlpha)
             timeDistanceLabel.alpha = labelAlpha - (progress * labelAlpha)
             graphLabel.alpha = progress * labelAlpha
             lineChartView.alpha = progress
             graphActivityIndicator.alpha = progress
             graphVisualEffectView.alpha = progress
-            descriptionLabelBottomConstrant.constant = 30.0 + abs(scrollView.contentOffset.y)
-            if hasGraph
-            {
-                pageControl.currentPage = scrollView.contentOffset.y < -115.0 / 2.0 ? 0 : 1
-            }
-            else
-            {
-                pageControl.currentPage = 0
-            }
+            pageControl.currentPage = scrollView.contentOffset.y < 150.0 / 2.0 ? 0 : 1
+            descriptionLabelBottomConstrant.constant = 30.0 + 150.0 * progress
         }
-        else
+        else if !hasGraph && scrollView.contentOffset.y > 0.0
         {
-            titleLabelTopConstraint.constant = titleLabelTopOffset + scrollView.contentOffset.y
-            if hasGraph
-            {
-                pageControl.currentPage = scrollView.contentOffset.y > 150.0 / 2.0 ? 2 : 1
-            }
-            else
-            {
-                pageControl.currentPage = scrollView.contentOffset.y > 150.0 / 2.0 ? 1 : 0
-            }
+            let progress = scrollView.contentOffset.y / 15.0
+            titleLabelTopConstraint.constant = titleLabelTopOffset + 150.0 * progress
+            descriptionLabel.alpha = labelAlpha - (progress * labelAlpha)
+            nearbyStationsLabel.alpha = (progress * labelAlpha)
+            pageControl.currentPage = scrollView.contentOffset.y > 150.0 / 2.0 ? 1 : 0
+        }
+        else if hasGraph && scrollView.contentOffset.y > 150.0
+        {
+            let progress = (scrollView.contentOffset.y - 150.0) / 150.0
+            titleLabelTopConstraint.constant = titleLabelTopOffset + 150.0 * progress
+            descriptionLabel.alpha = 1.0 - progress
+            nearbyStationsLabel.alpha = progress
+            pageControl.currentPage = progress > 0.5 ? 2 : 1
         }
     }
 }

@@ -66,7 +66,7 @@ extension BikeStation
     var statusDetailAttributedString: NSAttributedString
     {
         let font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
-        let size = font.pointSize * 1.0
+        let size = font.pointSize * 1.5
         
         guard let freeBikes = self.freeBikes,
             let emptySlots = self.emptySlots else { return NSAttributedString(string: "🤷‍♀️") }

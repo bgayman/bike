@@ -102,7 +102,7 @@ class NetworkTableViewController: UITableViewController
             self.networkMapViewController?.delegate = self
         }
         self.title = "Networks"
-
+        self.clearsSelectionOnViewWillAppear = true
         #if !os(tvOS)
         self.navigationItem.searchController = self.searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false

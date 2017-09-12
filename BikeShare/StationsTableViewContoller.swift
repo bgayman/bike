@@ -240,7 +240,6 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         let nib = UINib(nibName: "\(BikeStationTableViewCell.self)", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "Cell")
-
         #if !os(tvOS)
             self.navigationItem.searchController = self.searchController
             self.navigationItem.hidesSearchBarWhenScrolling = false
@@ -341,6 +340,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
+        tableView.deselectRow(at: indexPath, animated: true)
         let station = self.dataSource[indexPath.row]
         self.didSelect(station: station)
     }
