@@ -132,6 +132,8 @@ class BikeStationDetailViewController: UIViewController
     {
         super.viewDidLoad()
         styleViews()
+        addQuickAction()
+        addToSpotlight()
         scrollView.translatesAutoresizingMaskIntoConstraints = true
     }
     
@@ -156,7 +158,7 @@ class BikeStationDetailViewController: UIViewController
     override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
-        print(scrollView.contentOffset)
+        animateViewsOn()
     }
     
     // MARK: - Setup
@@ -174,6 +176,7 @@ class BikeStationDetailViewController: UIViewController
         descriptionLabel.font = UIFont.systemFont(ofSize: 35.0, weight: .heavy)
         descriptionLabel.alpha = labelAlpha
         descriptionLabel.textColor = .white
+        descriptionLabel.text = BikeStationDescriptionGenerator.descriptionMessage(for: bikeStation)
         
         nearbyStationsLabel.font = UIFont.systemFont(ofSize: 35.0, weight: .heavy)
         nearbyStationsLabel.textColor = .white
@@ -194,6 +197,7 @@ class BikeStationDetailViewController: UIViewController
         lineChartView.isHidden = true
         
         setupChartView()
+        setupAnimationTransforms()
         setupGradientLayer()
         updateUI()
         
@@ -206,6 +210,13 @@ class BikeStationDetailViewController: UIViewController
     private func setupGradientLayer()
     {
         overlayView.layer.addSublayer(gradientLayer)
+    }
+    
+    private func setupAnimationTransforms()
+    {
+        titleLabel.transform = CGAffineTransform(translationX: 300.0, y: 0.0)
+        timeDistanceLabel.transform = CGAffineTransform(translationX: 300.0, y: 0.0)
+        descriptionLabel.transform = CGAffineTransform(translationX: -700.0, y: 0.0)
     }
     
     private func setupChartView()
@@ -241,6 +252,7 @@ class BikeStationDetailViewController: UIViewController
         lineChartView.isUserInteractionEnabled = false
     }
     
+    // MARK: - Update
     private func updateUI()
     {
         title = bikeStation.name
@@ -299,6 +311,22 @@ class BikeStationDetailViewController: UIViewController
         self.lineChartView.doubleTapToZoomEnabled = false
         self.lineChartView.data = chartData
         self.lineChartView.isHidden = false
+    }
+    
+    private func animateViewsOn()
+    {
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations:
+        { [unowned self] in
+            self.titleLabel.transform = .identity
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.02, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations:
+        { [unowned self] in
+            self.timeDistanceLabel.transform = .identity
+        })
+        UIView.animate(withDuration: 0.5, delay: 0.04, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations:
+        { [unowned self] in
+            self.descriptionLabel.transform = .identity
+        })
     }
     
     fileprivate func closebyStations(for stations: [BikeStation]) -> [BikeStation]
@@ -424,7 +452,7 @@ extension BikeStationDetailViewController: UIScrollViewDelegate
         }
         else if !hasGraph && scrollView.contentOffset.y > 0.0
         {
-            let progress = scrollView.contentOffset.y / 15.0
+            let progress = scrollView.contentOffset.y / 150.0
             titleLabelTopConstraint.constant = titleLabelTopOffset + 150.0 * progress
             descriptionLabel.alpha = labelAlpha - (progress * labelAlpha)
             nearbyStationsLabel.alpha = (progress * labelAlpha)
@@ -463,6 +491,26 @@ private extension BikeStationDetailViewController
                 }
             }
         }
+    }
+    
+    //MARK: - QuickAction
+    @objc func addQuickAction()
+    {
+        var quickActions = UIApplication.shared.shortcutItems ?? [UIApplicationShortcutItem]()
+        for quickAction in quickActions
+        {
+            guard quickAction.localizedTitle != self.bikeStation.name else
+            {
+                return
+            }
+        }
+        if quickActions.count >= 4
+        {
+            quickActions = Array(quickActions.dropFirst())
+        }
+        let shortcut = UIApplicationShortcutItem(type: "station", localizedTitle: self.bikeStation.name, localizedSubtitle: self.bikeNetwork.name, icon:UIApplicationShortcutIcon(templateImageName: "bicycle"), userInfo: ["deeplink": "bikeshare://network/\(self.bikeNetwork.id)/station/\(self.bikeStation.id)"])
+        quickActions.append(shortcut)
+        UIApplication.shared.shortcutItems = quickActions
     }
     #endif
 }
