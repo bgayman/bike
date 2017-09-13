@@ -1,5 +1,6 @@
 import UIKit
 import MapKit
+import Dwifft
 #if !os(tvOS)
 import SafariServices
 import SDCAlertView
@@ -22,9 +23,19 @@ class NetworkTableViewController: UITableViewController
             #if !os(tvOS)
             self.mapBarButton.isEnabled = !self.networks.isEmpty
             #endif
-            self.animateUpdate(with: oldValue, newDataSource: self.networks)
+            var mutable = [(String, [BikeNetwork])]()
+            mutable.append(("Networks", networks))
+            diffCalculator.sectionedValues = SectionedValues(mutable)
         }
     }
+    
+    lazy fileprivate var diffCalculator: TableViewDiffCalculator<String, BikeNetwork> =
+    {
+        let diffCalculator = TableViewDiffCalculator<String, BikeNetwork>(tableView: self.tableView)
+        diffCalculator.insertionAnimation = .top
+        diffCalculator.deletionAnimation = .bottom
+        return diffCalculator
+    }()
     
     @objc var networkMapViewController: MapViewController? = nil
     @objc var isTransitioning = false
@@ -231,15 +242,20 @@ class NetworkTableViewController: UITableViewController
     }
     
     //MARK: - TableView
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return diffCalculator.numberOfSections()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return networks.count
+        return diffCalculator.numberOfObjects(inSection: section)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeNetworkTableViewCell
-        let network = self.networks[indexPath.row]
+        let network = diffCalculator.value(atIndexPath: indexPath)
         cell.bikeNetwork = network
         cell.accessoryType = .disclosureIndicator
         return cell

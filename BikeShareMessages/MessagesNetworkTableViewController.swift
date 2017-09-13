@@ -9,15 +9,26 @@
 import UIKit
 import SafariServices
 import CoreLocation
+import Dwifft
 
 class MessagesNetworkTableViewController: UITableViewController {
 
     //MARK: - Properties
+    lazy fileprivate var diffCalculator: TableViewDiffCalculator<String, BikeNetwork> =
+    {
+        let diffCalculator = TableViewDiffCalculator<String, BikeNetwork>(tableView: self.tableView)
+        diffCalculator.insertionAnimation = .top
+        diffCalculator.deletionAnimation = .bottom
+        return diffCalculator
+    }()
+    
     var networks = [BikeNetwork]()
     {
         didSet
         {
-            self.animateUpdate(with: oldValue, newDataSource: self.networks)
+            var mutable = [(String, [BikeNetwork])]()
+            mutable.append(("Networks", networks))
+            diffCalculator.sectionedValues = SectionedValues(mutable)
         }
     }
     
@@ -162,16 +173,21 @@ class MessagesNetworkTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return diffCalculator.numberOfSections()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.networks.count
+        return diffCalculator.numberOfObjects(inSection: section)
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeNetworkTableViewCell
-        let network = self.networks[indexPath.row]
+        let network = diffCalculator.value(atIndexPath: indexPath)
         cell.bikeNetwork = network
         cell.accessoryType = .disclosureIndicator
         return cell

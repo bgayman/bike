@@ -7,17 +7,29 @@
 //
 
 import UIKit
+import Dwifft
 
 class MessagesStationsTableViewController: UITableViewController
 {
     //MARK: - Properties
     let network: BikeNetwork
     var stationsClient = StationsClient()
+    
+    lazy fileprivate var diffCalculator: TableViewDiffCalculator<String, BikeStation> =
+    {
+        let diffCalculator = TableViewDiffCalculator<String, BikeStation>(tableView: self.tableView)
+        diffCalculator.insertionAnimation = .top
+        diffCalculator.deletionAnimation = .bottom
+        return diffCalculator
+    }()
+    
     var stations = [BikeStation]()
     {
         didSet
         {
-            self.animateUpdate(with: oldValue, newDataSource: self.stations)
+            var mutable = [(String, [BikeStation])]()
+            mutable.append(("Stations", stations))
+            diffCalculator.sectionedValues = SectionedValues(mutable)
         }
     }
     
@@ -114,15 +126,20 @@ class MessagesStationsTableViewController: UITableViewController
     }
 
     // MARK: - Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return diffCalculator.numberOfSections()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.stations.count
+        return diffCalculator.numberOfObjects(inSection: section)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeStationTableViewCell
-        cell.bikeStation = self.stations[indexPath.row]
+        cell.bikeStation = diffCalculator.value(atIndexPath: indexPath)
         cell.accessoryType = .disclosureIndicator
         return cell
     }

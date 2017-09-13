@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6F63FEA1BBC7235AECEC98CD4C97F85B"
+               BlueprintIdentifier = "D7AA284C23D0A9F895E2C542818F4B05"
                BuildableName = "Pods_BikeShareTV.framework"
                BlueprintName = "Pods-BikeShareTV"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6F63FEA1BBC7235AECEC98CD4C97F85B"
+            BlueprintIdentifier = "D7AA284C23D0A9F895E2C542818F4B05"
             BuildableName = "Pods_BikeShareTV.framework"
             BlueprintName = "Pods-BikeShareTV"
             ReferencedContainer = "container:Pods.xcodeproj">

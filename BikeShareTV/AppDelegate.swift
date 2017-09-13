@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.preferredDisplayMode = .allVisible
-        splitViewController.minimumPrimaryColumnWidth = 600
+        splitViewController.minimumPrimaryColumnWidth = 800
         
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem

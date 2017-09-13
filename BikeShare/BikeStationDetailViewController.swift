@@ -34,6 +34,7 @@ class BikeStationDetailViewController: UIViewController
     @IBOutlet var stackView: UIStackView!
     @IBOutlet weak var collectionViewVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var nearbyStationsLabel: UILabel!
+    @IBOutlet weak var networkLabel: UILabel!
     
     // MARK: - Properties
     let bikeNetwork: BikeNetwork
@@ -94,10 +95,6 @@ class BikeStationDetailViewController: UIViewController
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.delegate = self
         scrollView.bounces = false
-        
-        self.graphVisualEffectView.topAnchor.constraint(greaterThanOrEqualTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        self.collectionViewVisualEffectView.bottomAnchor.constraint(greaterThanOrEqualTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
         return scrollView
     }()
     
@@ -170,8 +167,10 @@ class BikeStationDetailViewController: UIViewController
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         titleLabel.font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
         graphLabel.font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
+        networkLabel.font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
         titleLabel.alpha = labelAlpha
         titleLabel.textColor = .black
+        networkLabel.text = bikeNetwork.name
         
         descriptionLabel.font = UIFont.systemFont(ofSize: 35.0, weight: .heavy)
         descriptionLabel.alpha = labelAlpha
@@ -259,7 +258,6 @@ class BikeStationDetailViewController: UIViewController
         titleLabel.attributedText = bikeStation.statusDetailAttributedString
         timeDistanceLabel.text = "\(bikeStation.dateComponentText) | \(bikeStation.distanceDescription)"
         
-        descriptionLabel.text = "Some great text goes here you know."
         if hasGraph
         {
             fetchHistory()
@@ -456,14 +454,20 @@ extension BikeStationDetailViewController: UIScrollViewDelegate
             titleLabelTopConstraint.constant = titleLabelTopOffset + 150.0 * progress
             descriptionLabel.alpha = labelAlpha - (progress * labelAlpha)
             nearbyStationsLabel.alpha = (progress * labelAlpha)
+            titleLabel.alpha = labelAlpha - (progress * labelAlpha)
+            timeDistanceLabel.alpha = labelAlpha - (progress * labelAlpha)
+            networkLabel.alpha = (progress * labelAlpha)
             pageControl.currentPage = scrollView.contentOffset.y > 150.0 / 2.0 ? 1 : 0
         }
         else if hasGraph && scrollView.contentOffset.y > 150.0
         {
             let progress = (scrollView.contentOffset.y - 150.0) / 150.0
             titleLabelTopConstraint.constant = titleLabelTopOffset + 150.0 * progress
-            descriptionLabel.alpha = 1.0 - progress
-            nearbyStationsLabel.alpha = progress
+            descriptionLabel.alpha = labelAlpha - (progress * labelAlpha)
+            nearbyStationsLabel.alpha = (progress * labelAlpha)
+            titleLabel.alpha = labelAlpha - (progress * labelAlpha)
+            timeDistanceLabel.alpha = labelAlpha - (progress * labelAlpha)
+            networkLabel.alpha = (progress * labelAlpha)
             pageControl.currentPage = progress > 0.5 ? 2 : 1
         }
     }

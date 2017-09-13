@@ -1,5 +1,6 @@
 
 import UIKit
+import Dwifft
 
 //MARK: - NetworkSearchControllerDelegate
 protocol NetworkSearchControllerDelegate: class
@@ -16,9 +17,19 @@ class NetworkSearchController: UITableViewController
     {
         didSet
         {
-            self.animateUpdate(with: oldValue, newDataSource: self.searchResults)
+            var mutable = [(String, [BikeNetwork])]()
+            mutable.append(("Networks", searchResults))
+            diffCalculator.sectionedValues = SectionedValues(mutable)
         }
     }
+    
+    lazy fileprivate var diffCalculator: TableViewDiffCalculator<String, BikeNetwork> =
+    {
+        let diffCalculator = TableViewDiffCalculator<String, BikeNetwork>(tableView: self.tableView)
+        diffCalculator.insertionAnimation = .top
+        diffCalculator.deletionAnimation = .bottom
+        return diffCalculator
+    }()
     
     @objc var searchString = ""
     {
@@ -51,15 +62,20 @@ class NetworkSearchController: UITableViewController
     }
     
     //MARK: - TableView
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return diffCalculator.numberOfSections()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.searchResults.count
+        return diffCalculator.numberOfObjects(inSection: section)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeNetworkTableViewCell
-        cell.bikeNetwork = self.searchResults[indexPath.row]
+        cell.bikeNetwork = diffCalculator.value(atIndexPath: indexPath)
         cell.searchString = self.searchString
         cell.accessoryType = .disclosureIndicator
         return cell

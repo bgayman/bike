@@ -9,6 +9,7 @@ target 'BikeShare' do
   pod 'Charts'
   pod 'DZNEmptyDataSet'
   pod 'SDCAlertView'
+  pod 'Dwifft'
 end
 
 target 'BikeShareMac' do
@@ -34,7 +35,7 @@ target 'BikeShareMessages' do
   # Pods for BikeShareMessages
   pod 'Charts'
   pod 'DZNEmptyDataSet'
-
+  pod 'Dwifft'
 end
 
 target 'BikeShareTopShelf' do
@@ -51,7 +52,7 @@ target 'BikeShareTV' do
 
   # Pods for BikeShareTV
   pod 'Charts'
-
+  pod 'Dwifft'
 end
 
 target 'BikeShareWatch' do
@@ -75,5 +76,6 @@ target 'BikeShareWidget' do
   use_frameworks!
 
   # Pods for BikeShareWidget
+  pod 'Dwifft'
 
 end

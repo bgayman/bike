@@ -1,5 +1,7 @@
 import UIKit
 import CoreLocation
+import Dwifft
+
 #if !os(tvOS)
 import DZNEmptyDataSet
 #endif
@@ -10,6 +12,15 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Properties
     let network: BikeNetwork
     var bikeStationDiffs = [BikeStationDiff]()
+    
+    lazy fileprivate var diffCalculator: TableViewDiffCalculator<String, BikeStation> =
+    {
+        let diffCalculator = TableViewDiffCalculator<String, BikeStation>(tableView: self.tableView)
+        diffCalculator.insertionAnimation = .top
+        diffCalculator.deletionAnimation = .bottom
+        return diffCalculator
+    }()
+    
     @objc var mapViewController: MapViewController? = nil
     @objc var isHomeNetworkTransition = false
     fileprivate var filterState = FilterState.all
@@ -53,7 +64,9 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     {
         didSet
         {
-            self.tableView.animateUpdate(with: oldValue, newDataSource: self.dataSource)
+            var mutable = [(String, [BikeStation])]()
+            mutable.append(("Stations", dataSource))
+            diffCalculator.sectionedValues = SectionedValues(mutable)
             guard let stationsSearchController = self.searchController.searchResultsController as? StationsSearchController else { return }
             stationsSearchController.all = self.dataSource
         }
@@ -258,16 +271,16 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
             self.tableView.backgroundColor = .app_beige
             self.mapBarButton.isEnabled = false
             self.view.backgroundColor = UIColor.app_beige
+            if self.traitCollection.forceTouchCapability == .available
+            {
+                self.registerForPreviewing(with: self, sourceView: self.tableView)
+            }
         #else
             self.title = "  Stations"
             self.navigationItem.leftBarButtonItem = self.searchBarButton
         #endif
         self.configureTableView()
         NotificationCenter.default.addObserver(self, selector: #selector(self.didUpdateCurrentLocation), name: Notification.Name(Constants.DidUpdatedUserLocationNotification), object: nil)
-        if self.traitCollection.forceTouchCapability == .available
-        {
-            self.registerForPreviewing(with: self, sourceView: self.tableView)
-        }
         self.fetchStations()
         if self.splitViewController?.traitCollection.userInterfaceIdiom == .phone && self.isHomeNetworkTransition
         {
@@ -318,15 +331,20 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     //MARK: - TableView
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return diffCalculator.numberOfSections()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.dataSource.count
+        return diffCalculator.numberOfObjects(inSection: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeStationTableViewCell
-        cell.bikeStation = self.dataSource[indexPath.row]
+        cell.bikeStation = diffCalculator.value(atIndexPath: indexPath)
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -431,7 +449,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func updateStationsData(stations: [ BikeStation], fromUserLocationUpdate: Bool = false)
+    func updateStationsData(stations: [BikeStation], fromUserLocationUpdate: Bool = false)
     {
         guard let stationsSearchController = self.searchController.searchResultsController as? StationsSearchController else { return }
         stationsSearchController.all = self.dataSource
@@ -620,7 +638,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         self.tableView.backgroundColor = .clear
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.automaticallyAdjustsScrollViewInsets = false
+        //self.automaticallyAdjustsScrollViewInsets = false
         self.definesPresentationContext = true
         #if !os(tvOS)
         self.tableView.addSubview(refresh)
@@ -651,6 +669,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         }
         
         self.filterState = filterState
+        self.mapViewController?.stations = self.dataSource
     }
 }
 
@@ -682,7 +701,11 @@ extension StationsTableViewController: StationsSearchControllerDelegate
         }
         
         self.searchController.isActive = false
+        #if !os(tvOS)
         let stationDetailViewController = BikeStationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
+        #else
+        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
+        #endif
         if self.splitViewController?.traitCollection.isSmallerDevice ?? false
         {
             self.navigationController?.pushViewController(stationDetailViewController, animated: true)
@@ -811,6 +834,7 @@ extension StationsTableViewController: UITableViewDragDelegate
 }
 #endif
 
+#if !os(tvOS)
 //MARK: - UIViewControllerPreviewingDelegate
 extension StationsTableViewController: UIViewControllerPreviewingDelegate
 {
@@ -818,7 +842,9 @@ extension StationsTableViewController: UIViewControllerPreviewingDelegate
     {
         guard let indexPath = self.tableView.indexPathForRow(at: location) else { return nil }
         let station = self.dataSource[indexPath.row]
+        
         let stationDetailViewController = BikeStationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
+        
         previewingContext.sourceRect = self.tableView.rectForRow(at: indexPath)
         return stationDetailViewController
     }
@@ -829,8 +855,6 @@ extension StationsTableViewController: UIViewControllerPreviewingDelegate
     }
 }
 
-
-#if !os(tvOS)
     
 extension StationsTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 {

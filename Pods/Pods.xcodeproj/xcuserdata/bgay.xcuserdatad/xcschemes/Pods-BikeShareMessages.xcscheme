@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1FA5AF95C24DC0DE270B38F82D186577"
+               BlueprintIdentifier = "B72F4181911ADB07346055D71C03DACA"
                BuildableName = "Pods_BikeShareMessages.framework"
                BlueprintName = "Pods-BikeShareMessages"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1FA5AF95C24DC0DE270B38F82D186577"
+            BlueprintIdentifier = "B72F4181911ADB07346055D71C03DACA"
             BuildableName = "Pods_BikeShareMessages.framework"
             BlueprintName = "Pods-BikeShareMessages"
             ReferencedContainer = "container:Pods.xcodeproj">

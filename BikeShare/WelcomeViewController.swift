@@ -123,8 +123,7 @@ final class WelcomeViewController: UIViewController
         continueButton.translatesAutoresizingMaskIntoConstraints = false
         //self.view.addSubview(continueButton)
         continueButton.widthAnchor.constraint(equalTo: self.stackView.widthAnchor, multiplier: 0.95)
-        //continueButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -16.0).isActive = true
-        //continueButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        continueButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 45.0).isActive = true
         #if !os(tvOS)
             continueButton.addTarget(self, action: #selector(self.didPressContinue), for: .touchUpInside)
         #else
@@ -147,6 +146,14 @@ final class WelcomeViewController: UIViewController
         return scrollView
     }()
     
+    lazy var emitter: CAEmitterLayer =
+    {
+        let emitter = Emitter.make(with: [#imageLiteral(resourceName: "icBikeBrownBearSmall"), #imageLiteral(resourceName: "icBrownStation"), #imageLiteral(resourceName: "icBrownClosedStation"), #imageLiteral(resourceName: "icBrownBrokenStation")])
+        emitter.frame = self.view.bounds
+        emitter.emitterSize = CGSize(width: self.view.bounds.width, height: 5.0)
+        return emitter
+    }()
+    
     @objc var userManager: UserManager
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return UserManager() }
@@ -157,7 +164,8 @@ final class WelcomeViewController: UIViewController
     {
         super.viewDidLoad()
         #if !os(tvOS)
-        self.view.layer.addSublayer(self.gradientLayer)
+        self.view.layer.addSublayer(gradientLayer)
+        self.view.layer.addSublayer(emitter)
         #else
         self.view.backgroundColor = .clear
         #endif
@@ -175,7 +183,9 @@ final class WelcomeViewController: UIViewController
     override func viewDidLayoutSubviews()
     {
         super.viewDidLayoutSubviews()
-        self.gradientLayer.frame = self.view.bounds
+        gradientLayer.frame = self.view.bounds
+        emitter.frame = self.view.bounds
+        emitter.emitterSize = CGSize(width: self.view.bounds.width * 2.0, height: 5.0)
     }
     
     @objc func didPressContinue()

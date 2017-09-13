@@ -72,7 +72,7 @@ struct BikeStationDescriptionGenerator
             return BikeStationDescriptionGenerator.orangeDescriptions[index]
         case UIColor.app_green:
             index = greenDistro.nextInt()
-            return BikeStationDescriptionGenerator.redDescriptions[index]
+            return BikeStationDescriptionGenerator.greenDescriptions[index]
         default:
             return ""
         }

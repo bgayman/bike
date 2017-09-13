@@ -131,6 +131,7 @@
 		CD4A104B1F6614100098BE1C /* BikeStationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4A10491F6614100098BE1C /* BikeStationDetailViewController.xib */; };
 		CD4A10521F66C2440098BE1C /* BikeStationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A10501F66C2440098BE1C /* BikeStationCollectionViewCell.swift */; };
 		CD4A10531F66C2440098BE1C /* BikeStationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4A10511F66C2440098BE1C /* BikeStationCollectionViewCell.xib */; };
+		CD4A10551F68BF890098BE1C /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A10541F68BF890098BE1C /* Emitter.swift */; };
 		CD57C1371F6447F900BF3BB1 /* StationClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */; };
 		CD6276EB1EB4E712008666AC /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
 		CD6276EC1EB4E784008666AC /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
@@ -254,7 +255,6 @@
 		CD8C1B721E2181BB000F9A9D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
 		CD8C1B731E2181C0000F9A9D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */; };
 		CD8C1B741E2181C3000F9A9D /* StationDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */; };
-		CD8C1B751E2181CF000F9A9D /* BikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B01E0DBD8300C3C6CA /* BikeTableViewCell.swift */; };
 		CD8C1B761E218209000F9A9D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */; };
 		CD8C1B771E218218000F9A9D /* BikeDetailAccessoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */; };
 		CD8C1B781E21821E000F9A9D /* BikeDetailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */; };
@@ -324,22 +324,20 @@
 		CDC4D82E1F65D8FA00885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
 		CDC4D82F1F65E1CD00885E0F /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */; };
 		CDC4D8301F65E1CD00885E0F /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */; };
-		CDC4D8311F65E1CE00885E0F /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */; };
-		CDC4D8321F65E1D000885E0F /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */; };
 		CDC4D8331F65E7D000885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
 		CDC4D8341F65E7D100885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
-		CDC4D8351F65E7D200885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
-		CDC4D8361F65E7D300885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
 		CDC4D8391F65F4D000885E0F /* BikeNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */; };
 		CDC4D83A1F65F4D000885E0F /* BikeNetworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D8381F65F4D000885E0F /* BikeNetworkTableViewCell.xib */; };
 		CDC4D8431F65FBB600885E0F /* BikeNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */; };
 		CDC4D8441F65FBB700885E0F /* BikeNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */; };
-		CDC4D8451F65FBB900885E0F /* BikeNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */; };
-		CDC4D8461F65FBBA00885E0F /* BikeNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */; };
 		CDC4D8471F65FBC100885E0F /* BikeNetworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D8381F65F4D000885E0F /* BikeNetworkTableViewCell.xib */; };
 		CDC4D8481F65FBC200885E0F /* BikeNetworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D8381F65F4D000885E0F /* BikeNetworkTableViewCell.xib */; };
-		CDC4D8491F65FBC200885E0F /* BikeNetworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D8381F65F4D000885E0F /* BikeNetworkTableViewCell.xib */; };
-		CDC4D84A1F65FBC300885E0F /* BikeNetworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D8381F65F4D000885E0F /* BikeNetworkTableViewCell.xib */; };
+		CDC50C0C1F68E02800576118 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A10541F68BF890098BE1C /* Emitter.swift */; };
+		CDC50C111F69575200576118 /* BikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B01E0DBD8300C3C6CA /* BikeTableViewCell.swift */; };
+		CDC50C181F695A7000576118 /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC50C161F695A6F00576118 /* BikeStationTableViewCell.swift */; };
+		CDC50C191F695A7000576118 /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC50C171F695A7000576118 /* BikeStationTableViewCell.xib */; };
+		CDC50C1C1F695C8E00576118 /* BikeNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC50C1A1F695C8E00576118 /* BikeNetworkTableViewCell.swift */; };
+		CDC50C1D1F695C8E00576118 /* BikeNetworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC50C1B1F695C8E00576118 /* BikeNetworkTableViewCell.xib */; };
 		CDDE92881F658C5B00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
 		CDDE92891F65904B00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
 		CDDE928A1F65904C00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
@@ -629,6 +627,7 @@
 		CD4A10491F6614100098BE1C /* BikeStationDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationDetailViewController.xib; sourceTree = "<group>"; };
 		CD4A10501F66C2440098BE1C /* BikeStationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationCollectionViewCell.swift; sourceTree = "<group>"; };
 		CD4A10511F66C2440098BE1C /* BikeStationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationCollectionViewCell.xib; sourceTree = "<group>"; };
+		CD4A10541F68BF890098BE1C /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
 		CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationClusterView.swift; sourceTree = "<group>"; };
 		CD6733201EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap"; sourceTree = "<group>"; };
 		CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationStatus.swift; sourceTree = "<group>"; };
@@ -664,6 +663,10 @@
 		CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationTableViewCell.xib; sourceTree = "<group>"; };
 		CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeNetworkTableViewCell.swift; sourceTree = "<group>"; };
 		CDC4D8381F65F4D000885E0F /* BikeNetworkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeNetworkTableViewCell.xib; sourceTree = "<group>"; };
+		CDC50C161F695A6F00576118 /* BikeStationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationTableViewCell.swift; sourceTree = "<group>"; };
+		CDC50C171F695A7000576118 /* BikeStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationTableViewCell.xib; sourceTree = "<group>"; };
+		CDC50C1A1F695C8E00576118 /* BikeNetworkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeNetworkTableViewCell.swift; sourceTree = "<group>"; };
+		CDC50C1B1F695C8E00576118 /* BikeNetworkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeNetworkTableViewCell.xib; sourceTree = "<group>"; };
 		CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+Application.swift"; sourceTree = "<group>"; };
 		CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSFeed.swift; sourceTree = "<group>"; };
 		CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemInformation.swift; sourceTree = "<group>"; };
@@ -973,6 +976,7 @@
 				CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */,
 				CD100FE91F64890F0031EFF6 /* NetworkClusterView.swift */,
 				CD06F34A1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift */,
+				CD4A10541F68BF890098BE1C /* Emitter.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -998,6 +1002,10 @@
 				CD8C1B6A1E218069000F9A9D /* BikeShareTV.entitlements */,
 				CD8C1B5B1E218056000F9A9D /* AppDelegate.swift */,
 				CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */,
+				CDC50C161F695A6F00576118 /* BikeStationTableViewCell.swift */,
+				CDC50C171F695A7000576118 /* BikeStationTableViewCell.xib */,
+				CDC50C1A1F695C8E00576118 /* BikeNetworkTableViewCell.swift */,
+				CDC50C1B1F695C8E00576118 /* BikeNetworkTableViewCell.xib */,
 				CD8C1B5F1E218056000F9A9D /* Main.storyboard */,
 				CD8C1B621E218056000F9A9D /* Assets.xcassets */,
 				CD8C1B641E218056000F9A9D /* Info.plist */,
@@ -1652,8 +1660,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CDC4D8361F65E7D300885E0F /* BikeStationTableViewCell.xib in Resources */,
-				CDC4D84A1F65FBC300885E0F /* BikeNetworkTableViewCell.xib in Resources */,
 				CD029C791ECC6B2C0091A0A9 /* Assets.xcassets in Resources */,
 				CD164C3E1E2BEC650062CBA5 /* Assets.xcassets in Resources */,
 			);
@@ -1682,10 +1688,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD8C1B631E218056000F9A9D /* Assets.xcassets in Resources */,
-				CDC4D8351F65E7D200885E0F /* BikeStationTableViewCell.xib in Resources */,
+				CDC50C191F695A7000576118 /* BikeStationTableViewCell.xib in Resources */,
 				CD029C781ECC6B2B0091A0A9 /* Assets.xcassets in Resources */,
 				CD8C1B611E218056000F9A9D /* Main.storyboard in Resources */,
-				CDC4D8491F65FBC200885E0F /* BikeNetworkTableViewCell.xib in Resources */,
+				CDC50C1D1F695C8E00576118 /* BikeNetworkTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1810,7 +1816,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		40015366F00105DA160965E8 /* [CP] Copy Pods Resources */ = {
@@ -1873,7 +1879,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		79E824B0999B8C4DC3477E41 /* [CP] Copy Pods Resources */ = {
@@ -1906,7 +1912,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8304B1DFDA094BE19940CC40 /* [CP] Check Pods Manifest.lock */ = {
@@ -1924,7 +1930,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		8F1726C1F0D2FD2074C5AA1C /* [CP] Copy Pods Resources */ = {
@@ -1957,7 +1963,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9DC7678DE22CAA625A7CDD15 /* [CP] Check Pods Manifest.lock */ = {
@@ -1975,7 +1981,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9F6C21335D7005B7851F9D37 /* [CP] Check Pods Manifest.lock */ = {
@@ -1993,7 +1999,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		A31D064453539E20E8425156 /* [CP] Embed Pods Frameworks */ = {
@@ -2095,7 +2101,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E2270F1E6C32A4227C26E3B5 /* [CP] Check Pods Manifest.lock */ = {
@@ -2113,7 +2119,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		EB379CD113C024B9AB5B3924 /* [CP] Embed Pods Frameworks */ = {
@@ -2139,7 +2145,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD164C2F1E2B1BF60062CBA5 /* UserManager.swift in Sources */,
-				CDC4D8461F65FBBA00885E0F /* BikeNetworkTableViewCell.swift in Sources */,
 				CD80AA941E625D7E00C1E9B6 /* GBFSStationInformation.swift in Sources */,
 				CDC4D8241F6599D600885E0F /* NSTextAttachment+Application.swift in Sources */,
 				CD80AA951E625D9A00C1E9B6 /* GBFSStationStatus.swift in Sources */,
@@ -2164,7 +2169,6 @@
 				CD2BA3CD1EABFDBB00C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CD6276EC1EB4E784008666AC /* NetworksClient.swift in Sources */,
 				CDC4D82A1F659A2F00885E0F /* BikeStation+AttributedString.swift in Sources */,
-				CDC4D8321F65E1D000885E0F /* BikeStationTableViewCell.swift in Sources */,
 				CD164C281E2B1BC80062CBA5 /* BikeNetwork.swift in Sources */,
 				CD164C3A1E2BE3E60062CBA5 /* TopShelfView.swift in Sources */,
 				CD164C2E1E2B1BF30062CBA5 /* Constants.swift in Sources */,
@@ -2274,9 +2278,7 @@
 				CD029C7F1ECDC6D20091A0A9 /* NSAttributedString+Application.swift in Sources */,
 				CD80AA6B1E624CF000C1E9B6 /* GBFSStationStatus.swift in Sources */,
 				CD80AA8C1E624D4E00C1E9B6 /* GBFSStationStatusClient.swift in Sources */,
-				CDC4D8451F65FBB900885E0F /* BikeNetworkTableViewCell.swift in Sources */,
 				CD80AA911E625A8300C1E9B6 /* SystemInfoTableViewContent.swift in Sources */,
-				CD8C1B751E2181CF000F9A9D /* BikeTableViewCell.swift in Sources */,
 				CD8C1B791E218224000F9A9D /* StationDetailViewController.swift in Sources */,
 				CD8C1B6F1E2181AF000F9A9D /* BikeStation.swift in Sources */,
 				CD1DA7C51ED0D8CF00ED19BC /* WelcomeViewController.swift in Sources */,
@@ -2293,7 +2295,6 @@
 				CD8C1B741E2181C3000F9A9D /* StationDetailTableViewCell.swift in Sources */,
 				CD8C1B7B1E21822D000F9A9D /* StationsSearchController.swift in Sources */,
 				CD8C1B781E21821E000F9A9D /* BikeDetailCalloutAccessoryView.swift in Sources */,
-				CDC4D8311F65E1CE00885E0F /* BikeStationTableViewCell.swift in Sources */,
 				CD80AA881E624D4500C1E9B6 /* GBFSStationInformationClient.swift in Sources */,
 				CD8C1B851E218320000F9A9D /* UITraitCollection+Helper.swift in Sources */,
 				CD8C1B6B1E218199000F9A9D /* NetworkTableViewController.swift in Sources */,
@@ -2313,6 +2314,7 @@
 				CD8C1B7E1E218302000F9A9D /* ClientResponse.swift in Sources */,
 				CD8C1B771E218218000F9A9D /* BikeDetailAccessoryTableViewCell.swift in Sources */,
 				CD80AA721E624D1E00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
+				CDC50C181F695A7000576118 /* BikeStationTableViewCell.swift in Sources */,
 				CD8C1B821E218313000F9A9D /* UIColor+Application.swift in Sources */,
 				CD6733381EAAEE410070E69B /* BikeStationStatus.swift in Sources */,
 				CD164C671E2C3E390062CBA5 /* BaseMapViewController.swift in Sources */,
@@ -2320,9 +2322,12 @@
 				CDC4D8291F659A2F00885E0F /* BikeStation+AttributedString.swift in Sources */,
 				CD8C1B711E2181B7000F9A9D /* BikeNetwork.swift in Sources */,
 				CD80AAAC1E6BA81F00C1E9B6 /* MapKeyView.swift in Sources */,
+				CDC50C1C1F695C8E00576118 /* BikeNetworkTableViewCell.swift in Sources */,
 				CDA1348A1E2A8F18005542DE /* BikeTableFooterView.swift in Sources */,
 				CD80AA901E625A3A00C1E9B6 /* NetworkSystemInformationTableViewController.swift in Sources */,
 				CD8C1B841E21831B000F9A9D /* UILabel+Sizing.swift in Sources */,
+				CDC50C111F69575200576118 /* BikeTableViewCell.swift in Sources */,
+				CDC50C0C1F68E02800576118 /* Emitter.swift in Sources */,
 				CD8C1B8B1E21BE73000F9A9D /* MenuSplitViewController.swift in Sources */,
 				CD8C1B801E21830B000F9A9D /* UITableView+Diff.swift in Sources */,
 				CDF6F5BF1E7DB487009CBD32 /* BikeStationDiff.swift in Sources */,
@@ -2492,6 +2497,7 @@
 				CDF6E7B51E0DBD9500C3C6CA /* NetworkTableViewController.swift in Sources */,
 				CDEF3D1A1E173B030002063F /* UITableView+Diff.swift in Sources */,
 				CDF6F5BE1E7DB46B009CBD32 /* BikeStationDiff.swift in Sources */,
+				CD4A10551F68BF890098BE1C /* Emitter.swift in Sources */,
 				CDEF3CF21E12FA110002063F /* UITraitCollection+Helper.swift in Sources */,
 				CDEC20121E4F69010044D923 /* NetworkSystemInformationTableViewController.swift in Sources */,
 				CDF6E7CB1E0ED8FE00C3C6CA /* BikeNetwork.swift in Sources */,

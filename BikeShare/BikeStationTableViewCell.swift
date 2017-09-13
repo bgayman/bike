@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class BikeStationTableViewCell: UITableViewCell
 {
@@ -102,3 +103,4 @@ class BikeStationTableViewCell: UITableViewCell
     }
     
 }
+

@@ -69,7 +69,7 @@ extension BikeNetwork: Equatable
 {
     static func ==(lhs: BikeNetwork, rhs: BikeNetwork) -> Bool
     {
-        return lhs.id == rhs.id
+        return lhs.id == rhs.id && lhs.href == rhs.href && lhs.locationDisplayName == rhs.locationDisplayName
     }
 }
 
