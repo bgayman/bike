@@ -73,7 +73,7 @@ class MapViewController: BaseMapViewController
         self.mapBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : -44.0
         self.view.bringSubview(toFront: self.toolbar)
         mapView.mapType = .mutedStandard
-        mapView.tintColor = UIColor.app_brown.withAlphaComponent(0.75)
+        mapView.tintColor = UIColor.app_brown.withAlphaComponent(0.95)
 
         #endif
         mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
@@ -89,6 +89,20 @@ class MapViewController: BaseMapViewController
     @IBOutlet weak var mapKeyView: MapKeyView!
     #elseif !os(macOS)
     var filterState = FilterState.all
+    
+    @objc lazy var activityImageView: UIImageView =
+    {
+        let activityImageView = UIImageView(image: #imageLiteral(resourceName: "icBikeWheel"))
+        activityImageView.tintColor = UIColor.app_brown
+        activityImageView.contentMode = .scaleAspectFit
+        activityImageView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(activityImageView)
+        activityImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        activityImageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        activityImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        activityImageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        return activityImageView
+    }()
 
     @objc lazy var mapKeyView: MapKeyView =
     {
@@ -329,6 +343,15 @@ class MapViewController: BaseMapViewController
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         #endif
         self.setupForNetworks()
+        self.prepActivityAnimation()
+        if mapView.annotations.isEmpty || mapView.annotations is [MKUserLocation]
+        {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1)
+            {
+                self.animateActivityView()
+            }
+            
+        }
         #else
         self.network = UserDefaults.bikeShareGroup.homeNetwork
         if self.network == nil
@@ -561,6 +584,52 @@ class MapViewController: BaseMapViewController
         present(alertController, animated: true)
     }
     
+    private func prepActivityAnimation()
+    {
+        let scale = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        activityImageView.transform = scale.concatenating(CGAffineTransform(translationX: 0.0, y: UIScreen.main.bounds.height))
+        
+    }
+    
+    private func animateActivityView()
+    {
+        self.view.bringSubview(toFront: self.activityImageView)
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations:
+        { [unowned self] in
+            self.activityImageView.transform = .identity
+        },
+        completion:
+        { [unowned self] (_) in
+            UIView.animate(withDuration: 1.0, delay: 0.0, options: [.beginFromCurrentState, .repeat, .curveLinear], animations:
+            { [unowned self] in
+                var transform = self.activityImageView.transform
+                transform = transform.concatenating(CGAffineTransform(rotationAngle: CGFloat.pi))
+                self.activityImageView.transform = transform
+            },
+           completion:
+            { [unowned self] _ in
+                UIView.animate(withDuration: 1.0, delay: 0.0, options: [.beginFromCurrentState, .curveLinear], animations:
+                { [unowned self] in
+                    var transform = self.activityImageView.transform
+                    transform = transform.concatenating(CGAffineTransform(rotationAngle: CGFloat.pi / 2.0))
+                    self.activityImageView.transform = transform
+                })
+            })
+        })
+    }
+    
+    private func animateActivityOff()
+    {
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations:
+        { [unowned self] in
+            self.activityImageView.transform = CGAffineTransform(translationX: 0.0, y: -UIScreen.main.bounds.height * 0.75)
+        },
+        completion:
+        { [unowned self] (_) in
+            self.activityImageView.isHidden = true
+        })
+    }
+    
     #if !os(tvOS)
     @objc func keyboardWillAppear(notification: Notification)
     {
@@ -719,6 +788,14 @@ extension MapViewController: MKMapViewDelegate
         return annotationView
     }
     #endif
+    
+    func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView])
+    {
+        if views.contains(where: { $0 is MKMarkerAnnotationView || $0 is StationClusterView || $0 is NetworkClusterView })
+        {
+            animateActivityOff()
+        }
+    }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
     {
