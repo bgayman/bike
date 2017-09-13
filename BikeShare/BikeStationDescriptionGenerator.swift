@@ -27,6 +27,12 @@ struct BikeStationDescriptionGenerator
                                     "Beared you go again!!",
                                     "Feel the bearn!!",
                                     "No beariers that I can see!",
+                                    "It's all grrrrrravy!",
+                                    "Beary good news!!!",
+                                    "🎶 Hey dirty...baby I got your honey 🍯 don't you worry, dirty. 🎶",
+                                    "This station is right fur the job.",
+                                    "I'm not just pandaing to the audence; this is a great station.",
+                                    "I'm koala-fied to say this station is great. 🐨",
                                     ]
     
     static let orangeDescriptions = ["Bear with me now, there might be what you need at this station.",
@@ -40,6 +46,8 @@ struct BikeStationDescriptionGenerator
                                      "You'll have to grin and bear it for this one.",
                                      "Bear down and get to this station quick.",
                                      "No time to take a paws!!",
+                                     "Be pre-beared.",
+                                     "This station is looking a little bear.",
                                      ]
     
     static let redDescriptions = ["This is Unbearable!!🐻!!!!",
@@ -53,6 +61,12 @@ struct BikeStationDescriptionGenerator
                                   "Beary bad news!!",
                                   "Want a hug?",
                                   "InClawsible!!",
+                                  "Hope you were pre-beared for this.",
+                                  "I don't want to em-bear-ass you but this station might not be the one for you.",
+                                  "This is scarier than the Bear Witch Project.",
+                                  "I hope this isn't a panda-emic. 🐼",
+                                  "This station is suffering from kodiak arrest.",
+                                  "This can be bear-y teddie-ouses",
                                   ]
     
     static let redDistro = GKShuffledDistribution(lowestValue: 0, highestValue: BikeStationDescriptionGenerator.redDescriptions.count - 1)
