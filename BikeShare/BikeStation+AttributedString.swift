@@ -63,9 +63,8 @@ extension BikeStation
         
     }
     
-    var statusDetailAttributedString: NSAttributedString
+    func statusDetailAttributedString(for font: UIFont) -> NSAttributedString
     {
-        let font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
         let size = font.pointSize * 1.5
         
         guard let freeBikes = self.freeBikes,

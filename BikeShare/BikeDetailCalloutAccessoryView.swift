@@ -25,7 +25,7 @@ enum BikeDetailCalloutAnnotation
 class BikeDetailCalloutAccessoryView: UIView
 {
     let annotation: BikeDetailCalloutAnnotation
-    @objc let imageWidthHeight: CGFloat = 250.0
+    @objc let imageWidthHeight: CGFloat = 150.0
     weak var delegate: BikeDetailCalloutAccessoryViewDelegate?
     
     @objc var rowHeight: CGFloat
@@ -40,19 +40,15 @@ class BikeDetailCalloutAccessoryView: UIView
             label.text = station.subtitle ?? ""
         }
         let size = label.sizeThatFits(CGSize(width: self.imageWidthHeight, height: CGFloat.greatestFiniteMagnitude))
-        var height = self.imageWidthHeight + (3 * BikeDetailAccessoryTableViewCell.Constants.LayoutMargin) + size.height
+        var height = self.imageWidthHeight + (2 * BikeDetailAccessoryTableViewCell.Constants.LayoutMargin) + size.height
         if case BikeDetailCalloutAnnotation.mapBikeStation(_, let station) = annotation
         {
             label.font = BikeDetailAccessoryTableViewCell.Constants.SubtitleLabelFont
             label.text = station.dateComponentText
             let size2 = label.sizeThatFits(CGSize(width: self.imageWidthHeight, height: CGFloat.greatestFiniteMagnitude))
             height += BikeDetailAccessoryTableViewCell.Constants.LayoutMargin + size2.height
-            height += BikeDetailAccessoryTableViewCell.Constants.LayoutMargin + self.faveButton.intrinsicContentSize.height
         }
-        else
-        {
-            height += BikeDetailAccessoryTableViewCell.Constants.LayoutMargin + self.faveButton.intrinsicContentSize.height
-        }
+        
         return height
     }
     
@@ -104,24 +100,12 @@ class BikeDetailCalloutAccessoryView: UIView
         return options
     }()
     
-    @objc lazy var faveButton: UIButton =
-    {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44.0, height: 44.0))
-        let attributes = [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .title1), NSAttributedStringKey.foregroundColor: UIColor.app_blue]
-        let normalAttribString = NSAttributedString(string: "☆", attributes: attributes)
-        let selectedAttribString = NSAttributedString(string: "★", attributes: attributes)
-        button.setAttributedTitle(normalAttribString, for: .normal)
-        button.setAttributedTitle(selectedAttribString, for: .selected)
-        button.addTarget(self, action: #selector(self.didPressHomeNetwork(_:)), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     init(annotation: BikeDetailCalloutAnnotation)
     {
         self.annotation = annotation
         super.init(frame: CGRect.zero)
-        self.tableView.register(BikeDetailAccessoryTableViewCell.self, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: "\(MapDetailTableViewCell.self)", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "Cell")
         self.backgroundColor = .clear
         self.translatesAutoresizingMaskIntoConstraints = false
         let labelSize: CGSize
@@ -132,7 +116,7 @@ class BikeDetailCalloutAccessoryView: UIView
         case .mapBikeStation(_, let station):
             labelSize = UILabel.labelSize(with: station.title)
         }
-        self.widthAnchor.constraint(equalToConstant: max(275.0, labelSize.width)).isActive = true
+        self.widthAnchor.constraint(equalToConstant: max(200.0, labelSize.width)).isActive = true
         self.heightAnchor.constraint(equalToConstant: self.rowHeight).isActive = true
     }
     
@@ -152,27 +136,29 @@ extension BikeDetailCalloutAccessoryView: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeDetailAccessoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MapDetailTableViewCell
         switch annotation
         {
         case .mapBikeStation(let network, let station):
-            let string = self.userManager.currentLocation != nil ? (station.subtitle ?? "") + "\n\(station.bikeStation.distanceDescription)" : (station.subtitle ?? "")
-            cell.calloutLabel.text = string
-            cell.calloutSubtitleLabel.text = station.dateComponentText
-            cell.calloutSubtitleLabel.isHidden = false
-            #if !os(tvOS)
-            cell.stackView.addArrangedSubview(self.faveButton)
-            #endif
-            self.faveButton.isSelected = UserDefaults.bikeShareGroup.isStationFavorited(station: station.bikeStation, network: network.bikeNetwork)
+            cell.titleLabel.text = station.subtitle
+            cell.timeLabel.text = station.dateComponentText
+            cell.distanceLabel.text = self.userManager.currentLocation != nil ? station.bikeStation.distanceDescription : nil
+            cell.timeLabel.isHidden = false
+            cell.favoritesButton.isSelected = UserDefaults.bikeShareGroup.isStationFavorited(station: station.bikeStation, network: network.bikeNetwork)
+            cell.favoritesButton.addTarget(self, action: #selector(self.didPressHomeNetwork(_:)), for: .touchUpInside)
+            cell.acceptsLabel.isHidden = station.bikeStation.gbfsStationInformation == nil
+            if let rentalMethods = station.bikeStation.gbfsStationInformation?.rentalMethods
+            {
+                cell.acceptsLabel.text = rentalMethods.map { $0.displayString }.joined(separator: ", ")
+            }
             
         case .mapBikeNetwork(let network):
-            let string = self.userManager.currentLocation != nil ? (network.subtitle ?? "") + " - \(network.bikeNetwork.location.distanceDescription)" : (network.subtitle ?? "")
-            cell.calloutLabel.text = string
-            cell.calloutSubtitleLabel.isHidden = true
-            #if !os(tvOS)
-            cell.stackView.addArrangedSubview(self.faveButton)
-            #endif
-            self.faveButton.isSelected = UserDefaults.bikeShareGroup.isNetworkHomeNetwork(network: network.bikeNetwork)
+            cell.titleLabel.text = network.subtitle
+            cell.distanceLabel.text = self.userManager.currentLocation != nil ? network.bikeNetwork.location.distanceDescription : nil
+            cell.timeLabel.isHidden = true
+            cell.favoritesButton.isSelected = UserDefaults.bikeShareGroup.isNetworkHomeNetwork(network: network.bikeNetwork)
+            cell.favoritesButton.addTarget(self, action: #selector(self.didPressHomeNetwork(_:)), for: .touchUpInside)
+            cell.acceptsLabel.isHidden = true
         }
         self.configureImageView(with: cell)
         return cell
@@ -220,7 +206,7 @@ extension BikeDetailCalloutAccessoryView: UITableViewDragDelegate
 
 extension BikeDetailCalloutAccessoryView
 {
-    @objc func configureImageView(with cell: BikeDetailAccessoryTableViewCell)
+    @objc func configureImageView(with cell: MapDetailTableViewCell)
     {
         cell.bikeImageView.isHidden = true
         cell.bikeImageView.alpha = 0
@@ -233,7 +219,7 @@ extension BikeDetailCalloutAccessoryView
             cell.bikeImageView.image = snapshot?.image
             #if !os(tvOS)
             cell.activityIndicator.stopAnimating()
-            cell.stackView.removeArrangedSubview(cell.activityIndicator)
+                cell.stackView.removeArrangedSubview(cell.activityIndicator)
             #endif
             cell.stackView.insertArrangedSubview(cell.bikeImageView, at: 0)
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [], animations:

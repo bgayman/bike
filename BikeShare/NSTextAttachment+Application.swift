@@ -15,6 +15,6 @@ extension NSTextAttachment
         guard let image = image else { return }
         let ratio = image.size.width / image.size.height
         
-        bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y - height * 0.25, width: ratio * height, height: height)
+        bounds = CGRect(x: bounds.origin.x, y: bounds.origin.y - height * 0.15, width: ratio * height, height: height)
     }
 }

@@ -17,6 +17,7 @@
                 <outlet property="descriptionLabel" destination="EqZ-Xo-MY8" id="UtG-fG-mmw"/>
                 <outlet property="descriptionLabelBottomConstrant" destination="zqG-ku-biR" id="0e2-tS-x07"/>
                 <outlet property="graphActivityIndicator" destination="DYw-19-P1g" id="CkX-qn-vNZ"/>
+                <outlet property="graphContainerView" destination="03L-aa-XvY" id="baX-r9-VAf"/>
                 <outlet property="graphLabel" destination="PAC-yj-T7b" id="pHc-gK-0Oi"/>
                 <outlet property="graphVisualEffectView" destination="SWp-tT-zjw" id="7dW-zU-0vW"/>
                 <outlet property="lineChartView" destination="MyF-4k-EHV" id="r61-Bu-eaj"/>
@@ -129,7 +130,7 @@
                         <constraint firstItem="gTp-7n-CGa" firstAttribute="top" secondItem="ctY-bY-5vE" secondAttribute="bottom" id="r6Q-p5-Us6"/>
                         <constraint firstAttribute="trailing" secondItem="EqZ-Xo-MY8" secondAttribute="trailing" constant="25" id="rAw-lf-Ot4"/>
                         <constraint firstItem="PAC-yj-T7b" firstAttribute="trailing" secondItem="ctY-bY-5vE" secondAttribute="trailing" id="v5t-Fk-oQJ"/>
-                        <constraint firstItem="Alc-0E-6yy" firstAttribute="bottom" secondItem="PAC-yj-T7b" secondAttribute="bottom" id="v9C-fo-cWs"/>
+                        <constraint firstItem="Alc-0E-6yy" firstAttribute="firstBaseline" secondItem="PAC-yj-T7b" secondAttribute="firstBaseline" id="v9C-fo-cWs"/>
                         <constraint firstItem="Alc-0E-6yy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="P5O-Y4-eTD" secondAttribute="leading" constant="20" symbolic="YES" id="wKR-Sq-GW6"/>
                         <constraint firstItem="EqZ-Xo-MY8" firstAttribute="leading" secondItem="P5O-Y4-eTD" secondAttribute="leading" constant="25" id="zQz-BD-D4q"/>
                         <constraint firstAttribute="bottom" secondItem="EqZ-Xo-MY8" secondAttribute="bottom" constant="30" id="zqG-ku-biR"/>

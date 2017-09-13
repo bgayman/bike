@@ -73,6 +73,8 @@ class MapViewController: BaseMapViewController
         self.mapBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : -44.0
         self.view.bringSubview(toFront: self.toolbar)
         mapView.mapType = .mutedStandard
+        mapView.tintColor = UIColor.app_brown.withAlphaComponent(0.75)
+
         #endif
         mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         mapView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
@@ -94,7 +96,7 @@ class MapViewController: BaseMapViewController
             , height: 70))
         mapKeyView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(mapKeyView)
-        
+    
         #if os(tvOS)
             mapKeyView.widthAnchor.constraint(equalToConstant: 600).isActive = true
             mapKeyView.heightAnchor.constraint(equalToConstant: 150).isActive = true
@@ -783,7 +785,7 @@ extension MapViewController: UIViewControllerPreviewingDelegate
         {
             let mapBikeStation = annotation as! MapBikeStation
             guard let network = self.network else { return nil }
-            let stationDetailViewController = StationDetailViewController(with: network, station: mapBikeStation.bikeStation, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(network.id))
+            let stationDetailViewController = BikeStationDetailViewController(with: network, station: mapBikeStation.bikeStation, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(network.id))
             return stationDetailViewController
         }
         else if annotation is MapBikeNetwork

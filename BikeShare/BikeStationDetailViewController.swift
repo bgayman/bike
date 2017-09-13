@@ -35,6 +35,7 @@ class BikeStationDetailViewController: UIViewController
     @IBOutlet weak var collectionViewVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var nearbyStationsLabel: UILabel!
     @IBOutlet weak var networkLabel: UILabel!
+    @IBOutlet weak var graphContainerView: UIView!
     
     // MARK: - Properties
     let bikeNetwork: BikeNetwork
@@ -150,6 +151,20 @@ class BikeStationDetailViewController: UIViewController
             scrollView.contentSize = CGSize(width: view.bounds.width, height: 2 * 150.0)
             stackView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: (self.view.bounds.height - self.view.safeAreaInsets.top - self.view.safeAreaInsets.bottom) + 150.0)
         }
+        
+        if self.traitCollection.isSmallerDevice
+        {
+            titleLabel.font = UIFont.systemFont(ofSize: 50.0, weight: .heavy)
+            graphLabel.font = UIFont.systemFont(ofSize: 50.0, weight: .heavy)
+            networkLabel.font = UIFont.systemFont(ofSize: 50.0, weight: .heavy)
+        }
+        else
+        {
+            titleLabel.font = UIFont.systemFont(ofSize: 90.0, weight: .heavy)
+            graphLabel.font = UIFont.systemFont(ofSize: 90.0, weight: .heavy)
+            networkLabel.font = UIFont.systemFont(ofSize: 90.0, weight: .heavy)
+        }
+        titleLabel.attributedText = bikeStation.statusDetailAttributedString(for: titleLabel.font)
     }
     
     override func viewDidAppear(_ animated: Bool)
@@ -165,9 +180,7 @@ class BikeStationDetailViewController: UIViewController
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.rightBarButtonItem = actionBarButton
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        titleLabel.font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
-        graphLabel.font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
-        networkLabel.font = UIFont.systemFont(ofSize: 85.0, weight: .heavy)
+        
         titleLabel.alpha = labelAlpha
         titleLabel.textColor = .black
         networkLabel.text = bikeNetwork.name
@@ -187,12 +200,13 @@ class BikeStationDetailViewController: UIViewController
         
         pageControl.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2.0)
         pageControl.currentPageIndicatorTintColor = UIColor.app_blue
+        pageControl.pageIndicatorTintColor = UIColor.white
                 
         let nib = UINib(nibName: "\(BikeStationCollectionViewCell.self)", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
         scrollView.panGestureRecognizer.require(toFail: collectionView.panGestureRecognizer)
         
-        graphVisualEffectView.isHidden = !hasGraph
+        graphContainerView.isHidden = !hasGraph
         lineChartView.isHidden = true
         
         setupChartView()
@@ -255,7 +269,7 @@ class BikeStationDetailViewController: UIViewController
     private func updateUI()
     {
         title = bikeStation.name
-        titleLabel.attributedText = bikeStation.statusDetailAttributedString
+        titleLabel.attributedText = bikeStation.statusDetailAttributedString(for: titleLabel.font)
         timeDistanceLabel.text = "\(bikeStation.dateComponentText) | \(bikeStation.distanceDescription)"
         
         if hasGraph
