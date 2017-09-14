@@ -46,7 +46,7 @@ class BikeStationDetailViewController: UIViewController
             updateUI()
         }
     }
-    let bikeStations: [BikeStation]
+    var bikeStations: [BikeStation]
     var closebyStations = [BikeStation]()
     let labelAlpha: CGFloat = 0.70
     var hasGraph: Bool
@@ -74,6 +74,65 @@ class BikeStationDetailViewController: UIViewController
             self.stationStatuses?.append(bikeStationStatus)
             updateChartData()
         }
+    }
+    
+    override var keyCommands: [UIKeyCommand]?
+    {
+        let share = UIKeyCommand(input: "s", modifierFlags: .command, action: #selector(self.didPressAction), discoverabilityTitle: "Share")
+        let back = UIKeyCommand(input: "b", modifierFlags: .command, action: #selector(self.back), discoverabilityTitle: "Back")
+        let refresh = UIKeyCommand(input: "r", modifierFlags: .command, action: #selector(self.fetchStations), discoverabilityTitle: "Refresh")
+        return [share, back, refresh]
+    }
+    
+    override var canBecomeFirstResponder: Bool
+    {
+        return true
+    }
+    
+    override var previewActionItems: [UIPreviewActionItem]
+    {
+        let shareActionItem = UIPreviewAction(title: "Share", style: .default)
+        { _, viewController in
+            guard let viewController = viewController as? BikeStationDetailViewController,
+                let url = URL(string: "\(Constants.WebSiteDomain)/network/\(viewController.bikeNetwork.id)/station/\(viewController.bikeStation.id)")
+                else { return }
+            let activity = ActivityViewCustomActivity.stationFavoriteActivity(station: self.bikeStation, network: self.bikeNetwork)
+            let controller = UIActivityViewController(activityItems: [url], applicationActivities: [activity])
+            UIApplication.shared.keyWindow?.rootViewController?.present(controller, animated: true)
+        }
+        let mapsActionItem = UIPreviewAction(title: "Open in Maps", style: .default)
+        { _, viewController in
+            guard let viewController = viewController as? BikeStationDetailViewController
+                else { return }
+            viewController.openMapBikeStationInMaps(MapBikeStation(bikeStation: viewController.bikeStation))
+        }
+        let favorite = UIPreviewAction(title: "☆", style: .default)
+        { [unowned self] _, viewController in
+            guard let viewController = viewController as? BikeStationDetailViewController
+                else { return }
+            let station = viewController.bikeStation
+            var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.bikeNetwork)
+            favedStations.append(station)
+            let jsonDicts = favedStations.map { $0.jsonDict }
+            try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [self.bikeNetwork.id: jsonDicts as AnyObject])
+            UserDefaults.bikeShareGroup.setFavoriteStations(for: self.bikeNetwork, favorites: favedStations)
+        }
+        let unfavorite = UIPreviewAction(title: "★", style: .default)
+        { [unowned self] _, viewController in
+            guard let viewController = viewController as? StationDetailViewController
+                else { return }
+            let station = viewController.station
+            var favedStations = UserDefaults.bikeShareGroup.favoriteStations(for: self.bikeNetwork)
+            let favedS = favedStations.filter { $0.id == station.id }.last
+            guard let favedStation = favedS,
+                let index = favedStations.index(of: favedStation) else { return }
+            favedStations.remove(at: index)
+            let jsonDicts = favedStations.map { $0.jsonDict }
+            try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [self.bikeNetwork.id: jsonDicts as AnyObject])
+            UserDefaults.bikeShareGroup.setFavoriteStations(for: self.bikeNetwork, favorites: favedStations)
+        }
+        
+        return UserDefaults.bikeShareGroup.favoriteStations(for: self.bikeNetwork).contains(where: { $0.id == self.bikeStation.id }) ? [shareActionItem, mapsActionItem, unfavorite] : [shareActionItem, mapsActionItem, favorite]
     }
     
     lazy var gradientLayer: CAGradientLayer =
@@ -132,6 +191,7 @@ class BikeStationDetailViewController: UIViewController
         styleViews()
         addQuickAction()
         addToSpotlight()
+        fetchStations()
         scrollView.translatesAutoresizingMaskIntoConstraints = true
     }
     
@@ -154,9 +214,9 @@ class BikeStationDetailViewController: UIViewController
         
         if self.traitCollection.isSmallerDevice
         {
-            titleLabel.font = UIFont.systemFont(ofSize: 50.0, weight: .heavy)
-            graphLabel.font = UIFont.systemFont(ofSize: 50.0, weight: .heavy)
-            networkLabel.font = UIFont.systemFont(ofSize: 50.0, weight: .heavy)
+            titleLabel.font = UIFont.systemFont(ofSize: 65.0, weight: .heavy)
+            graphLabel.font = UIFont.systemFont(ofSize: 65.0, weight: .heavy)
+            networkLabel.font = UIFont.systemFont(ofSize: 65.0, weight: .heavy)
         }
         else
         {
@@ -292,8 +352,6 @@ class BikeStationDetailViewController: UIViewController
         let annotation = MapBikeStation(bikeStation: bikeStation)
         mapView.addAnnotation(annotation)
         mapView.showAnnotations([annotation], animated: false)
-        
-        scrollView.setContentOffset(.zero, animated: true)
     }
     
     private func updateChartData()
@@ -368,6 +426,18 @@ class BikeStationDetailViewController: UIViewController
         self.dismiss(animated: true)
     }
     
+    @objc func back()
+    {
+        if self.presentingViewController != nil
+        {
+            self.didPressDone()
+        }
+        else
+        {
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     // MARK: - Networking
     private func fetchHistory()
     {
@@ -396,6 +466,48 @@ class BikeStationDetailViewController: UIViewController
                     #if !os(tvOS)
                         self.stationStatuses = statuses
                     #endif
+                }
+            }
+        }
+    }
+    
+    //MARK: - Networking
+    @objc func fetchStations()
+    {
+        #if !os(tvOS)
+            self.setNetworkActivityIndicator(shown: true)
+        #endif
+        let stationsClient = StationsClient()
+        stationsClient.fetchStations(with: self.bikeNetwork, fetchGBFSProperties: true)
+        { response in
+            DispatchQueue.main.async
+            {
+                self.setNetworkActivityIndicator(shown: false)
+                self.navigationItem.prompt = nil
+                stationsClient.invalidate()
+                switch response
+                {
+                case .error(let errorMessage):
+                    let alert = UIAlertController(errorMessage: errorMessage)
+                    alert.modalPresentationStyle = .overFullScreen
+                    self.present(alert, animated: true)
+                case .success(var stations):
+                    guard !stations.isEmpty else
+                    {
+                        let alert = UIAlertController(errorMessage: "Uh oh, looks like there are no stations for this network.\n\nThis might be for seasonal reasons or this network might no longer exist 😢.")
+                        alert.modalPresentationStyle = .overFullScreen
+                        self.present(alert, animated: true)
+                        return
+                    }
+                    if let bikeStation = stations.first(where: { $0.id == self.bikeStation.id })
+                    {
+                        let index = stations.index(of: bikeStation)!
+                        stations.remove(at: index)
+                        self.bikeStations = stations
+                        self.closebyStations = self.closebyStations(for: self.bikeStations)
+                        self.bikeStation = bikeStation
+
+                    }
                 }
             }
         }
@@ -489,7 +601,6 @@ extension BikeStationDetailViewController: UIScrollViewDelegate
 
 private extension BikeStationDetailViewController
 {
-    #if !os(tvOS)
     func addToSpotlight()
     {
         let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeURL as String)
@@ -530,7 +641,14 @@ private extension BikeStationDetailViewController
         quickActions.append(shortcut)
         UIApplication.shared.shortcutItems = quickActions
     }
-    #endif
+    
+    @objc func openMapBikeStationInMaps(_ mapBikeStation: MapBikeStation)
+    {
+        let placemark = MKPlacemark(coordinate: mapBikeStation.coordinate)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = mapBikeStation.title
+        mapItem.openInMaps(launchOptions: nil)
+    }
 }
 
 //MARK: - Distance

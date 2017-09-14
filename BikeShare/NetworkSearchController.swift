@@ -18,7 +18,12 @@ class NetworkSearchController: UITableViewController
         didSet
         {
             var mutable = [(String, [BikeNetwork])]()
-            mutable.append(("Networks", searchResults))
+            mutable.append(("Networks", searchResults.map
+            { bikeNetwork in
+                var bikeNetwork = bikeNetwork
+                bikeNetwork.searchString = searchString
+                return bikeNetwork
+            }))
             diffCalculator.sectionedValues = SectionedValues(mutable)
         }
     }

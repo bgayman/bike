@@ -693,7 +693,7 @@ extension StationsTableViewController: StationsSearchControllerDelegate
         guard !self.searchController.isActive else
         {
             self.searchController.isActive = false
-            DispatchQueue.main.delay(0.4)
+            DispatchQueue.main.delay(1.0)
             {
                 self.didSelect(station: station)
             }

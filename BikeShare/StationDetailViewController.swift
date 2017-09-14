@@ -162,6 +162,7 @@ class StationDetailViewController: UIViewController
     {
         return true
     }
+    
     #if os(iOS)
     override var keyCommands: [UIKeyCommand]?
     {

@@ -40,7 +40,7 @@ class BikeDetailCalloutAccessoryView: UIView
             label.text = station.subtitle ?? ""
         }
         let size = label.sizeThatFits(CGSize(width: self.imageWidthHeight, height: CGFloat.greatestFiniteMagnitude))
-        var height = self.imageWidthHeight + (2 * BikeDetailAccessoryTableViewCell.Constants.LayoutMargin) + size.height
+        var height = self.imageWidthHeight + (8 * BikeDetailAccessoryTableViewCell.Constants.LayoutMargin) + size.height
         if case BikeDetailCalloutAnnotation.mapBikeStation(_, let station) = annotation
         {
             label.font = BikeDetailAccessoryTableViewCell.Constants.SubtitleLabelFont

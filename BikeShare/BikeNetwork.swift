@@ -16,6 +16,7 @@ struct BikeNetwork
     let location: BikeNetworkLocation
     let name: String
     let gbfsHref: URL?
+    var searchString: String = ""
     
     var locationDisplayName: String
     {
@@ -69,7 +70,7 @@ extension BikeNetwork: Equatable
 {
     static func ==(lhs: BikeNetwork, rhs: BikeNetwork) -> Bool
     {
-        return lhs.id == rhs.id && lhs.href == rhs.href && lhs.locationDisplayName == rhs.locationDisplayName
+        return lhs.id == rhs.id && lhs.href == rhs.href && lhs.locationDisplayName == rhs.locationDisplayName && lhs.searchString == rhs.searchString
     }
 }
 

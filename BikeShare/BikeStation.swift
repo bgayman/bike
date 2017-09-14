@@ -23,6 +23,7 @@ struct BikeStation
     let id: String
     let address: String?
     var gbfsStationInformation: GBFSStationInformation? = nil
+    var searchString = ""
     
     var statusDisplayText: String
     {
@@ -169,7 +170,7 @@ extension BikeStation: Equatable
 {
     static func == (lhs: BikeStation, rhs: BikeStation) -> Bool
     {
-        return lhs.id == rhs.id && lhs.statusDisplayText == rhs.statusDisplayText && lhs.timestamp == rhs.timestamp
+        return lhs.id == rhs.id && lhs.statusDisplayText == rhs.statusDisplayText && lhs.timestamp == rhs.timestamp && lhs.searchString == rhs.searchString
     }
 }
 

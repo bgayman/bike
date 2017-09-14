@@ -96,6 +96,8 @@ class StationDiffViewController: UITableViewController
         self.activityIndicator.startAnimating()
         self.navigationItem.rightBarButtonItems = [self.refreshButton]
         self.navigationItem.prompt = "Network changes since first viewing."
+        self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
         self.refreshControl = refresh
         self.configureTableView()
         self.fetchStations()
@@ -116,7 +118,6 @@ class StationDiffViewController: UITableViewController
         
         #if !os(tvOS)
             footerView.poweredByButton.addTarget(self, action: #selector(self.poweredByPressed), for: .touchUpInside)
-            self.tableView.tableHeaderView = self.searchController.searchBar
             self.definesPresentationContext = true
             self.refreshControl = refresh
         #endif

@@ -73,7 +73,6 @@ class MapViewController: BaseMapViewController
         self.mapBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : -44.0
         self.view.bringSubview(toFront: self.toolbar)
         mapView.mapType = .mutedStandard
-        mapView.tintColor = UIColor.app_brown.withAlphaComponent(0.95)
 
         #endif
         mapView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
@@ -876,9 +875,9 @@ extension MapViewController: UIViewControllerPreviewingDelegate
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)
     {
-        if let stationDetailViewController = viewControllerToCommit as? StationDetailViewController
+        if let stationDetailViewController = viewControllerToCommit as? BikeStationDetailViewController
         {
-            self.didSelectStationCallout(with: MapBikeStation(bikeStation: stationDetailViewController.station))
+            self.didSelectStationCallout(with: MapBikeStation(bikeStation: stationDetailViewController.bikeStation))
         }
         else if let stationsTableViewController = viewControllerToCommit as? StationsTableViewController
         {

@@ -28,7 +28,12 @@ class StationsSearchController: UITableViewController
         didSet
         {
             var mutable = [(String, [BikeStation])]()
-            mutable.append(("Stations", searchResults))
+            mutable.append(("Stations", searchResults.map
+            { bikeStation in
+                var bikeStation = bikeStation
+                bikeStation.searchString = searchString
+                return bikeStation
+            }))
             diffCalculator.sectionedValues = SectionedValues(mutable)
         }
     }

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" rowHeight="430" id="fBs-An-CcD" customClass="MapDetailTableViewCell" customModule="BikeShareTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1052" height="430"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fBs-An-CcD" id="S0Q-fX-qc8">
+                <rect key="frame" x="0.0" y="0.0" width="832" height="430"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nRH-57-1gm">
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzA-v7-Nch">
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                        <state key="normal" title="Button"/>
+                    </button>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="KJg-tA-Gcp">
+                        <rect key="frame" x="8" y="8" width="1020" height="414"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="GNt-Wb-aFe">
+                                <rect key="frame" x="1000" y="0.0" width="20" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="9LZ-dd-atZ"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e8f-Pb-4gh">
+                                <rect key="frame" x="927" y="104" width="93" height="210"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bcM-2c-ppj">
+                                <rect key="frame" x="927" y="318" width="93" height="46"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dfZ-ly-SdL">
+                                <rect key="frame" x="830" y="368" width="190" height="46"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cf7-Nu-Ui4">
+                                        <rect key="frame" x="0.0" y="0.0" width="93" height="46"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AAK-7R-S2h">
+                                        <rect key="frame" x="97" y="0.0" width="93" height="46"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="KJg-tA-Gcp" firstAttribute="leading" secondItem="S0Q-fX-qc8" secondAttribute="leading" constant="8" id="BjY-Df-LyB"/>
+                    <constraint firstAttribute="trailing" secondItem="KJg-tA-Gcp" secondAttribute="trailing" constant="8" id="Ojp-yn-TmS"/>
+                    <constraint firstItem="KJg-tA-Gcp" firstAttribute="top" secondItem="S0Q-fX-qc8" secondAttribute="top" constant="8" id="Tp4-FR-va5"/>
+                    <constraint firstAttribute="bottom" secondItem="KJg-tA-Gcp" secondAttribute="bottom" constant="8" id="ZSB-za-4Aq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="1ks-Xo-ai1"/>
+            <connections>
+                <outlet property="acceptsLabel" destination="bcM-2c-ppj" id="SMw-n6-fRM"/>
+                <outlet property="activityIndicator" destination="GNt-Wb-aFe" id="fLc-Az-urn"/>
+                <outlet property="bikeImageView" destination="nRH-57-1gm" id="c1l-Gj-uQ4"/>
+                <outlet property="distanceLabel" destination="AAK-7R-S2h" id="997-Dc-teu"/>
+                <outlet property="favoritesButton" destination="fzA-v7-Nch" id="Bfu-eG-RPr"/>
+                <outlet property="stackView" destination="KJg-tA-Gcp" id="K0g-t8-Ymi"/>
+                <outlet property="timeLabel" destination="cf7-Nu-Ui4" id="Fz7-yh-BT9"/>
+                <outlet property="titleLabel" destination="e8f-Pb-4gh" id="Eks-Ur-3Vc"/>
+            </connections>
+            <point key="canvasLocation" x="-365" y="300"/>
+        </tableViewCell>
+    </objects>
+</document>
