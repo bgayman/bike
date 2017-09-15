@@ -79,6 +79,18 @@ struct BikeStationDiff
         }
     }
     
+    var overlayColor: UIColor
+    {
+        if bikesAdded > 0
+        {
+            return UIColor.app_red
+        }
+        else
+        {
+            return UIColor.app_green
+        }
+    }
+    
     var dateComponentText: String?
     {
         guard let date = self.bikeStation.gbfsStationInformation?.stationStatus?.lastReported else { return nil }

@@ -78,7 +78,7 @@ class StationMapDiffViewController: UIViewController
     {
         self.bikeStations = bikeStations
         self.network = bikeNetwork
-        self.bikeStationDiffs = bikeStationDiffs.sorted()
+        self.bikeStationDiffs = bikeStationDiffs.sorted().filter { $0.statusText.isEmpty == false }
         super.init(nibName: "\(StationMapDiffViewController.self)", bundle: nil)
     }
     
@@ -165,7 +165,7 @@ class StationMapDiffViewController: UIViewController
                     let newDiffs = BikeStationDiff.performDiff(with: self.bikeStations, newDataSource: stations) ?? [BikeStationDiff]()
                     let diffs =  newDiffs + self.bikeStationDiffs
                     self.mapView.addOverlays(newDiffs.map { $0.overlay })
-                    self.bikeStationDiffs = diffs.sorted()
+                    self.bikeStationDiffs = diffs.sorted().filter { $0.statusText.isEmpty == false }
                     self.bikeStations = stations
                     self.stationDiffViewController.bikeStationDiffs = self.bikeStationDiffs
                     self.stationDiffViewController.bikeStations = stations

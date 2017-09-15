@@ -108,7 +108,8 @@ class StationDiffViewController: UITableViewController
     {
         self.tableView.estimatedRowHeight = 55.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: "\(StationDiffTableViewCell.self)", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "Cell")
         self.tableView.register(BikeTableFooterView.self, forHeaderFooterViewReuseIdentifier: "thing")
         self.tableView.allowsSelection = false
         #if !os(tvOS)
@@ -204,16 +205,8 @@ class StationDiffViewController: UITableViewController
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let diff = self.bikeStationDiffs[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeTableViewCell
-        cell.titleLabel.font = UIFont.app_font(forTextStyle: .body)
-        cell.titleLabel.text = diff.bikeStation.name
-        cell.subtitleLabel.font = UIFont.app_font(forTextStyle: .caption1)
-        var subtitleText = [diff.statusText]
-        if let _ = diff.dateComponentText
-        {
-            subtitleText.append(diff.bikeStation.dateComponentText)
-        }
-        cell.subtitleLabel.text = subtitleText.joined(separator: "\n")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationDiffTableViewCell
+        cell.bikeStationDiff = diff
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
         return cell

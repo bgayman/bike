@@ -282,6 +282,8 @@
 		CD8C1B8B1E21BE73000F9A9D /* MenuSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */; };
 		CD8C1B8C1E21BEC9000F9A9D /* MenuSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */; };
 		CD92ED9B1F6B7E630030585A /* DotAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD92ED9A1F6B7E630030585A /* DotAnnotationView.swift */; };
+		CD95F61E1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD95F61C1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift */; };
+		CD95F61F1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD95F61D1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib */; };
 		CD9E81EC1ECA7D8B00FF2EB4 /* StationDiffViewControllerSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */; };
 		CDA134821E2A8E57005542DE /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
 		CDA134831E2A8E5C005542DE /* MapBikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */; };
@@ -663,6 +665,8 @@
 		CD8C1B871E218427000F9A9D /* Deeplink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deeplink.swift; sourceTree = "<group>"; };
 		CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSplitViewController.swift; sourceTree = "<group>"; };
 		CD92ED9A1F6B7E630030585A /* DotAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotAnnotationView.swift; sourceTree = "<group>"; };
+		CD95F61C1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDiffTableViewCell.swift; sourceTree = "<group>"; };
+		CD95F61D1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationDiffTableViewCell.xib; sourceTree = "<group>"; };
 		CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDiffViewControllerSearchController.swift; sourceTree = "<group>"; };
 		CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StationDetailViewController+Application.swift"; sourceTree = "<group>"; };
 		CDA134A31E2A91F5005542DE /* StationDetailViewController+Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StationDetailViewController+Messages.swift"; path = "../BikeShare/StationDetailViewController+Messages.swift"; sourceTree = "<group>"; };
@@ -971,6 +975,8 @@
 				CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */,
 				CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */,
 				CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */,
+				CD95F61C1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift */,
+				CD95F61D1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib */,
 				CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */,
 				CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */,
 				CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */,
@@ -1745,6 +1751,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD4A10531F66C2440098BE1C /* BikeStationCollectionViewCell.xib in Resources */,
+				CD95F61F1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib in Resources */,
 				CDC4D83A1F65F4D000885E0F /* BikeNetworkTableViewCell.xib in Resources */,
 				CDF6E7A41E0DBC3000C3C6CA /* LaunchScreen.storyboard in Resources */,
 				CD2833061F69A6EB0060DB17 /* MapDetailTableViewCell.xib in Resources */,
@@ -2477,6 +2484,7 @@
 				CDEC20241E548F830044D923 /* GBFSStationInformation.swift in Sources */,
 				CDF6E7BD1E0DBF6200C3C6CA /* MapViewController.swift in Sources */,
 				CDF6E7CF1E0ED98200C3C6CA /* BikeStation.swift in Sources */,
+				CD95F61E1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift in Sources */,
 				CDC4D8391F65F4D000885E0F /* BikeNetworkTableViewCell.swift in Sources */,
 				CD80AAAB1E6BA81F00C1E9B6 /* MapKeyView.swift in Sources */,
 				CD06F34B1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift in Sources */,
