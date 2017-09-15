@@ -91,16 +91,11 @@ class StationDiffViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.app_beige
-        self.navigationItem.titleView = self.activityIndicator
-        self.activityIndicator.startAnimating()
-        self.navigationItem.rightBarButtonItems = [self.refreshButton]
-        self.navigationItem.prompt = "Network changes since first viewing."
+        self.view.backgroundColor = UIColor.clear
+        self.title = "Station Differences"
         self.navigationItem.searchController = searchController
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        self.refreshControl = refresh
         self.configureTableView()
-        self.fetchStations()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         if self.traitCollection.forceTouchCapability == .available
         {
@@ -115,7 +110,7 @@ class StationDiffViewController: UITableViewController
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.register(BikeTableFooterView.self, forHeaderFooterViewReuseIdentifier: "thing")
-        
+        self.tableView.allowsSelection = false
         #if !os(tvOS)
             footerView.poweredByButton.addTarget(self, action: #selector(self.poweredByPressed), for: .touchUpInside)
             self.definesPresentationContext = true
@@ -213,13 +208,14 @@ class StationDiffViewController: UITableViewController
         cell.titleLabel.font = UIFont.app_font(forTextStyle: .body)
         cell.titleLabel.text = diff.bikeStation.name
         cell.subtitleLabel.font = UIFont.app_font(forTextStyle: .caption1)
-        cell.accessoryType = .disclosureIndicator
         var subtitleText = [diff.statusText]
         if let _ = diff.dateComponentText
         {
             subtitleText.append(diff.bikeStation.dateComponentText)
         }
         cell.subtitleLabel.text = subtitleText.joined(separator: "\n")
+        cell.backgroundColor = .clear
+        cell.contentView.backgroundColor = .clear
         return cell
     }
     
@@ -229,11 +225,6 @@ class StationDiffViewController: UITableViewController
         return footer
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        let diff = self.bikeStationDiffs[indexPath.row]
-        self.delegate?.didSelectBikeStation(station: diff.bikeStation)
-    }
 }
 
 //MARK: - UIViewControllerPreviewingDelegate

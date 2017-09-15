@@ -11,7 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StationMapDiffViewController" customModule="BikeShare" customModuleProvider="target">
             <connections>
+                <outlet property="handleView" destination="ehH-bk-WS2" id="u1y-ye-gHZ"/>
                 <outlet property="mapView" destination="qvf-ZO-VrA" id="eF2-0s-HJr"/>
+                <outlet property="panGesture" destination="kMr-bn-BkW" id="xGz-oH-60x"/>
+                <outlet property="tableViewContainerToBottomConstraint" destination="wGL-vw-XrD" id="Cur-Uh-eHI"/>
+                <outlet property="tableViewContainerView" destination="tJg-3n-2qk" id="jsm-BJ-kaN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,21 +24,99 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvf-ZO-VrA">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="mutedStandard" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvf-ZO-VrA">
+                    <rect key="frame" x="0.0" y="20" width="375" height="537"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="pdU-lZ-vgW"/>
                     </connections>
                 </mapView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJg-3n-2qk">
+                    <rect key="frame" x="0.0" y="552" width="375" height="667"/>
+                    <subviews>
+                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwc-i7-W6B">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="TZH-Kw-jpK">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </view>
+                            <blurEffect style="light"/>
+                        </visualEffectView>
+                        <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ehH-bk-WS2">
+                            <rect key="frame" x="165" y="4" width="45" height="4"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="45" id="NBD-g5-VO8"/>
+                                <constraint firstAttribute="height" constant="4" id="hLU-07-V6C"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="hwc-i7-W6B" firstAttribute="leading" secondItem="tJg-3n-2qk" secondAttribute="leading" id="0Nr-SU-PgW"/>
+                        <constraint firstAttribute="bottom" secondItem="hwc-i7-W6B" secondAttribute="bottom" id="6Iv-G5-Psi"/>
+                        <constraint firstItem="ehH-bk-WS2" firstAttribute="centerX" secondItem="tJg-3n-2qk" secondAttribute="centerX" id="J0B-iA-IT1"/>
+                        <constraint firstAttribute="width" constant="375" id="K7U-Ng-fgs"/>
+                        <constraint firstItem="hwc-i7-W6B" firstAttribute="top" secondItem="tJg-3n-2qk" secondAttribute="top" id="U61-OE-7xR"/>
+                        <constraint firstAttribute="trailing" secondItem="hwc-i7-W6B" secondAttribute="trailing" id="d2h-SW-BkF"/>
+                        <constraint firstItem="ehH-bk-WS2" firstAttribute="top" secondItem="tJg-3n-2qk" secondAttribute="top" constant="4" id="gAt-kK-oM1"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="K7U-Ng-fgs"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <mask key="constraints">
+                            <include reference="K7U-Ng-fgs"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="kMr-bn-BkW" appends="YES" id="i4Y-XV-QnQ"/>
+                    </connections>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qvf-ZO-VrA" secondAttribute="bottom" id="Oxa-3i-NEb"/>
+                <constraint firstItem="tJg-3n-2qk" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="15" id="Cj3-3R-p3L"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qvf-ZO-VrA" secondAttribute="bottom" constant="95" id="Oxa-3i-NEb"/>
                 <constraint firstItem="qvf-ZO-VrA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Zc9-R1-Pur"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qvf-ZO-VrA" secondAttribute="bottom" id="eST-40-dFC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tJg-3n-2qk" secondAttribute="trailing" id="geE-2x-BXf"/>
+                <constraint firstItem="tJg-3n-2qk" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="hiL-JW-qdp"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qvf-ZO-VrA" secondAttribute="trailing" id="mWd-OW-LgE"/>
                 <constraint firstItem="qvf-ZO-VrA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="oYV-jb-9nh"/>
+                <constraint firstItem="tJg-3n-2qk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pht-0U-qE4"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tJg-3n-2qk" secondAttribute="top" constant="115" id="wGL-vw-XrD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Oxa-3i-NEb"/>
+                    <exclude reference="eST-40-dFC"/>
+                    <exclude reference="geE-2x-BXf"/>
+                    <exclude reference="Cj3-3R-p3L"/>
+                    <exclude reference="pht-0U-qE4"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="constraints">
+                    <include reference="Oxa-3i-NEb"/>
+                    <include reference="geE-2x-BXf"/>
+                    <include reference="pht-0U-qE4"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=regular">
+                <mask key="constraints">
+                    <include reference="eST-40-dFC"/>
+                    <include reference="Cj3-3R-p3L"/>
+                </mask>
+            </variation>
         </view>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="kMr-bn-BkW">
+            <connections>
+                <action selector="handlePan:" destination="-1" id="RJi-BY-PTf"/>
+            </connections>
+        </panGestureRecognizer>
     </objects>
 </document>

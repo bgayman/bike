@@ -33,7 +33,6 @@ class MapDetailTableViewCell: UITableViewCell
         super.awakeFromNib()
         self.contentView.backgroundColor = UIColor.clear
         self.backgroundColor = .clear
-        self.separatorInset = UIEdgeInsetsMake(0, Constants.LayoutMargin, 0, 0)
         bikeImageView.removeFromSuperview()
         bikeImageView.layer.cornerRadius = Constants.CornerRadius
         titleLabel.font = Constants.LabelFont

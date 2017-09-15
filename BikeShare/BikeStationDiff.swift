@@ -9,6 +9,9 @@
 import Foundation
 import MapKit
 
+final class RedMKCircle: MKCircle {}
+final class GreenMKCircle: MKCircle {}
+
 struct BikeStationDiff
 {
     let bikesAdded: Int
@@ -66,7 +69,14 @@ struct BikeStationDiff
     
     var overlay: MKCircle
     {
-        return MKCircle(center: bikeStation.coordinates, radius: abs(Double(bikesAdded)) * 100.0)
+        if bikesAdded > 0
+        {
+            return RedMKCircle(center: bikeStation.coordinates, radius: abs(Double(bikesAdded)) * 100.0)
+        }
+        else
+        {
+            return GreenMKCircle(center: bikeStation.coordinates, radius: abs(Double(bikesAdded)) * 100.0)
+        }
     }
     
     var dateComponentText: String?

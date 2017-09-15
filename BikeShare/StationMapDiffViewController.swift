@@ -17,9 +17,16 @@ class StationMapDiffViewController: UIViewController
     let network: BikeNetwork
     var bikeStations: [BikeStation]
     
+    // MARK: - Outlets
+    @IBOutlet weak var tableViewContainerView: UIView!
+    @IBOutlet weak var handleView: UIView!
+    @IBOutlet var panGesture: UIPanGestureRecognizer!
+    @IBOutlet weak var tableViewContainerToBottomConstraint: NSLayoutConstraint!
+    
     weak var delegate: StationDiffViewControllerDelegate?
     
     var bikeStationDiffs: [BikeStationDiff]
+    var bottomConstraintStartValue: CGFloat = 115
     
     @objc lazy var refreshButton: UIBarButtonItem =
     {
@@ -33,10 +40,34 @@ class StationMapDiffViewController: UIViewController
         return doneButton
     }()
     
+    @objc lazy var infoBarButton: UIBarButtonItem =
+    {
+        let btn = UIButton(type: .infoLight)
+        btn.addTarget(self, action: #selector(self.didPressInfo), for: .touchUpInside)
+        let infoBarButton = UIBarButtonItem(customView: btn)
+        return infoBarButton
+    }()
+    
     @objc lazy var activityIndicator: UIActivityIndicatorView =
     {
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         return activityIndicator
+    }()
+    
+    lazy var stationDiffViewController: StationDiffViewController =
+    {
+        let stationDiffViewController = StationDiffViewController(bikeNetwork: network, bikeStations: bikeStations, bikeStationDiffs: bikeStationDiffs)
+        let navigationController = UINavigationController(rootViewController: stationDiffViewController)
+        navigationController.view.translatesAutoresizingMaskIntoConstraints = false
+        self.addChildViewController(navigationController)
+        navigationController.view.frame = self.tableViewContainerView.bounds
+        self.tableViewContainerView.insertSubview(navigationController.view, belowSubview: self.handleView)
+        navigationController.view.topAnchor.constraint(equalTo: self.tableViewContainerView.topAnchor).isActive = true
+        navigationController.view.leadingAnchor.constraint(equalTo: self.tableViewContainerView.leadingAnchor).isActive = true
+        navigationController.view.trailingAnchor.constraint(equalTo: self.tableViewContainerView.trailingAnchor).isActive = true
+        navigationController.view.bottomAnchor.constraint(equalTo: self.tableViewContainerView.bottomAnchor).isActive = true
+        navigationController.didMove(toParentViewController: self)
+        return stationDiffViewController
     }()
     
     // MARK: - Outlets
@@ -63,25 +94,45 @@ class StationMapDiffViewController: UIViewController
         fetchStations()
     }
     
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.fetchStations), object: nil)
+    }
+    
     //MARK: - Setup
     private func styleViews()
     {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
+        navigationItem.largeTitleDisplayMode = .never
         
-        self.view.backgroundColor = UIColor.app_beige
-        self.navigationItem.titleView = self.activityIndicator
-        self.activityIndicator.startAnimating()
-        self.navigationItem.rightBarButtonItems = [self.refreshButton]
-        self.navigationItem.prompt = "Network changes since first viewing."
+        view.backgroundColor = UIColor.app_beige
+        navigationItem.titleView = self.activityIndicator
+        activityIndicator.startAnimating()
+        navigationItem.rightBarButtonItems = [self.refreshButton, self.infoBarButton]
+        navigationItem.leftBarButtonItem = self.doneButton
+        
+        let annotations = bikeStations.map(MapBikeStation.init)
+        mapView.register(DotAnnotationView.self, forAnnotationViewWithReuseIdentifier: "Dot")
+        mapView.addAnnotations(annotations)
+        mapView.showAnnotations(annotations, animated: true)
+        
+        stationDiffViewController.view.isHidden = false
+        
+        tableViewContainerView.layer.cornerRadius = 20
+        tableViewContainerView.layer.masksToBounds = true
+        
+        handleView.layer.cornerRadius = handleView.bounds.height * 0.5
+        handleView.layer.masksToBounds = true
         
         let overlays = bikeStationDiffs.map { $0.overlay }
-        self.mapView.addOverlays(overlays)
+        mapView.addOverlays(overlays)
     }
     
     //MARK: - Networking
     @objc private func fetchStations()
     {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.fetchStations), object: nil)
         #if !os(tvOS)
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         #endif
@@ -116,8 +167,11 @@ class StationMapDiffViewController: UIViewController
                     self.mapView.addOverlays(newDiffs.map { $0.overlay })
                     self.bikeStationDiffs = diffs.sorted()
                     self.bikeStations = stations
+                    self.stationDiffViewController.bikeStationDiffs = self.bikeStationDiffs
+                    self.stationDiffViewController.bikeStations = stations
                     self.delegate?.didUpdateBikeStations(stations: stations)
                     self.delegate?.didUpdateBikeStationDiffs(bikeStationDiffs: self.bikeStationDiffs)
+                    self.perform(#selector(self.fetchStations), with: nil, afterDelay: 30.0)
                 }
             }
         }
@@ -141,6 +195,58 @@ class StationMapDiffViewController: UIViewController
         let safariVC = SFSafariViewController(url: URL(string: "https://citybik.es/#about")!)
         self.present(safariVC, animated: true)
     }
+    
+    @objc func didPressInfo(_ sender: UIButton?)
+    {
+        
+    }
+    
+    @IBAction func handlePan(_ sender: UIPanGestureRecognizer)
+    {
+        let velocity = sender.velocity(in: view)
+        let translation = sender.translation(in: view)
+        switch sender.state
+        {
+        case .began:
+            bottomConstraintStartValue = tableViewContainerToBottomConstraint.constant
+        case .changed:
+            tableViewContainerToBottomConstraint.constant = max(115.0, bottomConstraintStartValue + -translation.y)
+        case .failed, .possible:
+            break
+        case .cancelled, .ended:
+            if velocity.y >= 0
+            {
+                animateDown()
+            }
+            else
+            {
+                animateUp()
+            }
+        
+        }
+    }
+    
+    //MARK: - Animation
+    private func animateDown()
+    {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations:
+        { [unowned self] in
+            self.tableViewContainerToBottomConstraint.constant = 115.0
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    private func animateUp()
+    {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations:
+        { [unowned self] in
+            self.tableViewContainerToBottomConstraint.constant = self.view.bounds.height - 40.0
+            self.view.layoutIfNeeded()
+        })
+    }
+    
 }
 
 // MARK: - MKMapViewDelegate
@@ -148,9 +254,27 @@ extension StationMapDiffViewController: MKMapViewDelegate
 {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
     {
-        let render = MKCircleRenderer(overlay: overlay)
-        render.alpha = 0.20
-        render.fillColor = UIColor.app_blue
-        return render
+        if overlay is RedMKCircle
+        {
+            let render = MKCircleRenderer(overlay: overlay)
+            render.alpha = 0.3
+            render.fillColor = UIColor.app_red
+            return render
+        }
+        else
+        {
+            let render = MKCircleRenderer(overlay: overlay)
+            render.alpha = 0.3
+            render.fillColor = UIColor.app_green
+            return render
+        }
+        
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+    {
+        let view = mapView.dequeueReusableAnnotationView(withIdentifier: "Dot", for: annotation)
+        return view
     }
 }
+

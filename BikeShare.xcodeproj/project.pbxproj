@@ -281,6 +281,7 @@
 		CD8C1B891E218427000F9A9D /* Deeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B871E218427000F9A9D /* Deeplink.swift */; };
 		CD8C1B8B1E21BE73000F9A9D /* MenuSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */; };
 		CD8C1B8C1E21BEC9000F9A9D /* MenuSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */; };
+		CD92ED9B1F6B7E630030585A /* DotAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD92ED9A1F6B7E630030585A /* DotAnnotationView.swift */; };
 		CD9E81EC1ECA7D8B00FF2EB4 /* StationDiffViewControllerSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */; };
 		CDA134821E2A8E57005542DE /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
 		CDA134831E2A8E5C005542DE /* MapBikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */; };
@@ -661,6 +662,7 @@
 		CD8C1B6A1E218069000F9A9D /* BikeShareTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeShareTV.entitlements; sourceTree = "<group>"; };
 		CD8C1B871E218427000F9A9D /* Deeplink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deeplink.swift; sourceTree = "<group>"; };
 		CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSplitViewController.swift; sourceTree = "<group>"; };
+		CD92ED9A1F6B7E630030585A /* DotAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotAnnotationView.swift; sourceTree = "<group>"; };
 		CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDiffViewControllerSearchController.swift; sourceTree = "<group>"; };
 		CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StationDetailViewController+Application.swift"; sourceTree = "<group>"; };
 		CDA134A31E2A91F5005542DE /* StationDetailViewController+Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StationDetailViewController+Messages.swift"; path = "../BikeShare/StationDetailViewController+Messages.swift"; sourceTree = "<group>"; };
@@ -987,6 +989,7 @@
 				CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */,
 				CD80AAAA1E6BA81F00C1E9B6 /* MapKeyView.swift */,
 				CD3932351EBF63C7009427E6 /* LocationControl.swift */,
+				CD92ED9A1F6B7E630030585A /* DotAnnotationView.swift */,
 				CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */,
 				CD100FE91F64890F0031EFF6 /* NetworkClusterView.swift */,
 				CD06F34A1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift */,
@@ -2508,6 +2511,7 @@
 				CD1ED2E81EB6D3BC00806D97 /* MapPinTableViewCell.swift in Sources */,
 				CDF6E7D11E0ED9FF00C3C6CA /* MapBikeNetwork.swift in Sources */,
 				CD029C7C1ECDC6C60091A0A9 /* NSAttributedString+Application.swift in Sources */,
+				CD92ED9B1F6B7E630030585A /* DotAnnotationView.swift in Sources */,
 				CDF6E7D31E0EDA5F00C3C6CA /* MapBikeStation.swift in Sources */,
 				CDF6E7C91E0ED8CD00C3C6CA /* UIColor+Application.swift in Sources */,
 				CDEC20201E529E790044D923 /* GBFSSystemAlert.swift in Sources */,

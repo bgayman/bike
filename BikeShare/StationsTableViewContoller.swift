@@ -133,7 +133,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         #else
         tableView.leadingAnchor.constraint(equalTo: self.view.readableContentGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.readableContentGuide.trailingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         #endif
         return tableView
     }()
@@ -156,7 +156,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     @objc lazy var diffBarButton: UIBarButtonItem =
     {
-        let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Point Objects"), style: .plain, target: self, action: #selector(self.showStationsDiffViewController))
+        let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icHeatMap"), style: .plain, target: self, action: #selector(self.showStationsDiffViewController))
         return barButtonItem
     }()
     #endif
@@ -544,7 +544,8 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         #if !os(tvOS)
         let stationDiffViewController = StationMapDiffViewController(bikeNetwork: self.network, bikeStations: self.stations, bikeStationDiffs: self.bikeStationDiffs)
         stationDiffViewController.delegate = self
-        self.navigationController?.pushViewController(stationDiffViewController, animated: true)
+        let navigationController = UINavigationController(rootViewController: stationDiffViewController)
+        self.navigationController?.splitViewController?.present(navigationController, animated: true)
         #endif
     }
     

@@ -92,7 +92,7 @@ class MapViewController: BaseMapViewController
     @objc lazy var activityImageView: UIImageView =
     {
         let activityImageView = UIImageView(image: #imageLiteral(resourceName: "icBikeWheel"))
-        activityImageView.tintColor = UIColor.app_brown
+        activityImageView.tintColor = UIColor.black
         activityImageView.contentMode = .scaleAspectFit
         activityImageView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(activityImageView)
@@ -113,7 +113,7 @@ class MapViewController: BaseMapViewController
         #if os(tvOS)
             mapKeyView.widthAnchor.constraint(equalToConstant: 600).isActive = true
             mapKeyView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-            mapKeyView.topAnchor.constraint(equalTo: self.topLayoutGuide.topAnchor, constant: 20).isActive = true
+            mapKeyView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         #else
             mapKeyView.widthAnchor.constraint(equalToConstant: 300).isActive = true
             mapKeyView.heightAnchor.constraint(equalToConstant: 70).isActive = true
@@ -779,10 +779,12 @@ extension MapViewController: MKMapViewDelegate
         
         annotationView?.canShowCallout = true
         
+        #if !os(tvOS)
         if self.traitCollection.forceTouchCapability == .available
         {
             self.registerForPreviewing(with: self, sourceView: annotationView!.detailCalloutAccessoryView!)
         }
+        #endif
         
         return annotationView
     }
@@ -850,7 +852,7 @@ extension MapViewController: UISearchBarDelegate
     }
 }
     #endif
-    
+#if !os(tvOS)
 // MARK: - UIViewControllerPreviewingDelegate
 extension MapViewController: UIViewControllerPreviewingDelegate
 {
@@ -884,7 +886,11 @@ extension MapViewController: UIViewControllerPreviewingDelegate
             self.didSelectNetworkCallout(with: MapBikeNetwork(bikeNetwork: stationsTableViewController.network))
         }
     }
-    
+}
+#endif
+
+extension MapViewController
+{
     func bouncePin(for station: BikeStation)
     {
         let annotations = self.mapView.annotations.filter
