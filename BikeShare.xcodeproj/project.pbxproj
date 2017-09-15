@@ -2715,7 +2715,7 @@
 				DEVELOPMENT_TEAM = 8DDUQH2RUD;
 				INFOPLIST_FILE = BikeShareTopShelf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareTV.BikeShareTopShelf;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareTopShelf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -2732,7 +2732,7 @@
 				DEVELOPMENT_TEAM = 8DDUQH2RUD;
 				INFOPLIST_FILE = BikeShareTopShelf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareTV.BikeShareTopShelf;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareTopShelf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
@@ -2830,7 +2830,7 @@
 				DEVELOPMENT_TEAM = 8DDUQH2RUD;
 				INFOPLIST_FILE = BikeShareTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareTV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.0;
@@ -2850,7 +2850,7 @@
 				DEVELOPMENT_TEAM = 8DDUQH2RUD;
 				INFOPLIST_FILE = BikeShareTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = bradgayman.BikeShareTV;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 4.0;
