@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct BikeStationDiff
 {
@@ -61,6 +62,11 @@ struct BikeStationDiff
             print("Empty: \(self)")
         }
         return status.joined(separator: ", ")
+    }
+    
+    var overlay: MKCircle
+    {
+        return MKCircle(center: bikeStation.coordinates, radius: abs(Double(bikesAdded)) * 100.0)
     }
     
     var dateComponentText: String?
