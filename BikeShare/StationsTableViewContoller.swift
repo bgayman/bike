@@ -542,7 +542,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     @objc func showStationsDiffViewController()
     {
         #if !os(tvOS)
-        let stationDiffViewController = StationDiffViewController(bikeNetwork: self.network, bikeStations: self.stations, bikeStationDiffs: self.bikeStationDiffs)
+        let stationDiffViewController = StationMapDiffViewController(bikeNetwork: self.network, bikeStations: self.stations, bikeStationDiffs: self.bikeStationDiffs)
         stationDiffViewController.delegate = self
         self.navigationController?.pushViewController(stationDiffViewController, animated: true)
         #endif

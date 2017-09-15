@@ -148,7 +148,7 @@ extension StationMapDiffViewController: MKMapViewDelegate
 {
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer
     {
-        let render = MKCircleRenderer()
+        let render = MKCircleRenderer(overlay: overlay)
         render.alpha = 0.20
         render.fillColor = UIColor.app_blue
         return render
