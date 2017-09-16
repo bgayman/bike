@@ -209,7 +209,7 @@ class MapViewController: BaseMapViewController
     
     @objc lazy var settingsBarButton: UIBarButtonItem =
     {
-        let settingsBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(self.didPressSettings(_:)))
+        let settingsBarButton = UIBarButtonItem(image: #imageLiteral(resourceName: "icMapKey"), style: .plain, target: self, action: #selector(self.didPressSettings(_:)))
         return settingsBarButton
     }()
     

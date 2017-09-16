@@ -192,6 +192,7 @@ class BikeStationDetailViewController: UIViewController
         addQuickAction()
         addToSpotlight()
         fetchStations()
+        fetchHistory()
         scrollView.translatesAutoresizingMaskIntoConstraints = true
     }
     
@@ -334,7 +335,6 @@ class BikeStationDetailViewController: UIViewController
         
         if hasGraph
         {
-            fetchHistory()
             pageControl.numberOfPages = 3
             pageControl.currentPage = 1
             titleLabelTopOffset = titleLabelTopConstraint.constant

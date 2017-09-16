@@ -198,7 +198,11 @@ class StationMapDiffViewController: UIViewController
     
     @objc func didPressInfo(_ sender: UIButton?)
     {
-        
+        let infoViewController = StationDiffingInfoViewController(bikeNetwork: network, bikeStations: bikeStations)
+        let navigationController = UINavigationController(rootViewController: infoViewController)
+        navigationController.modalPresentationStyle = .custom
+        navigationController.transitioningDelegate = infoViewController
+        self.present(navigationController, animated: true)
     }
     
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer)

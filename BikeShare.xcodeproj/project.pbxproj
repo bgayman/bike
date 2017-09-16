@@ -284,6 +284,9 @@
 		CD92ED9B1F6B7E630030585A /* DotAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD92ED9A1F6B7E630030585A /* DotAnnotationView.swift */; };
 		CD95F61E1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD95F61C1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift */; };
 		CD95F61F1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD95F61D1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib */; };
+		CD95F6221F6CA903007C0B37 /* StationDiffingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD95F6201F6CA903007C0B37 /* StationDiffingInfoViewController.swift */; };
+		CD95F6231F6CA903007C0B37 /* StationDiffingInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD95F6211F6CA903007C0B37 /* StationDiffingInfoViewController.xib */; };
+		CD95F6251F6CB5CC007C0B37 /* SlideUpTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD95F6241F6CB5CC007C0B37 /* SlideUpTransition.swift */; };
 		CD9E81EC1ECA7D8B00FF2EB4 /* StationDiffViewControllerSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */; };
 		CDA134821E2A8E57005542DE /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
 		CDA134831E2A8E5C005542DE /* MapBikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */; };
@@ -667,6 +670,9 @@
 		CD92ED9A1F6B7E630030585A /* DotAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotAnnotationView.swift; sourceTree = "<group>"; };
 		CD95F61C1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDiffTableViewCell.swift; sourceTree = "<group>"; };
 		CD95F61D1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationDiffTableViewCell.xib; sourceTree = "<group>"; };
+		CD95F6201F6CA903007C0B37 /* StationDiffingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDiffingInfoViewController.swift; sourceTree = "<group>"; };
+		CD95F6211F6CA903007C0B37 /* StationDiffingInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationDiffingInfoViewController.xib; sourceTree = "<group>"; };
+		CD95F6241F6CB5CC007C0B37 /* SlideUpTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpTransition.swift; sourceTree = "<group>"; };
 		CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDiffViewControllerSearchController.swift; sourceTree = "<group>"; };
 		CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StationDetailViewController+Application.swift"; sourceTree = "<group>"; };
 		CDA134A31E2A91F5005542DE /* StationDetailViewController+Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StationDetailViewController+Messages.swift"; path = "../BikeShare/StationDetailViewController+Messages.swift"; sourceTree = "<group>"; };
@@ -959,6 +965,7 @@
 			isa = PBXGroup;
 			children = (
 				CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */,
+				CD95F6241F6CB5CC007C0B37 /* SlideUpTransition.swift */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -1038,6 +1045,15 @@
 			path = BikeShareTV;
 			sourceTree = "<group>";
 		};
+		CD95F6261F6CB853007C0B37 /* InfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD95F6201F6CA903007C0B37 /* StationDiffingInfoViewController.swift */,
+				CD95F6211F6CA903007C0B37 /* StationDiffingInfoViewController.xib */,
+			);
+			name = InfoViewController;
+			sourceTree = "<group>";
+		};
 		CDC4D83B1F65F88400885E0F /* Networks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1071,6 +1087,7 @@
 				CDF6F5C11E7DFCAA009CBD32 /* StationDiffViewController.swift */,
 				CD2963571F6A11FC008D1E28 /* StationMapDiffViewController.swift */,
 				CD2963581F6A11FC008D1E28 /* StationMapDiffViewController.xib */,
+				CD95F6261F6CB853007C0B37 /* InfoViewController */,
 			);
 			name = "Station Diffing";
 			sourceTree = "<group>";
@@ -1751,6 +1768,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD4A10531F66C2440098BE1C /* BikeStationCollectionViewCell.xib in Resources */,
+				CD95F6231F6CA903007C0B37 /* StationDiffingInfoViewController.xib in Resources */,
 				CD95F61F1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib in Resources */,
 				CDC4D83A1F65F4D000885E0F /* BikeNetworkTableViewCell.xib in Resources */,
 				CDF6E7A41E0DBC3000C3C6CA /* LaunchScreen.storyboard in Resources */,
@@ -2530,6 +2548,7 @@
 				CDC4D8261F659A2800885E0F /* BikeStation+AttributedString.swift in Sources */,
 				CDEC200C1E4D50250044D923 /* GBFSSystemInformation.swift in Sources */,
 				CDF6E7B51E0DBD9500C3C6CA /* NetworkTableViewController.swift in Sources */,
+				CD95F6251F6CB5CC007C0B37 /* SlideUpTransition.swift in Sources */,
 				CDEF3D1A1E173B030002063F /* UITableView+Diff.swift in Sources */,
 				CDF6F5BE1E7DB46B009CBD32 /* BikeStationDiff.swift in Sources */,
 				CD4A10551F68BF890098BE1C /* Emitter.swift in Sources */,
@@ -2553,6 +2572,7 @@
 				CD164C641E2C3DBC0062CBA5 /* BaseMapViewController.swift in Sources */,
 				CDF6E7B41E0DBD9500C3C6CA /* NetworkSearchController.swift in Sources */,
 				CDFED5D11E620F3000D5C4BF /* GBFSStationStatus.swift in Sources */,
+				CD95F6221F6CA903007C0B37 /* StationDiffingInfoViewController.swift in Sources */,
 				CDEC201D1E512E6A0044D923 /* PricingPlanTableViewCell.swift in Sources */,
 				CD2963591F6A11FC008D1E28 /* StationMapDiffViewController.swift in Sources */,
 				CD8C1B8C1E21BEC9000F9A9D /* MenuSplitViewController.swift in Sources */,

@@ -861,7 +861,7 @@ extension StationsTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
 {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let title = NSAttributedString(string: "★\nStations to Access Them More Quickly.", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .title2), NSAttributedStringKey.foregroundColor: UIColor.gray])
+        let title = NSAttributedString(string: "Favorite\nStations to Access Them More Quickly.", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .title2), NSAttributedStringKey.foregroundColor: UIColor.gray])
         return title
     }
     
