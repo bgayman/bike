@@ -1,5 +1,6 @@
 import UIKit
 import MapKit
+import Dwifft
 #if !os(tvOS)
 import SafariServices
 import SDCAlertView
@@ -22,16 +23,25 @@ class NetworkTableViewController: UITableViewController
             #if !os(tvOS)
             self.mapBarButton.isEnabled = !self.networks.isEmpty
             #endif
-            self.animateUpdate(with: oldValue, newDataSource: self.networks)
+            var mutable = [(String, [BikeNetwork])]()
+            mutable.append(("Networks", networks))
+            diffCalculator.sectionedValues = SectionedValues(mutable)
         }
     }
     
-    var networkMapViewController: MapViewController? = nil
-    var isTransitioning = false
-    
-    lazy var searchController: UISearchController =
+    lazy fileprivate var diffCalculator: TableViewDiffCalculator<String, BikeNetwork> =
     {
-        
+        let diffCalculator = TableViewDiffCalculator<String, BikeNetwork>(tableView: self.tableView)
+        diffCalculator.insertionAnimation = .top
+        diffCalculator.deletionAnimation = .bottom
+        return diffCalculator
+    }()
+    
+    @objc var networkMapViewController: MapViewController? = nil
+    @objc var isTransitioning = false
+    
+    @objc lazy var searchController: UISearchController =
+    {
         let searchResultsController = NetworkSearchController()
         searchResultsController.delegate = self
         let searchController = UISearchController(searchResultsController: searchResultsController)
@@ -41,7 +51,7 @@ class NetworkTableViewController: UITableViewController
         return searchController
     }()
     
-    lazy var locationBarButton: UIBarButtonItem =
+    @objc lazy var locationBarButton: UIBarButtonItem =
     {
         let locationControl = TVLocationButton(frame: CGRect(x: 0.0, y: 0.0, width: 44.0, height: 44.0))
         locationControl.addTarget(self, action: #selector(self.didPressLocationButton), for: .primaryActionTriggered)
@@ -50,7 +60,7 @@ class NetworkTableViewController: UITableViewController
     }()
     
     #if !os(tvOS)
-    lazy var refresh: UIRefreshControl =
+    @objc lazy var refresh: UIRefreshControl =
     {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(self.fetchNetworks), for: .valueChanged)
@@ -58,22 +68,22 @@ class NetworkTableViewController: UITableViewController
     }()
     
     
-    lazy var mapBarButton: UIBarButtonItem =
+    @objc lazy var mapBarButton: UIBarButtonItem =
     {
         let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "World Map"), style: .plain, target: self, action: #selector(self.showMapViewController))
         return barButtonItem
     }()
     #endif
     
-    lazy var searchBarButton: UIBarButtonItem =
+    @objc lazy var searchBarButton: UIBarButtonItem =
     {
         let searchBarButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(self.presentSearch))
         return searchBarButton
     }()
     
-    var didFetchNetworkCallback: (() -> ())?
+    @objc var didFetchNetworkCallback: (() -> ())?
     
-    var userManager: UserManager
+    @objc var userManager: UserManager
     {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return UserManager() }
         return appDelegate.userManager
@@ -103,13 +113,18 @@ class NetworkTableViewController: UITableViewController
             self.networkMapViewController?.delegate = self
         }
         self.title = "Networks"
+        self.clearsSelectionOnViewWillAppear = true
         #if !os(tvOS)
+        self.navigationItem.searchController = self.searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.navigationItem.largeTitleDisplayMode = .always
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         self.navigationItem.titleView = activityIndicator
         activityIndicator.startAnimating()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.view.backgroundColor = .app_beige
         self.mapBarButton.isEnabled = !self.networks.isEmpty
+        self.tableView.dragDelegate = self
         #else
         self.navigationItem.leftBarButtonItem = self.searchBarButton
         #endif
@@ -141,7 +156,6 @@ class NetworkTableViewController: UITableViewController
         self.networkMapViewController?.delegate = self
         self.networkMapViewController?.networks = self.networks
         NotificationCenter.default.addObserver(self, selector: #selector(self.didUpdateCurrentLocation), name: Notification.Name(Constants.DidUpdatedUserLocationNotification), object: nil)
-        
     }
     
     deinit
@@ -173,7 +187,8 @@ class NetworkTableViewController: UITableViewController
     {
         self.tableView.estimatedRowHeight = 55.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: "\(BikeNetworkTableViewCell.self)", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "Cell")
         let height: CGFloat = max(BikeTableFooterView(reuseIdentifier: "thing").poweredByButton.intrinsicContentSize.height, 44.0)
         let footerView = BikeTableFooterView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: height))
         self.tableView.tableFooterView = footerView
@@ -181,7 +196,6 @@ class NetworkTableViewController: UITableViewController
     
         #if !os(tvOS)
         footerView.poweredByButton.addTarget(self, action: #selector(self.poweredByPressed), for: .touchUpInside)
-        self.tableView.tableHeaderView = self.searchController.searchBar
         self.definesPresentationContext = true
         self.refreshControl = refresh
         #endif
@@ -201,7 +215,7 @@ class NetworkTableViewController: UITableViewController
     }
     
     #if !os(tvOS)
-    func poweredByPressed()
+    @objc func poweredByPressed()
     {
         let safariVC = SFSafariViewController(url: URL(string: "https://citybik.es/#about")!)
         self.present(safariVC, animated: true)
@@ -217,26 +231,31 @@ class NetworkTableViewController: UITableViewController
         return super.shouldUpdateFocus(in: context)
     }*/
     
-    func search()
+    @objc func search()
     {
         self.searchController.searchBar.becomeFirstResponder()
     }
     
-    func didPressLocationButton()
+    @objc func didPressLocationButton()
     {
         self.networkMapViewController?.didPressLocationButton()
     }
     
     //MARK: - TableView
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return diffCalculator.numberOfSections()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return networks.count
+        return diffCalculator.numberOfObjects(inSection: section)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeTableViewCell
-        let network = self.networks[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeNetworkTableViewCell
+        let network = diffCalculator.value(atIndexPath: indexPath)
         cell.bikeNetwork = network
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -361,36 +380,33 @@ class NetworkTableViewController: UITableViewController
             }
             return
         }
-        DispatchQueue.global(qos: .userInitiated).async
+        DispatchQueue.main.async
         {
-            let sortedNetworks = networks.sorted { $0.0.location.distance < $0.1.location.distance }
-            DispatchQueue.main.async
+            let sortedNetworks = networks.sorted { $0.location.distance < $1.location.distance }
+            self.networks = sortedNetworks
+            UserDefaults.bikeShareGroup.setNetworks(networks: sortedNetworks)
+            if self.navigationController?.topViewController === self
             {
-                self.networks = sortedNetworks
-                UserDefaults.bikeShareGroup.setNetworks(networks: sortedNetworks)
-                if self.navigationController?.topViewController === self
+                if !fromUserLocationUpdate
                 {
-                    if !fromUserLocationUpdate
-                    {
-                        self.networkMapViewController?.networks = sortedNetworks
-                    }
-                    else
-                    {
-                        self.networkMapViewController?.shouldAnimateAnnotationUpdates = false
-                        self.networkMapViewController?.networks = sortedNetworks
-                        self.networkMapViewController?.shouldAnimateAnnotationUpdates = true
-                    }
-                    if !sortedNetworks.isEmpty
-                    {
-                        self.didFetchNetworkCallback?()
-                        self.didFetchNetworkCallback = nil
-                    }
+                    self.networkMapViewController?.networks = sortedNetworks
+                }
+                else
+                {
+                    self.networkMapViewController?.shouldAnimateAnnotationUpdates = false
+                    self.networkMapViewController?.networks = sortedNetworks
+                    self.networkMapViewController?.shouldAnimateAnnotationUpdates = true
+                }
+                if !sortedNetworks.isEmpty
+                {
+                    self.didFetchNetworkCallback?()
+                    self.didFetchNetworkCallback = nil
                 }
             }
         }
     }
     
-    func didUpdateCurrentLocation()
+    @objc func didUpdateCurrentLocation()
     {
         self.updateNetworksData(networks: self.networks, fromUserLocationUpdate: true)
     }
@@ -410,12 +426,12 @@ class NetworkTableViewController: UITableViewController
         }
     }
     
-    func showMapViewController()
+    @objc func showMapViewController()
     {
         self.performSegue(withIdentifier: Segue.showMapViewController.rawValue, sender: nil)
     }
     
-    func presentSearch()
+    @objc func presentSearch()
     {
         let searchContainer = UISearchContainerViewController(searchController: self.searchController)
         searchController.searchBar.placeholder = "Search Networks"
@@ -576,26 +592,26 @@ extension NetworkTableViewController: NetworkSearchControllerDelegate
 //MARK: - MapViewControllerDelegate
 extension NetworkTableViewController: MapViewControllerDelegate
 {
-    func didRequestCallout(forMapBikeNetwork: MapBikeNetwork)
+    @objc func didRequestCallout(forMapBikeNetwork: MapBikeNetwork)
     {
         guard let index = self.networks.index(of: forMapBikeNetwork.bikeNetwork) else { return }
         let indexPath = IndexPath(row: index, section: 0)
         self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .top)
     }
     
-    func didSelect(mapBikeNetwork: MapBikeNetwork)
+    @objc func didSelect(mapBikeNetwork: MapBikeNetwork)
     {
         self.didSelect(network: mapBikeNetwork.bikeNetwork)
     }
     
-    func didChange(searchText: String)
+    @objc func didChange(searchText: String)
     {
         guard let controller = searchController.searchResultsController as? NetworkSearchController else { return }
         controller.searchString = searchText
         self.networkMapViewController?.networks = controller.searchResults
     }
     
-    func didRequestUpdate()
+    @objc func didRequestUpdate()
     {
         self.fetchNetworks()
     }
@@ -640,14 +656,36 @@ extension NetworkTableViewController: UIViewControllerPreviewingDelegate
         guard let indexPath = self.tableView.indexPathForRow(at: location) else { return nil }
         let network = self.networks[indexPath.row]
         let stationTableViewController = StationsTableViewController(with: network)
+        stationTableViewController.mapViewController = self.networkMapViewController
+        previewingContext.sourceRect = self.tableView.rectForRow(at: indexPath)
         return stationTableViewController
     }
     
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)
     {
+        if let stationTableViewController = viewControllerToCommit as? StationsTableViewController
+        {
+            networkMapViewController?.stations = stationTableViewController.stations
+            networkMapViewController?.delegate = stationTableViewController
+        }
         self.navigationController?.show(viewControllerToCommit, sender: nil)
     }
 }
+
+// MARK: - UITableViewDragDelegate
+#if !os(tvOS)
+    extension NetworkTableViewController: UITableViewDragDelegate
+    {
+        func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
+        {
+            let network = self.networks[indexPath.row]
+            guard let url = URL(string: "\(Constants.WebSiteDomain)/stations/\(network.id)") else { return [] }
+            let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
+            let dragStringItem = UIDragItem(itemProvider: NSItemProvider(object: "\(network.name)" as NSString))
+            return [dragURLItem, dragStringItem]
+        }
+    }
+#endif
 
 extension BikeNetworkLocation
 {
@@ -670,6 +708,6 @@ extension BikeNetworkLocation
     {
         let measurement = Measurement<UnitLength>(value: self.distance, unit: UnitLength.meters)
         let string = Constants.measurementFormatter.string(from: measurement)
-        return "\(string) away"
+        return string
     }
 }

@@ -10,12 +10,12 @@ import Foundation
 
 extension WatchSessionManager
 {
-    var userManager: UserManager
+    @objc var userManager: UserManager
     {
         return ExtensionConstants.userManager
     }
     
-    func fetchStations(completion: @escaping ([String: Any]) -> ())
+    @objc func fetchStations(completion: @escaping ([String: Any]) -> ())
     {
         var closebyStationsClient = ClosebyStationsClient()
         guard let location = self.userManager.currentLocation else

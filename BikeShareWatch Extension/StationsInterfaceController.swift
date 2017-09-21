@@ -26,10 +26,10 @@ class StationsInterfaceController: WKInterfaceController
         }
     }
     @IBOutlet var table: WKInterfaceTable!
-    let rowType = "StationRow"
-    var isUpdating = false
-    var didJustPressUpdate = false
-    var lastLocationUpdate: CLLocation?
+    @objc let rowType = "StationRow"
+    @objc var isUpdating = false
+    @objc var didJustPressUpdate = false
+    @objc var lastLocationUpdate: CLLocation?
     
     override func awake(withContext context: Any?)
     {
@@ -63,7 +63,7 @@ class StationsInterfaceController: WKInterfaceController
         NotificationCenter.default.removeObserver(self)
     }
     
-    func update()
+    @objc func update()
     {
         self.lastLocationUpdate = nil
         ExtensionConstants.userManager.getUserLocation()
@@ -79,7 +79,7 @@ class StationsInterfaceController: WKInterfaceController
         self.update()
     }
     
-    func didGetLocation(notification: Notification)
+    @objc func didGetLocation(notification: Notification)
     {
         guard let location = notification.object as? CLLocation else { return }
         if let lastLocation = self.lastLocationUpdate

@@ -1,0 +1,6 @@
+framework module Pods_BikeShareMacWidget {
+  umbrella header "Pods-BikeShareMacWidget-umbrella.h"
+
+  export *
+  module * { export * }
+}

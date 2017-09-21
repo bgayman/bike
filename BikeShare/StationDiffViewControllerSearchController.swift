@@ -25,7 +25,7 @@ class StationDiffViewControllerSearchController: UITableViewController
         }
     }
     
-    var searchString = ""
+    @objc var searchString = ""
     {
         didSet
         {
@@ -45,10 +45,11 @@ class StationDiffViewControllerSearchController: UITableViewController
         super.viewDidLoad()
         
         self.view.backgroundColor = .app_beige
-        self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        let nib = UINib(nibName: "\(StationDiffTableViewCell.self)", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "Cell")
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.automaticallyAdjustsScrollViewInsets = true
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
     }
@@ -62,18 +63,12 @@ class StationDiffViewControllerSearchController: UITableViewController
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let diff = self.searchResults[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeTableViewCell
-        cell.titleLabel.font = UIFont.app_font(forTextStyle: .body)
-        cell.titleLabel.text = diff.bikeStation.name
-        cell.subtitleLabel.font = UIFont.app_font(forTextStyle: .caption1)
-        cell.accessoryType = .disclosureIndicator
-        var subtitleText = [diff.statusText]
-        if let _ = diff.dateComponentText
-        {
-            subtitleText.append(diff.bikeStation.dateComponentText)
-        }
-        cell.subtitleLabel.text = subtitleText.joined(separator: "\n")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationDiffTableViewCell
+        
+        cell.bikeStationDiff = diff
         cell.searchString = self.searchString
+        cell.backgroundColor = .clear
+        cell.contentView.backgroundColor = .clear
         return cell
     }
     
@@ -88,13 +83,13 @@ extension StationDiffViewControllerSearchController: DZNEmptyDataSetSource, DZNE
 {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let title = NSAttributedString(string: "No Changes", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .title2), NSForegroundColorAttributeName: UIColor.gray])
+        let title = NSAttributedString(string: "No Changes", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .title2), NSAttributedStringKey.foregroundColor: UIColor.gray])
         return title
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let description = NSAttributedString(string: "No changes match search. Try reloading in a few moments.", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .subheadline), NSForegroundColorAttributeName: UIColor.lightGray])
+        let description = NSAttributedString(string: "No changes match search. Try reloading in a few moments.", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .subheadline), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         return description
     }
     

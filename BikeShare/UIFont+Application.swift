@@ -24,12 +24,19 @@ import UIKit
 
 extension UIFont
 {
-    static let app_fontName = "AvenirNext-Medium"
+    @objc static let app_fontName = "AvenirNext-Medium"
     
-    static func app_font(forTextStyle textStyle: UIFontTextStyle) -> UIFont
+    @objc static func app_font(forTextStyle textStyle: UIFontTextStyle) -> UIFont
     {
         let preferredFont = UIFont.preferredFont(forTextStyle: textStyle)
         return preferredFont
+    }
+    
+    @objc static func app_font(forTextStyle textStyle: UIFontTextStyle, weight: UIFont.Weight) -> UIFont
+    {
+        let preferredFont = UIFont.preferredFont(forTextStyle: textStyle)
+        let font = UIFont.systemFont(ofSize: preferredFont.pointSize, weight: weight)
+        return font
     }
 }
 #endif

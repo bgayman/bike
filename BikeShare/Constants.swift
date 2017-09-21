@@ -14,8 +14,8 @@ struct Constants
     static let dateComponentsFormatter: DateComponentsFormatter =
     {
         let dateComponentsFormatter = DateComponentsFormatter()
-        dateComponentsFormatter.unitsStyle = .full
-        dateComponentsFormatter.includesApproximationPhrase = true
+        dateComponentsFormatter.unitsStyle = .abbreviated
+        dateComponentsFormatter.includesApproximationPhrase = false
         dateComponentsFormatter.maximumUnitCount = 1
         dateComponentsFormatter.allowedUnits = [.month, .day, .hour, .minute, .second]
         return dateComponentsFormatter
@@ -26,6 +26,8 @@ struct Constants
         let measurementFormatter = MeasurementFormatter()
         measurementFormatter.unitStyle = .short
         measurementFormatter.numberFormatter.roundingMode = .halfUp
+        measurementFormatter.numberFormatter.maximumFractionDigits = 1
+        measurementFormatter.numberFormatter.minimumFractionDigits = 0
         return measurementFormatter
     }()
     

@@ -53,7 +53,7 @@ class MenuSplitViewController: UISplitViewController
      Called from a containing `MenuTableViewController` whenever the user
      selects a table view row in a master view controller.
      */
-    func updateFocusToMasterViewController()
+    @objc func updateFocusToMasterViewController()
     {
         preferMasterViewControllerOnNextFocusUpdate = true
         
@@ -61,7 +61,7 @@ class MenuSplitViewController: UISplitViewController
         updateFocusIfNeeded()
     }
     
-    func updateFocusToDetailViewController()
+    @objc func updateFocusToDetailViewController()
     {
         preferDetailViewControllerOnNextFocusUpdate = true
         

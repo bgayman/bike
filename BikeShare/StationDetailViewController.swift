@@ -12,12 +12,11 @@ import CoreSpotlight
 import MobileCoreServices
 #if !os(tvOS)
 import Charts
-import Hero
 #endif
 
 class StationDetailViewController: UIViewController
 {
-    fileprivate enum StationDetailSection
+    enum StationDetailSection
     {
         case graph
         case station
@@ -25,7 +24,7 @@ class StationDetailViewController: UIViewController
     }
     
     let network: BikeNetwork
-    var hasGraph: Bool
+    @objc var hasGraph: Bool
     var station: BikeStation
     var stations: [BikeStation]
     var stationStatuses: [BikeStationStatus]?
@@ -38,31 +37,42 @@ class StationDetailViewController: UIViewController
                 self.tableView.deleteSections(IndexSet([0]), with: .automatic)
                 return
             }
-            let bikeStationStatus = BikeStationStatus(numberOfBikesAvailable: self.station.freeBikes ?? 0, stationID: self.station.id, id: 0, networkID: self.network.id, timestamp: Date(), numberOfDocksDisabled: self.station.gbfsStationInformation?.stationStatus?.numberOfDocksDisabled, numberOfDocksAvailable: self.station.emptySlots, numberOfBikesDisabled: self.station.gbfsStationInformation?.stationStatus?.numberOfBikesDisabled, isRenting: self.station.gbfsStationInformation?.stationStatus?.isRenting, isReturning: self.station.gbfsStationInformation?.stationStatus?.isReturning, isInstalled: self.station.gbfsStationInformation?.stationStatus?.isInstalled)
+            let bikeStationStatus = BikeStationStatus(numberOfBikesAvailable: self.station.freeBikes ?? 0,
+                                                      stationID: self.station.id,
+                                                      id: 0,
+                                                      networkID: self.network.id,
+                                                      timestamp: Date(),
+                                                      numberOfDocksDisabled: self.station.gbfsStationInformation?.stationStatus?.numberOfDocksDisabled,
+                                                      numberOfDocksAvailable: self.station.emptySlots,
+                                                      numberOfBikesDisabled: self.station.gbfsStationInformation?.stationStatus?.numberOfBikesDisabled,
+                                                      isRenting: self.station.gbfsStationInformation?.stationStatus?.isRenting,
+                                                      isReturning: self.station.gbfsStationInformation?.stationStatus?.isReturning,
+                                                      isInstalled: self.station.gbfsStationInformation?.stationStatus?.isInstalled)
             self.stationStatuses?.append(bikeStationStatus)
             let indexPath = IndexPath(row: 0, section: self.sectionIndex(for: .graph) ?? 0)
             self.tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
     
-    lazy var annotation: MapBikeStation =
+    @objc lazy var annotation: MapBikeStation =
     {
         return MapBikeStation(bikeStation: self.station)
     }()
     
-    lazy var mapView: MKMapView =
+    @objc lazy var mapView: MKMapView =
     {
         let mapView = MKMapView()
         mapView.translatesAutoresizingMaskIntoConstraints = false
         mapView.removeAnnotations(mapView.annotations)
-        mapView.showsUserLocation = true
+        mapView.showsUserLocation = false
         mapView.addAnnotation(self.annotation)
         mapView.showAnnotations([self.annotation], animated: false)
         mapView.delegate = self
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: "Bike")
         return mapView
     }()
     
-    lazy var tableView: UITableView =
+    @objc lazy var tableView: UITableView =
     {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -73,7 +83,6 @@ class StationDetailViewController: UIViewController
         tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         #if !os(tvOS)
         tableView.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
-        tableView.allowsSelection = false
         tableView.register(StationDetailGraphTableViewCell.self, forCellReuseIdentifier: "\(StationDetailGraphTableViewCell.self)")
         #endif
         tableView.delegate = self
@@ -83,15 +92,9 @@ class StationDetailViewController: UIViewController
         return tableView
     }()
     
-    lazy var closebyStations: [BikeStation]! =
-    {
-        let sortedStations = self.stations.sorted{ $0.0.distance(to: self.station) < $0.1.distance(to: self.station) }
-        let closebyStations = Array(sortedStations.prefix(8))
-        self.mapView.addAnnotations(closebyStations.map(MapBikeStation.init))
-        return closebyStations
-    }()
+    var closebyStations = [BikeStation]()
     
-    lazy var visualEffectView: UIVisualEffectView =
+    @objc lazy var visualEffectView: UIVisualEffectView =
     {
         let visualEffect = UIBlurEffect(style: .light)
         let visualEffectView = UIVisualEffectView(effect: visualEffect)
@@ -101,7 +104,7 @@ class StationDetailViewController: UIViewController
     }()
     
     #if !os(tvOS)
-    lazy var refresh: UIRefreshControl =
+    @objc lazy var refresh: UIRefreshControl =
     {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(self.fetchStations), for: .valueChanged)
@@ -110,7 +113,7 @@ class StationDetailViewController: UIViewController
     #endif
 
     
-    lazy var tableHeaderView: UIView =
+    @objc lazy var tableHeaderView: UIView =
     {
         let tableHeaderView = UIView()
         
@@ -125,14 +128,11 @@ class StationDetailViewController: UIViewController
         self.visualEffectView.leadingAnchor.constraint(equalTo: tableHeaderView.leadingAnchor).isActive = true
         self.visualEffectView.trailingAnchor.constraint(equalTo: tableHeaderView.trailingAnchor).isActive = true
         self.visualEffectView.bottomAnchor.constraint(equalTo: tableHeaderView.bottomAnchor).isActive = true
-        #if !os(tvOS)
-        tableHeaderView.heroID = "Map"
-        #endif
         return tableHeaderView
     }()
     
     #if !os(tvOS)
-    lazy var actionBarButton: UIBarButtonItem =
+    @objc lazy var actionBarButton: UIBarButtonItem =
     {
         let actionBarButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(self.didPressAction))
         return actionBarButton
@@ -144,7 +144,7 @@ class StationDetailViewController: UIViewController
         return [self.tableView]
     }
     
-    var mapHeight: CGFloat
+    @objc var mapHeight: CGFloat
     {
         return self.view.bounds.height * 0.3
     }
@@ -162,6 +162,7 @@ class StationDetailViewController: UIViewController
     {
         return true
     }
+    
     #if os(iOS)
     override var keyCommands: [UIKeyCommand]?
     {
@@ -180,11 +181,18 @@ class StationDetailViewController: UIViewController
         self.station = station
         self.stations = stations.filter { $0.id != station.id }
         super.init(nibName: nil, bundle: nil)
+        self.closebyStations = self.closebyStations(for: self.stations)
+        self.mapView.addAnnotations(closebyStations.map(MapBikeStation.init))
     }
     
     required init?(coder aDecoder: NSCoder)
     {
         fatalError("Don't use a coder")
+    }
+    
+    deinit
+    {
+        mapView.delegate = nil
     }
     
     override func viewDidLoad()
@@ -196,6 +204,8 @@ class StationDetailViewController: UIViewController
             self.tableView.addSubview(refresh)
             self.addQuickAction()
             self.addToSpotlight()
+            self.navigationItem.largeTitleDisplayMode = .never
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         #else
             self.view.backgroundColor = .clear
             self.tableView.backgroundColor = .clear
@@ -216,7 +226,7 @@ class StationDetailViewController: UIViewController
         self.fetchStations()
     }
     
-    func applicationWillEnterForeground()
+    @objc func applicationWillEnterForeground()
     {
         self.tableView.reloadData()
     }
@@ -247,13 +257,13 @@ class StationDetailViewController: UIViewController
     }
     
     //MARK: - Actions
-    func didPressDone()
+    @objc func didPressDone()
     {
         self.presentingViewController?.dismiss(animated: true)
     }
     
     #if !os(tvOS)
-    func didPressAction()
+    @objc func didPressAction()
     {
         guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(self.network.id)/station/\(self.station.id)") else { return }
         
@@ -268,7 +278,7 @@ class StationDetailViewController: UIViewController
     }
     #endif
     
-    func back()
+    @objc func back()
     {
         if self.presentingViewController != nil
         {
@@ -280,7 +290,7 @@ class StationDetailViewController: UIViewController
         }
     }
     
-    fileprivate func section(for section: Int) -> StationDetailSection?
+    func section(for section: Int) -> StationDetailSection?
     {
         guard 0 ..< self.sections.count ~= section else { return nil }
         return self.sections[section]
@@ -328,10 +338,12 @@ class StationDetailViewController: UIViewController
                         stations.remove(at: index)
                         let oldValue = self.closebyStations
                         self.stations = stations
-                        self.closebyStations = nil
-                        UIView.animate(withDuration: 0.2, animations: { 
-                            self.tableView.animateUpdate(with: oldValue!, newDataSource: self.closebyStations, section: self.sectionIndex(for: .nearBy) ?? 0)
-                        }, completion: { (_) in
+                        self.closebyStations = self.closebyStations(for: self.stations)
+                        UIView.animate(withDuration: 0.2, animations:
+                        {
+                            self.tableView.animateUpdate(with: oldValue, newDataSource: self.closebyStations, section: self.sectionIndex(for: .nearBy) ?? 0)
+                        },
+                       completion: { (_) in
                             if self.station != bikeStation
                             {
                                 self.station = bikeStation
@@ -400,6 +412,17 @@ class StationDetailViewController: UIViewController
         setNeedsFocusUpdate()
         updateFocusIfNeeded()
     }
+    
+    fileprivate func closebyStations(for stations: [BikeStation]) -> [BikeStation]
+    {
+        let sortedStations = stations.sorted{ $0.distance(to: self.station) < $1.distance(to: self.station) }
+        let closebyStations = Array(sortedStations.prefix(8))
+        self.mapView.showsUserLocation = false
+        self.mapView.removeAnnotations(self.mapView.annotations)
+        self.mapView.addAnnotations(closebyStations.map(MapBikeStation.init) + [self.annotation])
+        self.mapView.showsUserLocation = true
+        return closebyStations
+    }
 }
 
 //MARK: - MKMapViewDelegate
@@ -419,7 +442,7 @@ extension StationDetailViewController: MKMapViewDelegate
         present(ac, animated: true)
     }
     
-    func openMapBikeStationInMaps(_ mapBikeStation: MapBikeStation)
+    @objc func openMapBikeStationInMaps(_ mapBikeStation: MapBikeStation)
     {
         let placemark = MKPlacemark(coordinate: mapBikeStation.coordinate)
         let mapItem = MKMapItem(placemark: placemark)
@@ -428,25 +451,18 @@ extension StationDetailViewController: MKMapViewDelegate
     }
     #endif
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
+    @objc func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView?
     {
-        let identifier = "Bike"
-        
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
-        if annotationView == nil
-        {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            #if !os(tvOS)
-            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            #endif
-        }
         guard let station = annotation as? MapBikeStation else
         {
             return nil
         }
-        annotationView?.pinTintColor = station.bikeStation.pinTintColor
-        annotationView?.canShowCallout = true
-        annotationView?.animatesDrop = false
+        let annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "Bike")
+        #if !os(tvOS)
+            annotationView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        #endif
+        annotationView.markerTintColor = station.bikeStation.pinTintColor
+        annotationView.canShowCallout = true
         return annotationView
     }
 }
@@ -490,14 +506,13 @@ extension StationDetailViewController: UITableViewDelegate, UITableViewDataSourc
         case .station:
             let stationCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationDetailTableViewCell
             stationCell.bikeStation = self.station
-            #if !os(tvOS)
-                stationCell.heroID = "Station"
-            #endif
             cell = stationCell
+            cell.accessoryType = .none
         case .nearBy:
             let stationCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationDetailTableViewCell
             stationCell.bikeStation = self.closebyStations[indexPath.row]
             cell = stationCell
+            cell.accessoryType = .disclosureIndicator
         case .graph:
             #if !os(tvOS)
             let graphCell = tableView.dequeueReusableCell(withIdentifier: "\(StationDetailGraphTableViewCell.self)", for: indexPath) as! StationDetailGraphTableViewCell
@@ -579,7 +594,7 @@ fileprivate extension BikeStation
 #if !os(tvOS)
 class DateValueFormatter: NSObject, IAxisValueFormatter
 {
-    static let dateFormatter: DateFormatter =
+    @objc static let dateFormatter: DateFormatter =
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd"
@@ -637,15 +652,15 @@ class DateValueFormatter: NSObject, IAxisValueFormatter
         
         // MARK: Properties
         
-        var customActivityType: UIActivityType
-        var activityName: String
-        var image: UIImage
-        var customActionWhenTapped: () -> Void
+        @objc var customActivityType: UIActivityType
+        @objc var activityName: String
+        @objc var image: UIImage
+        @objc var customActionWhenTapped: () -> Void
         
         
         // MARK: Initializer
         
-        init(title: String, image: UIImage, performAction: @escaping () -> Void) {
+        @objc init(title: String, image: UIImage, performAction: @escaping () -> Void) {
             self.activityName = title
             self.image = image
             self.customActivityType = UIActivityType(rawValue: "Action \(title)")
@@ -653,51 +668,36 @@ class DateValueFormatter: NSObject, IAxisValueFormatter
             super.init()
         }
         
-        
-        
         // MARK: Overrides
-        
         override var activityType: UIActivityType?
         {
             return customActivityType
         }
-        
-        
         
         override var activityTitle: String?
         {
             return activityName
         }
         
-        
-        
         override class var activityCategory: UIActivityCategory
         {
             return .action
         }
-        
-        
         
         override var activityImage: UIImage?
         {
             return self.image
         }
         
-        
-        
         override func canPerform(withActivityItems activityItems: [Any]) -> Bool
         {
             return true
         }
         
-        
-        
         override func prepare(withActivityItems activityItems: [Any])
         {
             // Nothing to prepare
         }
-        
-        
         
         override func perform()
         {

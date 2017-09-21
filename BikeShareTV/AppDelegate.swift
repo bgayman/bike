@@ -17,13 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.preferredDisplayMode = .allVisible
-        splitViewController.minimumPrimaryColumnWidth = 600
+        splitViewController.minimumPrimaryColumnWidth = 800
         
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
         navigationController.topViewController!.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem
         splitViewController.delegate = self
         
-        let store = NSUbiquitousKeyValueStore.default()
+        let store = NSUbiquitousKeyValueStore.default
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateKVStoreItems(notification:)), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: store)
         return true
     }
@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         return true
     }
     
-    func updateKVStoreItems(notification: Notification)
+    @objc func updateKVStoreItems(notification: Notification)
     {
         let userInfo = notification.userInfo
         guard let reasonForChange = userInfo?[NSUbiquitousKeyValueStoreChangeReasonKey] as? NSNumber else { return }
@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         {
             if let changedKeys = userInfo?[NSUbiquitousKeyValueStoreChangedKeysKey] as? [String]
             {
-                let store = NSUbiquitousKeyValueStore.default()
+                let store = NSUbiquitousKeyValueStore.default
                 let userDefaults = UserDefaults.bikeShareGroup
                 for key in changedKeys
                 {

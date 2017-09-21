@@ -1,5 +1,6 @@
 
 import UIKit
+import Dwifft
 
 //MARK: - NetworkSearchControllerDelegate
 protocol NetworkSearchControllerDelegate: class
@@ -16,11 +17,26 @@ class NetworkSearchController: UITableViewController
     {
         didSet
         {
-            self.animateUpdate(with: oldValue, newDataSource: self.searchResults)
+            var mutable = [(String, [BikeNetwork])]()
+            mutable.append(("Networks", searchResults.map
+            { bikeNetwork in
+                var bikeNetwork = bikeNetwork
+                bikeNetwork.searchString = searchString
+                return bikeNetwork
+            }))
+            diffCalculator.sectionedValues = SectionedValues(mutable)
         }
     }
     
-    var searchString = ""
+    lazy fileprivate var diffCalculator: TableViewDiffCalculator<String, BikeNetwork> =
+    {
+        let diffCalculator = TableViewDiffCalculator<String, BikeNetwork>(tableView: self.tableView)
+        diffCalculator.insertionAnimation = .top
+        diffCalculator.deletionAnimation = .bottom
+        return diffCalculator
+    }()
+    
+    @objc var searchString = ""
     {
         didSet
         {
@@ -41,22 +57,30 @@ class NetworkSearchController: UITableViewController
         super.viewDidLoad()
         
         self.view.backgroundColor = .app_beige
-        self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: "\(BikeNetworkTableViewCell.self)", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "Cell")
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.automaticallyAdjustsScrollViewInsets = true
+        #if !os(tvOS)
+            self.tableView.dragDelegate = self
+        #endif
     }
     
     //MARK: - TableView
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return diffCalculator.numberOfSections()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.searchResults.count
+        return diffCalculator.numberOfObjects(inSection: section)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeTableViewCell
-        cell.bikeNetwork = self.searchResults[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeNetworkTableViewCell
+        cell.bikeNetwork = diffCalculator.value(atIndexPath: indexPath)
         cell.searchString = self.searchString
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -118,3 +142,18 @@ class NetworkSearchController: UITableViewController
     }
     #endif
 }
+
+// MARK: - UITableViewDragDelegate
+#if !os(tvOS)
+    extension NetworkSearchController: UITableViewDragDelegate
+    {
+        func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
+        {
+            let network = self.searchResults[indexPath.row]
+            guard let url = URL(string: "\(Constants.WebSiteDomain)/stations/\(network.id)") else { return [] }
+            let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
+            let dragStringItem = UIDragItem(itemProvider: NSItemProvider(object: "\(network.name)" as NSString))
+            return [dragURLItem, dragStringItem]
+        }
+    }
+#endif

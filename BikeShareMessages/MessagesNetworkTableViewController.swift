@@ -9,19 +9,30 @@
 import UIKit
 import SafariServices
 import CoreLocation
+import Dwifft
 
 class MessagesNetworkTableViewController: UITableViewController {
 
     //MARK: - Properties
+    lazy fileprivate var diffCalculator: TableViewDiffCalculator<String, BikeNetwork> =
+    {
+        let diffCalculator = TableViewDiffCalculator<String, BikeNetwork>(tableView: self.tableView)
+        diffCalculator.insertionAnimation = .top
+        diffCalculator.deletionAnimation = .bottom
+        return diffCalculator
+    }()
+    
     var networks = [BikeNetwork]()
     {
         didSet
         {
-            self.animateUpdate(with: oldValue, newDataSource: self.networks)
+            var mutable = [(String, [BikeNetwork])]()
+            mutable.append(("Networks", networks))
+            diffCalculator.sectionedValues = SectionedValues(mutable)
         }
     }
     
-    lazy var refresh: UIRefreshControl =
+    @objc lazy var refresh: UIRefreshControl =
     {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(self.fetchNetworks), for: .valueChanged)
@@ -29,8 +40,8 @@ class MessagesNetworkTableViewController: UITableViewController {
     }()
     
     var networksClient = NetworksClient()
-    let userManager = ExtensionConstants.userManager
-    var didFetchNetworkCallback: (() -> ())?
+    @objc let userManager = ExtensionConstants.userManager
+    @objc var didFetchNetworkCallback: (() -> ())?
 
     
     override func viewDidLoad()
@@ -54,7 +65,8 @@ class MessagesNetworkTableViewController: UITableViewController {
     {
         self.tableView.estimatedRowHeight = 55.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: "\(BikeNetworkTableViewCell.self)", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "Cell")
         let height: CGFloat = max(BikeTableFooterView(reuseIdentifier: "thing").poweredByButton.intrinsicContentSize.height, 44.0)
         let footerView = BikeTableFooterView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: height))
         footerView.poweredByButton.addTarget(self, action: #selector(self.poweredByPressed), for: .touchUpInside)
@@ -70,7 +82,7 @@ class MessagesNetworkTableViewController: UITableViewController {
         self.didSelect(network: homeNetwork)
     }
     
-    func poweredByPressed()
+    @objc func poweredByPressed()
     {
         let safariVC = SFSafariViewController(url: URL(string: "https://citybik.es/#about")!)
         self.present(safariVC, animated: true)
@@ -112,7 +124,7 @@ class MessagesNetworkTableViewController: UITableViewController {
         }
         DispatchQueue.global(qos: .userInitiated).async
         {
-            let sortedNetworks = networks.sorted { $0.0.location.distance < $0.1.location.distance }
+            let sortedNetworks = networks.sorted { $0.location.distance < $1.location.distance }
             DispatchQueue.main.async
             {
                 self.networks = sortedNetworks
@@ -161,16 +173,21 @@ class MessagesNetworkTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return diffCalculator.numberOfSections()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.networks.count
+        return diffCalculator.numberOfObjects(inSection: section)
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeTableViewCell
-        let network = self.networks[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeNetworkTableViewCell
+        let network = diffCalculator.value(atIndexPath: indexPath)
         cell.bikeNetwork = network
         cell.accessoryType = .disclosureIndicator
         return cell

@@ -39,11 +39,11 @@ class StationDetailTableViewCell: UITableViewCell
                 return
             }
             self.titleLabel.text = bikeStation.statusDisplayText
-            self.subtitleLabel.text = "\(bikeStation.name) — \(bikeStation.dateComponentText)" + (bikeStation.distance > 0 ? "— \(bikeStation.distanceDescription)" : "")
+            self.subtitleLabel.text = "\(bikeStation.name) — \(bikeStation.dateComponentText)" + (bikeStation.distance > 0 ? " — \(bikeStation.distanceDescription)" : "")
         }
     }
     
-    lazy var titleLabel: UILabel =
+    @objc lazy var titleLabel: UILabel =
     {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +58,7 @@ class StationDetailTableViewCell: UITableViewCell
         return titleLabel
     }()
     
-    lazy var subtitleLabel: UILabel =
+    @objc lazy var subtitleLabel: UILabel =
     {
         let subtitleLabel = UILabel()
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false

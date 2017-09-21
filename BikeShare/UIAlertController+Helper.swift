@@ -10,12 +10,12 @@ import UIKit
 
 extension UIAlertController
 {
-    convenience init(errorMessage: String)
+    @objc convenience init(errorMessage: String)
     {
         self.init(title: "🙈", message: errorMessage)
     }
     
-    convenience init(title: String, message: String)
+    @objc convenience init(title: String, message: String)
     {
         self.init(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .default)

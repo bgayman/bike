@@ -7,29 +7,41 @@
 //
 
 import UIKit
+import Dwifft
 
 class MessagesStationsTableViewController: UITableViewController
 {
     //MARK: - Properties
     let network: BikeNetwork
     var stationsClient = StationsClient()
+    
+    lazy fileprivate var diffCalculator: TableViewDiffCalculator<String, BikeStation> =
+    {
+        let diffCalculator = TableViewDiffCalculator<String, BikeStation>(tableView: self.tableView)
+        diffCalculator.insertionAnimation = .top
+        diffCalculator.deletionAnimation = .bottom
+        return diffCalculator
+    }()
+    
     var stations = [BikeStation]()
     {
         didSet
         {
-            self.animateUpdate(with: oldValue, newDataSource: self.stations)
+            var mutable = [(String, [BikeStation])]()
+            mutable.append(("Stations", stations))
+            diffCalculator.sectionedValues = SectionedValues(mutable)
         }
     }
     
-    lazy var refresh: UIRefreshControl =
+    @objc lazy var refresh: UIRefreshControl =
     {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(self.fetchStations), for: .valueChanged)
         return refresh
     }()
     
-    let userManager = ExtensionConstants.userManager
-    var didFetchStationsCallback: (() -> ())?
+    @objc let userManager = ExtensionConstants.userManager
+    @objc var didFetchStationsCallback: (() -> ())?
     
     //MARK: - Lifecycle
     init(with bikeNetwork: BikeNetwork)
@@ -47,7 +59,8 @@ class MessagesStationsTableViewController: UITableViewController
     {
         super.viewDidLoad()
         self.tableView.backgroundColor = UIColor.app_beige
-        self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: "\(BikeStationTableViewCell.self)", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "Cell")
         self.title = self.network.name
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
@@ -63,17 +76,16 @@ class MessagesStationsTableViewController: UITableViewController
         super.viewDidDisappear(animated)
     }
     
-    func configureTableView()
+    @objc func configureTableView()
     {
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        self.definesPresentationContext = true
         self.refreshControl = refresh
         self.refresh.beginRefreshing()
     }
     
-    func didUpdateCurrentLocation()
+    @objc func didUpdateCurrentLocation()
     {
         guard !self.stations.isEmpty else { return }
         self.updateStationsData(stations: self.stations)
@@ -114,15 +126,20 @@ class MessagesStationsTableViewController: UITableViewController
     }
 
     // MARK: - Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int
+    {
+        return diffCalculator.numberOfSections()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.stations.count
+        return diffCalculator.numberOfObjects(inSection: section)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeTableViewCell
-        cell.bikeStation = self.stations[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeStationTableViewCell
+        cell.bikeStation = diffCalculator.value(atIndexPath: indexPath)
         cell.accessoryType = .disclosureIndicator
         return cell
     }

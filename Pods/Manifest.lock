@@ -1,0 +1,23 @@
+PODS:
+  - Charts (3.0.3):
+    - Charts/Core (= 3.0.3)
+  - Charts/Core (3.0.3)
+  - Dwifft (0.6.3)
+  - DZNEmptyDataSet (1.8.1)
+  - SDCAlertView (7.1.2)
+
+DEPENDENCIES:
+  - Charts
+  - Dwifft
+  - DZNEmptyDataSet
+  - SDCAlertView
+
+SPEC CHECKSUMS:
+  Charts: bcde37724c161958c1438dd4883971fcb2d50c06
+  Dwifft: 37156d94c9da45d6cd12dbb9654670593152e89e
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  SDCAlertView: c39fa91a3aeb5eeba58fe9cea648263b131ff2bf
+
+PODFILE CHECKSUM: 1b2624ed7a9bbaa4334ddf0f54ac03be10ccd565
+
+COCOAPODS: 1.2.1

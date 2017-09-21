@@ -16,6 +16,7 @@ struct BikeNetwork
     let location: BikeNetworkLocation
     let name: String
     let gbfsHref: URL?
+    var searchString: String = ""
     
     var locationDisplayName: String
     {
@@ -24,15 +25,12 @@ struct BikeNetwork
     
     var jsonDict: JSONDictionary
     {
-        
-        let gbfs: String = self.gbfsHref == nil ? " " : self.gbfsHref!.absoluteString
         return ["company": self.company,
                 "href": self.href,
                 "id": self.id,
                 "location": self.location.jsonDict,
                 "name": self.name,
-                "gbfs_href": gbfs
-               ]
+                "gbfs_href": self.gbfsHref?.absoluteString ?? ""]
     }
 }
 
@@ -72,7 +70,7 @@ extension BikeNetwork: Equatable
 {
     static func ==(lhs: BikeNetwork, rhs: BikeNetwork) -> Bool
     {
-        return lhs.id == rhs.id
+        return lhs.id == rhs.id && lhs.href == rhs.href && lhs.locationDisplayName == rhs.locationDisplayName && lhs.searchString == rhs.searchString
     }
 }
 

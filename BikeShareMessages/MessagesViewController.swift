@@ -21,10 +21,10 @@ class MessagesViewController: MSMessagesAppViewController {
         self.view.addSubview(navigationController.view)
         navigationController.didMove(toParentViewController: self)
         navigationController.view.translatesAutoresizingMaskIntoConstraints = false
-        navigationController.view.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        navigationController.view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
         navigationController.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         navigationController.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        navigationController.view.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+        navigationController.view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
     // MARK: - Conversation Handling

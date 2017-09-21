@@ -13,6 +13,7 @@ enum MapSettingsSections: Int
     case pins
     case status
     case rentalMethods
+    case networkInfo
     
     var title: String
     {
@@ -24,10 +25,12 @@ enum MapSettingsSections: Int
             return "Rental Methods"
         case .status:
             return "Station Status"
+        case .networkInfo:
+            return "Network Information"
         }
     }
     
-    static var all: [MapSettingsSections] = [.pins, .rentalMethods, .status]
+    static var all: [MapSettingsSections] = [.pins, .rentalMethods, .status, .networkInfo]
 }
 
 enum StationStatus: Int
@@ -75,20 +78,45 @@ enum StationStatus: Int
     }
 }
 
+enum NetworkInformation
+{
+    case gbfs
+    
+    static var all = [NetworkInformation.gbfs]
+    
+    var string: String
+    {
+        switch self
+        {
+        case .gbfs:
+            return "GBFS"
+        }
+    }
+    
+    var meaning: String
+    {
+        switch self
+        {
+        case .gbfs:
+            return "General Bikeshare Feed Specification"
+        }
+    }
+}
+
 class MapSettingsViewController: UIViewController
 {
-    lazy var tableView: UITableView =
+    @objc lazy var tableView: UITableView =
     {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(tableView)
-        tableView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: self.bottomLayoutGuide.topAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.estimatedRowHeight = 44.0
+        tableView.estimatedRowHeight = 60.0
         tableView.rowHeight = UITableViewAutomaticDimension
         let nib = UINib(nibName: "\(MapPinTableViewCell.self)", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "\(MapPinTableViewCell.self)")
@@ -102,13 +130,12 @@ class MapSettingsViewController: UIViewController
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.app_beige
         self.tableView.isHidden = false
-        self.automaticallyAdjustsScrollViewInsets = false
         self.title = "Map Symbols"
         self.navigationController?.navigationBar.barTintColor = UIColor.app_beige
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.didPressDone(sender:)))
     }
     
-    func didPressDone(sender: UIBarButtonItem)
+    @objc func didPressDone(sender: UIBarButtonItem)
     {
         self.dismiss(animated: true)
     }
@@ -132,6 +159,8 @@ extension MapSettingsViewController: UITableViewDelegate, UITableViewDataSource
             return StationStatus.all.count
         case .rentalMethods:
             return RentalMethod.all.count
+        case .networkInfo:
+            return NetworkInformation.all.count
         }
     }
     
@@ -172,6 +201,19 @@ extension MapSettingsViewController: UITableViewDelegate, UITableViewDataSource
             let rentalMethod = RentalMethod.all[indexPath.row]
             cell?.textLabel?.text = rentalMethod.displayString
             cell?.detailTextLabel?.text = rentalMethod.meaningString
+            cell?.contentView.backgroundColor = .app_beige
+            cell?.backgroundColor = .app_beige
+            return cell!
+        case .networkInfo:
+            var cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier")
+            if cell == nil
+            {
+                cell = UITableViewCell(style: .value1, reuseIdentifier: "reuseIdentifier")
+            }
+            let networkInfo = NetworkInformation.all[indexPath.row]
+            cell?.textLabel?.text = networkInfo.string
+            cell?.detailTextLabel?.text = networkInfo.meaning
+            cell?.detailTextLabel?.numberOfLines = 0
             cell?.contentView.backgroundColor = .app_beige
             cell?.backgroundColor = .app_beige
             return cell!

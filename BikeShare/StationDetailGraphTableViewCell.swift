@@ -27,7 +27,7 @@ class StationDetailGraphTableViewCell: UITableViewCell
         }
     }
     
-    lazy var lineChartView: LineChartView =
+    @objc lazy var lineChartView: LineChartView =
     {
         let lineChartView = LineChartView(frame: .zero)
         
@@ -57,7 +57,6 @@ class StationDetailGraphTableViewCell: UITableViewCell
         xAxis.drawAxisLineEnabled = true
         xAxis.valueFormatter = DateValueFormatter()
         
-        
         let leftAxis = lineChartView.leftAxis
         leftAxis.labelPosition = .outsideChart
         leftAxis.labelFont = UIFont.app_font(forTextStyle: .caption1)
@@ -69,10 +68,11 @@ class StationDetailGraphTableViewCell: UITableViewCell
         
         lineChartView.rightAxis.enabled = false
         lineChartView.isUserInteractionEnabled = false
+        lineChartView.animate(xAxisDuration: 0)
         return lineChartView
     }()
     
-    lazy var activityIndicator: UIActivityIndicatorView =
+    @objc lazy var activityIndicator: UIActivityIndicatorView =
     {
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +85,7 @@ class StationDetailGraphTableViewCell: UITableViewCell
     private func updateChartData()
     {
         guard let stationStatues: [BikeStationStatus] = self.stationStatuses else { return }
-        let sortedStatues = stationStatues.sorted { $0.0.timestamp < $0.1.timestamp }
+        let sortedStatues = stationStatues.sorted { $0.timestamp < $1.timestamp }
         let data: [ChartDataEntry] = sortedStatues.map { ChartDataEntry(x: $0.timestamp.timeIntervalSince1970, y: Double($0.numberOfBikesAvailable)) }
         
         let set = LineChartDataSet(values: data, label: "Free Bikes")

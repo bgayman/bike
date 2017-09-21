@@ -33,39 +33,39 @@ class StationDiffViewController: UITableViewController
         }
     }
     
-    lazy var refresh: UIRefreshControl =
+    @objc lazy var refresh: UIRefreshControl =
     {
         let refresh = UIRefreshControl()
         refresh.addTarget(self, action: #selector(self.fetchStations), for: .valueChanged)
         return refresh
     }()
     
-    lazy var refreshButton: UIBarButtonItem =
+    @objc lazy var refreshButton: UIBarButtonItem =
     {
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(self.didPressRefresh(sender:)))
         return refresh
     }()
     
-    lazy var doneButton: UIBarButtonItem =
+    @objc lazy var doneButton: UIBarButtonItem =
     {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.didPressDone(sender:)))
         return doneButton
     }()
     
-    lazy var activityIndicator: UIActivityIndicatorView =
+    @objc lazy var activityIndicator: UIActivityIndicatorView =
     {
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         return activityIndicator
     }()
     
-    lazy var footerView: BikeTableFooterView =
+    @objc lazy var footerView: BikeTableFooterView =
     {
         let height: CGFloat = max(BikeTableFooterView(reuseIdentifier: "thing").poweredByButton.intrinsicContentSize.height, 44.0)
         let footerView = BikeTableFooterView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: height))
         return footerView
     }()
     
-    lazy var searchController: UISearchController =
+    @objc lazy var searchController: UISearchController =
     {
         let searchResultsController = StationDiffViewControllerSearchController()
         searchResultsController.delegate = self
@@ -91,31 +91,29 @@ class StationDiffViewController: UITableViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.app_beige
-        self.navigationItem.titleView = self.activityIndicator
-        self.activityIndicator.startAnimating()
-        self.navigationItem.rightBarButtonItems = [self.refreshButton]
-        self.navigationItem.prompt = "Network changes since first viewing."
-        self.refreshControl = refresh
+        self.view.backgroundColor = UIColor.clear
+        self.title = "Station Differences"
+        self.navigationItem.searchController = searchController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
         self.configureTableView()
-        self.fetchStations()
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         if self.traitCollection.forceTouchCapability == .available
         {
             self.registerForPreviewing(with: self, sourceView: self.tableView)
         }
+        self.navigationItem.largeTitleDisplayMode = .never
     }
     
     private func configureTableView()
     {
         self.tableView.estimatedRowHeight = 55.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.register(BikeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        let nib = UINib(nibName: "\(StationDiffTableViewCell.self)", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "Cell")
         self.tableView.register(BikeTableFooterView.self, forHeaderFooterViewReuseIdentifier: "thing")
-        
+        self.tableView.allowsSelection = false
         #if !os(tvOS)
             footerView.poweredByButton.addTarget(self, action: #selector(self.poweredByPressed), for: .touchUpInside)
-            self.tableView.tableHeaderView = self.searchController.searchBar
             self.definesPresentationContext = true
             self.refreshControl = refresh
         #endif
@@ -180,19 +178,19 @@ class StationDiffViewController: UITableViewController
     }
     
     //MARK: - Actions
-    func didPressRefresh(sender: UIBarButtonItem)
+    @objc func didPressRefresh(sender: UIBarButtonItem)
     {
         self.navigationItem.titleView = self.activityIndicator
         self.activityIndicator.startAnimating()
         self.fetchStations()
     }
     
-    func didPressDone(sender: UIBarButtonItem)
+    @objc func didPressDone(sender: UIBarButtonItem)
     {
         self.presentingViewController?.dismiss(animated: true)
     }
 
-    func poweredByPressed()
+    @objc func poweredByPressed()
     {
         let safariVC = SFSafariViewController(url: URL(string: "https://citybik.es/#about")!)
         self.present(safariVC, animated: true)
@@ -207,17 +205,10 @@ class StationDiffViewController: UITableViewController
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let diff = self.bikeStationDiffs[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BikeTableViewCell
-        cell.titleLabel.font = UIFont.app_font(forTextStyle: .body)
-        cell.titleLabel.text = diff.bikeStation.name
-        cell.subtitleLabel.font = UIFont.app_font(forTextStyle: .caption1)
-        cell.accessoryType = .disclosureIndicator
-        var subtitleText = [diff.statusText]
-        if let _ = diff.dateComponentText
-        {
-            subtitleText.append(diff.bikeStation.dateComponentText)
-        }
-        cell.subtitleLabel.text = subtitleText.joined(separator: "\n")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StationDiffTableViewCell
+        cell.bikeStationDiff = diff
+        cell.backgroundColor = .clear
+        cell.contentView.backgroundColor = .clear
         return cell
     }
     
@@ -227,11 +218,6 @@ class StationDiffViewController: UITableViewController
         return footer
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        let diff = self.bikeStationDiffs[indexPath.row]
-        self.delegate?.didSelectBikeStation(station: diff.bikeStation)
-    }
 }
 
 //MARK: - UIViewControllerPreviewingDelegate
@@ -241,7 +227,7 @@ extension StationDiffViewController: UIViewControllerPreviewingDelegate
     {
         guard let indexPath = self.tableView.indexPathForRow(at: location) else { return nil }
         let station = self.bikeStationDiffs[indexPath.row].bikeStation
-        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.bikeStations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
+        let stationDetailViewController = BikeStationDetailViewController(with: self.network, station: station, stations: self.bikeStations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
         return stationDetailViewController
     }
     
@@ -255,13 +241,13 @@ extension StationDiffViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
 {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let title = NSAttributedString(string: "No Changes", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .title2), NSForegroundColorAttributeName: UIColor.gray])
+        let title = NSAttributedString(string: "No Changes", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .title2), NSAttributedStringKey.foregroundColor: UIColor.gray])
         return title
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
     {
-        let description = NSAttributedString(string: "No changes have been logged. Try reloading in a few moments.", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .subheadline), NSForegroundColorAttributeName: UIColor.lightGray])
+        let description = NSAttributedString(string: "No changes have been logged. Try reloading in a few moments.", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .subheadline), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         return description
     }
     

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BF21C987A7154723187D7EA /* Pods_BikeShareMacWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D436DAF9BBC3D41AC1B8A0D /* Pods_BikeShareMacWidget.framework */; };
+		36E90F0EF9EB34A00ACFBA5D /* Pods_BikeShareWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAE140FEB25DB310A48E0926 /* Pods_BikeShareWidget.framework */; };
+		39E3243E62C16526D0DD2A8A /* Pods_BikeShareWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B55B10FA61E2E218E33A9D /* Pods_BikeShareWatch.framework */; };
+		3CFFE35D0A77FB7BEE3BD66E /* Pods_BikeShareMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257E51A3BF0D4F3F5A306D1E /* Pods_BikeShareMac.framework */; };
+		4A38F2C5C187C736B3790FCA /* Pods_BikeShareTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B789BA8A90D1DF5A37C2230D /* Pods_BikeShareTV.framework */; };
+		4D4FE232046D3362C5B9BFAF /* Pods_BikeShareTopShelf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 209C2F591A7448EF7AC9BD85 /* Pods_BikeShareTopShelf.framework */; };
+		4E2821C2E1CBAA93A5B972BA /* Pods_BikeShareMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EAA1533E791D957495AA2DA /* Pods_BikeShareMessages.framework */; };
+		72ACF70747D355E95FA8393F /* Pods_BikeShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F157F03C868D2638AE4589CB /* Pods_BikeShare.framework */; };
+		C104E8A3CF39CB999E1446EE /* Pods_BikeShareWatch_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEFC9BE33BF768232C21681D /* Pods_BikeShareWatch_Extension.framework */; };
 		CD029C6F1ECBD67E0091A0A9 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3932351EBF63C7009427E6 /* LocationControl.swift */; };
 		CD029C701ECBD7250091A0A9 /* MapSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */; };
 		CD029C711ECBD7670091A0A9 /* MapPinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E61EB6D3BC00806D97 /* MapPinTableViewCell.swift */; };
@@ -22,11 +31,17 @@
 		CD029C801ECDC6D30091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
 		CD029C811ECDC6EA0091A0A9 /* NSAttributedString+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */; };
 		CD029C831ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD029C821ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift */; };
+		CD06F34B1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD06F34A1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift */; };
+		CD100FEA1F64890F0031EFF6 /* NetworkClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100FE91F64890F0031EFF6 /* NetworkClusterView.swift */; };
+		CD100FEB1F64AD630031EFF6 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
+		CD100FEC1F64AE440031EFF6 /* StationClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */; };
+		CD100FED1F64AE480031EFF6 /* NetworkClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD100FE91F64890F0031EFF6 /* NetworkClusterView.swift */; };
 		CD121DF41E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */; };
 		CD121DF81E1040D7004F78E2 /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */; };
 		CD121DFA1E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */; };
 		CD121DFC1E106AC1004F78E2 /* UILabel+Sizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFB1E106AC1004F78E2 /* UILabel+Sizing.swift */; };
 		CD121DFE1E115F03004F78E2 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
+		CD1628FF1F68948C0013A92A /* BikeStationDescriptionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1628FE1F68948C0013A92A /* BikeStationDescriptionGenerator.swift */; };
 		CD164C1C1E2B1A7A0062CBA5 /* TVServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD164C1B1E2B1A7A0062CBA5 /* TVServices.framework */; };
 		CD164C1F1E2B1A7A0062CBA5 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C1E1E2B1A7A0062CBA5 /* ServiceProvider.swift */; };
 		CD164C231E2B1A7A0062CBA5 /* BikeShareTopShelf.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CD164C1A1E2B1A7A0062CBA5 /* BikeShareTopShelf.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -42,7 +57,6 @@
 		CD164C321E2B1D890062CBA5 /* ClosebyStationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C311E2B1D890062CBA5 /* ClosebyStationsClient.swift */; };
 		CD164C331E2B1EF20062CBA5 /* DispatchQueue+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */; };
 		CD164C341E2B240A0062CBA5 /* UIColor+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7C81E0ED8CD00C3C6CA /* UIColor+Application.swift */; };
-		CD164C351E2BC2020062CBA5 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
 		CD164C381E2BE3C90062CBA5 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C371E2BE3C90062CBA5 /* PinView.swift */; };
 		CD164C3A1E2BE3E60062CBA5 /* TopShelfView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C391E2BE3E60062CBA5 /* TopShelfView.swift */; };
 		CD164C3B1E2BE5330062CBA5 /* UIFont+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */; };
@@ -101,7 +115,12 @@
 		CD1ED2E51EB6CB6600806D97 /* MapSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */; };
 		CD1ED2E81EB6D3BC00806D97 /* MapPinTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1ED2E61EB6D3BC00806D97 /* MapPinTableViewCell.swift */; };
 		CD1ED2E91EB6D3BC00806D97 /* MapPinTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD1ED2E71EB6D3BC00806D97 /* MapPinTableViewCell.xib */; };
-		CD2185FF1EC9451800B11ADB /* SDCAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD2185FE1EC9451800B11ADB /* SDCAlertView.framework */; };
+		CD2833051F69A6EB0060DB17 /* MapDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2833031F69A6EB0060DB17 /* MapDetailTableViewCell.swift */; };
+		CD2833061F69A6EB0060DB17 /* MapDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2833041F69A6EB0060DB17 /* MapDetailTableViewCell.xib */; };
+		CD2963551F6A0CC1008D1E28 /* MapDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2963531F6A0CC1008D1E28 /* MapDetailTableViewCell.swift */; };
+		CD2963561F6A0CC1008D1E28 /* MapDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2963541F6A0CC1008D1E28 /* MapDetailTableViewCell.xib */; };
+		CD2963591F6A11FC008D1E28 /* StationMapDiffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2963571F6A11FC008D1E28 /* StationMapDiffViewController.swift */; };
+		CD29635A1F6A11FC008D1E28 /* StationMapDiffViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD2963581F6A11FC008D1E28 /* StationMapDiffViewController.xib */; };
 		CD2BA3C91EABFD5500C26F90 /* HistoryNetworksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */; };
 		CD2BA3CA1EABFDB600C26F90 /* HistoryNetworksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */; };
 		CD2BA3CB1EABFDB700C26F90 /* HistoryNetworksManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */; };
@@ -114,7 +133,12 @@
 		CD2BA3D31EABFE8D00C26F90 /* StationDetailGraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */; };
 		CD3932361EBF63C7009427E6 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3932351EBF63C7009427E6 /* LocationControl.swift */; };
 		CD3932391EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */; };
-		CD39323A1EC0031A009427E6 /* DZNEmptyDataSet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3932381EC0031A009427E6 /* DZNEmptyDataSet.framework */; };
+		CD4A104A1F6614100098BE1C /* BikeStationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A10481F6614100098BE1C /* BikeStationDetailViewController.swift */; };
+		CD4A104B1F6614100098BE1C /* BikeStationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4A10491F6614100098BE1C /* BikeStationDetailViewController.xib */; };
+		CD4A10521F66C2440098BE1C /* BikeStationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A10501F66C2440098BE1C /* BikeStationCollectionViewCell.swift */; };
+		CD4A10531F66C2440098BE1C /* BikeStationCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4A10511F66C2440098BE1C /* BikeStationCollectionViewCell.xib */; };
+		CD4A10551F68BF890098BE1C /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A10541F68BF890098BE1C /* Emitter.swift */; };
+		CD57C1371F6447F900BF3BB1 /* StationClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */; };
 		CD6276EB1EB4E712008666AC /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
 		CD6276EC1EB4E784008666AC /* NetworksClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BE1E0EB6FB00C3C6CA /* NetworksClient.swift */; };
 		CD6276ED1EB4E794008666AC /* GBFSFeedClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20151E50DD560044D923 /* GBFSFeedClient.swift */; };
@@ -139,12 +163,7 @@
 		CD67333A1EAAEE420070E69B /* BikeStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */; };
 		CD67333B1EAAEE430070E69B /* BikeStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */; };
 		CD67333C1EAAEE440070E69B /* BikeStationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */; };
-		CD6A6BA21EAD584F0042ABE5 /* SloppySwipePanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */; };
-		CD6A6BA41EAD59A10042ABE5 /* SloppySwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */; };
-		CD6A6BA51EAD59A60042ABE5 /* SloppySwiper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */; };
-		CD6A6BA61EAD5A000042ABE5 /* SloppySwipePanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */; };
-		CD6A6BA91EAD76EF0042ABE5 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6733211EAAECC10070E69B /* Charts.framework */; };
-		CD6A6BAA1EAD76FC0042ABE5 /* Hero.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD6733241EAAECCE0070E69B /* Hero.framework */; };
+		CD7547D01F637EB4004EDA2A /* UserDefaults+Watch.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD7547CF1F637EB4004EDA2A /* UserDefaults+Watch.swift */; };
 		CD791DE61EC74EF7009A6DB7 /* ClosebyStationsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD164C311E2B1D890062CBA5 /* ClosebyStationsClient.swift */; };
 		CD791DE81EC75891009A6DB7 /* WatchSessionManager+iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD791DE71EC75891009A6DB7 /* WatchSessionManager+iOS.swift */; };
 		CD791DEA1EC758DA009A6DB7 /* WatchSessionManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD791DE91EC758DA009A6DB7 /* WatchSessionManager+Extension.swift */; };
@@ -242,7 +261,6 @@
 		CD8C1B721E2181BB000F9A9D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
 		CD8C1B731E2181C0000F9A9D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */; };
 		CD8C1B741E2181C3000F9A9D /* StationDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */; };
-		CD8C1B751E2181CF000F9A9D /* BikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B01E0DBD8300C3C6CA /* BikeTableViewCell.swift */; };
 		CD8C1B761E218209000F9A9D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */; };
 		CD8C1B771E218218000F9A9D /* BikeDetailAccessoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */; };
 		CD8C1B781E21821E000F9A9D /* BikeDetailCalloutAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */; };
@@ -263,6 +281,12 @@
 		CD8C1B891E218427000F9A9D /* Deeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B871E218427000F9A9D /* Deeplink.swift */; };
 		CD8C1B8B1E21BE73000F9A9D /* MenuSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */; };
 		CD8C1B8C1E21BEC9000F9A9D /* MenuSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */; };
+		CD92ED9B1F6B7E630030585A /* DotAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD92ED9A1F6B7E630030585A /* DotAnnotationView.swift */; };
+		CD95F61E1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD95F61C1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift */; };
+		CD95F61F1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD95F61D1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib */; };
+		CD95F6221F6CA903007C0B37 /* StationDiffingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD95F6201F6CA903007C0B37 /* StationDiffingInfoViewController.swift */; };
+		CD95F6231F6CA903007C0B37 /* StationDiffingInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD95F6211F6CA903007C0B37 /* StationDiffingInfoViewController.xib */; };
+		CD95F6251F6CB5CC007C0B37 /* SlideUpTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD95F6241F6CB5CC007C0B37 /* SlideUpTransition.swift */; };
 		CD9E81EC1ECA7D8B00FF2EB4 /* StationDiffViewControllerSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */; };
 		CDA134821E2A8E57005542DE /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
 		CDA134831E2A8E5C005542DE /* MapBikeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */; };
@@ -301,6 +325,34 @@
 		CDA1D2C71E22B9A4008B2AE8 /* UIFont+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */; };
 		CDA1D2C81E22B9A7008B2AE8 /* UIFont+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */; };
 		CDA1D2CA1E230243008B2AE8 /* BikeTableFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */; };
+		CDC4D8231F6599D500885E0F /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
+		CDC4D8241F6599D600885E0F /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
+		CDC4D8261F659A2800885E0F /* BikeStation+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8251F659A2800885E0F /* BikeStation+AttributedString.swift */; };
+		CDC4D8271F659A2D00885E0F /* BikeStation+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8251F659A2800885E0F /* BikeStation+AttributedString.swift */; };
+		CDC4D8281F659A2E00885E0F /* BikeStation+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8251F659A2800885E0F /* BikeStation+AttributedString.swift */; };
+		CDC4D8291F659A2F00885E0F /* BikeStation+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8251F659A2800885E0F /* BikeStation+AttributedString.swift */; };
+		CDC4D82A1F659A2F00885E0F /* BikeStation+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8251F659A2800885E0F /* BikeStation+AttributedString.swift */; };
+		CDC4D82D1F65D8FA00885E0F /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */; };
+		CDC4D82E1F65D8FA00885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
+		CDC4D82F1F65E1CD00885E0F /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */; };
+		CDC4D8301F65E1CD00885E0F /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */; };
+		CDC4D8331F65E7D000885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
+		CDC4D8341F65E7D100885E0F /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */; };
+		CDC4D8391F65F4D000885E0F /* BikeNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */; };
+		CDC4D83A1F65F4D000885E0F /* BikeNetworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D8381F65F4D000885E0F /* BikeNetworkTableViewCell.xib */; };
+		CDC4D8431F65FBB600885E0F /* BikeNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */; };
+		CDC4D8441F65FBB700885E0F /* BikeNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */; };
+		CDC4D8471F65FBC100885E0F /* BikeNetworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D8381F65F4D000885E0F /* BikeNetworkTableViewCell.xib */; };
+		CDC4D8481F65FBC200885E0F /* BikeNetworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC4D8381F65F4D000885E0F /* BikeNetworkTableViewCell.xib */; };
+		CDC50C0C1F68E02800576118 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A10541F68BF890098BE1C /* Emitter.swift */; };
+		CDC50C111F69575200576118 /* BikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7B01E0DBD8300C3C6CA /* BikeTableViewCell.swift */; };
+		CDC50C181F695A7000576118 /* BikeStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC50C161F695A6F00576118 /* BikeStationTableViewCell.swift */; };
+		CDC50C191F695A7000576118 /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC50C171F695A7000576118 /* BikeStationTableViewCell.xib */; };
+		CDC50C1C1F695C8E00576118 /* BikeNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC50C1A1F695C8E00576118 /* BikeNetworkTableViewCell.swift */; };
+		CDC50C1D1F695C8E00576118 /* BikeNetworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC50C1B1F695C8E00576118 /* BikeNetworkTableViewCell.xib */; };
+		CDDE92881F658C5B00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
+		CDDE92891F65904B00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
+		CDDE928A1F65904C00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
 		CDEC200A1E4D4E8D0044D923 /* GBFSFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */; };
 		CDEC200C1E4D50250044D923 /* GBFSSystemInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */; };
 		CDEC200E1E4F61790044D923 /* GBFSSystemInformationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */; };
@@ -381,7 +433,6 @@
 		CDFBD7311E3D2DC900C751D7 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD72F1E3D2DB900C751D7 /* WatchSessionManager.swift */; };
 		CDFBD7331E3D2E6300C751D7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDFBD7321E3D2E6300C751D7 /* MapKit.framework */; };
 		CDFBD7361E3D2F3900C751D7 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD121DFD1E115F03004F78E2 /* UserManager.swift */; };
-		CDFBD7371E3D2F4400C751D7 /* UserDefaults+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */; };
 		CDFBD7381E3D2F4B00C751D7 /* ExtensionConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDA134A71E2A9392005542DE /* ExtensionConstants.swift */; };
 		CDFBD73C1E3D30AD00C751D7 /* StationRowObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDFBD73B1E3D30AD00C751D7 /* StationRowObject.swift */; };
 		CDFBD73D1E3D31D600C751D7 /* MapBikeStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */; };
@@ -513,16 +564,39 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00C58CD34357F0D6AC974C94 /* Pods-BikeShareMac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareMac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareMac/Pods-BikeShareMac.debug.xcconfig"; sourceTree = "<group>"; };
+		03245E6EA6C5EB1614A0ADC7 /* Pods-BikeShareWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareWidget/Pods-BikeShareWidget.debug.xcconfig"; sourceTree = "<group>"; };
+		16B6E30C42D48A70BEEEDB54 /* Pods-BikeShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShare/Pods-BikeShare.debug.xcconfig"; sourceTree = "<group>"; };
+		1EAC615F7C606208BE31871E /* Pods-BikeShareMac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareMac.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareMac/Pods-BikeShareMac.release.xcconfig"; sourceTree = "<group>"; };
+		209C2F591A7448EF7AC9BD85 /* Pods_BikeShareTopShelf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareTopShelf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		257E51A3BF0D4F3F5A306D1E /* Pods_BikeShareMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		268D06BB54CA68ACAA385451 /* Pods-BikeShareTopShelf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareTopShelf.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareTopShelf/Pods-BikeShareTopShelf.debug.xcconfig"; sourceTree = "<group>"; };
+		2CA58BA986CC94660ACE2871 /* Pods-BikeShareMacWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareMacWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareMacWidget/Pods-BikeShareMacWidget.debug.xcconfig"; sourceTree = "<group>"; };
+		3132EE50C7E178187528904A /* Pods-BikeShareWatch Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareWatch Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareWatch Extension/Pods-BikeShareWatch Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		4EAA1533E791D957495AA2DA /* Pods_BikeShareMessages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareMessages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B721E7221592F38F3551633 /* Pods-BikeShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShare.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShare/Pods-BikeShare.release.xcconfig"; sourceTree = "<group>"; };
+		67F9A54FDF3F5A1317E80D33 /* Pods-BikeShareMacWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareMacWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareMacWidget/Pods-BikeShareMacWidget.release.xcconfig"; sourceTree = "<group>"; };
+		86F0483AF277B9B6DC4353E7 /* Pods-BikeShareMessages.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareMessages.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareMessages/Pods-BikeShareMessages.release.xcconfig"; sourceTree = "<group>"; };
+		8D436DAF9BBC3D41AC1B8A0D /* Pods_BikeShareMacWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareMacWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96F03230204D7D994C80EF7E /* Pods-BikeShareWatch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareWatch.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareWatch/Pods-BikeShareWatch.release.xcconfig"; sourceTree = "<group>"; };
+		A91F2744FFA12DAAEC837865 /* Pods-BikeShareTopShelf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareTopShelf.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareTopShelf/Pods-BikeShareTopShelf.release.xcconfig"; sourceTree = "<group>"; };
+		B2F2EAF2612961EF738D4C2E /* Pods-BikeShareWidget.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareWidget.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareWidget/Pods-BikeShareWidget.release.xcconfig"; sourceTree = "<group>"; };
+		B789BA8A90D1DF5A37C2230D /* Pods_BikeShareTV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareTV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCEA5FA537A60F148267AEA2 /* Pods-BikeShareWatch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareWatch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareWatch/Pods-BikeShareWatch.debug.xcconfig"; sourceTree = "<group>"; };
+		C325B018F5A81E40DF29BB69 /* Pods-BikeShareTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareTV.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareTV/Pods-BikeShareTV.release.xcconfig"; sourceTree = "<group>"; };
 		CD029C721ECBDA390091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		CD029C741ECBDA470091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CD029C761ECBDA7A0091A0A9 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Application.swift"; sourceTree = "<group>"; };
 		CD029C821ECE82EE0091A0A9 /* FavoriteStationInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteStationInterfaceController.swift; sourceTree = "<group>"; };
+		CD06F34A1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationDetailScrollView.swift; sourceTree = "<group>"; };
+		CD100FE91F64890F0031EFF6 /* NetworkClusterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClusterView.swift; sourceTree = "<group>"; };
 		CD121DF31E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailAccessoryTableViewCell.swift; sourceTree = "<group>"; };
 		CD121DF71E1040D7004F78E2 /* DispatchQueue+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Helper.swift"; sourceTree = "<group>"; };
 		CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeDetailCalloutAccessoryView.swift; sourceTree = "<group>"; };
 		CD121DFB1E106AC1004F78E2 /* UILabel+Sizing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Sizing.swift"; sourceTree = "<group>"; };
 		CD121DFD1E115F03004F78E2 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		CD1628FE1F68948C0013A92A /* BikeStationDescriptionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationDescriptionGenerator.swift; sourceTree = "<group>"; };
 		CD164C1A1E2B1A7A0062CBA5 /* BikeShareTopShelf.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BikeShareTopShelf.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD164C1B1E2B1A7A0062CBA5 /* TVServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVServices.framework; path = Library/Frameworks/TVServices.framework; sourceTree = DEVELOPER_DIR; };
 		CD164C1E1E2B1A7A0062CBA5 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
@@ -557,19 +631,26 @@
 		CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapSettingsViewController.swift; sourceTree = "<group>"; };
 		CD1ED2E61EB6D3BC00806D97 /* MapPinTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPinTableViewCell.swift; sourceTree = "<group>"; };
 		CD1ED2E71EB6D3BC00806D97 /* MapPinTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapPinTableViewCell.xib; sourceTree = "<group>"; };
-		CD2185FE1EC9451800B11ADB /* SDCAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDCAlertView.framework; sourceTree = "<group>"; };
+		CD2833031F69A6EB0060DB17 /* MapDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CD2833041F69A6EB0060DB17 /* MapDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapDetailTableViewCell.xib; sourceTree = "<group>"; };
+		CD2963531F6A0CC1008D1E28 /* MapDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailTableViewCell.swift; sourceTree = "<group>"; };
+		CD2963541F6A0CC1008D1E28 /* MapDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapDetailTableViewCell.xib; sourceTree = "<group>"; };
+		CD2963571F6A11FC008D1E28 /* StationMapDiffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationMapDiffViewController.swift; sourceTree = "<group>"; };
+		CD2963581F6A11FC008D1E28 /* StationMapDiffViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationMapDiffViewController.xib; sourceTree = "<group>"; };
 		CD2BA3C81EABFD5500C26F90 /* HistoryNetworksManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNetworksManager.swift; sourceTree = "<group>"; };
 		CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDetailGraphTableViewCell.swift; sourceTree = "<group>"; };
 		CD3932351EBF63C7009427E6 /* LocationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationControl.swift; sourceTree = "<group>"; };
 		CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap"; sourceTree = "<group>"; };
-		CD3932381EC0031A009427E6 /* DZNEmptyDataSet.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DZNEmptyDataSet.framework; sourceTree = "<group>"; };
+		CD4A10481F6614100098BE1C /* BikeStationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationDetailViewController.swift; sourceTree = "<group>"; };
+		CD4A10491F6614100098BE1C /* BikeStationDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationDetailViewController.xib; sourceTree = "<group>"; };
+		CD4A10501F66C2440098BE1C /* BikeStationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationCollectionViewCell.swift; sourceTree = "<group>"; };
+		CD4A10511F66C2440098BE1C /* BikeStationCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationCollectionViewCell.xib; sourceTree = "<group>"; };
+		CD4A10541F68BF890098BE1C /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
+		CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationClusterView.swift; sourceTree = "<group>"; };
 		CD6733201EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap"; sourceTree = "<group>"; };
-		CD6733211EAAECC10070E69B /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Charts.framework; sourceTree = "<group>"; };
-		CD6733241EAAECCE0070E69B /* Hero.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hero.framework; sourceTree = "<group>"; };
 		CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeStationStatus.swift; sourceTree = "<group>"; };
 		CD67332D1EAAEE220070E69B /* StationsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationsClient.swift; sourceTree = "<group>"; };
-		CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SloppySwipePanGesture.swift; sourceTree = "<group>"; };
-		CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SloppySwiper.swift; sourceTree = "<group>"; };
+		CD7547CF1F637EB4004EDA2A /* UserDefaults+Watch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Watch.swift"; sourceTree = "<group>"; };
 		CD791DE71EC75891009A6DB7 /* WatchSessionManager+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WatchSessionManager+iOS.swift"; sourceTree = "<group>"; };
 		CD791DE91EC758DA009A6DB7 /* WatchSessionManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WatchSessionManager+Extension.swift"; sourceTree = "<group>"; };
 		CD80AA971E626E9F00C1E9B6 /* NetworkInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkInformationViewController.swift; sourceTree = "<group>"; };
@@ -586,6 +667,12 @@
 		CD8C1B6A1E218069000F9A9D /* BikeShareTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeShareTV.entitlements; sourceTree = "<group>"; };
 		CD8C1B871E218427000F9A9D /* Deeplink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deeplink.swift; sourceTree = "<group>"; };
 		CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSplitViewController.swift; sourceTree = "<group>"; };
+		CD92ED9A1F6B7E630030585A /* DotAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotAnnotationView.swift; sourceTree = "<group>"; };
+		CD95F61C1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDiffTableViewCell.swift; sourceTree = "<group>"; };
+		CD95F61D1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationDiffTableViewCell.xib; sourceTree = "<group>"; };
+		CD95F6201F6CA903007C0B37 /* StationDiffingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDiffingInfoViewController.swift; sourceTree = "<group>"; };
+		CD95F6211F6CA903007C0B37 /* StationDiffingInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationDiffingInfoViewController.xib; sourceTree = "<group>"; };
+		CD95F6241F6CB5CC007C0B37 /* SlideUpTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpTransition.swift; sourceTree = "<group>"; };
 		CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDiffViewControllerSearchController.swift; sourceTree = "<group>"; };
 		CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StationDetailViewController+Application.swift"; sourceTree = "<group>"; };
 		CDA134A31E2A91F5005542DE /* StationDetailViewController+Messages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StationDetailViewController+Messages.swift"; path = "../BikeShare/StationDetailViewController+Messages.swift"; sourceTree = "<group>"; };
@@ -595,6 +682,16 @@
 		CDA134AC1E2A9C19005542DE /* MessagesStationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesStationsTableViewController.swift; sourceTree = "<group>"; };
 		CDA1D2C51E22B632008B2AE8 /* UIFont+Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Application.swift"; sourceTree = "<group>"; };
 		CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BikeTableFooterView.swift; sourceTree = "<group>"; };
+		CDC4D8251F659A2800885E0F /* BikeStation+AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BikeStation+AttributedString.swift"; sourceTree = "<group>"; };
+		CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationTableViewCell.swift; sourceTree = "<group>"; };
+		CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationTableViewCell.xib; sourceTree = "<group>"; };
+		CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeNetworkTableViewCell.swift; sourceTree = "<group>"; };
+		CDC4D8381F65F4D000885E0F /* BikeNetworkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeNetworkTableViewCell.xib; sourceTree = "<group>"; };
+		CDC50C161F695A6F00576118 /* BikeStationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationTableViewCell.swift; sourceTree = "<group>"; };
+		CDC50C171F695A7000576118 /* BikeStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationTableViewCell.xib; sourceTree = "<group>"; };
+		CDC50C1A1F695C8E00576118 /* BikeNetworkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeNetworkTableViewCell.swift; sourceTree = "<group>"; };
+		CDC50C1B1F695C8E00576118 /* BikeNetworkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeNetworkTableViewCell.xib; sourceTree = "<group>"; };
+		CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+Application.swift"; sourceTree = "<group>"; };
 		CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSFeed.swift; sourceTree = "<group>"; };
 		CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemInformation.swift; sourceTree = "<group>"; };
 		CDEC200D1E4F61790044D923 /* GBFSSystemInformationClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemInformationClient.swift; sourceTree = "<group>"; };
@@ -674,14 +771,30 @@
 		CDFBD74A1E3ED0EB00C751D7 /* MapInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInterfaceController.swift; sourceTree = "<group>"; };
 		CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSStationStatus.swift; sourceTree = "<group>"; };
 		CDFED5D21E62132500D5C4BF /* GBFSStationStatusClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSStationStatusClient.swift; sourceTree = "<group>"; };
+		CEFC9BE33BF768232C21681D /* Pods_BikeShareWatch_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareWatch_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAE140FEB25DB310A48E0926 /* Pods_BikeShareWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3128EE3E6927AFD36AABADE /* Pods-BikeShareMessages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareMessages.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareMessages/Pods-BikeShareMessages.debug.xcconfig"; sourceTree = "<group>"; };
+		E7B10F8ADBD2C0CD2AF3D5CB /* Pods-BikeShareTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareTV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareTV/Pods-BikeShareTV.debug.xcconfig"; sourceTree = "<group>"; };
+		EE38B93AF0F376FFBA548DE7 /* Pods-BikeShareWatch Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BikeShareWatch Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-BikeShareWatch Extension/Pods-BikeShareWatch Extension.release.xcconfig"; sourceTree = "<group>"; };
+		F0B55B10FA61E2E218E33A9D /* Pods_BikeShareWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShareWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F157F03C868D2638AE4589CB /* Pods_BikeShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BikeShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		69E303B94BC4183C6211B877 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39E3243E62C16526D0DD2A8A /* Pods_BikeShareWatch.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CD164C171E2B1A7A0062CBA5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CD164C1C1E2B1A7A0062CBA5 /* TVServices.framework in Frameworks */,
+				4D4FE232046D3362C5B9BFAF /* Pods_BikeShareTopShelf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +804,7 @@
 			files = (
 				CD164C541E2C38F40062CBA5 /* MapKit.framework in Frameworks */,
 				CD029C731ECBDA3A0091A0A9 /* CloudKit.framework in Frameworks */,
+				3CFFE35D0A77FB7BEE3BD66E /* Pods_BikeShareMac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -700,6 +814,7 @@
 			files = (
 				CD164CA31E33CF870062CBA5 /* MapKit.framework in Frameworks */,
 				CD164C801E33C3540062CBA5 /* NotificationCenter.framework in Frameworks */,
+				0BF21C987A7154723187D7EA /* Pods_BikeShareMacWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +824,7 @@
 			files = (
 				CD8C1B691E218062000F9A9D /* MapKit.framework in Frameworks */,
 				CD029C771ECBDA7A0091A0A9 /* CloudKit.framework in Frameworks */,
+				4A38F2C5C187C736B3790FCA /* Pods_BikeShareTV.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +833,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDEF3D001E1737110002063F /* NotificationCenter.framework in Frameworks */,
+				36E90F0EF9EB34A00ACFBA5D /* Pods_BikeShareWidget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -726,6 +843,7 @@
 			files = (
 				CDF347661E2A8C2F00241A8A /* MapKit.framework in Frameworks */,
 				CDF347561E2A8BE800241A8A /* Messages.framework in Frameworks */,
+				4E2821C2E1CBAA93A5B972BA /* Pods_BikeShareMessages.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,12 +851,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD6A6BAA1EAD76FC0042ABE5 /* Hero.framework in Frameworks */,
-				CD6A6BA91EAD76EF0042ABE5 /* Charts.framework in Frameworks */,
-				CD39323A1EC0031A009427E6 /* DZNEmptyDataSet.framework in Frameworks */,
 				CD029C751ECBDA470091A0A9 /* CloudKit.framework in Frameworks */,
-				CD2185FF1EC9451800B11ADB /* SDCAlertView.framework in Frameworks */,
 				CDF6E7AD1E0DBC6600C3C6CA /* MapKit.framework in Frameworks */,
+				72ACF70747D355E95FA8393F /* Pods_BikeShare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,12 +862,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDFBD7331E3D2E6300C751D7 /* MapKit.framework in Frameworks */,
+				C104E8A3CF39CB999E1446EE /* Pods_BikeShareWatch_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C41EDAE5B242687AA012ADA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				16B6E30C42D48A70BEEEDB54 /* Pods-BikeShare.debug.xcconfig */,
+				5B721E7221592F38F3551633 /* Pods-BikeShare.release.xcconfig */,
+				00C58CD34357F0D6AC974C94 /* Pods-BikeShareMac.debug.xcconfig */,
+				1EAC615F7C606208BE31871E /* Pods-BikeShareMac.release.xcconfig */,
+				2CA58BA986CC94660ACE2871 /* Pods-BikeShareMacWidget.debug.xcconfig */,
+				67F9A54FDF3F5A1317E80D33 /* Pods-BikeShareMacWidget.release.xcconfig */,
+				E3128EE3E6927AFD36AABADE /* Pods-BikeShareMessages.debug.xcconfig */,
+				86F0483AF277B9B6DC4353E7 /* Pods-BikeShareMessages.release.xcconfig */,
+				E7B10F8ADBD2C0CD2AF3D5CB /* Pods-BikeShareTV.debug.xcconfig */,
+				C325B018F5A81E40DF29BB69 /* Pods-BikeShareTV.release.xcconfig */,
+				268D06BB54CA68ACAA385451 /* Pods-BikeShareTopShelf.debug.xcconfig */,
+				A91F2744FFA12DAAEC837865 /* Pods-BikeShareTopShelf.release.xcconfig */,
+				BCEA5FA537A60F148267AEA2 /* Pods-BikeShareWatch.debug.xcconfig */,
+				96F03230204D7D994C80EF7E /* Pods-BikeShareWatch.release.xcconfig */,
+				3132EE50C7E178187528904A /* Pods-BikeShareWatch Extension.debug.xcconfig */,
+				EE38B93AF0F376FFBA548DE7 /* Pods-BikeShareWatch Extension.release.xcconfig */,
+				03245E6EA6C5EB1614A0ADC7 /* Pods-BikeShareWidget.debug.xcconfig */,
+				B2F2EAF2612961EF738D4C2E /* Pods-BikeShareWidget.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CD164C1D1E2B1A7A0062CBA5 /* BikeShareTopShelf */ = {
 			isa = PBXGroup;
 			children = (
@@ -824,8 +965,7 @@
 			isa = PBXGroup;
 			children = (
 				CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */,
-				CD6A6BA11EAD584F0042ABE5 /* SloppySwipePanGesture.swift */,
-				CD6A6BA31EAD59A10042ABE5 /* SloppySwiper.swift */,
+				CD95F6241F6CB5CC007C0B37 /* SlideUpTransition.swift */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -842,6 +982,16 @@
 				CDEF3CF51E1311360002063F /* StationDetailTableViewCell.swift */,
 				CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */,
 				CDA1D2C91E230243008B2AE8 /* BikeTableFooterView.swift */,
+				CD95F61C1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift */,
+				CD95F61D1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib */,
+				CDC4D82B1F65D8FA00885E0F /* BikeStationTableViewCell.swift */,
+				CDC4D82C1F65D8FA00885E0F /* BikeStationTableViewCell.xib */,
+				CDC4D8371F65F4D000885E0F /* BikeNetworkTableViewCell.swift */,
+				CDC4D8381F65F4D000885E0F /* BikeNetworkTableViewCell.xib */,
+				CD4A10501F66C2440098BE1C /* BikeStationCollectionViewCell.swift */,
+				CD4A10511F66C2440098BE1C /* BikeStationCollectionViewCell.xib */,
+				CD2833031F69A6EB0060DB17 /* MapDetailTableViewCell.swift */,
+				CD2833041F69A6EB0060DB17 /* MapDetailTableViewCell.xib */,
 			);
 			name = "TableView Views";
 			sourceTree = "<group>";
@@ -852,6 +1002,11 @@
 				CD121DF91E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift */,
 				CD80AAAA1E6BA81F00C1E9B6 /* MapKeyView.swift */,
 				CD3932351EBF63C7009427E6 /* LocationControl.swift */,
+				CD92ED9A1F6B7E630030585A /* DotAnnotationView.swift */,
+				CD57C1361F6447F900BF3BB1 /* StationClusterView.swift */,
+				CD100FE91F64890F0031EFF6 /* NetworkClusterView.swift */,
+				CD06F34A1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift */,
+				CD4A10541F68BF890098BE1C /* Emitter.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -859,19 +1014,14 @@
 		CD1ED2E31EB6958800806D97 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				CDF6E7B21E0DBD9500C3C6CA /* NetworkSearchController.swift */,
-				CDF6E7B31E0DBD9500C3C6CA /* NetworkTableViewController.swift */,
-				CDEC20111E4F69010044D923 /* NetworkSystemInformationTableViewController.swift */,
-				CDF6E7B61E0DBDA800C3C6CA /* StationsSearchController.swift */,
-				CDF6E7B71E0DBDA800C3C6CA /* StationsTableViewContoller.swift */,
-				CDEF3CF31E1301DE0002063F /* StationDetailViewController.swift */,
-				CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */,
-				CDF6F5C11E7DFCAA009CBD32 /* StationDiffViewController.swift */,
-				CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */,
-				CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */,
-				CD164C631E2C3DBC0062CBA5 /* BaseMapViewController.swift */,
-				CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */,
-				CD1DA7C31ED0D8C400ED19BC /* WelcomeViewController.swift */,
+				CDC4D83B1F65F88400885E0F /* Networks */,
+				CDC4D83D1F65F8A900885E0F /* Network Info */,
+				CDC4D83C1F65F89E00885E0F /* Stations */,
+				CDC4D83E1F65F8B700885E0F /* Station Diffing */,
+				CDC4D83F1F65F8D300885E0F /* Station Detail */,
+				CDC4D8401F65F8F300885E0F /* Map */,
+				CDC4D8411F65F8FC00885E0F /* Map Settings */,
+				CDC4D8421F65F90700885E0F /* Welcome */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -882,11 +1032,100 @@
 				CD8C1B6A1E218069000F9A9D /* BikeShareTV.entitlements */,
 				CD8C1B5B1E218056000F9A9D /* AppDelegate.swift */,
 				CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */,
+				CDC50C161F695A6F00576118 /* BikeStationTableViewCell.swift */,
+				CDC50C171F695A7000576118 /* BikeStationTableViewCell.xib */,
+				CDC50C1A1F695C8E00576118 /* BikeNetworkTableViewCell.swift */,
+				CDC50C1B1F695C8E00576118 /* BikeNetworkTableViewCell.xib */,
+				CD2963531F6A0CC1008D1E28 /* MapDetailTableViewCell.swift */,
+				CD2963541F6A0CC1008D1E28 /* MapDetailTableViewCell.xib */,
 				CD8C1B5F1E218056000F9A9D /* Main.storyboard */,
 				CD8C1B621E218056000F9A9D /* Assets.xcassets */,
 				CD8C1B641E218056000F9A9D /* Info.plist */,
 			);
 			path = BikeShareTV;
+			sourceTree = "<group>";
+		};
+		CD95F6261F6CB853007C0B37 /* InfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CD95F6201F6CA903007C0B37 /* StationDiffingInfoViewController.swift */,
+				CD95F6211F6CA903007C0B37 /* StationDiffingInfoViewController.xib */,
+			);
+			name = InfoViewController;
+			sourceTree = "<group>";
+		};
+		CDC4D83B1F65F88400885E0F /* Networks */ = {
+			isa = PBXGroup;
+			children = (
+				CDF6E7B21E0DBD9500C3C6CA /* NetworkSearchController.swift */,
+				CDF6E7B31E0DBD9500C3C6CA /* NetworkTableViewController.swift */,
+			);
+			name = Networks;
+			sourceTree = "<group>";
+		};
+		CDC4D83C1F65F89E00885E0F /* Stations */ = {
+			isa = PBXGroup;
+			children = (
+				CDF6E7B61E0DBDA800C3C6CA /* StationsSearchController.swift */,
+				CDF6E7B71E0DBDA800C3C6CA /* StationsTableViewContoller.swift */,
+			);
+			name = Stations;
+			sourceTree = "<group>";
+		};
+		CDC4D83D1F65F8A900885E0F /* Network Info */ = {
+			isa = PBXGroup;
+			children = (
+				CDEC20111E4F69010044D923 /* NetworkSystemInformationTableViewController.swift */,
+			);
+			name = "Network Info";
+			sourceTree = "<group>";
+		};
+		CDC4D83E1F65F8B700885E0F /* Station Diffing */ = {
+			isa = PBXGroup;
+			children = (
+				CD9E81EB1ECA7D8A00FF2EB4 /* StationDiffViewControllerSearchController.swift */,
+				CDF6F5C11E7DFCAA009CBD32 /* StationDiffViewController.swift */,
+				CD2963571F6A11FC008D1E28 /* StationMapDiffViewController.swift */,
+				CD2963581F6A11FC008D1E28 /* StationMapDiffViewController.xib */,
+				CD95F6261F6CB853007C0B37 /* InfoViewController */,
+			);
+			name = "Station Diffing";
+			sourceTree = "<group>";
+		};
+		CDC4D83F1F65F8D300885E0F /* Station Detail */ = {
+			isa = PBXGroup;
+			children = (
+				CDEF3CF31E1301DE0002063F /* StationDetailViewController.swift */,
+				CDA134A11E2A9124005542DE /* StationDetailViewController+Application.swift */,
+				CD4A10481F6614100098BE1C /* BikeStationDetailViewController.swift */,
+				CD4A10491F6614100098BE1C /* BikeStationDetailViewController.xib */,
+			);
+			name = "Station Detail";
+			sourceTree = "<group>";
+		};
+		CDC4D8401F65F8F300885E0F /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				CDF6E7BC1E0DBF6200C3C6CA /* MapViewController.swift */,
+				CD164C631E2C3DBC0062CBA5 /* BaseMapViewController.swift */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		CDC4D8411F65F8FC00885E0F /* Map Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CD1ED2E41EB6CB6600806D97 /* MapSettingsViewController.swift */,
+			);
+			name = "Map Settings";
+			sourceTree = "<group>";
+		};
+		CDC4D8421F65F90700885E0F /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				CD1DA7C31ED0D8C400ED19BC /* WelcomeViewController.swift */,
+			);
+			name = Welcome;
 			sourceTree = "<group>";
 		};
 		CDEF3D011E1737110002063F /* BikeShareWidget */ = {
@@ -932,6 +1171,7 @@
 				CDFBD7171E3849A000C751D7 /* BikeShareWatch Extension */,
 				CDF6E7951E0DBC3000C3C6CA /* Products */,
 				CDF6E7AB1E0DBC6600C3C6CA /* Frameworks */,
+				0C41EDAE5B242687AA012ADA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -968,11 +1208,7 @@
 				CDF6E7A01E0DBC3000C3C6CA /* Assets.xcassets */,
 				CDF6E7A21E0DBC3000C3C6CA /* LaunchScreen.storyboard */,
 				CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */,
-				CD3932381EC0031A009427E6 /* DZNEmptyDataSet.framework */,
-				CD6733241EAAECCE0070E69B /* Hero.framework */,
-				CD2185FE1EC9451800B11ADB /* SDCAlertView.framework */,
 				CD6733201EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap */,
-				CD6733211EAAECC10070E69B /* Charts.framework */,
 				CDF6E7A51E0DBC3000C3C6CA /* Info.plist */,
 			);
 			path = BikeShare;
@@ -991,6 +1227,15 @@
 				CDEF3CFF1E1737110002063F /* NotificationCenter.framework */,
 				CDF347551E2A8BE800241A8A /* Messages.framework */,
 				CD164C1B1E2B1A7A0062CBA5 /* TVServices.framework */,
+				F157F03C868D2638AE4589CB /* Pods_BikeShare.framework */,
+				257E51A3BF0D4F3F5A306D1E /* Pods_BikeShareMac.framework */,
+				8D436DAF9BBC3D41AC1B8A0D /* Pods_BikeShareMacWidget.framework */,
+				4EAA1533E791D957495AA2DA /* Pods_BikeShareMessages.framework */,
+				B789BA8A90D1DF5A37C2230D /* Pods_BikeShareTV.framework */,
+				209C2F591A7448EF7AC9BD85 /* Pods_BikeShareTopShelf.framework */,
+				F0B55B10FA61E2E218E33A9D /* Pods_BikeShareWatch.framework */,
+				CEFC9BE33BF768232C21681D /* Pods_BikeShareWatch_Extension.framework */,
+				DAE140FEB25DB310A48E0926 /* Pods_BikeShareWidget.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1025,6 +1270,7 @@
 				CDEF3CF11E12FA110002063F /* UITraitCollection+Helper.swift */,
 				CDEF3CF81E1361AC0002063F /* UserDefaults+Application.swift */,
 				CD029C7B1ECDC6C60091A0A9 /* NSAttributedString+Application.swift */,
+				CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1035,6 +1281,7 @@
 				CDF6E7D21E0EDA5F00C3C6CA /* MapBikeStation.swift */,
 				CDF6E7D01E0ED9FF00C3C6CA /* MapBikeNetwork.swift */,
 				CDF6E7CE1E0ED98200C3C6CA /* BikeStation.swift */,
+				CDC4D8251F659A2800885E0F /* BikeStation+AttributedString.swift */,
 				CD67332B1EAAEDBB0070E69B /* BikeStationStatus.swift */,
 				CDF6E7CC1E0ED93100C3C6CA /* BikeNetworkLocation.swift */,
 				CDF6E7CA1E0ED8FE00C3C6CA /* BikeNetwork.swift */,
@@ -1047,6 +1294,7 @@
 				CDFED5D01E620F3000D5C4BF /* GBFSStationStatus.swift */,
 				CD8C1B871E218427000F9A9D /* Deeplink.swift */,
 				CDEC20131E50D9AC0044D923 /* SystemInfoTableViewContent.swift */,
+				CD1628FE1F68948C0013A92A /* BikeStationDescriptionGenerator.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1074,6 +1322,7 @@
 				CDFBD73B1E3D30AD00C751D7 /* StationRowObject.swift */,
 				CDFBD71C1E3849A000C751D7 /* ComplicationController.swift */,
 				CDFBD72F1E3D2DB900C751D7 /* WatchSessionManager.swift */,
+				CD7547CF1F637EB4004EDA2A /* UserDefaults+Watch.swift */,
 				CDFBD71E1E3849A000C751D7 /* Assets.xcassets */,
 				CDFBD7201E3849A000C751D7 /* Info.plist */,
 			);
@@ -1087,9 +1336,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD164C261E2B1A7A0062CBA5 /* Build configuration list for PBXNativeTarget "BikeShareTopShelf" */;
 			buildPhases = (
+				9DC7678DE22CAA625A7CDD15 /* [CP] Check Pods Manifest.lock */,
 				CD164C161E2B1A7A0062CBA5 /* Sources */,
 				CD164C171E2B1A7A0062CBA5 /* Frameworks */,
 				CD164C181E2B1A7A0062CBA5 /* Resources */,
+				BF2F0D5C46598CBCAB58B69D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1104,10 +1355,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD164C4F1E2C385E0062CBA5 /* Build configuration list for PBXNativeTarget "BikeShareMac" */;
 			buildPhases = (
+				3536A4D8CEFB045ED5D5E6D2 /* [CP] Check Pods Manifest.lock */,
 				CD164C3F1E2C385D0062CBA5 /* Sources */,
 				CD164C401E2C385D0062CBA5 /* Frameworks */,
 				CD164C411E2C385D0062CBA5 /* Resources */,
 				CD164C931E33C3540062CBA5 /* Embed App Extensions */,
+				10D65B5AB75B09580DABECA4 /* [CP] Embed Pods Frameworks */,
+				79E824B0999B8C4DC3477E41 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1123,9 +1377,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD164C901E33C3540062CBA5 /* Build configuration list for PBXNativeTarget "BikeShareMacWidget" */;
 			buildPhases = (
+				E2270F1E6C32A4227C26E3B5 /* [CP] Check Pods Manifest.lock */,
 				CD164C7B1E33C3540062CBA5 /* Sources */,
 				CD164C7C1E33C3540062CBA5 /* Frameworks */,
 				CD164C7D1E33C3540062CBA5 /* Resources */,
+				1193BAE61EAA99CA00DF44F3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1140,10 +1396,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD8C1B671E218056000F9A9D /* Build configuration list for PBXNativeTarget "BikeShareTV" */;
 			buildPhases = (
+				9B16402D71043FE2A1A5FEBC /* [CP] Check Pods Manifest.lock */,
 				CD8C1B551E218056000F9A9D /* Sources */,
 				CD8C1B561E218056000F9A9D /* Frameworks */,
 				CD8C1B571E218056000F9A9D /* Resources */,
 				CD164C271E2B1A7A0062CBA5 /* Embed App Extensions */,
+				AAE3866E80A5D334CDB5303E /* [CP] Embed Pods Frameworks */,
+				49658609DB94CAC9ECF85AA1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1159,9 +1418,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDEF3D0B1E1737110002063F /* Build configuration list for PBXNativeTarget "BikeShareWidget" */;
 			buildPhases = (
+				668AB5CE6633CE737B0D4305 /* [CP] Check Pods Manifest.lock */,
 				CDEF3CFA1E1737110002063F /* Sources */,
 				CDEF3CFB1E1737110002063F /* Frameworks */,
 				CDEF3CFC1E1737110002063F /* Resources */,
+				8F1726C1F0D2FD2074C5AA1C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1176,10 +1437,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDF347651E2A8BE800241A8A /* Build configuration list for PBXNativeTarget "BikeShareMessages" */;
 			buildPhases = (
+				9F6C21335D7005B7851F9D37 /* [CP] Check Pods Manifest.lock */,
 				CDF347501E2A8BE800241A8A /* Sources */,
 				CDF347511E2A8BE800241A8A /* Frameworks */,
 				CDF347521E2A8BE800241A8A /* Resources */,
 				CD6A6BAB1EAD77200042ABE5 /* Embed Carthage Frameworks */,
+				C9C00AA3F01149BCDED7E216 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1194,12 +1457,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDF6E7A81E0DBC3000C3C6CA /* Build configuration list for PBXNativeTarget "BikeShare" */;
 			buildPhases = (
+				8304B1DFDA094BE19940CC40 /* [CP] Check Pods Manifest.lock */,
 				CDF6E7901E0DBC3000C3C6CA /* Sources */,
 				CDF6E7911E0DBC3000C3C6CA /* Frameworks */,
 				CDF6E7921E0DBC3000C3C6CA /* Resources */,
 				CDEF3D0E1E1737110002063F /* Embed App Extensions */,
 				CDFBD72B1E3849A000C751D7 /* Embed Watch Content */,
-				CD6A6BA81EAD765A0042ABE5 /* Embed Carthage Frameworks */,
+				A31D064453539E20E8425156 /* [CP] Embed Pods Frameworks */,
+				40015366F00105DA160965E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1217,8 +1482,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDFBD72A1E3849A000C751D7 /* Build configuration list for PBXNativeTarget "BikeShareWatch" */;
 			buildPhases = (
+				DD92DF29BF3663F622A40EAE /* [CP] Check Pods Manifest.lock */,
 				CDFBD7051E3849A000C751D7 /* Resources */,
 				CDFBD7291E3849A000C751D7 /* Embed App Extensions */,
+				69E303B94BC4183C6211B877 /* Frameworks */,
+				66852C86984D6066B586E3F5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1234,9 +1502,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDFBD7281E3849A000C751D7 /* Build configuration list for PBXNativeTarget "BikeShareWatch Extension" */;
 			buildPhases = (
+				80C09FC9B890CA6D01335FEC /* [CP] Check Pods Manifest.lock */,
 				CDFBD70F1E3849A000C751D7 /* Sources */,
 				CDFBD7101E3849A000C751D7 /* Frameworks */,
 				CDFBD7111E3849A000C751D7 /* Resources */,
+				EB379CD113C024B9AB5B3924 /* [CP] Embed Pods Frameworks */,
+				2BC17D1295264DDC9C4E968C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1254,7 +1525,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "B Gay";
 				TargetAttributes = {
 					CD164C191E2B1A7A0062CBA5 = {
@@ -1327,6 +1598,7 @@
 					CDEF3CFD1E1737110002063F = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 8DDUQH2RUD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1337,6 +1609,7 @@
 					CDF347531E2A8BE800241A8A = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 8DDUQH2RUD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1350,6 +1623,7 @@
 					CDF6E7931E0DBC3000C3C6CA = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 8DDUQH2RUD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1372,6 +1646,7 @@
 					CDFBD7061E3849A000C751D7 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 8DDUQH2RUD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1382,6 +1657,7 @@
 					CDFBD7121E3849A000C751D7 = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 8DDUQH2RUD;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -1456,8 +1732,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD8C1B631E218056000F9A9D /* Assets.xcassets in Resources */,
+				CDC50C191F695A7000576118 /* BikeStationTableViewCell.xib in Resources */,
 				CD029C781ECC6B2B0091A0A9 /* Assets.xcassets in Resources */,
+				CD2963561F6A0CC1008D1E28 /* MapDetailTableViewCell.xib in Resources */,
 				CD8C1B611E218056000F9A9D /* Main.storyboard in Resources */,
+				CDC50C1D1F695C8E00576118 /* BikeNetworkTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1465,6 +1744,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDC4D8331F65E7D000885E0F /* BikeStationTableViewCell.xib in Resources */,
+				CDC4D8471F65FBC100885E0F /* BikeNetworkTableViewCell.xib in Resources */,
 				CD6276F11EB4EDA5008666AC /* Assets.xcassets in Resources */,
 				CDEF3D061E1737110002063F /* MainInterface.storyboard in Resources */,
 			);
@@ -1475,8 +1756,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDF3475E1E2A8BE800241A8A /* Assets.xcassets in Resources */,
+				CDC4D8341F65E7D100885E0F /* BikeStationTableViewCell.xib in Resources */,
 				CD6276F21EB4EDA5008666AC /* Assets.xcassets in Resources */,
 				CDF3475C1E2A8BE800241A8A /* MainInterface.storyboard in Resources */,
+				CDC4D8481F65FBC200885E0F /* BikeNetworkTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1484,13 +1767,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD4A10531F66C2440098BE1C /* BikeStationCollectionViewCell.xib in Resources */,
+				CD95F6231F6CA903007C0B37 /* StationDiffingInfoViewController.xib in Resources */,
+				CD95F61F1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib in Resources */,
+				CDC4D83A1F65F4D000885E0F /* BikeNetworkTableViewCell.xib in Resources */,
 				CDF6E7A41E0DBC3000C3C6CA /* LaunchScreen.storyboard in Resources */,
+				CD2833061F69A6EB0060DB17 /* MapDetailTableViewCell.xib in Resources */,
 				CDF6E7A11E0DBC3000C3C6CA /* Assets.xcassets in Resources */,
 				CDF6E79F1E0DBC3000C3C6CA /* Main.storyboard in Resources */,
+				CD29635A1F6A11FC008D1E28 /* StationMapDiffViewController.xib in Resources */,
 				CD6733221EAAECC10070E69B /* C15A257A-E742-3EF0-A959-2F0BB2F98E00.bcsymbolmap in Resources */,
 				CD1ED2E91EB6D3BC00806D97 /* MapPinTableViewCell.xib in Resources */,
+				CDC4D82E1F65D8FA00885E0F /* BikeStationTableViewCell.xib in Resources */,
 				CDEC201E1E512E6A0044D923 /* PricingPlanTableViewCell.xib in Resources */,
 				CD3932391EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap in Resources */,
+				CD4A104B1F6614100098BE1C /* BikeStationDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1514,23 +1805,321 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		CD6A6BA81EAD765A0042ABE5 /* Embed Carthage Frameworks */ = {
+		10D65B5AB75B09580DABECA4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/BikeShare/Hero.framework",
-				"$(SRCROOT)/BikeShare/Charts.framework",
-				"$(SRCROOT)/BikeShare/DZNEmptyDataSet.framework",
-				"$(SRCROOT)/BikeShare/SDCAlertView.framework",
 			);
-			name = "Embed Carthage Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareMac/Pods-BikeShareMac-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1193BAE61EAA99CA00DF44F3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareMacWidget/Pods-BikeShareMacWidget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2BC17D1295264DDC9C4E968C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareWatch Extension/Pods-BikeShareWatch Extension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3536A4D8CEFB045ED5D5E6D2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareMac-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		40015366F00105DA160965E8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShare/Pods-BikeShare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49658609DB94CAC9ECF85AA1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareTV/Pods-BikeShareTV-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66852C86984D6066B586E3F5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareWatch/Pods-BikeShareWatch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		668AB5CE6633CE737B0D4305 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareWidget-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		79E824B0999B8C4DC3477E41 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareMac/Pods-BikeShareMac-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80C09FC9B890CA6D01335FEC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareWatch Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8304B1DFDA094BE19940CC40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShare-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8F1726C1F0D2FD2074C5AA1C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareWidget/Pods-BikeShareWidget-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9B16402D71043FE2A1A5FEBC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareTV-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9DC7678DE22CAA625A7CDD15 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareTopShelf-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9F6C21335D7005B7851F9D37 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareMessages-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A31D064453539E20E8425156 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BikeShare/Pods-BikeShare-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts-iOS/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/SDCAlertView/SDCAlertView.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCAlertView.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShare/Pods-BikeShare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AAE3866E80A5D334CDB5303E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareTV/Pods-BikeShareTV-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts-tvOS/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareTV/Pods-BikeShareTV-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF2F0D5C46598CBCAB58B69D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareTopShelf/Pods-BikeShareTopShelf-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9C00AA3F01149BCDED7E216 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareMessages/Pods-BikeShareMessages-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		CD6A6BAB1EAD77200042ABE5 /* Embed Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1546,6 +2135,57 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		DD92DF29BF3663F622A40EAE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareWatch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E2270F1E6C32A4227C26E3B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BikeShareMacWidget-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EB379CD113C024B9AB5B3924 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BikeShareWatch Extension/Pods-BikeShareWatch Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1555,6 +2195,7 @@
 			files = (
 				CD164C2F1E2B1BF60062CBA5 /* UserManager.swift in Sources */,
 				CD80AA941E625D7E00C1E9B6 /* GBFSStationInformation.swift in Sources */,
+				CDC4D8241F6599D600885E0F /* NSTextAttachment+Application.swift in Sources */,
 				CD80AA951E625D9A00C1E9B6 /* GBFSStationStatus.swift in Sources */,
 				CD164C331E2B1EF20062CBA5 /* DispatchQueue+Helper.swift in Sources */,
 				CD164C321E2B1D890062CBA5 /* ClosebyStationsClient.swift in Sources */,
@@ -1576,11 +2217,12 @@
 				CD6733321EAAEE220070E69B /* StationsClient.swift in Sources */,
 				CD2BA3CD1EABFDBB00C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CD6276EC1EB4E784008666AC /* NetworksClient.swift in Sources */,
+				CDC4D82A1F659A2F00885E0F /* BikeStation+AttributedString.swift in Sources */,
 				CD164C281E2B1BC80062CBA5 /* BikeNetwork.swift in Sources */,
 				CD164C3A1E2BE3E60062CBA5 /* TopShelfView.swift in Sources */,
 				CD164C2E1E2B1BF30062CBA5 /* Constants.swift in Sources */,
 				CD6276ED1EB4E794008666AC /* GBFSFeedClient.swift in Sources */,
-				CD164C351E2BC2020062CBA5 /* UserDefaults+Application.swift in Sources */,
+				CD100FEB1F64AD630031EFF6 /* UserDefaults+Application.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1686,7 +2328,6 @@
 				CD80AA6B1E624CF000C1E9B6 /* GBFSStationStatus.swift in Sources */,
 				CD80AA8C1E624D4E00C1E9B6 /* GBFSStationStatusClient.swift in Sources */,
 				CD80AA911E625A8300C1E9B6 /* SystemInfoTableViewContent.swift in Sources */,
-				CD8C1B751E2181CF000F9A9D /* BikeTableViewCell.swift in Sources */,
 				CD8C1B791E218224000F9A9D /* StationDetailViewController.swift in Sources */,
 				CD8C1B6F1E2181AF000F9A9D /* BikeStation.swift in Sources */,
 				CD1DA7C51ED0D8CF00ED19BC /* WelcomeViewController.swift in Sources */,
@@ -1697,9 +2338,11 @@
 				CD80AA5C1E624CCB00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */,
 				CD80AA661E624CE200C1E9B6 /* GBFSStationInformation.swift in Sources */,
 				CD029C711ECBD7670091A0A9 /* MapPinTableViewCell.swift in Sources */,
+				CDC4D8231F6599D500885E0F /* NSTextAttachment+Application.swift in Sources */,
 				CD8C1B7C1E2182FA000F9A9D /* NetworksClient.swift in Sources */,
 				CD80AA621E624CD700C1E9B6 /* GBFSSystemAlert.swift in Sources */,
 				CD8C1B741E2181C3000F9A9D /* StationDetailTableViewCell.swift in Sources */,
+				CD2963551F6A0CC1008D1E28 /* MapDetailTableViewCell.swift in Sources */,
 				CD8C1B7B1E21822D000F9A9D /* StationsSearchController.swift in Sources */,
 				CD8C1B781E21821E000F9A9D /* BikeDetailCalloutAccessoryView.swift in Sources */,
 				CD80AA881E624D4500C1E9B6 /* GBFSStationInformationClient.swift in Sources */,
@@ -1714,20 +2357,27 @@
 				CD8C1B6D1E2181A7000F9A9D /* MapBikeStation.swift in Sources */,
 				CD80AAA91E6BA7B500C1E9B6 /* PinView.swift in Sources */,
 				CD8C1B7F1E218306000F9A9D /* UITableViewController+Diff.swift in Sources */,
+				CD100FED1F64AE480031EFF6 /* NetworkClusterView.swift in Sources */,
 				CD6733311EAAEE220070E69B /* StationsClient.swift in Sources */,
 				CD80AA841E624D3C00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */,
+				CD100FEC1F64AE440031EFF6 /* StationClusterView.swift in Sources */,
 				CD8C1B7E1E218302000F9A9D /* ClientResponse.swift in Sources */,
 				CD8C1B771E218218000F9A9D /* BikeDetailAccessoryTableViewCell.swift in Sources */,
 				CD80AA721E624D1E00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
+				CDC50C181F695A7000576118 /* BikeStationTableViewCell.swift in Sources */,
 				CD8C1B821E218313000F9A9D /* UIColor+Application.swift in Sources */,
 				CD6733381EAAEE410070E69B /* BikeStationStatus.swift in Sources */,
 				CD164C671E2C3E390062CBA5 /* BaseMapViewController.swift in Sources */,
 				CD8C1B721E2181BB000F9A9D /* UserManager.swift in Sources */,
+				CDC4D8291F659A2F00885E0F /* BikeStation+AttributedString.swift in Sources */,
 				CD8C1B711E2181B7000F9A9D /* BikeNetwork.swift in Sources */,
 				CD80AAAC1E6BA81F00C1E9B6 /* MapKeyView.swift in Sources */,
+				CDC50C1C1F695C8E00576118 /* BikeNetworkTableViewCell.swift in Sources */,
 				CDA1348A1E2A8F18005542DE /* BikeTableFooterView.swift in Sources */,
 				CD80AA901E625A3A00C1E9B6 /* NetworkSystemInformationTableViewController.swift in Sources */,
 				CD8C1B841E21831B000F9A9D /* UILabel+Sizing.swift in Sources */,
+				CDC50C111F69575200576118 /* BikeTableViewCell.swift in Sources */,
+				CDC50C0C1F68E02800576118 /* Emitter.swift in Sources */,
 				CD8C1B8B1E21BE73000F9A9D /* MenuSplitViewController.swift in Sources */,
 				CD8C1B801E21830B000F9A9D /* UITableView+Diff.swift in Sources */,
 				CDF6F5BF1E7DB487009CBD32 /* BikeStationDiff.swift in Sources */,
@@ -1755,6 +2405,8 @@
 				CDFED5D81E6214DB00D5C4BF /* GBFSStationInformationClient.swift in Sources */,
 				CD80AA7C1E624D2F00C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */,
 				CDFED5D41E6214C900D5C4BF /* GBFSStationInformation.swift in Sources */,
+				CDDE92891F65904B00D01E8C /* NSTextAttachment+Application.swift in Sources */,
+				CDC4D8271F659A2D00885E0F /* BikeStation+AttributedString.swift in Sources */,
 				CDEF3D141E17379A0002063F /* BikeNetwork.swift in Sources */,
 				CDEF3D211E1985C40002063F /* NetworksClient.swift in Sources */,
 				CDEF3D111E1737820002063F /* UserManager.swift in Sources */,
@@ -1769,11 +2421,13 @@
 				CD6733361EAAEE3F0070E69B /* BikeStationStatus.swift in Sources */,
 				CD2BA3CA1EABFDB600C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CDF6F5BB1E7D7F80009CBD32 /* WidgetStationClient.swift in Sources */,
+				CDC4D82F1F65E1CD00885E0F /* BikeStationTableViewCell.swift in Sources */,
 				CD029C7D1ECDC6D00091A0A9 /* NSAttributedString+Application.swift in Sources */,
 				CDA134A91E2A939C005542DE /* ExtensionConstants.swift in Sources */,
 				CDEF3D161E1737AE0002063F /* ClientResponse.swift in Sources */,
 				CDEF3D151E1737A30002063F /* UserDefaults+Application.swift in Sources */,
 				CD80AA701E624D1C00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
+				CDC4D8431F65FBB600885E0F /* BikeNetworkTableViewCell.swift in Sources */,
 				CD791DEA1EC758DA009A6DB7 /* WatchSessionManager+Extension.swift in Sources */,
 				CDFED5DA1E6214E200D5C4BF /* GBFSStationStatusClient.swift in Sources */,
 				CD791DEB1EC7592C009A6DB7 /* WatchSessionManager.swift in Sources */,
@@ -1797,14 +2451,17 @@
 				CD80AA551E624CBE00C1E9B6 /* GBFSSystemInformation.swift in Sources */,
 				CDFED5D91E6214DB00D5C4BF /* GBFSStationInformationClient.swift in Sources */,
 				CD80AA5B1E624CCA00C1E9B6 /* GBFSSystemPricingPlan.swift in Sources */,
+				CDC4D8301F65E1CD00885E0F /* BikeStationTableViewCell.swift in Sources */,
 				CDA134941E2A8F69005542DE /* UITraitCollection+Helper.swift in Sources */,
 				CD80AA611E624CD500C1E9B6 /* GBFSSystemAlert.swift in Sources */,
 				CDA134841E2A8E61005542DE /* BikeStation.swift in Sources */,
 				CDA134A81E2A9392005542DE /* ExtensionConstants.swift in Sources */,
 				CDA134891E2A8F0F005542DE /* BikeTableFooterView.swift in Sources */,
+				CDC4D8441F65FBB700885E0F /* BikeNetworkTableViewCell.swift in Sources */,
 				CDA134871E2A8E71005542DE /* UserManager.swift in Sources */,
 				CD2BA3CB1EABFDB700C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CD80AA7D1E624D3000C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */,
+				CDDE928A1F65904C00D01E8C /* NSTextAttachment+Application.swift in Sources */,
 				CDA134951E2A8F6F005542DE /* UserDefaults+Application.swift in Sources */,
 				CDA1349B1E2A8FBA005542DE /* BikeTableViewCell.swift in Sources */,
 				CDA134821E2A8E57005542DE /* MapBikeStation.swift in Sources */,
@@ -1821,7 +2478,7 @@
 				CD80AA771E624D2700C1E9B6 /* GBFSFeedClient.swift in Sources */,
 				CDA1348C1E2A8F35005542DE /* UITableView+Diff.swift in Sources */,
 				CD80AA711E624D1D00C1E9B6 /* GBFSSystemInformationClient.swift in Sources */,
-				CD6A6BA51EAD59A60042ABE5 /* SloppySwiper.swift in Sources */,
+				CDC4D8281F659A2E00885E0F /* BikeStation+AttributedString.swift in Sources */,
 				CDA1349E1E2A9089005542DE /* ClientResponse.swift in Sources */,
 				CD6733301EAAEE220070E69B /* StationsClient.swift in Sources */,
 				CDA134A01E2A9091005542DE /* NetworksClient.swift in Sources */,
@@ -1833,7 +2490,6 @@
 				CDA134881E2A8E75005542DE /* Constants.swift in Sources */,
 				CDA134911E2A8F4F005542DE /* UIFont+Application.swift in Sources */,
 				CDA134A41E2A91F5005542DE /* StationDetailViewController+Messages.swift in Sources */,
-				CD6A6BA61EAD5A000042ABE5 /* SloppySwipePanGesture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1842,10 +2498,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CDEF3CF61E1311360002063F /* StationDetailTableViewCell.swift in Sources */,
+				CD1628FF1F68948C0013A92A /* BikeStationDescriptionGenerator.swift in Sources */,
 				CDEC20241E548F830044D923 /* GBFSStationInformation.swift in Sources */,
 				CDF6E7BD1E0DBF6200C3C6CA /* MapViewController.swift in Sources */,
 				CDF6E7CF1E0ED98200C3C6CA /* BikeStation.swift in Sources */,
+				CD95F61E1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift in Sources */,
+				CDC4D8391F65F4D000885E0F /* BikeNetworkTableViewCell.swift in Sources */,
 				CD80AAAB1E6BA81F00C1E9B6 /* MapKeyView.swift in Sources */,
+				CD06F34B1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift in Sources */,
 				CDF6E7C31E0EBBED00C3C6CA /* ClientResponse.swift in Sources */,
 				CD67332E1EAAEE220070E69B /* StationsClient.swift in Sources */,
 				CDEC20181E50E8930044D923 /* GBFSSystemPricingPlan.swift in Sources */,
@@ -1855,9 +2515,11 @@
 				CD67332C1EAAEDBB0070E69B /* BikeStationStatus.swift in Sources */,
 				CD2BA3C91EABFD5500C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CDEC201A1E50EECA0044D923 /* GBFSSystemPricingPlanClient.swift in Sources */,
+				CD2833051F69A6EB0060DB17 /* MapDetailTableViewCell.swift in Sources */,
 				CDFBD7311E3D2DC900C751D7 /* WatchSessionManager.swift in Sources */,
 				CDF6E7BF1E0EB6FB00C3C6CA /* NetworksClient.swift in Sources */,
 				CDA134A21E2A9124005542DE /* StationDetailViewController+Application.swift in Sources */,
+				CDC4D82D1F65D8FA00885E0F /* BikeStationTableViewCell.swift in Sources */,
 				CDA1D2C61E22B632008B2AE8 /* UIFont+Application.swift in Sources */,
 				CD791DE81EC75891009A6DB7 /* WatchSessionManager+iOS.swift in Sources */,
 				CD121DF41E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift in Sources */,
@@ -1865,13 +2527,17 @@
 				CD791DE61EC74EF7009A6DB7 /* ClosebyStationsClient.swift in Sources */,
 				CD121DFE1E115F03004F78E2 /* UserManager.swift in Sources */,
 				CDEC20141E50D9AC0044D923 /* SystemInfoTableViewContent.swift in Sources */,
+				CD100FEA1F64890F0031EFF6 /* NetworkClusterView.swift in Sources */,
+				CD4A10521F66C2440098BE1C /* BikeStationCollectionViewCell.swift in Sources */,
 				CD121DF81E1040D7004F78E2 /* DispatchQueue+Helper.swift in Sources */,
 				CD80AAA81E6BA7AC00C1E9B6 /* PinView.swift in Sources */,
+				CDDE92881F658C5B00D01E8C /* NSTextAttachment+Application.swift in Sources */,
 				CDF6F5C21E7DFCAA009CBD32 /* StationDiffViewController.swift in Sources */,
 				CDF6E7C11E0EBAC300C3C6CA /* UIAlertController+Helper.swift in Sources */,
 				CD1ED2E81EB6D3BC00806D97 /* MapPinTableViewCell.swift in Sources */,
 				CDF6E7D11E0ED9FF00C3C6CA /* MapBikeNetwork.swift in Sources */,
 				CD029C7C1ECDC6C60091A0A9 /* NSAttributedString+Application.swift in Sources */,
+				CD92ED9B1F6B7E630030585A /* DotAnnotationView.swift in Sources */,
 				CDF6E7D31E0EDA5F00C3C6CA /* MapBikeStation.swift in Sources */,
 				CDF6E7C91E0ED8CD00C3C6CA /* UIColor+Application.swift in Sources */,
 				CDEC20201E529E790044D923 /* GBFSSystemAlert.swift in Sources */,
@@ -1879,16 +2545,18 @@
 				CDF6E7B81E0DBDA800C3C6CA /* StationsSearchController.swift in Sources */,
 				CDEC20161E50DD560044D923 /* GBFSFeedClient.swift in Sources */,
 				CD2BA3D21EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift in Sources */,
+				CDC4D8261F659A2800885E0F /* BikeStation+AttributedString.swift in Sources */,
 				CDEC200C1E4D50250044D923 /* GBFSSystemInformation.swift in Sources */,
 				CDF6E7B51E0DBD9500C3C6CA /* NetworkTableViewController.swift in Sources */,
-				CD6A6BA41EAD59A10042ABE5 /* SloppySwiper.swift in Sources */,
+				CD95F6251F6CB5CC007C0B37 /* SlideUpTransition.swift in Sources */,
 				CDEF3D1A1E173B030002063F /* UITableView+Diff.swift in Sources */,
 				CDF6F5BE1E7DB46B009CBD32 /* BikeStationDiff.swift in Sources */,
+				CD4A10551F68BF890098BE1C /* Emitter.swift in Sources */,
 				CDEF3CF21E12FA110002063F /* UITraitCollection+Helper.swift in Sources */,
 				CDEC20121E4F69010044D923 /* NetworkSystemInformationTableViewController.swift in Sources */,
-				CD6A6BA21EAD584F0042ABE5 /* SloppySwipePanGesture.swift in Sources */,
 				CDF6E7CB1E0ED8FE00C3C6CA /* BikeNetwork.swift in Sources */,
 				CDF6E7B91E0DBDA800C3C6CA /* StationsTableViewContoller.swift in Sources */,
+				CD57C1371F6447F900BF3BB1 /* StationClusterView.swift in Sources */,
 				CD121DFA1E106530004F78E2 /* BikeDetailCalloutAccessoryView.swift in Sources */,
 				CD1ED2E51EB6CB6600806D97 /* MapSettingsViewController.swift in Sources */,
 				CDF6E7B11E0DBD8300C3C6CA /* BikeTableViewCell.swift in Sources */,
@@ -1898,12 +2566,15 @@
 				CD9E81EC1ECA7D8B00FF2EB4 /* StationDiffViewControllerSearchController.swift in Sources */,
 				CDEC200E1E4F61790044D923 /* GBFSSystemInformationClient.swift in Sources */,
 				CDF6E7981E0DBC3000C3C6CA /* AppDelegate.swift in Sources */,
+				CD4A104A1F6614100098BE1C /* BikeStationDetailViewController.swift in Sources */,
 				CDEC20221E52A3BB0044D923 /* GBFSSystemAlertClient.swift in Sources */,
 				CDA1D2CA1E230243008B2AE8 /* BikeTableFooterView.swift in Sources */,
 				CD164C641E2C3DBC0062CBA5 /* BaseMapViewController.swift in Sources */,
 				CDF6E7B41E0DBD9500C3C6CA /* NetworkSearchController.swift in Sources */,
 				CDFED5D11E620F3000D5C4BF /* GBFSStationStatus.swift in Sources */,
+				CD95F6221F6CA903007C0B37 /* StationDiffingInfoViewController.swift in Sources */,
 				CDEC201D1E512E6A0044D923 /* PricingPlanTableViewCell.swift in Sources */,
+				CD2963591F6A11FC008D1E28 /* StationMapDiffViewController.swift in Sources */,
 				CD8C1B8C1E21BEC9000F9A9D /* MenuSplitViewController.swift in Sources */,
 				CDF6E7BB1E0DBDB300C3C6CA /* UITableViewController+Diff.swift in Sources */,
 				CDEF3CF41E1301DE0002063F /* StationDetailViewController.swift in Sources */,
@@ -1926,6 +2597,7 @@
 				CDFBD7191E3849A000C751D7 /* InterfaceController.swift in Sources */,
 				CDFBD73C1E3D30AD00C751D7 /* StationRowObject.swift in Sources */,
 				CDFBD7421E3D31EC00C751D7 /* NetworksClient.swift in Sources */,
+				CD7547D01F637EB4004EDA2A /* UserDefaults+Watch.swift in Sources */,
 				CDFBD7491E3D6ADA00C751D7 /* StationsInterfaceController.swift in Sources */,
 				CDFBD7381E3D2F4B00C751D7 /* ExtensionConstants.swift in Sources */,
 				CD80AA7B1E624D2B00C1E9B6 /* GBFSFeedClient.swift in Sources */,
@@ -1941,7 +2613,6 @@
 				CD2BA3D01EABFDC200C26F90 /* HistoryNetworksManager.swift in Sources */,
 				CDFBD7411E3D31E500C751D7 /* BikeNetwork.swift in Sources */,
 				CD80AA6F1E624D0200C1E9B6 /* GBFSStationStatus.swift in Sources */,
-				CDFBD7371E3D2F4400C751D7 /* UserDefaults+Application.swift in Sources */,
 				CDFBD7471E3D45E400C751D7 /* UIColor+Application.swift in Sources */,
 				CD80AA871E624D3F00C1E9B6 /* GBFSSystemAlertClient.swift in Sources */,
 				CD80AA811E624D3500C1E9B6 /* GBFSSystemPricingPlanClient.swift in Sources */,
@@ -2070,6 +2741,7 @@
 /* Begin XCBuildConfiguration section */
 		CD164C241E2B1A7A0062CBA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 268D06BB54CA68ACAA385451 /* Pods-BikeShareTopShelf.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BikeShareTopShelf/BikeShareTopShelf.entitlements;
 				DEVELOPMENT_TEAM = 8DDUQH2RUD;
@@ -2079,13 +2751,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				SWIFT_VERSION = 4.0;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
 		};
 		CD164C251E2B1A7A0062CBA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A91F2744FFA12DAAEC837865 /* Pods-BikeShareTopShelf.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BikeShareTopShelf/BikeShareTopShelf.entitlements;
 				DEVELOPMENT_TEAM = 8DDUQH2RUD;
@@ -2095,13 +2768,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				SWIFT_VERSION = 4.0;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
 		CD164C501E2C385E0062CBA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00C58CD34357F0D6AC974C94 /* Pods-BikeShareMac.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2121,6 +2795,7 @@
 		};
 		CD164C511E2C385E0062CBA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1EAC615F7C606208BE31871E /* Pods-BikeShareMac.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2140,6 +2815,7 @@
 		};
 		CD164C911E33C3540062CBA5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CA58BA986CC94660ACE2871 /* Pods-BikeShareMacWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BikeShareMacWidget/BikeShareMacWidget.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -2158,6 +2834,7 @@
 		};
 		CD164C921E33C3540062CBA5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67F9A54FDF3F5A1317E80D33 /* Pods-BikeShareMacWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BikeShareMacWidget/BikeShareMacWidget.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -2176,6 +2853,7 @@
 		};
 		CD8C1B651E218056000F9A9D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7B10F8ADBD2C0CD2AF3D5CB /* Pods-BikeShareTV.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
@@ -2187,14 +2865,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Debug;
 		};
 		CD8C1B661E218056000F9A9D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C325B018F5A81E40DF29BB69 /* Pods-BikeShareTV.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
@@ -2206,42 +2885,47 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
 			};
 			name = Release;
 		};
 		CDEF3D0C1E1737110002063F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03245E6EA6C5EB1614A0ADC7 /* Pods-BikeShareWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BikeShareWidget/BikeShareWidget.entitlements;
 				DEVELOPMENT_TEAM = 8DDUQH2RUD;
 				INFOPLIST_FILE = BikeShareWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		CDEF3D0D1E1737110002063F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B2F2EAF2612961EF738D4C2E /* Pods-BikeShareWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = BikeShareWidget/BikeShareWidget.entitlements;
 				DEVELOPMENT_TEAM = 8DDUQH2RUD;
 				INFOPLIST_FILE = BikeShareWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 		CDF347631E2A8BE800241A8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3128EE3E6927AFD36AABADE /* Pods-BikeShareMessages.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CODE_SIGN_ENTITLEMENTS = BikeShareMessages/BikeShareMessages.entitlements;
@@ -2251,16 +2935,18 @@
 					"$(PROJECT_DIR)/BikeShare",
 				);
 				INFOPLIST_FILE = BikeShareMessages/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareMessages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		CDF347641E2A8BE800241A8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86F0483AF277B9B6DC4353E7 /* Pods-BikeShareMessages.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "iMessage App Icon";
 				CODE_SIGN_ENTITLEMENTS = BikeShareMessages/BikeShareMessages.entitlements;
@@ -2270,11 +2956,12 @@
 					"$(PROJECT_DIR)/BikeShare",
 				);
 				INFOPLIST_FILE = BikeShareMessages/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare.BikeShareMessages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -2287,7 +2974,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2295,7 +2984,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2337,7 +3030,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2345,7 +3040,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2373,6 +3072,7 @@
 		};
 		CDF6E7A91E0DBC3000C3C6CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16B6E30C42D48A70BEEEDB54 /* Pods-BikeShare.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2383,15 +3083,17 @@
 					"$(PROJECT_DIR)/BikeShare",
 				);
 				INFOPLIST_FILE = BikeShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		CDF6E7AA1E0DBC3000C3C6CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B721E7221592F38F3551633 /* Pods-BikeShare.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2402,15 +3104,17 @@
 					"$(PROJECT_DIR)/BikeShare",
 				);
 				INFOPLIST_FILE = BikeShare/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bradgayman.BikeShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
 		CDFBD7241E3849A000C751D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCEA5FA537A60F148267AEA2 /* Pods-BikeShareWatch.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2422,14 +3126,15 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
 		CDFBD7251E3849A000C751D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96F03230204D7D994C80EF7E /* Pods-BikeShareWatch.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2441,14 +3146,15 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 3.1;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
 		CDFBD7261E3849A000C751D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3132EE50C7E178187528904A /* Pods-BikeShareWatch Extension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "BikeShareWatch Extension/BikeShareWatch Extension.entitlements";
@@ -2459,7 +3165,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.1;
 			};
@@ -2467,6 +3173,7 @@
 		};
 		CDFBD7271E3849A000C751D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE38B93AF0F376FFBA548DE7 /* Pods-BikeShareWatch Extension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "BikeShareWatch Extension/BikeShareWatch Extension.entitlements";
@@ -2477,7 +3184,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.1;
 			};

@@ -11,9 +11,9 @@ import MapKit
 
 extension StationDetailViewController
 {
-    func addQuickAction(){}
-    func setNetworkActivityIndicator(shown: Bool){}
-    func setupNavigationBar()
+    @objc func addQuickAction(){}
+    @objc func setNetworkActivityIndicator(shown: Bool){}
+    @objc func setupNavigationBar()
     {
         self.tableView.allowsSelection = true
     }
@@ -49,7 +49,7 @@ extension StationDetailViewController
 
 extension UIView
 {
-    var snapshot: UIImage?
+    @objc var snapshot: UIImage?
     {
         UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 3)
         self.drawHierarchy(in: self.bounds, afterScreenUpdates: true)

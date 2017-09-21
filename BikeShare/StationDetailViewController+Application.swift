@@ -57,8 +57,34 @@ extension StationDetailViewController
         return UserDefaults.bikeShareGroup.favoriteStations(for: self.network).contains(where: { $0.id == self.station.id }) ? [shareActionItem, mapsActionItem, unfavorite] : [shareActionItem, mapsActionItem, favorite]
     }
     
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath?
+    {
+        guard let section = self.section(for: indexPath.section) else { return nil }
+        switch section
+        {
+        case .graph, .station:
+            return nil
+        case .nearBy:
+            return indexPath
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        guard let section = self.section(for: indexPath.section) else { return }
+        switch section
+        {
+        case .graph, .station:
+            break
+        case .nearBy:
+            let station = closebyStations[indexPath.row]
+            let stationDetailVC = BikeStationDetailViewController(with: network, station: station, stations: stations, hasGraph: hasGraph)
+            self.navigationController?.pushViewController(stationDetailVC, animated: true)
+        }
+    }
+    
     //MARK: - QuickAction
-    func addQuickAction()
+    @objc func addQuickAction()
     {
         var quickActions = UIApplication.shared.shortcutItems ?? [UIApplicationShortcutItem]()
         for quickAction in quickActions
@@ -77,12 +103,12 @@ extension StationDetailViewController
         UIApplication.shared.shortcutItems = quickActions
     }
     
-    func setNetworkActivityIndicator(shown: Bool)
+    @objc func setNetworkActivityIndicator(shown: Bool)
     {
         UIApplication.shared.isNetworkActivityIndicatorVisible = shown
     }
     
-    func setupNavigationBar()
+    @objc func setupNavigationBar()
     {
         if self.navigationController?.viewControllers.count ?? 0 == 1
         {

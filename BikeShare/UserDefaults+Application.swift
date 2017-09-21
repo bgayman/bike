@@ -11,7 +11,7 @@ import CoreLocation
 
 extension UserDefaults
 {
-    static let bikeShareGroup = UserDefaults(suiteName: Constants.AppGroupName)!
+    @objc static let bikeShareGroup = UserDefaults(suiteName: Constants.AppGroupName)!
     
     var homeNetwork: BikeNetwork?
     {
@@ -28,7 +28,7 @@ extension UserDefaults
             return
         }
         self.set(homeNetwork.jsonDict, forKey: Constants.HomeNetworkKey)
-        NSUbiquitousKeyValueStore.default().set(homeNetwork.jsonDict, forKey: Constants.HomeNetworkKey)
+        NSUbiquitousKeyValueStore.default.set(homeNetwork.jsonDict, forKey: Constants.HomeNetworkKey)
     }
     
     func isNetworkHomeNetwork(network: BikeNetwork) -> Bool
@@ -37,12 +37,12 @@ extension UserDefaults
         return homeNetwork.id == network.id
     }
     
-    func setLocation(_ location: CLLocationCoordinate2D)
+    @objc func setLocation(_ location: CLLocationCoordinate2D)
     {
         self.set(location.latitude, forKey: Constants.LocationLatitudeKey)
         self.set(location.longitude, forKey: Constants.LocationLongitudeKey)
-        NSUbiquitousKeyValueStore.default().set(location.latitude, forKey: Constants.LocationLatitudeKey)
-        NSUbiquitousKeyValueStore.default().set(location.longitude, forKey: Constants.LocationLongitudeKey)
+        NSUbiquitousKeyValueStore.default.set(location.latitude, forKey: Constants.LocationLatitudeKey)
+        NSUbiquitousKeyValueStore.default.set(location.longitude, forKey: Constants.LocationLongitudeKey)
     }
     
     var location: CLLocationCoordinate2D?
@@ -57,7 +57,7 @@ extension UserDefaults
     {
         let jsonDictionaries = networks.map { $0.jsonDict }
         self.set(jsonDictionaries, forKey: Constants.NetworksKey)
-        NSUbiquitousKeyValueStore.default().set(jsonDictionaries, forKey: Constants.NetworksKey)
+        NSUbiquitousKeyValueStore.default.set(jsonDictionaries, forKey: Constants.NetworksKey)
     }
     
     var networks: [BikeNetwork]?
@@ -98,10 +98,10 @@ extension UserDefaults
     {
         let jsonDictionaries = favorites.map { $0.jsonDict }
         self.set(jsonDictionaries, forKey: bikeNetwork.id)
-        NSUbiquitousKeyValueStore.default().set(jsonDictionaries, forKey: bikeNetwork.id)
+        NSUbiquitousKeyValueStore.default.set(jsonDictionaries, forKey: bikeNetwork.id)
     }
     
-    func setClosebyStations(with stations: [JSONDictionary])
+    @objc func setClosebyStations(with stations: [JSONDictionary])
     {
         self.set(stations, forKey: Constants.ClosebyStations)
     }
@@ -112,25 +112,25 @@ extension UserDefaults
         return stationsDict?.flatMap(BikeStation.init) ?? []
     }
     
-    var hasPreviouslySelectedNetwork: Bool
+    @objc var hasPreviouslySelectedNetwork: Bool
     {
         return self.bool(forKey: Constants.PreviouslySelectedNetwork)
     }
     
-    func setPreviouslySelectedNetwork(selected: Bool)
+    @objc func setPreviouslySelectedNetwork(selected: Bool)
     {
         self.set(selected, forKey: Constants.PreviouslySelectedNetwork)
-        NSUbiquitousKeyValueStore.default().set(selected, forKey: Constants.PreviouslySelectedNetwork)
+        NSUbiquitousKeyValueStore.default.set(selected, forKey: Constants.PreviouslySelectedNetwork)
     }
     
-    var hasSeenWelcomeScreen: Bool
+    @objc var hasSeenWelcomeScreen: Bool
     {
         return self.bool(forKey: Constants.HasSeenWelcomeScreen)
     }
     
-    func setHasSeenWelcomeScreen(seen: Bool)
+    @objc func setHasSeenWelcomeScreen(seen: Bool)
     {
         self.set(seen, forKey: Constants.HasSeenWelcomeScreen)
-        NSUbiquitousKeyValueStore.default().set(seen, forKey: Constants.HasSeenWelcomeScreen)
+        NSUbiquitousKeyValueStore.default.set(seen, forKey: Constants.HasSeenWelcomeScreen)
     }
 }

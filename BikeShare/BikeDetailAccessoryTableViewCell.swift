@@ -19,7 +19,7 @@ class BikeDetailAccessoryTableViewCell: UITableViewCell
     }
     
     #if !os(tvOS)
-    let activityIndicator: UIActivityIndicatorView =
+    @objc let activityIndicator: UIActivityIndicatorView =
     {
         let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         indicator.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
@@ -29,7 +29,7 @@ class BikeDetailAccessoryTableViewCell: UITableViewCell
     #endif
     
     
-    lazy var stackView: UIStackView =
+    @objc lazy var stackView: UIStackView =
     {
         #if !os(tvOS)
         let stackView = UIStackView(arrangedSubviews: [self.activityIndicator, self.calloutLabel, self.calloutSubtitleLabel])
@@ -47,7 +47,7 @@ class BikeDetailAccessoryTableViewCell: UITableViewCell
         return stackView
     }()
     
-    lazy var calloutLabel: UILabel =
+    @objc lazy var calloutLabel: UILabel =
     {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +58,7 @@ class BikeDetailAccessoryTableViewCell: UITableViewCell
         return label
     }()
     
-    lazy var calloutSubtitleLabel: UILabel =
+    @objc lazy var calloutSubtitleLabel: UILabel =
     {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +71,7 @@ class BikeDetailAccessoryTableViewCell: UITableViewCell
         return label
     }()
     
-    lazy var bikeImageView: UIImageView =
+    @objc lazy var bikeImageView: UIImageView =
     {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false

@@ -13,12 +13,12 @@ import UIKit
 
 class WatchSessionManager: NSObject, WCSessionDelegate {
     
-    static let sharedManager = WatchSessionManager()
+    @objc static let sharedManager = WatchSessionManager()
     private override init() {
         super.init()
     }
     
-    private let session: WCSession? = WCSession.isSupported() ? WCSession.default() : nil
+    private let session: WCSession? = WCSession.isSupported() ? WCSession.default : nil
     
     @available(iOS 9.3, *)
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -32,7 +32,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
     }
     #endif
     
-    var validSession: WCSession? {
+    @objc var validSession: WCSession? {
         
         // paired - the user has to have their device paired to the watch
         // watchAppInstalled - the user must have your watch app installed
@@ -51,7 +51,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
         #endif
     }
     
-    func startSession() {
+    @objc func startSession() {
         session?.delegate = self
         session?.activate()
     }
@@ -63,7 +63,7 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
 extension WatchSessionManager {
     
     // Sender
-    func updateApplicationContext(applicationContext: [String : AnyObject]) throws {
+    @objc func updateApplicationContext(applicationContext: [String : AnyObject]) throws {
         if let session = validSession {
             do {
                 try session.updateApplicationContext(applicationContext)
@@ -102,7 +102,7 @@ extension WatchSessionManager {
 extension WatchSessionManager {
     
     // Sender
-    func transferUserInfo(userInfo: [String : AnyObject]) -> WCSessionUserInfoTransfer? {
+    @objc func transferUserInfo(userInfo: [String : AnyObject]) -> WCSessionUserInfoTransfer? {
         return validSession?.transferUserInfo(userInfo)
     }
     
@@ -125,7 +125,7 @@ extension WatchSessionManager {
 extension WatchSessionManager {
     
     // Sender
-    func transferFile(file: NSURL, metadata: [String : AnyObject]) -> WCSessionFileTransfer? {
+    @objc func transferFile(file: NSURL, metadata: [String : AnyObject]) -> WCSessionFileTransfer? {
         return validSession?.transferFile(file as URL, metadata: metadata)
     }
     
@@ -155,14 +155,14 @@ extension WatchSessionManager {
     }
     
     // Sender
-    func sendMessage(message: [String : AnyObject],
+    @objc func sendMessage(message: [String : AnyObject],
                      replyHandler: (([String : Any]) -> Void)? = nil,
                      errorHandler: ((Error) -> Void)? = nil)
     {
         validReachableSession?.sendMessage(message, replyHandler: replyHandler, errorHandler: errorHandler)
     }
     
-    func sendMessageData(data: Data,
+    @objc func sendMessageData(data: Data,
                          replyHandler: ((Data) -> Void)? = nil,
                          errorHandler: ((Error) -> Void)? = nil)
     {

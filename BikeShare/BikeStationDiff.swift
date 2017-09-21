@@ -7,6 +7,10 @@
 //
 
 import Foundation
+import MapKit
+
+final class RedMKCircle: MKCircle {}
+final class GreenMKCircle: MKCircle {}
 
 struct BikeStationDiff
 {
@@ -61,6 +65,30 @@ struct BikeStationDiff
             print("Empty: \(self)")
         }
         return status.joined(separator: ", ")
+    }
+    
+    var overlay: MKCircle
+    {
+        if bikesAdded > 0
+        {
+            return RedMKCircle(center: bikeStation.coordinates, radius: abs(Double(bikesAdded)) * 100.0)
+        }
+        else
+        {
+            return GreenMKCircle(center: bikeStation.coordinates, radius: abs(Double(bikesAdded)) * 100.0)
+        }
+    }
+    
+    var overlayColor: UIColor
+    {
+        if bikesAdded > 0
+        {
+            return UIColor.app_red
+        }
+        else
+        {
+            return UIColor.app_green
+        }
     }
     
     var dateComponentText: String?

@@ -11,14 +11,14 @@ import UIKit
 class BikeTableFooterView: UITableViewHeaderFooterView
 {
 
-    lazy var poweredByButton: UIButton =
+    @objc lazy var poweredByButton: UIButton =
     {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         #if !os(tvOS)
-        let attribTitle = NSMutableAttributedString(string: "Powered by Citybikes", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .body)])
+        let attribTitle = NSMutableAttributedString(string: "Powered by Citybikes", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .body)])
         let range = (attribTitle.string as NSString).range(of: "Citybikes")
-        attribTitle.addAttributes([NSForegroundColorAttributeName: UIColor.app_blue], range: range)
+        attribTitle.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.app_blue], range: range)
         let shapeLayer = CAShapeLayer()
         shapeLayer.frame = self.contentView.bounds
         shapeLayer.lineWidth = 0.25
@@ -29,7 +29,7 @@ class BikeTableFooterView: UITableViewHeaderFooterView
         shapeLayer.path = path.cgPath
         self.contentView.layer.addSublayer(shapeLayer)
         #else
-        let attribTitle = NSMutableAttributedString(string: "Powered by Citybikes @ citybik.es", attributes: [NSFontAttributeName: UIFont.app_font(forTextStyle: .body)])
+            let attribTitle = NSMutableAttributedString(string: "Powered by Citybikes @ citybik.es", attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .body)])
         #endif
         button.setAttributedTitle(attribTitle, for: .normal)
         
