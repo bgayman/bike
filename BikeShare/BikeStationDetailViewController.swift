@@ -441,10 +441,8 @@ class BikeStationDetailViewController: UIViewController
     // MARK: - Networking
     private func fetchHistory()
     {
-        #if !os(tvOS)
-            self.setNetworkActivityIndicator(shown: true)
-            self.graphActivityIndicator.startAnimating()
-        #endif
+        self.setNetworkActivityIndicator(shown: true)
+        self.graphActivityIndicator.startAnimating()
         let stationsClient = StationsClient()
         stationsClient.fetchStationStatuses(with: self.bikeNetwork.id, stationID: self.bikeStation.id)
         { (response) in
@@ -457,15 +455,11 @@ class BikeStationDetailViewController: UIViewController
                 stationsClient.invalidate()
                 switch response
                 {
-                case .error(let errorMessage):
-                    self.stationStatuses = nil
-                    let alert = UIAlertController(errorMessage: errorMessage)
-                    alert.modalPresentationStyle = .overFullScreen
-                    self.present(alert, animated: true)
+                case .error:
+                    self.graphActivityIndicator.isHidden = true
+                    self.lineChartView.isHidden = false
                 case .success(let statuses):
-                    #if !os(tvOS)
-                        self.stationStatuses = statuses
-                    #endif
+                    self.stationStatuses = statuses
                 }
             }
         }
@@ -474,9 +468,7 @@ class BikeStationDetailViewController: UIViewController
     //MARK: - Networking
     @objc func fetchStations()
     {
-        #if !os(tvOS)
-            self.setNetworkActivityIndicator(shown: true)
-        #endif
+        self.setNetworkActivityIndicator(shown: true)
         let stationsClient = StationsClient()
         stationsClient.fetchStations(with: self.bikeNetwork, fetchGBFSProperties: true)
         { response in
