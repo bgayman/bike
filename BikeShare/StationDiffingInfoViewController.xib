@@ -44,7 +44,7 @@
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ynu-yC-prF">
                             <rect key="frame" x="0.0" y="297" width="335" height="122"/>
-                            <string key="text">The heat map shows recent activity across the network. Blue dots represent stations, green dots bikes checkout, and red dots bikes checked in to a station. If the map is empty a few moments for more activity to register.</string>
+                            <string key="text">The heat map shows recent activity across the network. Blue dots represent stations, green dots represent bikes checked out, and red dots bikes checked in. If the map is empty, give it a few moments for more activity to register.</string>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

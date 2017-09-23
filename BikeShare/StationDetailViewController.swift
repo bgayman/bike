@@ -606,7 +606,7 @@ class DateValueFormatter: NSObject, IAxisValueFormatter
         return DateValueFormatter.dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }
 }
-    
+    // MARK: - ActivityViewCustomActivity
     final class ActivityViewCustomActivity: UIActivity
     {
         static func networkFavoriteActivity(with network: BikeNetwork) -> ActivityViewCustomActivity
@@ -650,7 +650,19 @@ class DateValueFormatter: NSObject, IAxisValueFormatter
             return customActivity
         }
         
-        // MARK: Properties
+        static func openMapsActivity(station: BikeStation) -> ActivityViewCustomActivity
+        {
+            let customActivity = ActivityViewCustomActivity(title: "Open in Maps", image: #imageLiteral(resourceName: "icOpenMaps"))
+            {
+                let placemark = MKPlacemark(coordinate: station.coordinates)
+                let mapItem = MKMapItem(placemark: placemark)
+                mapItem.name = station.name
+                mapItem.openInMaps(launchOptions: nil)
+            }
+            return customActivity
+        }
+        
+        // MARK: - Properties
         
         @objc var customActivityType: UIActivityType
         @objc var activityName: String
@@ -658,7 +670,7 @@ class DateValueFormatter: NSObject, IAxisValueFormatter
         @objc var customActionWhenTapped: () -> Void
         
         
-        // MARK: Initializer
+        // MARK: - Initializer
         
         @objc init(title: String, image: UIImage, performAction: @escaping () -> Void) {
             self.activityName = title

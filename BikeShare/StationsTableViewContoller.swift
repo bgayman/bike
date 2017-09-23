@@ -156,7 +156,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     @objc lazy var diffBarButton: UIBarButtonItem =
     {
-        let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icHeatMap"), style: .plain, target: self, action: #selector(self.showStationsDiffViewController))
+        let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icScatter"), style: .plain, target: self, action: #selector(self.showStationsDiffViewController))
         return barButtonItem
     }()
     #endif

@@ -51,6 +51,7 @@ class BikeStationDetailViewController: UIViewController
     let labelAlpha: CGFloat = 0.70
     var hasGraph: Bool
     var titleLabelTopOffset: CGFloat = 0.0
+    var isFirstLoad = true
     var stationStatuses: [BikeStationStatus]?
     {
         didSet
@@ -351,7 +352,12 @@ class BikeStationDetailViewController: UIViewController
         mapView.removeAnnotations(mapView.annotations)
         let annotation = MapBikeStation(bikeStation: bikeStation)
         mapView.addAnnotation(annotation)
-        mapView.showAnnotations([annotation], animated: false)
+        if isFirstLoad
+        {
+            isFirstLoad = false
+            mapView.showAnnotations([annotation], animated: false)
+        }
+        
     }
     
     private func updateChartData()
@@ -412,8 +418,9 @@ class BikeStationDetailViewController: UIViewController
         guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(self.bikeNetwork.id)/station/\(self.bikeStation.id)") else { return }
         
         let customActivity = ActivityViewCustomActivity.stationFavoriteActivity(station: self.bikeStation, network: self.bikeNetwork)
+        let openMapsActivity = ActivityViewCustomActivity.openMapsActivity(station: bikeStation)
         
-        let activityController = UIActivityViewController(activityItems: [url], applicationActivities: [customActivity])
+        let activityController = UIActivityViewController(activityItems: [url], applicationActivities: [customActivity, openMapsActivity])
         if let presenter = activityController.popoverPresentationController
         {
             presenter.barButtonItem = self.actionBarButton
