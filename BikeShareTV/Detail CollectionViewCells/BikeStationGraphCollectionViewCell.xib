@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="13196" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="Rz2-K0-ksD" customClass="BikeStationGraphCollectionViewCell" customModule="BikeShareTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1823" height="1196"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="1823" height="1196"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmi-Uk-DmZ">
+                        <rect key="frame" x="1657" y="1060" width="106" height="46"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0fx-Ks-ze0" customClass="LineChartView" customModule="Charts">
+                        <rect key="frame" x="60" y="90" width="1703" height="958"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7aa-f5-9V6">
+                        <rect key="frame" x="879" y="566" width="64" height="64"/>
+                    </activityIndicatorView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="pmi-Uk-DmZ" secondAttribute="trailing" constant="60" id="2Ty-Lb-DYx"/>
+                <constraint firstItem="0fx-Ks-ze0" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" constant="90" id="95X-sC-Coh"/>
+                <constraint firstItem="7aa-f5-9V6" firstAttribute="centerY" secondItem="Rz2-K0-ksD" secondAttribute="centerY" id="Kjs-h4-mbd"/>
+                <constraint firstAttribute="bottom" secondItem="pmi-Uk-DmZ" secondAttribute="bottom" constant="90" id="N0D-iW-E9e"/>
+                <constraint firstAttribute="trailing" secondItem="0fx-Ks-ze0" secondAttribute="trailing" constant="60" id="Zg8-ik-fT1"/>
+                <constraint firstItem="pmi-Uk-DmZ" firstAttribute="top" secondItem="0fx-Ks-ze0" secondAttribute="bottom" constant="12" id="fNV-Jp-bzy"/>
+                <constraint firstItem="0fx-Ks-ze0" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="60" id="ilF-rn-JKU"/>
+                <constraint firstItem="7aa-f5-9V6" firstAttribute="centerX" secondItem="Rz2-K0-ksD" secondAttribute="centerX" id="wRA-lk-pRZ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="7PP-Ag-gPX"/>
+            <size key="customSize" width="1823" height="1196"/>
+            <connections>
+                <outlet property="activityIndicator" destination="7aa-f5-9V6" id="eHk-4Y-A9P"/>
+                <outlet property="graphLabel" destination="pmi-Uk-DmZ" id="3Qt-XJ-ivL"/>
+                <outlet property="lineChartView" destination="0fx-Ks-ze0" id="xAd-tp-0JL"/>
+            </connections>
+            <point key="canvasLocation" x="1105.5" y="638"/>
+        </collectionViewCell>
+    </objects>
+</document>

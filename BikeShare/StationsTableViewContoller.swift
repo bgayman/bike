@@ -702,11 +702,11 @@ extension StationsTableViewController: StationsSearchControllerDelegate
         }
         
         self.searchController.isActive = false
-        #if !os(tvOS)
+//        #if !os(tvOS)
         let stationDetailViewController = BikeStationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
-        #else
-        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
-        #endif
+//        #else
+//        let stationDetailViewController = StationDetailViewController(with: self.network, station: station, stations: self.stations, hasGraph: HistoryNetworksManager.shared.historyNetworks.contains(self.network.id))
+//        #endif
         if self.splitViewController?.traitCollection.isSmallerDevice ?? false
         {
             self.navigationController?.pushViewController(stationDetailViewController, animated: true)

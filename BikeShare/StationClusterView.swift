@@ -20,7 +20,11 @@ class StationClusterView: MKAnnotationView
         countLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         countLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14.0).isActive = true
         countLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -14.0).isActive = true
-        countLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        #if !os(tvOS)
+            countLabel.font = UIFont.preferredFont(forTextStyle: .headline)
+        #else
+            countLabel.font = UIFont.preferredFont(forTextStyle: .caption1)
+        #endif
         countLabel.textAlignment = .center
         return countLabel
     }()

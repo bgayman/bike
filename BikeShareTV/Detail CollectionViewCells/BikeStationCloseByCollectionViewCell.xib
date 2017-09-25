@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="13196" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="Rz2-K0-ksD" customClass="BikeStationCloseByCollectionViewCell" customModule="BikeShareTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1698" height="1152"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="1698" height="1152"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mnv-So-PO1">
+                        <rect key="frame" x="1492" y="90" width="146" height="46"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Closeby Stations" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGx-MH-HcK">
+                        <rect key="frame" x="60" y="1016" width="289" height="46"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Bj8-c1-oaD">
+                        <rect key="frame" x="60" y="144" width="1578" height="864"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="GH4-1l-Ftq">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <connections>
+                            <outlet property="dataSource" destination="-1" id="6IV-py-nEZ"/>
+                            <outlet property="delegate" destination="-1" id="0CP-JY-DeQ"/>
+                        </connections>
+                    </collectionView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="MGx-MH-HcK" firstAttribute="top" secondItem="Bj8-c1-oaD" secondAttribute="bottom" constant="8" symbolic="YES" id="4b0-X9-Af7"/>
+                <constraint firstItem="mnv-So-PO1" firstAttribute="trailing" secondItem="Bj8-c1-oaD" secondAttribute="trailing" id="C0b-do-aB0"/>
+                <constraint firstAttribute="bottom" secondItem="MGx-MH-HcK" secondAttribute="bottom" constant="90" id="DFh-zV-ZFN"/>
+                <constraint firstItem="Bj8-c1-oaD" firstAttribute="top" secondItem="mnv-So-PO1" secondAttribute="bottom" constant="8" symbolic="YES" id="Fbu-EZ-DoA"/>
+                <constraint firstItem="MGx-MH-HcK" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="60" id="QIV-wt-Jaj"/>
+                <constraint firstItem="MGx-MH-HcK" firstAttribute="leading" secondItem="Bj8-c1-oaD" secondAttribute="leading" id="YiD-1y-clq"/>
+                <constraint firstAttribute="trailing" secondItem="mnv-So-PO1" secondAttribute="trailing" constant="60" id="ZVi-gR-sSk"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MGx-MH-HcK" secondAttribute="trailing" constant="60" id="fzt-ZW-xcl"/>
+                <constraint firstItem="mnv-So-PO1" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" constant="90" id="slq-p7-QfS"/>
+                <constraint firstItem="mnv-So-PO1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rz2-K0-ksD" secondAttribute="leading" constant="60" id="x63-7w-3Ae"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="7PP-Ag-gPX"/>
+            <size key="customSize" width="1698" height="1152"/>
+            <connections>
+                <outlet property="closebyLabel" destination="MGx-MH-HcK" id="v70-Ru-5m0"/>
+                <outlet property="collectionView" destination="Bj8-c1-oaD" id="NbL-Fb-dIG"/>
+                <outlet property="networkLabel" destination="mnv-So-PO1" id="ApQ-WI-dEI"/>
+            </connections>
+            <point key="canvasLocation" x="137" y="193"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -210,17 +210,13 @@ extension BikeDetailCalloutAccessoryView
     {
         cell.bikeImageView.isHidden = true
         cell.bikeImageView.alpha = 0
-        #if !os(tvOS)
         cell.activityIndicator.startAnimating()
-        #endif
         let snapshotter = MKMapSnapshotter(options: self.snapshotOptions)
         snapshotter.start
         { (snapshot, _) in
             cell.bikeImageView.image = snapshot?.image
-            #if !os(tvOS)
             cell.activityIndicator.stopAnimating()
-                cell.stackView.removeArrangedSubview(cell.activityIndicator)
-            #endif
+            cell.stackView.removeArrangedSubview(cell.activityIndicator)
             cell.stackView.insertArrangedSubview(cell.bikeImageView, at: 0)
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.0, options: [], animations:
             {

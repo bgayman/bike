@@ -46,3 +46,11 @@ extension BikeStationStatus
         self.isInstalled = json["isInstalled"] as? Bool
     }
 }
+
+extension BikeStationStatus: Equatable
+{
+    static func == (lhs: BikeStationStatus, rhs: BikeStationStatus) -> Bool
+    {
+        return lhs.id == rhs.id && lhs.timestamp == rhs.timestamp && lhs.stationID == rhs.stationID && lhs.networkID == rhs.networkID
+    }
+}

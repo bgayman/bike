@@ -10,14 +10,14 @@ import UIKit
 import MapKit
 import CoreSpotlight
 import MobileCoreServices
-#if !os(tvOS)
-    import Charts
-#endif
+import Charts
 
 // MARK: - BikeStationDetailViewController
+
 class BikeStationDetailViewController: UIViewController
 {
     // MARK: - Outlets
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var overlayView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -472,7 +472,6 @@ class BikeStationDetailViewController: UIViewController
         }
     }
     
-    //MARK: - Networking
     @objc func fetchStations()
     {
         self.setNetworkActivityIndicator(shown: true)

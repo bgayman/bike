@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.AppleTV.XIB" version="3.0" toolsVersion="13196" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="appleTV" orientation="landscape">
+        <adaptation id="light"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="Rz2-K0-ksD" customClass="BikeStationDetailCollectionViewCell" customModule="BikeShareTV" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1090" height="769"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="1090" height="769"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbr-cq-bSU">
+                        <rect key="frame" x="0.0" y="0.0" width="1090" height="769"/>
+                    </mapView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wF-Qu-3CY">
+                        <rect key="frame" x="0.0" y="0.0" width="1090" height="769"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station Status" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fwf-RB-RuY">
+                                <rect key="frame" x="750" y="68" width="242" height="46"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Station" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2w-R5-AqY">
+                                <rect key="frame" x="98" y="68" width="122" height="46"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="kEc-GM-tHE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z0X-6g-8XM">
+                                <rect key="frame" x="98" y="659" width="0.0" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="600" id="ysQ-ea-pyX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fwf-RB-RuY" firstAttribute="top" secondItem="4wF-Qu-3CY" secondAttribute="top" constant="68" id="7hF-gm-WjD"/>
+                            <constraint firstItem="z0X-6g-8XM" firstAttribute="leading" secondItem="4wF-Qu-3CY" secondAttribute="leading" constant="98" id="Mqz-2N-KZC"/>
+                            <constraint firstItem="Fwf-RB-RuY" firstAttribute="firstBaseline" secondItem="b2w-R5-AqY" secondAttribute="firstBaseline" id="PXN-hC-kho"/>
+                            <constraint firstAttribute="trailing" secondItem="Fwf-RB-RuY" secondAttribute="trailing" constant="98" id="Wkn-rj-qSu"/>
+                            <constraint firstItem="z0X-6g-8XM" firstAttribute="leading" secondItem="b2w-R5-AqY" secondAttribute="leading" id="vxr-qK-hyv"/>
+                            <constraint firstAttribute="bottom" secondItem="z0X-6g-8XM" secondAttribute="bottom" constant="110" id="y4b-ge-AhR"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="hbr-cq-bSU" secondAttribute="trailing" id="0DZ-mc-oX6"/>
+                <constraint firstAttribute="bottom" secondItem="hbr-cq-bSU" secondAttribute="bottom" id="Bne-mE-oFo"/>
+                <constraint firstItem="4wF-Qu-3CY" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" id="HMA-r0-TFG"/>
+                <constraint firstItem="hbr-cq-bSU" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="a1H-ob-e25"/>
+                <constraint firstItem="hbr-cq-bSU" firstAttribute="top" secondItem="Rz2-K0-ksD" secondAttribute="top" id="jzv-H5-HKO"/>
+                <constraint firstItem="4wF-Qu-3CY" firstAttribute="leading" secondItem="Rz2-K0-ksD" secondAttribute="leading" id="k1k-zw-I0v"/>
+                <constraint firstAttribute="trailing" secondItem="4wF-Qu-3CY" secondAttribute="trailing" id="plg-XL-IeR"/>
+                <constraint firstAttribute="bottom" secondItem="4wF-Qu-3CY" secondAttribute="bottom" id="s32-7a-zxu"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="7PP-Ag-gPX"/>
+            <size key="customSize" width="1090" height="769"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="z0X-6g-8XM" id="qG2-Yh-CUE"/>
+                <outlet property="mapView" destination="hbr-cq-bSU" id="OF4-nR-qKi"/>
+                <outlet property="overlayView" destination="4wF-Qu-3CY" id="yfF-JV-IG5"/>
+                <outlet property="stationLabel" destination="b2w-R5-AqY" id="8Yu-e3-QxU"/>
+                <outlet property="titleLabel" destination="Fwf-RB-RuY" id="ysi-xn-Wuf"/>
+            </connections>
+            <point key="canvasLocation" x="589" y="369.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

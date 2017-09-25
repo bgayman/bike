@@ -10,9 +10,7 @@ import UIKit
 import MapKit
 import CoreSpotlight
 import MobileCoreServices
-#if !os(tvOS)
 import Charts
-#endif
 
 class StationDetailViewController: UIViewController
 {
@@ -591,7 +589,7 @@ fileprivate extension BikeStation
     }
 }
 
-#if !os(tvOS)
+
 class DateValueFormatter: NSObject, IAxisValueFormatter
 {
     @objc static let dateFormatter: DateFormatter =
@@ -606,7 +604,7 @@ class DateValueFormatter: NSObject, IAxisValueFormatter
         return DateValueFormatter.dateFormatter.string(from: Date(timeIntervalSince1970: value))
     }
 }
-    // MARK: - ActivityViewCustomActivity
+    #if !os(tvOS)
     final class ActivityViewCustomActivity: UIActivity
     {
         static func networkFavoriteActivity(with network: BikeNetwork) -> ActivityViewCustomActivity
