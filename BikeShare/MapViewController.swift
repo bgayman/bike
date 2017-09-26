@@ -66,11 +66,12 @@ class MapViewController: BaseMapViewController
         self.view.subviews.forEach { if $0 is MKMapView { $0.removeFromSuperview() } }
         self.view.addSubview(mapView)
         mapView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor).isActive = true
-        self.mapBottomLayoutConstraint = mapView.bottomAnchor.constraint(equalTo: self.toolbar.bottomAnchor)
+        self.mapBottomLayoutConstraint = mapView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor)
         self.mapBottomLayoutConstraint?.isActive = true
             
         self.toolbarBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : 44.0
         self.mapBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : -44.0
+        
         self.view.bringSubview(toFront: self.toolbar)
         mapView.mapType = .mutedStandard
 
@@ -157,11 +158,65 @@ class MapViewController: BaseMapViewController
     @objc var toolbarBottomLayoutConstraint: NSLayoutConstraint?
     @objc var mapBottomLayoutConstraint: NSLayoutConstraint?
     
+    @objc lazy var scrollView: DrawerScrollView =
+    {
+        let scrollView = DrawerScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(scrollView)
+        scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        scrollView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        scrollView.clipsToBounds = false
+        scrollView.isPagingEnabled = true
+        return scrollView
+    }()
+    
+    @objc lazy var dragHandle: UIView =
+    {
+        let dragHandle = UIView()
+        dragHandle.backgroundColor = .clear
+        dragHandle.translatesAutoresizingMaskIntoConstraints = false
+        dragHandle.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
+        dragHandle.clipsToBounds = false
+        
+        let handle = UIView()
+        handle.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
+        handle.translatesAutoresizingMaskIntoConstraints = false
+        dragHandle.addSubview(handle)
+        handle.layer.cornerRadius = 2.0
+        handle.layer.masksToBounds = true
+        handle.heightAnchor.constraint(equalToConstant: 4.0).isActive = true
+        handle.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
+        handle.centerXAnchor.constraint(equalTo: dragHandle.centerXAnchor).isActive = true
+        handle.topAnchor.constraint(equalTo: dragHandle.topAnchor, constant: 8.0).isActive = true
+        return dragHandle
+    }()
+    
+    @objc lazy var verticalStackView: UIStackView =
+    {
+        let toolbar = UIToolbar()
+        
+        let items = self.network?.gbfsHref != nil ?
+                    [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.infoBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton] :
+                    [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton]
+        toolbar.setItems(items, animated: false)
+        toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
+        toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
+        toolbar.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        let verticalStackView = UIStackView(arrangedSubviews: [self.dragHandle, toolbar, self.toolbarStackView])
+        verticalStackView.axis = .vertical
+        
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        return verticalStackView
+    }()
+    
     @objc lazy var toolbarStackView: UIStackView =
     {
         let toolbarStackView = UIStackView()
         toolbarStackView.axis = .horizontal
         toolbarStackView.spacing = 8.0
+        toolbarStackView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
         return toolbarStackView
     }()
     
@@ -178,14 +233,17 @@ class MapViewController: BaseMapViewController
     {
         let toolbar = UIView()
         toolbar.translatesAutoresizingMaskIntoConstraints = false
-        toolbar.backgroundColor = UIColor.app_beige.withAlphaComponent(0.5)
-        self.view.addSubview(toolbar)
-        self.view.bringSubview(toFront: toolbar)
+        toolbar.backgroundColor = UIColor.app_beige.withAlphaComponent(0.2)
+        self.scrollView.addSubview(toolbar)
+        self.view.bringSubview(toFront: self.scrollView)
         toolbar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         toolbar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        toolbar.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        toolbar.heightAnchor.constraint(equalToConstant: 400.0).isActive = true
+        toolbar.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: -20.0).isActive = true
+        toolbar.layer.cornerRadius = 20.0
+        toolbar.layer.masksToBounds = true
         
-        self.toolbarBottomLayoutConstraint = toolbar.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 44.0)
+        self.toolbarBottomLayoutConstraint = self.scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 50.0)
         self.toolbarBottomLayoutConstraint?.isActive = true
         
         let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
@@ -196,13 +254,13 @@ class MapViewController: BaseMapViewController
         visualEffectView.trailingAnchor.constraint(equalTo: toolbar.trailingAnchor).isActive = true
         visualEffectView.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor).isActive = true
         
-        toolbar.addSubview(self.toolbarStackView)
+        toolbar.addSubview(self.verticalStackView)
         
-        self.toolbarStackView.translatesAutoresizingMaskIntoConstraints = false
-        self.toolbarStackView.topAnchor.constraint(equalTo: toolbar.topAnchor, constant: 8.0).isActive = true
-        self.toolbarStackView.leadingAnchor.constraint(equalTo: toolbar.leadingAnchor, constant: 8.0).isActive = true
-        self.toolbarStackView.trailingAnchor.constraint(equalTo: toolbar.trailingAnchor, constant: -8.0).isActive = true
-        self.toolbarStackView.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor, constant: -8.0).isActive = true
+        self.verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.verticalStackView.topAnchor.constraint(equalTo: toolbar.topAnchor, constant: 0.0).isActive = true
+        self.verticalStackView.leadingAnchor.constraint(equalTo: toolbar.leadingAnchor, constant: 8.0).isActive = true
+        self.verticalStackView.trailingAnchor.constraint(equalTo: toolbar.trailingAnchor, constant: -8.0).isActive = true
+        self.verticalStackView.heightAnchor.constraint(equalToConstant: 108).isActive = true
 
         return toolbar
     }()
@@ -275,6 +333,13 @@ class MapViewController: BaseMapViewController
         let infoBarButton = UIBarButtonItem(customView: btn)
         return infoBarButton
     }()
+    
+    @objc lazy var refreshBarButton: UIBarButtonItem =
+    {
+        let refreshBarButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(self.didPressRefresh))
+        return refreshBarButton
+    }()
+    
     #endif
     var stations = [BikeStation]()
     {
@@ -375,6 +440,12 @@ class MapViewController: BaseMapViewController
         }
     }
     
+    override func viewDidLayoutSubviews()
+    {
+        super.viewDidLayoutSubviews()
+        scrollView.contentSize = CGSize(width: view.bounds.width, height: 100.0)
+    }
+    
     @objc func setupNotifications()
     {
         #if !os(tvOS)
@@ -400,6 +471,12 @@ class MapViewController: BaseMapViewController
         self.view.layoutIfNeeded()
     }
     
+    override func viewDidAppear(_ animated: Bool)
+    {
+        super.viewDidAppear(animated)
+        self.view.bringSubview(toFront: scrollView)
+    }
+    
     @objc private func didPressRefresh()
     {
         self.delegate?.didRequestUpdate()
@@ -421,11 +498,10 @@ class MapViewController: BaseMapViewController
         self.configureForUpdatedStations(oldValue: [])
         self.initialDrop = false
         #if os(iOS)
-        self.navigationItem.rightBarButtonItems = (self.network?.gbfsHref == nil) ? [self.locationBarButton, self.settingsBarButton] : [self.infoBarButton, self.locationBarButton, self.settingsBarButton]
+        self.navigationItem.rightBarButtonItems = [refreshBarButton]//(self.network?.gbfsHref == nil) ? [self.locationBarButton, self.settingsBarButton] : [self.infoBarButton, self.locationBarButton, self.settingsBarButton]
         self.toolbarStackView.arrangedSubviews.forEach { self.toolbarStackView.removeArrangedSubview($0) }
         self.toolbarStackView.addArrangedSubview(self.searchBar)
         self.toolbarStackView.addArrangedSubview(self.segmentedControl)
-        self.toolbarStackView.addArrangedSubview(self.refreshButton)
         #endif
     }
     
@@ -440,7 +516,6 @@ class MapViewController: BaseMapViewController
         self.navigationItem.rightBarButtonItems = [self.locationBarButton]
         self.toolbarStackView.arrangedSubviews.forEach { self.toolbarStackView.removeArrangedSubview($0) }
         self.toolbarStackView.addArrangedSubview(self.searchBar)
-        self.toolbarStackView.addArrangedSubview(self.refreshButton)
         #endif
     }
     

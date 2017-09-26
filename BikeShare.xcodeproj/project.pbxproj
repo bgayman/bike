@@ -133,6 +133,7 @@
 		CD2BA3D31EABFE8D00C26F90 /* StationDetailGraphTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */; };
 		CD3932361EBF63C7009427E6 /* LocationControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3932351EBF63C7009427E6 /* LocationControl.swift */; };
 		CD3932391EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap in Resources */ = {isa = PBXBuildFile; fileRef = CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */; };
+		CD3C13781F79FCFF00CD21E6 /* DrawerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3C13771F79FCFF00CD21E6 /* DrawerScrollView.swift */; };
 		CD4A104A1F6614100098BE1C /* BikeStationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A10481F6614100098BE1C /* BikeStationDetailViewController.swift */; };
 		CD4A104B1F6614100098BE1C /* BikeStationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD4A10491F6614100098BE1C /* BikeStationDetailViewController.xib */; };
 		CD4A10521F66C2440098BE1C /* BikeStationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4A10501F66C2440098BE1C /* BikeStationCollectionViewCell.swift */; };
@@ -652,6 +653,7 @@
 		CD2BA3D11EABFE6600C26F90 /* StationDetailGraphTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDetailGraphTableViewCell.swift; sourceTree = "<group>"; };
 		CD3932351EBF63C7009427E6 /* LocationControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationControl.swift; sourceTree = "<group>"; };
 		CD3932371EC0031A009427E6 /* D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "D15A4F1C-8FEF-3D24-B29D-3EA25CB33A13.bcsymbolmap"; sourceTree = "<group>"; };
+		CD3C13771F79FCFF00CD21E6 /* DrawerScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerScrollView.swift; sourceTree = "<group>"; };
 		CD4A10481F6614100098BE1C /* BikeStationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationDetailViewController.swift; sourceTree = "<group>"; };
 		CD4A10491F6614100098BE1C /* BikeStationDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationDetailViewController.xib; sourceTree = "<group>"; };
 		CD4A10501F66C2440098BE1C /* BikeStationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeStationCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1028,6 +1030,7 @@
 				CD100FE91F64890F0031EFF6 /* NetworkClusterView.swift */,
 				CD06F34A1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift */,
 				CD4A10541F68BF890098BE1C /* Emitter.swift */,
+				CD3C13771F79FCFF00CD21E6 /* DrawerScrollView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2583,6 +2586,7 @@
 				CD80AAA81E6BA7AC00C1E9B6 /* PinView.swift in Sources */,
 				CDDE92881F658C5B00D01E8C /* NSTextAttachment+Application.swift in Sources */,
 				CDF6F5C21E7DFCAA009CBD32 /* StationDiffViewController.swift in Sources */,
+				CD3C13781F79FCFF00CD21E6 /* DrawerScrollView.swift in Sources */,
 				CDF6E7C11E0EBAC300C3C6CA /* UIAlertController+Helper.swift in Sources */,
 				CD1ED2E81EB6D3BC00806D97 /* MapPinTableViewCell.swift in Sources */,
 				CDF6E7D11E0ED9FF00C3C6CA /* MapBikeNetwork.swift in Sources */,
