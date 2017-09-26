@@ -79,9 +79,4 @@ extension BikeStationCloseByCollectionViewCell: UICollectionViewDataSource, UICo
         cell.bikeStation = closebyStations?[indexPath.item]
         return cell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator)
-    {
-        print(context.nextFocusedIndexPath ?? "")
-    }
 }

@@ -297,18 +297,18 @@ extension BikeStationDetailViewController: UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator)
     {
         guard collectionView !== self.collectionView else { return }
+        collectionView.visibleCells.flatMap { $0 as? BikeStationClosebyStationCollectionViewCell }.forEach
+        { cell in
+            cell.containerView.layer.borderWidth = 0.0
+            cell.containerView.layer.borderColor = nil
+        }
+        
         if let nextIndexPath = context.nextFocusedIndexPath,
            let cell = collectionView.cellForItem(at: nextIndexPath) as? BikeStationClosebyStationCollectionViewCell
         {
-            cell.containerView.layer.borderWidth = 3.0
+            cell.containerView.layer.borderWidth = 5.0
             cell.containerView.layer.borderColor = UIColor.app_blue.cgColor
             cell.containerView.layer.cornerRadius = 8.0
-        }
-        else if let previousIndexPath = context.previouslyFocusedIndexPath,
-                let cell = collectionView.cellForItem(at: previousIndexPath) as? BikeStationClosebyStationCollectionViewCell
-        {
-            cell.containerView.layer.borderWidth = 0.0
-            cell.containerView.layer.borderColor = nil
         }
     }
 }
