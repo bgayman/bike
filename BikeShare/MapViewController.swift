@@ -9,6 +9,7 @@
 import AppKit
 #else
 import UIKit
+import MobileCoreServices
 #endif
 import MapKit
 
@@ -70,7 +71,7 @@ class MapViewController: BaseMapViewController
         self.mapBottomLayoutConstraint?.isActive = true
             
         self.toolbarBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : 44.0
-        self.mapBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : -44.0
+        self.mapBottomLayoutConstraint?.constant = 0.0
         
         self.view.bringSubview(toFront: self.toolbar)
         mapView.mapType = .mutedStandard
@@ -93,7 +94,7 @@ class MapViewController: BaseMapViewController
     @objc lazy var activityImageView: UIImageView =
     {
         let activityImageView = UIImageView(image: #imageLiteral(resourceName: "icBikeWheel"))
-        activityImageView.tintColor = UIColor.black
+        activityImageView.tintColor = UIColor.lightGray
         activityImageView.contentMode = .scaleAspectFit
         activityImageView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(activityImageView)
@@ -193,18 +194,22 @@ class MapViewController: BaseMapViewController
         return dragHandle
     }()
     
-    @objc lazy var verticalStackView: UIStackView =
+    @objc lazy var scrollViewToolbar: UIToolbar =
     {
         let toolbar = UIToolbar()
-        
         let items = self.network?.gbfsHref != nil ?
-                    [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.infoBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton] :
-                    [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton]
+            [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.infoBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton] :
+            [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton]
         toolbar.setItems(items, animated: false)
         toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
         toolbar.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
-        let verticalStackView = UIStackView(arrangedSubviews: [self.dragHandle, toolbar, self.toolbarStackView])
+        return toolbar
+    }()
+    
+    @objc lazy var verticalStackView: UIStackView =
+    {
+        let verticalStackView = UIStackView(arrangedSubviews: [self.dragHandle, self.scrollViewToolbar, self.toolbarStackView])
         verticalStackView.axis = .vertical
         
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -392,7 +397,7 @@ class MapViewController: BaseMapViewController
         #if !os(tvOS)
         self.view.setNeedsLayout()
         self.navigationItem.largeTitleDisplayMode = .never
-
+        self.view.addInteraction(UIDropInteraction(delegate: self))
         self.navigationItem.hidesBackButton = false
         self.navigationItem.leftItemsSupplementBackButton = true
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -401,7 +406,7 @@ class MapViewController: BaseMapViewController
             self.setupNotifications()
         }
         self.toolbarBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : 44.0
-        self.mapBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : -44.0
+        self.mapBottomLayoutConstraint?.constant = 0.0
         #else
         self.navigationItem.leftBarButtonItems = nil
         self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -434,8 +439,9 @@ class MapViewController: BaseMapViewController
     {
         coordinator.animate(alongsideTransition: { (_) in })
         { (_) in
+            self.setupScrollView()
             self.toolbarBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : 44.0
-            self.mapBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : -44.0
+            self.mapBottomLayoutConstraint?.constant = 0.0
             self.view.layoutIfNeeded()
         }
     }
@@ -487,8 +493,8 @@ class MapViewController: BaseMapViewController
         NotificationCenter.default.removeObserver(self)
         mapView.delegate = nil
     }
-    
     #endif
+    
     //MARK: - UI Helpers
     @objc func setupForStations()
     {
@@ -498,7 +504,7 @@ class MapViewController: BaseMapViewController
         self.configureForUpdatedStations(oldValue: [])
         self.initialDrop = false
         #if os(iOS)
-        self.navigationItem.rightBarButtonItems = [refreshBarButton]//(self.network?.gbfsHref == nil) ? [self.locationBarButton, self.settingsBarButton] : [self.infoBarButton, self.locationBarButton, self.settingsBarButton]
+        setupScrollView()
         self.toolbarStackView.arrangedSubviews.forEach { self.toolbarStackView.removeArrangedSubview($0) }
         self.toolbarStackView.addArrangedSubview(self.searchBar)
         self.toolbarStackView.addArrangedSubview(self.segmentedControl)
@@ -513,10 +519,45 @@ class MapViewController: BaseMapViewController
         self.initialDrop = false
         #if os(iOS)
         self.title = self.splitViewController?.traitCollection.isSmallerDevice ?? true ? "Networks" : ""
-        self.navigationItem.rightBarButtonItems = [self.locationBarButton]
+        setupScrollView()
         self.toolbarStackView.arrangedSubviews.forEach { self.toolbarStackView.removeArrangedSubview($0) }
         self.toolbarStackView.addArrangedSubview(self.searchBar)
         #endif
+    }
+    
+    fileprivate func setupScrollView()
+    {
+        switch state
+        {
+        case .networks:
+            if self.splitViewController?.traitCollection.isSmallerDevice == true || self.splitViewController == nil
+            {
+                self.navigationItem.rightBarButtonItems = []
+                self.scrollView.isHidden = false
+                let items = [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton]
+                scrollViewToolbar.setItems(items, animated: false)
+            }
+            else
+            {
+                self.navigationItem.rightBarButtonItems = [self.locationBarButton, self.settingsBarButton]
+                self.scrollView.isHidden = true
+            }
+        case .stations:
+            if self.splitViewController?.traitCollection.isSmallerDevice == true || self.splitViewController == nil
+            {
+                self.navigationItem.rightBarButtonItems = [refreshBarButton]
+                self.scrollView.isHidden = false
+                let items = self.network?.gbfsHref != nil ?
+                    [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.infoBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton] :
+                    [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton]
+                scrollViewToolbar.setItems(items, animated: false)
+            }
+            else
+            {
+                self.navigationItem.rightBarButtonItems = (self.network?.gbfsHref == nil) ? [self.locationBarButton, self.settingsBarButton] : [self.infoBarButton, self.locationBarButton, self.settingsBarButton]
+                self.scrollView.isHidden = true
+            }
+        }
     }
     
     func configureForUpdatedNetworks(oldValue: [BikeNetwork], animated: Bool = true)
@@ -570,6 +611,21 @@ class MapViewController: BaseMapViewController
         { annotation in
             guard let annotation = annotation as? MapBikeStation else { return false }
             return stations.contains(annotation.bikeStation)
+        }
+        self.mapView.showAnnotations(annotations, animated: true)
+        annotations.forEach
+        {
+            self.mapView.selectAnnotation($0, animated: true)
+        }
+    }
+    
+    func focus(on networks: [BikeNetwork])
+    {
+        guard self.state == .networks else { return }
+        let annotations = self.mapView.annotations.filter
+        { annotation in
+            guard let annotation = annotation as? MapBikeNetwork else { return false }
+            return networks.contains(annotation.bikeNetwork)
         }
         self.mapView.showAnnotations(annotations, animated: true)
         annotations.forEach
@@ -863,6 +919,15 @@ extension MapViewController: MKMapViewDelegate
         
         return annotationView
     }
+    
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool)
+    {
+        if self.searchBar.text?.isEmpty == true
+        {
+            self.scrollView.setContentOffset(.zero, animated: true)
+        }
+    }
+    
     #endif
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView])
@@ -878,6 +943,7 @@ extension MapViewController: MKMapViewDelegate
         #if !(os(macOS) || os(tvOS))
             self.searchBar.showsCancelButton = false
             self.searchBar.resignFirstResponder()
+            self.scrollView.setContentOffset(.zero, animated: true)
             if self.traitCollection.forceTouchCapability == .available, let annotationView = view as? MKMarkerAnnotationView,
                let detailCalloutAccessoryView = annotationView.detailCalloutAccessoryView
             {
@@ -926,7 +992,47 @@ extension MapViewController: UISearchBarDelegate
         searchBar.resignFirstResponder()
     }
 }
-    #endif
+        
+extension MapViewController: UIDropInteractionDelegate
+{
+    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool
+    {
+        return session.hasItemsConforming(toTypeIdentifiers: [kUTTypeURL as String]) && session.items.count == 1
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal
+    {
+        if session.hasItemsConforming(toTypeIdentifiers: [kUTTypeURL as String])
+        {
+            return UIDropProposal(operation: .copy)
+        }
+        return UIDropProposal(operation: .forbidden)
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession)
+    {
+        session.loadObjects(ofClass: NSURL.self)
+        { (itemProviders) in
+            guard let itemProvider = itemProviders.first as? NSURL,
+                  let deeplink = Deeplink(url: itemProvider as URL) else { return }
+            DispatchQueue.main.async
+            {
+                switch deeplink
+                {
+                case .network(let id):
+                    guard let network = self.networks.first(where: { $0.id == id }) else { break }
+                    self.focus(on: [network])
+                case let .station(_, stationID):
+                    guard let station = self.stations.first(where: { $0.id == stationID}) else { break }
+                    self.focus(on: [station])
+                case .systemInfo:
+                    self.didPressInfo(nil)
+                }
+            }
+        }
+    }
+}
+#endif
 #if !os(tvOS)
 // MARK: - UIViewControllerPreviewingDelegate
 extension MapViewController: UIViewControllerPreviewingDelegate

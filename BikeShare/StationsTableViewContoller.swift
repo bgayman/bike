@@ -151,6 +151,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     @objc lazy var mapBarButton: UIBarButtonItem =
     {
         let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "World Map"), style: .plain, target: self, action: #selector(self.didPressMapButton))
+        barButtonItem.isSpringLoaded = true
         return barButtonItem
     }()
     
@@ -544,8 +545,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         #if !os(tvOS)
         let stationDiffViewController = StationMapDiffViewController(bikeNetwork: self.network, bikeStations: self.stations, bikeStationDiffs: self.bikeStationDiffs)
         stationDiffViewController.delegate = self
-        let navigationController = UINavigationController(rootViewController: stationDiffViewController)
-        self.navigationController?.splitViewController?.present(navigationController, animated: true)
+        self.navigationController?.splitViewController?.present(stationDiffViewController, animated: true)
         #endif
     }
     
@@ -829,8 +829,7 @@ extension StationsTableViewController: UITableViewDragDelegate
         let station = self.stations[indexPath.row]
         guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(self.network.id)/station/\(station.id)") else { return [] }
         let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
-        let dragStringItem = UIDragItem(itemProvider: NSItemProvider(object: "\(station.name) \(station.statusDisplayText)" as NSString))
-        return [dragURLItem, dragStringItem]
+        return [dragURLItem]
     }
 }
 #endif

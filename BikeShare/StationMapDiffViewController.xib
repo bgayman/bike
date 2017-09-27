@@ -11,9 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StationMapDiffViewController" customModule="BikeShare" customModuleProvider="target">
             <connections>
+                <outlet property="closeButtonVisualEffectView" destination="YEJ-XG-cvY" id="R3b-ZB-VB1"/>
                 <outlet property="handleView" destination="ehH-bk-WS2" id="u1y-ye-gHZ"/>
+                <outlet property="infoButtonVisualEffectView" destination="Qhk-pC-EbH" id="SE7-Rr-Ct1"/>
                 <outlet property="mapView" destination="qvf-ZO-VrA" id="eF2-0s-HJr"/>
                 <outlet property="panGesture" destination="kMr-bn-BkW" id="xGz-oH-60x"/>
+                <outlet property="refreshButtonVisualEffectView" destination="cyT-rl-RXb" id="NRI-9L-61L"/>
                 <outlet property="tableViewContainerToBottomConstraint" destination="wGL-vw-XrD" id="Cur-Uh-eHI"/>
                 <outlet property="tableViewContainerView" destination="tJg-3n-2qk" id="jsm-BJ-kaN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -30,6 +33,70 @@
                         <outlet property="delegate" destination="-1" id="pdU-lZ-vgW"/>
                     </connections>
                 </mapView>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="25M-gm-flA">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="nJZ-cY-4fh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEJ-XG-cvY">
+                    <rect key="frame" x="15" y="35" width="44" height="44"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="lgb-eo-JYg">
+                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="B4p-kQ-CvJ"/>
+                        <constraint firstAttribute="width" constant="44" id="cnc-3j-NkH"/>
+                    </constraints>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EyY-Za-zFG">
+                    <rect key="frame" x="15" y="35" width="44" height="44"/>
+                    <state key="normal" image="icClose"/>
+                    <connections>
+                        <action selector="didPressClose:" destination="-1" eventType="touchUpInside" id="a99-bi-4bD"/>
+                    </connections>
+                </button>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qhk-pC-EbH">
+                    <rect key="frame" x="257" y="35" width="44" height="44"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="spk-00-imh">
+                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="bCw-MQ-k3k"/>
+                        <constraint firstAttribute="height" constant="44" id="egC-Mx-8xK"/>
+                    </constraints>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJS-aR-3PO">
+                    <rect key="frame" x="257" y="35" width="44" height="44"/>
+                    <connections>
+                        <action selector="didPressInfoButton:" destination="-1" eventType="touchUpInside" id="aaU-mR-XHt"/>
+                    </connections>
+                </button>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyT-rl-RXb">
+                    <rect key="frame" x="316" y="35" width="44" height="44"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1yK-la-QAd">
+                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Aer-r0-vHn"/>
+                        <constraint firstAttribute="width" constant="44" id="nzC-l3-eIV"/>
+                    </constraints>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7U-IM-2yW">
+                    <rect key="frame" x="316" y="35" width="44" height="44"/>
+                    <state key="normal" image="icRefresh"/>
+                    <connections>
+                        <action selector="didPressRefreshButton:" destination="-1" eventType="touchUpInside" id="bPX-IF-N2G"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJg-3n-2qk">
                     <rect key="frame" x="0.0" y="552" width="375" height="667"/>
                     <subviews>
@@ -78,15 +145,37 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Qhk-pC-EbH" firstAttribute="top" secondItem="25M-gm-flA" secondAttribute="bottom" constant="15" id="3K1-4G-gAr"/>
+                <constraint firstItem="M7U-IM-2yW" firstAttribute="centerX" secondItem="cyT-rl-RXb" secondAttribute="centerX" id="8dz-cE-Or5"/>
                 <constraint firstItem="tJg-3n-2qk" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-15" id="Cj3-3R-p3L"/>
+                <constraint firstItem="EyY-Za-zFG" firstAttribute="height" secondItem="YEJ-XG-cvY" secondAttribute="height" id="DKI-ar-IkR"/>
+                <constraint firstItem="YEJ-XG-cvY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="FZV-0j-Hvc"/>
+                <constraint firstItem="iJS-aR-3PO" firstAttribute="centerX" secondItem="Qhk-pC-EbH" secondAttribute="centerX" id="Fp0-vg-yNQ"/>
+                <constraint firstItem="EyY-Za-zFG" firstAttribute="width" secondItem="YEJ-XG-cvY" secondAttribute="width" id="G2V-tE-fIF"/>
+                <constraint firstItem="cyT-rl-RXb" firstAttribute="leading" secondItem="Qhk-pC-EbH" secondAttribute="trailing" constant="15" id="HPv-MH-j4p"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="cyT-rl-RXb" secondAttribute="trailing" constant="15" id="LXP-oc-E44"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qvf-ZO-VrA" secondAttribute="bottom" constant="95" id="Oxa-3i-NEb"/>
+                <constraint firstItem="25M-gm-flA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pgu-oL-05m"/>
+                <constraint firstItem="iJS-aR-3PO" firstAttribute="centerY" secondItem="Qhk-pC-EbH" secondAttribute="centerY" id="QWX-b2-zio"/>
+                <constraint firstAttribute="trailing" secondItem="25M-gm-flA" secondAttribute="trailing" id="QfB-fK-Ze9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="25M-gm-flA" secondAttribute="bottom" id="Yuh-g5-jiJ"/>
                 <constraint firstItem="qvf-ZO-VrA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Zc9-R1-Pur"/>
+                <constraint firstItem="EyY-Za-zFG" firstAttribute="centerX" secondItem="YEJ-XG-cvY" secondAttribute="centerX" id="ZyI-0f-FGw"/>
+                <constraint firstItem="YEJ-XG-cvY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="aDS-XS-Vbc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="qvf-ZO-VrA" secondAttribute="bottom" id="eST-40-dFC"/>
+                <constraint firstItem="M7U-IM-2yW" firstAttribute="width" secondItem="cyT-rl-RXb" secondAttribute="width" id="fUf-WQ-bI6"/>
+                <constraint firstItem="cyT-rl-RXb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="fpm-Tc-RHX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tJg-3n-2qk" secondAttribute="trailing" id="geE-2x-BXf"/>
                 <constraint firstItem="tJg-3n-2qk" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="hiL-JW-qdp"/>
+                <constraint firstItem="25M-gm-flA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="i2C-cQ-THM"/>
+                <constraint firstItem="M7U-IM-2yW" firstAttribute="height" secondItem="cyT-rl-RXb" secondAttribute="height" id="jdj-rQ-4yZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qvf-ZO-VrA" secondAttribute="trailing" id="mWd-OW-LgE"/>
-                <constraint firstItem="qvf-ZO-VrA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="oYV-jb-9nh"/>
+                <constraint firstItem="iJS-aR-3PO" firstAttribute="height" secondItem="Qhk-pC-EbH" secondAttribute="height" id="nE9-5c-59c"/>
+                <constraint firstItem="qvf-ZO-VrA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oYV-jb-9nh"/>
                 <constraint firstItem="tJg-3n-2qk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pht-0U-qE4"/>
+                <constraint firstItem="EyY-Za-zFG" firstAttribute="centerY" secondItem="YEJ-XG-cvY" secondAttribute="centerY" id="tfU-ro-WUT"/>
+                <constraint firstItem="M7U-IM-2yW" firstAttribute="centerY" secondItem="cyT-rl-RXb" secondAttribute="centerY" id="uf0-4D-Q0q"/>
+                <constraint firstItem="iJS-aR-3PO" firstAttribute="width" secondItem="Qhk-pC-EbH" secondAttribute="width" id="v9p-u1-3pT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="tJg-3n-2qk" secondAttribute="top" constant="115" id="wGL-vw-XrD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -119,4 +208,8 @@
             </connections>
         </panGestureRecognizer>
     </objects>
+    <resources>
+        <image name="icClose" width="28" height="28"/>
+        <image name="icRefresh" width="28" height="28"/>
+    </resources>
 </document>

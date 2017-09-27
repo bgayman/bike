@@ -681,8 +681,7 @@ extension NetworkTableViewController: UIViewControllerPreviewingDelegate
             let network = self.networks[indexPath.row]
             guard let url = URL(string: "\(Constants.WebSiteDomain)/stations/\(network.id)") else { return [] }
             let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
-            let dragStringItem = UIDragItem(itemProvider: NSItemProvider(object: "\(network.name)" as NSString))
-            return [dragURLItem, dragStringItem]
+            return [dragURLItem]
         }
     }
 #endif

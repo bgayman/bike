@@ -22,6 +22,9 @@ class StationMapDiffViewController: UIViewController
     @IBOutlet weak var handleView: UIView!
     @IBOutlet var panGesture: UIPanGestureRecognizer!
     @IBOutlet weak var tableViewContainerToBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var closeButtonVisualEffectView: UIVisualEffectView!
+    @IBOutlet weak var infoButtonVisualEffectView: UIVisualEffectView!
+    @IBOutlet weak var refreshButtonVisualEffectView: UIVisualEffectView!
     
     weak var delegate: StationDiffViewControllerDelegate?
     
@@ -38,14 +41,6 @@ class StationMapDiffViewController: UIViewController
     {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.didPressDone(sender:)))
         return doneButton
-    }()
-    
-    @objc lazy var infoBarButton: UIBarButtonItem =
-    {
-        let btn = UIButton(type: .infoLight)
-        btn.addTarget(self, action: #selector(self.didPressInfo), for: .touchUpInside)
-        let infoBarButton = UIBarButtonItem(customView: btn)
-        return infoBarButton
     }()
     
     @objc lazy var activityIndicator: UIActivityIndicatorView =
@@ -92,6 +87,7 @@ class StationMapDiffViewController: UIViewController
         super.viewDidLoad()
         styleViews()
         fetchStations()
+        stationDiffViewController.tableView.panGestureRecognizer.addTarget(self, action: #selector(self.handlePan(_:)))
     }
     
     override func viewWillDisappear(_ animated: Bool)
@@ -109,7 +105,7 @@ class StationMapDiffViewController: UIViewController
         view.backgroundColor = UIColor.app_beige
         navigationItem.titleView = self.activityIndicator
         activityIndicator.startAnimating()
-        navigationItem.rightBarButtonItems = [self.refreshButton, self.infoBarButton]
+        navigationItem.rightBarButtonItems = [self.refreshButton]
         navigationItem.leftBarButtonItem = self.doneButton
         
         let annotations = bikeStations.map(MapBikeStation.init)
@@ -124,6 +120,15 @@ class StationMapDiffViewController: UIViewController
         
         handleView.layer.cornerRadius = handleView.bounds.height * 0.5
         handleView.layer.masksToBounds = true
+        
+        infoButtonVisualEffectView.layer.cornerRadius = infoButtonVisualEffectView.bounds.height * 0.5
+        infoButtonVisualEffectView.layer.masksToBounds = true
+        
+        closeButtonVisualEffectView.layer.cornerRadius = closeButtonVisualEffectView.bounds.height * 0.5
+        closeButtonVisualEffectView.layer.masksToBounds = true
+        
+        refreshButtonVisualEffectView.layer.cornerRadius = refreshButtonVisualEffectView.bounds.height * 0.5
+        refreshButtonVisualEffectView.layer.masksToBounds = true
         
         let overlays = bikeStationDiffs.map { $0.overlay }
         mapView.addOverlays(overlays)
@@ -178,7 +183,7 @@ class StationMapDiffViewController: UIViewController
     }
     
     //MARK: - Actions
-    @objc func didPressRefresh(sender: UIBarButtonItem)
+    @objc func didPressRefresh(sender: UIBarButtonItem?)
     {
         self.navigationItem.titleView = self.activityIndicator
         self.activityIndicator.startAnimating()
@@ -190,10 +195,19 @@ class StationMapDiffViewController: UIViewController
         self.presentingViewController?.dismiss(animated: true)
     }
     
-    @objc func poweredByPressed()
+    @IBAction func didPressRefreshButton(_ sender: UIButton)
     {
-        let safariVC = SFSafariViewController(url: URL(string: "https://citybik.es/#about")!)
-        self.present(safariVC, animated: true)
+        didPressRefresh(sender: nil)
+    }
+    
+    @IBAction func didPressClose(_ sender: UIButton)
+    {
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func didPressInfoButton(_ sender: UIButton)
+    {
+        didPressInfo(sender)
     }
     
     @objc func didPressInfo(_ sender: UIButton?)
@@ -207,6 +221,10 @@ class StationMapDiffViewController: UIViewController
     
     @IBAction func handlePan(_ sender: UIPanGestureRecognizer)
     {
+        if stationDiffViewController.tableView.panGestureRecognizer === sender && stationDiffViewController.tableView.contentOffset.y >= 0.0
+        {
+            return
+        }
         let velocity = sender.velocity(in: view)
         let translation = sender.translation(in: view)
         switch sender.state
@@ -214,7 +232,7 @@ class StationMapDiffViewController: UIViewController
         case .began:
             bottomConstraintStartValue = tableViewContainerToBottomConstraint.constant
         case .changed:
-            tableViewContainerToBottomConstraint.constant = max(115.0, bottomConstraintStartValue + -translation.y)
+            tableViewContainerToBottomConstraint.constant = min(self.view.bounds.height - 40.0, max(115.0, bottomConstraintStartValue + -translation.y))
         case .failed, .possible:
             break
         case .cancelled, .ended:
