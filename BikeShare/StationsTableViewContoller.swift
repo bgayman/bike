@@ -130,6 +130,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.toolbar.topAnchor).isActive = true
         tableView.dragDelegate = self
+        tableView.dragInteractionEnabled = true
         #else
         tableView.leadingAnchor.constraint(equalTo: self.view.readableContentGuide.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: self.view.readableContentGuide.trailingAnchor).isActive = true

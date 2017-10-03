@@ -63,6 +63,7 @@ class NetworkSearchController: UITableViewController
         self.tableView.rowHeight = UITableViewAutomaticDimension
         #if !os(tvOS)
             self.tableView.dragDelegate = self
+            self.tableView.dragInteractionEnabled = true
         #endif
     }
     

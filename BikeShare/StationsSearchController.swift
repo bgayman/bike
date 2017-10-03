@@ -67,7 +67,8 @@ class StationsSearchController: UITableViewController
         self.tableView.estimatedRowHeight = 65.0
         self.tableView.rowHeight = UITableViewAutomaticDimension
         #if !os(tvOS)
-        self.tableView.dragDelegate = self
+            self.tableView.dragDelegate = self
+            self.tableView.dragInteractionEnabled = true
         #endif
     }
     

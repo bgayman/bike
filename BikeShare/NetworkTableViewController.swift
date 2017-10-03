@@ -71,6 +71,7 @@ class NetworkTableViewController: UITableViewController
     @objc lazy var mapBarButton: UIBarButtonItem =
     {
         let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "World Map"), style: .plain, target: self, action: #selector(self.showMapViewController))
+        barButtonItem.isSpringLoaded = true
         return barButtonItem
     }()
     #endif
@@ -125,6 +126,7 @@ class NetworkTableViewController: UITableViewController
         self.view.backgroundColor = .app_beige
         self.mapBarButton.isEnabled = !self.networks.isEmpty
         self.tableView.dragDelegate = self
+        self.tableView.dragInteractionEnabled = true
         #else
         self.navigationItem.leftBarButtonItem = self.searchBarButton
         #endif
