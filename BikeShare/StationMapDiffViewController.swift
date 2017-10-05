@@ -52,6 +52,7 @@ class StationMapDiffViewController: UIViewController
     lazy var stationDiffViewController: StationDiffViewController =
     {
         let stationDiffViewController = StationDiffViewController(bikeNetwork: network, bikeStations: bikeStations, bikeStationDiffs: bikeStationDiffs)
+        stationDiffViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: stationDiffViewController)
         navigationController.view.translatesAutoresizingMaskIntoConstraints = false
         self.addChildViewController(navigationController)
@@ -252,6 +253,7 @@ class StationMapDiffViewController: UIViewController
     private func animateDown()
     {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        stationDiffViewController.searchController.isActive = false
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations:
         { [unowned self] in
             self.tableViewContainerToBottomConstraint.constant = 115.0
@@ -297,6 +299,26 @@ extension StationMapDiffViewController: MKMapViewDelegate
     {
         let view = mapView.dequeueReusableAnnotationView(withIdentifier: "Dot", for: annotation)
         return view
+    }
+}
+
+extension StationMapDiffViewController: StationDiffViewControllerDelegate
+{
+    func didUpdateBikeStations(stations: [BikeStation])
+    {
+    }
+    
+    func didUpdateBikeStationDiffs(bikeStationDiffs: [BikeStationDiff])
+    {
+    }
+    
+    func didSelectBikeStation(station: BikeStation)
+    {
+    }
+    
+    func searchBarDidBecomeActive()
+    {
+        animateUp()
     }
 }
 

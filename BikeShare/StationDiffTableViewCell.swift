@@ -62,7 +62,7 @@ class StationDiffTableViewCell: UITableViewCell
     private func configureCell(searchString: String)
     {
         guard let bikeStation = self.bikeStationDiff?.bikeStation else { return }
-        let titleAttribString = NSMutableAttributedString(string: bikeStation.name, attributes: [NSAttributedStringKey.font: UIFont.app_font(forTextStyle: .title1)])
+        let titleAttribString = NSMutableAttributedString(string: bikeStation.name)
         
         self.stationNameLabel.attributedText = self.searchHightlighted(attribString: titleAttribString, searchString: searchString)
     }

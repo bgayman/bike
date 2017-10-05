@@ -884,6 +884,8 @@ extension StationsTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
     // MARK: - StationDiffViewControllerDelegate
 extension StationsTableViewController: StationDiffViewControllerDelegate
 {
+    func searchBarDidBecomeActive() {}
+    
     func didUpdateBikeStations(stations: [BikeStation])
     {
         self.updateStationsData(stations: stations)

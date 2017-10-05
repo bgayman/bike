@@ -15,6 +15,7 @@ protocol StationDiffViewControllerDelegate: class
     func didUpdateBikeStations(stations: [BikeStation])
     func didUpdateBikeStationDiffs(bikeStationDiffs: [BikeStationDiff])
     func didSelectBikeStation(station: BikeStation)
+    func searchBarDidBecomeActive()
 }
 
 class StationDiffViewController: UITableViewController
@@ -30,6 +31,10 @@ class StationDiffViewController: UITableViewController
         didSet
         {
             self.tableView.reloadData()
+            if let searchResultsController = searchController.searchResultsController as? StationDiffViewControllerSearchController
+            {
+                searchResultsController.all = bikeStationDiffs
+            }
         }
     }
     
@@ -71,6 +76,7 @@ class StationDiffViewController: UITableViewController
         searchResultsController.delegate = self
         let searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         return searchController
     }()
     
@@ -264,6 +270,14 @@ extension StationDiffViewController: UISearchResultsUpdating
         guard let controller = searchController.searchResultsController as? StationDiffViewControllerSearchController else { return }
         guard let text = searchController.searchBar.text else { return }
         controller.searchString = text
+    }
+}
+
+extension StationDiffViewController: UISearchBarDelegate
+{
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
+    {
+        delegate?.searchBarDidBecomeActive()
     }
 }
 

@@ -62,7 +62,7 @@ struct BikeStationDiff
         }
         if status.isEmpty
         {
-            print("Empty: \(self)")
+            
         }
         return status.joined(separator: ", ")
     }

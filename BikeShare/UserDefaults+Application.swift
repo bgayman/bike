@@ -99,6 +99,7 @@ extension UserDefaults
         let jsonDictionaries = favorites.map { $0.jsonDict }
         self.set(jsonDictionaries, forKey: bikeNetwork.id)
         NSUbiquitousKeyValueStore.default.set(jsonDictionaries, forKey: bikeNetwork.id)
+        NotificationCenter.default.post(name: .BikeStationDidAddToFavorites, object: nil)
     }
     
     @objc func setClosebyStations(with stations: [JSONDictionary])

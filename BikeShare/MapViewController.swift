@@ -141,7 +141,7 @@ class MapViewController: BaseMapViewController
         segmentedControl.addTarget(self, action: #selector(self.segmentedControlDidChange(_:)), for: .valueChanged)
         segmentedControl.selectedSegmentIndex = self.filterState.rawValue
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        segmentedControl.heightAnchor.constraint(equalToConstant: 40.0)
+        segmentedControl.widthAnchor.constraint(greaterThanOrEqualToConstant: 70).isActive = true
         return segmentedControl
     }()
     
@@ -197,9 +197,7 @@ class MapViewController: BaseMapViewController
     @objc lazy var scrollViewToolbar: UIToolbar =
     {
         let toolbar = UIToolbar()
-        let items = self.network?.gbfsHref != nil ?
-            [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.infoBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton] :
-            [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton]
+        let items = self.scrollViewStationToolbarItems()
         toolbar.setItems(items, animated: false)
         toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
@@ -457,6 +455,14 @@ class MapViewController: BaseMapViewController
         #if !os(tvOS)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillAppear(notification:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: .UIKeyboardWillHide, object: nil)
+            NotificationCenter.default.when(.BikeStationDidAddToFavorites)
+            { [weak self] (_) in
+                if self?.state == .stations
+                {
+                    let items = self?.scrollViewStationToolbarItems()
+                    self?.scrollViewToolbar.setItems(items, animated: true)
+                }
+            }
         #endif
     }
     
@@ -507,7 +513,6 @@ class MapViewController: BaseMapViewController
         setupScrollView()
         self.toolbarStackView.arrangedSubviews.forEach { self.toolbarStackView.removeArrangedSubview($0) }
         self.toolbarStackView.addArrangedSubview(self.searchBar)
-        self.toolbarStackView.addArrangedSubview(self.segmentedControl)
         #endif
     }
     
@@ -535,7 +540,7 @@ class MapViewController: BaseMapViewController
                 self.navigationItem.rightBarButtonItems = []
                 self.scrollView.isHidden = false
                 let items = [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton]
-                scrollViewToolbar.setItems(items, animated: false)
+                scrollViewToolbar.setItems(items, animated: true)
             }
             else
             {
@@ -547,10 +552,8 @@ class MapViewController: BaseMapViewController
             {
                 self.navigationItem.rightBarButtonItems = [refreshBarButton]
                 self.scrollView.isHidden = false
-                let items = self.network?.gbfsHref != nil ?
-                    [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.infoBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton] :
-                    [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton]
-                scrollViewToolbar.setItems(items, animated: false)
+                let items = scrollViewStationToolbarItems()
+                scrollViewToolbar.setItems(items, animated: true)
             }
             else
             {
@@ -558,6 +561,19 @@ class MapViewController: BaseMapViewController
                 self.scrollView.isHidden = true
             }
         }
+    }
+    
+    func scrollViewStationToolbarItems() -> [UIBarButtonItem]
+    {
+        guard let network = network else { return [] }
+        var items = self.network?.gbfsHref != nil ?
+            [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.infoBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton] :
+            [self.settingsBarButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), self.locationBarButton]
+        if UserDefaults.bikeShareGroup.favoriteStations(for: network).isEmpty == false
+        {
+            items = items + [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(customView: segmentedControl)]
+        }
+        return items
     }
     
     func configureForUpdatedNetworks(oldValue: [BikeNetwork], animated: Bool = true)
