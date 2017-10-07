@@ -169,6 +169,7 @@ class MapViewController: BaseMapViewController
         scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         scrollView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         scrollView.clipsToBounds = false
+        scrollView.showsVerticalScrollIndicator = false
         #if !os(tvOS)
         scrollView.isPagingEnabled = true
         #else

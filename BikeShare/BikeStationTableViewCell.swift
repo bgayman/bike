@@ -102,5 +102,18 @@ class BikeStationTableViewCell: UITableViewCell
         return attribString
     }
     
+    override func dragStateDidChange(_ dragState: UITableViewCellDragState)
+    {
+        super.dragStateDidChange(dragState)
+        switch dragState {
+        case .none:
+            contentView.backgroundColor = UIColor.clear
+        case .lifting:
+            contentView.backgroundColor = UIColor.app_beige.withAlphaComponent(0.8)
+        case .dragging:
+            contentView.backgroundColor = UIColor.app_beige.withAlphaComponent(0.8)
+        }
+    }
+    
 }
 

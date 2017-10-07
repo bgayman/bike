@@ -4,6 +4,7 @@ import Dwifft
 
 #if !os(tvOS)
 import DZNEmptyDataSet
+import MobileCoreServices
 #endif
 
 // MARK: - StationsTableViewController
@@ -114,6 +115,17 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         toolbar.items = [UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil), UIBarButtonItem(customView: self.segmentedControl), UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)]
         return toolbar
+    }()
+    
+    lazy var favoritesDropView: FavoritesDropView =
+    {
+        let favoritesDropView = FavoritesDropView()
+        favoritesDropView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.insertSubview(favoritesDropView, belowSubview: self.toolbar)
+        favoritesDropView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        favoritesDropView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        favoritesDropView.bottomAnchor.constraint(equalTo: self.toolbar.topAnchor, constant: FavoritesDropView.cornerRadius).isActive = true
+        return favoritesDropView
     }()
     #endif
     
@@ -278,6 +290,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
             self.navigationItem.titleView = activityIndicator
             activityIndicator.startAnimating()
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            self.navigationItem.backBarButtonItem?.isSpringLoaded = true
             self.tableView.backgroundColor = .app_beige
             self.mapBarButton.isEnabled = false
             self.view.backgroundColor = UIColor.app_beige
@@ -285,6 +298,8 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
             {
                 self.registerForPreviewing(with: self, sourceView: self.tableView)
             }
+            favoritesDropView.isHidden = true
+            view.addInteraction(UIDropInteraction(delegate: self))
         #else
             self.title = "  Stations"
             self.navigationItem.leftBarButtonItem = self.searchBarButton
@@ -832,6 +847,7 @@ extension StationsTableViewController: UISearchControllerDelegate, UISearchBarDe
     {
         guard let stationsSearchController = searchController.searchResultsController as? StationsSearchController else { return }
         self.mapViewController?.stations = stationsSearchController.all
+        self.becomeFirstResponder()
     }
     
     #if !os(tvOS)
@@ -839,6 +855,7 @@ extension StationsTableViewController: UISearchControllerDelegate, UISearchBarDe
     {
         guard let stationsSearchController = self.searchController.searchResultsController as? StationsSearchController else { return }
         self.mapViewController?.stations = stationsSearchController.all
+        self.becomeFirstResponder()
     }
     #endif
 }
@@ -848,7 +865,7 @@ extension StationsTableViewController: UITableViewDragDelegate
 {
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
     {
-        let station = self.stations[indexPath.row]
+        let station = self.dataSource[indexPath.row]
         guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(self.network.id)/station/\(station.id)") else { return [] }
         let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
         return [dragURLItem]
@@ -946,6 +963,66 @@ extension StationsTableViewController: TableNavigatorDelegate
         }
     }
     
+}
+    
+// MARK: - UIDropInteractionDelegate
+extension StationsTableViewController: UIDropInteractionDelegate
+{
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidEnter session: UIDropSession)
+    {
+        if filterState != .favorites
+        {
+            favoritesDropView.isHidden = false
+            favoritesDropView.showDropView()
+        }
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidExit session: UIDropSession)
+    {
+        favoritesDropView.hideDropView()
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidEnd session: UIDropSession)
+    {
+        favoritesDropView.hideDropView()
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool
+    {
+        return session.hasItemsConforming(toTypeIdentifiers: [kUTTypeURL as String]) && session.items.count == 1
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal
+    {
+        if session.hasItemsConforming(toTypeIdentifiers: [kUTTypeURL as String])
+        {
+            let location = session.location(in: favoritesDropView)
+            return favoritesDropView.bounds.contains(location) ? UIDropProposal(operation: .copy) : UIDropProposal(operation: .cancel)
+        }
+        return UIDropProposal(operation: .forbidden)
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession)
+    {
+        session.loadObjects(ofClass: NSURL.self)
+        { (itemProviders) in
+            guard let itemProvider = itemProviders.first as? NSURL,
+                let deeplink = Deeplink(url: itemProvider as URL) else { return }
+            DispatchQueue.main.async
+            {
+                switch deeplink
+                {
+                case .network:
+                    break
+                case let .station(_, stationID):
+                    guard let station = self.stations.first(where: { $0.id == stationID}) else { break }
+                    UserDefaults.bikeShareGroup.addStationToFavorites(station: station, network: self.network)
+                case .systemInfo:
+                    break
+                }
+            }
+        }
+    }
 }
 #endif
 

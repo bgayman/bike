@@ -79,6 +79,7 @@ class BikeDetailCalloutAccessoryView: UIView
         #if !os(tvOS)
             tableView.separatorStyle = .none
             tableView.dragDelegate = self
+            tableView.dragInteractionEnabled = true
         #endif
         return tableView
     }()

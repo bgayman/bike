@@ -44,8 +44,8 @@ class BikeNetworkTableViewCell: UITableViewCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        contentView.backgroundColor = UIColor.app_beige
-        backgroundColor = UIColor.app_beige
+        contentView.backgroundColor = UIColor.clear
+        backgroundColor = UIColor.clear
         titleLabel.font = UIFont.app_font(forTextStyle: .title2, weight: UIFont.Weight.semibold)
         subtitleLabel.font = UIFont.app_font(forTextStyle: .title1, weight: UIFont.Weight.light)
         titleLabel.numberOfLines = 0
@@ -82,5 +82,18 @@ class BikeNetworkTableViewCell: UITableViewCell
         let range = (attribString.string.lowercased() as NSString).range(of: searchString.lowercased())
         attribString.addAttributes([NSAttributedStringKey.foregroundColor: UIColor.app_blue], range: range)
         return attribString
+    }
+    
+    override func dragStateDidChange(_ dragState: UITableViewCellDragState)
+    {
+        super.dragStateDidChange(dragState)
+        switch dragState {
+        case .none:
+            contentView.backgroundColor = UIColor.clear
+        case .lifting:
+            contentView.backgroundColor = UIColor.app_beige.withAlphaComponent(0.8)
+        case .dragging:
+            contentView.backgroundColor = UIColor.app_beige.withAlphaComponent(0.8)
+        }
     }
 }

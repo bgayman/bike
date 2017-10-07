@@ -85,6 +85,7 @@ extension UserDefaults
     func addStationToFavorites(station: BikeStation, network: BikeNetwork)
     {
         var favedStations = self.favoriteStations(for: network)
+        guard !favedStations.contains(station) else { return }
         favedStations.append(station)
         self.setFavoriteStations(for: network, favorites: favedStations)
     }

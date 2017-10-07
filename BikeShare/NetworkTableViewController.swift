@@ -60,6 +60,12 @@ class NetworkTableViewController: UITableViewController
     }()
     
     #if !os(tvOS)
+    lazy var tableNavigator: TableNavigator =
+    {
+        let tableNavigator = TableNavigator(tableView: tableView, delegate: self)
+        return tableNavigator
+    }()
+    
     @objc lazy var refresh: UIRefreshControl =
     {
         let refresh = UIRefreshControl()
@@ -99,7 +105,7 @@ class NetworkTableViewController: UITableViewController
     {
         let search = UIKeyCommand(input: "f", modifierFlags: .command, action: #selector(self.search), discoverabilityTitle: "Search")
         let refresh = UIKeyCommand(input: "r", modifierFlags: .command, action: #selector(self.fetchNetworks), discoverabilityTitle: "Refresh")
-        return [search, refresh]
+        return [search, refresh] + tableNavigator.possibleKeyCommands
     }
     
     //MARK: - Lifecycle
@@ -512,6 +518,18 @@ class NetworkTableViewController: UITableViewController
     }
     
     #if !os(tvOS)
+    public override func target(forAction action: Selector, withSender sender: Any?) -> Any?
+    {
+        if let target = self.tableNavigator.target(forKeyCommandAction: action)
+        {
+            return target
+        }
+        else
+        {
+            return super.target(forAction: action, withSender: sender)
+        }
+    }
+    
     fileprivate func showSelectionAlert(network: BikeNetwork)
     {
         let alertController = AlertController(title: "Set Home Network", message: "Would you like to set this network as your home network?\n\nSetting a home network will improve accuracy and get you to the stations you care about faster.", preferredStyle: .alert)
@@ -639,6 +657,7 @@ extension NetworkTableViewController: UISearchControllerDelegate, UISearchBarDel
     {
         guard !self.isTransitioning else { return }
         self.networkMapViewController?.networks = self.networks
+        self.becomeFirstResponder()
     }
     
     #if !os(tvOS)
@@ -646,6 +665,7 @@ extension NetworkTableViewController: UISearchControllerDelegate, UISearchBarDel
     {
         guard !self.isTransitioning else { return }
         self.networkMapViewController?.networks = self.networks
+        self.becomeFirstResponder()
     }
     #endif
 }
@@ -674,8 +694,8 @@ extension NetworkTableViewController: UIViewControllerPreviewingDelegate
     }
 }
 
-// MARK: - UITableViewDragDelegate
 #if !os(tvOS)
+    // MARK: - UITableViewDragDelegate
     extension NetworkTableViewController: UITableViewDragDelegate
     {
         func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
@@ -685,6 +705,31 @@ extension NetworkTableViewController: UIViewControllerPreviewingDelegate
             let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
             return [dragURLItem]
         }
+    }
+    
+    // MARK: - TableNavigatorDelegate
+    extension NetworkTableViewController: TableNavigatorDelegate
+    {
+        func tableNavigator(_ navigator: TableNavigator, commitFocusedRowAt indexPath: IndexPath)
+        {
+            let network = self.networks[indexPath.row]
+            self.didSelect(network: network)
+        }
+        
+        func tableNavigator(_ navigator: TableNavigator, didUpdateFocus focusUpdate: TableNavigator.FocusUpdate, completedNavigationWith context: TableNavigator.NavigationCompletionContext)
+        {
+            if  let previouslyFocusedIndexPath = focusUpdate.indexPathForPreviouslyFocusedRow,
+                let cell = tableView.cellForRow(at: previouslyFocusedIndexPath)
+            {
+                cell.backgroundColor = .clear
+            }
+            if let focusedIndexPath = focusUpdate.indexPathForFocusedRow,
+                let cell = tableView.cellForRow(at: focusedIndexPath)
+            {
+                cell.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
+            }
+        }
+        
     }
 #endif
 

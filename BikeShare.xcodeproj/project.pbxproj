@@ -386,6 +386,7 @@
 		CDC50C191F695A7000576118 /* BikeStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC50C171F695A7000576118 /* BikeStationTableViewCell.xib */; };
 		CDC50C1C1F695C8E00576118 /* BikeNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDC50C1A1F695C8E00576118 /* BikeNetworkTableViewCell.swift */; };
 		CDC50C1D1F695C8E00576118 /* BikeNetworkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CDC50C1B1F695C8E00576118 /* BikeNetworkTableViewCell.xib */; };
+		CDCC5D0F1F892F400044C273 /* FavoritesDropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDCC5D0E1F892F400044C273 /* FavoritesDropView.swift */; };
 		CDDE92881F658C5B00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
 		CDDE92891F65904B00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
 		CDDE928A1F65904C00D01E8C /* NSTextAttachment+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */; };
@@ -754,6 +755,7 @@
 		CDC50C171F695A7000576118 /* BikeStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeStationTableViewCell.xib; sourceTree = "<group>"; };
 		CDC50C1A1F695C8E00576118 /* BikeNetworkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeNetworkTableViewCell.swift; sourceTree = "<group>"; };
 		CDC50C1B1F695C8E00576118 /* BikeNetworkTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BikeNetworkTableViewCell.xib; sourceTree = "<group>"; };
+		CDCC5D0E1F892F400044C273 /* FavoritesDropView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesDropView.swift; sourceTree = "<group>"; };
 		CDDE92871F658C5B00D01E8C /* NSTextAttachment+Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+Application.swift"; sourceTree = "<group>"; };
 		CDEC20091E4D4E8D0044D923 /* GBFSFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSFeed.swift; sourceTree = "<group>"; };
 		CDEC200B1E4D50250044D923 /* GBFSSystemInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GBFSSystemInformation.swift; sourceTree = "<group>"; };
@@ -1071,6 +1073,7 @@
 				CD06F34A1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift */,
 				CD4A10541F68BF890098BE1C /* Emitter.swift */,
 				CD3C13771F79FCFF00CD21E6 /* DrawerScrollView.swift */,
+				CDCC5D0E1F892F400044C273 /* FavoritesDropView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2680,6 +2683,7 @@
 				CD121DF41E100797004F78E2 /* BikeDetailAccessoryTableViewCell.swift in Sources */,
 				CDEC200A1E4D4E8D0044D923 /* GBFSFeed.swift in Sources */,
 				CD4C40BA1F8673B000341964 /* NavigationResponse.swift in Sources */,
+				CDCC5D0F1F892F400044C273 /* FavoritesDropView.swift in Sources */,
 				CD791DE61EC74EF7009A6DB7 /* ClosebyStationsClient.swift in Sources */,
 				CD121DFE1E115F03004F78E2 /* UserManager.swift in Sources */,
 				CDEC20141E50D9AC0044D923 /* SystemInfoTableViewContent.swift in Sources */,
