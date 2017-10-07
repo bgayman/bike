@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import SafariServices
+import MobileCoreServices
 
 // MARK: - StationMapDiffViewController
 class StationMapDiffViewController: UIViewController
@@ -102,6 +103,8 @@ class StationMapDiffViewController: UIViewController
     {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .never
+        
+        view.addInteraction(UIDropInteraction(delegate: self))
         
         view.backgroundColor = UIColor.app_beige
         navigationItem.titleView = self.activityIndicator
@@ -319,6 +322,46 @@ extension StationMapDiffViewController: StationDiffViewControllerDelegate
     func searchBarDidBecomeActive()
     {
         animateUp()
+    }
+}
+
+extension StationMapDiffViewController: UIDropInteractionDelegate
+{
+    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool
+    {
+        return session.hasItemsConforming(toTypeIdentifiers: [kUTTypeURL as String]) && session.items.count == 1
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal
+    {
+        if session.hasItemsConforming(toTypeIdentifiers: [kUTTypeURL as String])
+        {
+            return UIDropProposal(operation: .copy)
+        }
+        return UIDropProposal(operation: .forbidden)
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession)
+    {
+        session.loadObjects(ofClass: NSURL.self)
+        { (itemProviders) in
+            guard let itemProvider = itemProviders.first as? NSURL,
+                  let deeplink = Deeplink(url: itemProvider as URL) else { return }
+            DispatchQueue.main.async
+            {
+                switch deeplink
+                {
+                case .network:
+                    break
+                case let .station(_, stationID):
+                    let annotation = self.mapView.annotations.flatMap { $0 as? MapBikeStation }.first(where: { $0.bikeStation.id == stationID})
+                    guard let station = annotation else { break }
+                    self.mapView.showAnnotations([station], animated: true)
+                case .systemInfo:
+                    break
+                }
+            }
+        }
     }
 }
 

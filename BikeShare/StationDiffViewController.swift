@@ -63,17 +63,11 @@ class StationDiffViewController: UITableViewController
         return activityIndicator
     }()
     
-    @objc lazy var footerView: BikeTableFooterView =
-    {
-        let height: CGFloat = max(BikeTableFooterView(reuseIdentifier: "thing").poweredByButton.intrinsicContentSize.height, 44.0)
-        let footerView = BikeTableFooterView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: height))
-        return footerView
-    }()
-    
     @objc lazy var searchController: UISearchController =
     {
         let searchResultsController = StationDiffViewControllerSearchController()
         searchResultsController.delegate = self
+        searchResultsController.network = self.network
         let searchController = UISearchController(searchResultsController: searchResultsController)
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -116,13 +110,12 @@ class StationDiffViewController: UITableViewController
         self.tableView.rowHeight = UITableViewAutomaticDimension
         let nib = UINib(nibName: "\(StationDiffTableViewCell.self)", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "Cell")
-        self.tableView.register(BikeTableFooterView.self, forHeaderFooterViewReuseIdentifier: "thing")
         self.tableView.allowsSelection = false
-        #if !os(tvOS)
-            footerView.poweredByButton.addTarget(self, action: #selector(self.poweredByPressed), for: .touchUpInside)
-            self.definesPresentationContext = true
-            self.refreshControl = refresh
-        #endif
+        self.definesPresentationContext = true
+        self.refreshControl = refresh
+        self.tableView.dragDelegate = self
+        self.tableView.dragInteractionEnabled = true
+        self.tableView.separatorEffect = UIVibrancyEffect(blurEffect: UIBlurEffect(style: .dark))
     }
     
     //MARK: - Networking
@@ -164,11 +157,9 @@ class StationDiffViewController: UITableViewController
                     {
                         self.tableView.emptyDataSetDelegate = self
                         self.tableView.emptyDataSetSource = self
-                        self.tableView.tableFooterView = UIView()
-                    }
-                    else
-                    {
-                        self.tableView.tableFooterView = self.footerView
+                        let footerView = UIView()
+                        footerView.backgroundColor = .clear
+                        self.tableView.tableFooterView = footerView
                     }
                     self.bikeStationDiffs = diffs.sorted()
                     if let diffSearchController = self.searchController.searchResultsController as? StationDiffViewControllerSearchController
@@ -195,12 +186,6 @@ class StationDiffViewController: UITableViewController
     {
         self.presentingViewController?.dismiss(animated: true)
     }
-
-    @objc func poweredByPressed()
-    {
-        let safariVC = SFSafariViewController(url: URL(string: "https://citybik.es/#about")!)
-        self.present(safariVC, animated: true)
-    }
     
     //MARK: - Table View
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -216,12 +201,6 @@ class StationDiffViewController: UITableViewController
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
-    {
-        let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: "thing")
-        return footer
     }
     
 }
@@ -243,6 +222,7 @@ extension StationDiffViewController: UIViewControllerPreviewingDelegate
     }
 }
 
+// MARK: - DZNEmptyDataSetSource / DZNEmptyDataSetDelegate
 extension StationDiffViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString!
@@ -263,6 +243,7 @@ extension StationDiffViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDeleg
     }
 }
 
+// MARK: - UISearchResultsUpdating
 extension StationDiffViewController: UISearchResultsUpdating
 {
     func updateSearchResults(for searchController: UISearchController)
@@ -273,6 +254,7 @@ extension StationDiffViewController: UISearchResultsUpdating
     }
 }
 
+// MARK: - UISearchBarDelegate
 extension StationDiffViewController: UISearchBarDelegate
 {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar)
@@ -281,10 +263,23 @@ extension StationDiffViewController: UISearchBarDelegate
     }
 }
 
+// MARK: - StationDiffViewControllerSearchControllerDelegate
 extension StationDiffViewController: StationDiffViewControllerSearchControllerDelegate
 {
     func didSelect(diff: BikeStationDiff)
     {
         self.delegate?.didSelectBikeStation(station: diff.bikeStation)
+    }
+}
+
+// MARK: - UITableViewDragDelegate
+extension StationDiffViewController: UITableViewDragDelegate
+{
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
+    {
+        let diff = self.bikeStationDiffs[indexPath.row]
+        guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(self.network.id)/station/\(diff.bikeStation.id)") else { return [] }
+        let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
+        return [dragURLItem]
     }
 }

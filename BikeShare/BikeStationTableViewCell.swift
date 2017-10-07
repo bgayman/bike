@@ -44,8 +44,8 @@ class BikeStationTableViewCell: UITableViewCell
     override func awakeFromNib()
     {
         super.awakeFromNib()
-        contentView.backgroundColor = UIColor.app_beige
-        backgroundColor = UIColor.app_beige
+        contentView.backgroundColor = UIColor.clear
+        backgroundColor = UIColor.clear
         titleLabel.font = UIFont.app_font(forTextStyle: .title2, weight: UIFont.Weight.semibold)
         titleLabel.numberOfLines = 0
         stationStatusLabel.numberOfLines = 1

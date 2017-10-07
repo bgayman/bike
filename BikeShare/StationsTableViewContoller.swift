@@ -159,6 +159,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     @objc lazy var diffBarButton: UIBarButtonItem =
     {
         let barButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icScatter"), style: .plain, target: self, action: #selector(self.showStationsDiffViewController))
+        barButtonItem.isSpringLoaded = true
         return barButtonItem
     }()
     #endif
@@ -181,6 +182,12 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
     {
         let barButtonItem = UIBarButtonItem(title: "Networks", style: .plain, target: self, action: #selector(self.showNetworksViewController))
         return barButtonItem
+    }()
+    
+    lazy var tableNavigator: TableNavigator =
+    {
+        let tableNavigator = TableNavigator(tableView: tableView, delegate: self)
+        return tableNavigator
     }()
     
     // MARK: - Computed Properties
@@ -235,7 +242,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         let search = UIKeyCommand(input: "f", modifierFlags: .command, action: #selector(self.search), discoverabilityTitle: "Search")
         let back = UIKeyCommand(input: "b", modifierFlags: .command, action: #selector(self.back), discoverabilityTitle: "Back")
         let refresh = UIKeyCommand(input: "r", modifierFlags: .command, action: #selector(self.fetchStations), discoverabilityTitle: "Refresh")
-        return [search, back, refresh]
+        return [search, back, refresh] + tableNavigator.possibleKeyCommands
     }
     
     // MARK: - Lifecycle
@@ -259,6 +266,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
             self.navigationItem.searchController = self.searchController
             self.navigationItem.hidesSearchBarWhenScrolling = false
             self.navigationItem.largeTitleDisplayMode = .never
+            self.tableView.backgroundColor = UIColor.app_beige
             self.tableView.emptyDataSetDelegate = self
             self.tableView.emptyDataSetSource = self
             if let homeNetwork = UserDefaults.bikeShareGroup.homeNetwork, homeNetwork.id == self.network.id
@@ -594,6 +602,7 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         self.present(searchNavVC, animated: true)
     }
     
+    // MARK: - Actions
     @objc func didPressSettings(_ sender: UIBarButtonItem)
     {
         let settingsViewController = MapSettingsViewController()
@@ -632,6 +641,18 @@ class StationsTableViewController: UIViewController, UITableViewDelegate, UITabl
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true)
+    }
+    
+    public override func target(forAction action: Selector, withSender sender: Any?) -> Any?
+    {
+        if let target = self.tableNavigator.target(forKeyCommandAction: action)
+        {
+            return target
+        }
+        else
+        {
+            return super.target(forAction: action, withSender: sender)
+        }
     }
     
     //MARK: - UI Helper
@@ -900,6 +921,31 @@ extension StationsTableViewController: StationDiffViewControllerDelegate
     {
         self.didSelect(station: station)
     }
+}
+
+// MARK: - TableNavigatorDelegate
+extension StationsTableViewController: TableNavigatorDelegate
+{
+    func tableNavigator(_ navigator: TableNavigator, commitFocusedRowAt indexPath: IndexPath)
+    {
+        let station = self.dataSource[indexPath.row]
+        didSelect(station: station)
+    }
+    
+    func tableNavigator(_ navigator: TableNavigator, didUpdateFocus focusUpdate: TableNavigator.FocusUpdate, completedNavigationWith context: TableNavigator.NavigationCompletionContext)
+    {
+        if  let previouslyFocusedIndexPath = focusUpdate.indexPathForPreviouslyFocusedRow,
+            let cell = tableView.cellForRow(at: previouslyFocusedIndexPath)
+        {
+            cell.backgroundColor = .clear
+        }
+        if let focusedIndexPath = focusUpdate.indexPathForFocusedRow,
+           let cell = tableView.cellForRow(at: focusedIndexPath)
+        {
+            cell.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
+        }
+    }
+    
 }
 #endif
 

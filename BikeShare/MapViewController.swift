@@ -169,7 +169,11 @@ class MapViewController: BaseMapViewController
         scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         scrollView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         scrollView.clipsToBounds = false
+        #if !os(tvOS)
         scrollView.isPagingEnabled = true
+        #else
+        scrollView.isHidden = true
+        #endif
         return scrollView
     }()
     
@@ -194,6 +198,7 @@ class MapViewController: BaseMapViewController
         return dragHandle
     }()
     
+    #if !os(tvOS)
     @objc lazy var scrollViewToolbar: UIToolbar =
     {
         let toolbar = UIToolbar()
@@ -213,6 +218,7 @@ class MapViewController: BaseMapViewController
         verticalStackView.translatesAutoresizingMaskIntoConstraints = false
         return verticalStackView
     }()
+    #endif
     
     @objc lazy var toolbarStackView: UIStackView =
     {
@@ -257,6 +263,7 @@ class MapViewController: BaseMapViewController
         visualEffectView.trailingAnchor.constraint(equalTo: toolbar.trailingAnchor).isActive = true
         visualEffectView.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor).isActive = true
         
+        #if !os(tvOS)
         toolbar.addSubview(self.verticalStackView)
         
         self.verticalStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -264,7 +271,7 @@ class MapViewController: BaseMapViewController
         self.verticalStackView.leadingAnchor.constraint(equalTo: toolbar.leadingAnchor, constant: 8.0).isActive = true
         self.verticalStackView.trailingAnchor.constraint(equalTo: toolbar.trailingAnchor, constant: -8.0).isActive = true
         self.verticalStackView.heightAnchor.constraint(equalToConstant: 108).isActive = true
-
+        #endif
         return toolbar
     }()
     
@@ -281,7 +288,6 @@ class MapViewController: BaseMapViewController
         let locationBarButton = UIBarButtonItem(customView: locationControl)
         return locationBarButton
     }()
-    
     #endif
     
     var network: BikeNetwork?
@@ -437,9 +443,11 @@ class MapViewController: BaseMapViewController
     {
         coordinator.animate(alongsideTransition: { (_) in })
         { (_) in
+            #if !os(tvOS)
             self.setupScrollView()
             self.toolbarBottomLayoutConstraint?.constant = (self.splitViewController?.traitCollection.isSmallerDevice ?? true) ? 0.0 : 44.0
             self.mapBottomLayoutConstraint?.constant = 0.0
+            #endif
             self.view.layoutIfNeeded()
         }
     }
@@ -447,7 +455,9 @@ class MapViewController: BaseMapViewController
     override func viewDidLayoutSubviews()
     {
         super.viewDidLayoutSubviews()
+        #if !os(tvOS)
         scrollView.contentSize = CGSize(width: view.bounds.width, height: 100.0)
+        #endif
     }
     
     @objc func setupNotifications()
@@ -469,7 +479,9 @@ class MapViewController: BaseMapViewController
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+        #if !os(tvOS)
         self.view.bringSubview(toFront: self.toolbar)
+        #endif
         if case State.stations = self.state
         {
             self.title = self.network?.name ?? ""
@@ -486,7 +498,9 @@ class MapViewController: BaseMapViewController
     override func viewDidAppear(_ animated: Bool)
     {
         super.viewDidAppear(animated)
+        #if !os(tvOS)
         self.view.bringSubview(toFront: scrollView)
+        #endif
     }
     
     @objc private func didPressRefresh()
@@ -530,6 +544,7 @@ class MapViewController: BaseMapViewController
         #endif
     }
     
+    #if !os(tvOS)
     fileprivate func setupScrollView()
     {
         switch state
@@ -575,6 +590,7 @@ class MapViewController: BaseMapViewController
         }
         return items
     }
+    #endif
     
     func configureForUpdatedNetworks(oldValue: [BikeNetwork], animated: Bool = true)
     {
@@ -936,6 +952,7 @@ extension MapViewController: MKMapViewDelegate
         return annotationView
     }
     
+    #if !os(tvOS)
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool)
     {
         if self.searchBar.text?.isEmpty == true
@@ -943,6 +960,7 @@ extension MapViewController: MKMapViewDelegate
             self.scrollView.setContentOffset(.zero, animated: true)
         }
     }
+    #endif
     
     #endif
     
@@ -1008,7 +1026,8 @@ extension MapViewController: UISearchBarDelegate
         searchBar.resignFirstResponder()
     }
 }
-        
+
+// MARK: - UIDropInteractionDelegate
 extension MapViewController: UIDropInteractionDelegate
 {
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool

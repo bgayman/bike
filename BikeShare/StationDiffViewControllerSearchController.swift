@@ -17,6 +17,7 @@ protocol StationDiffViewControllerSearchControllerDelegate: class
 class StationDiffViewControllerSearchController: UITableViewController
 {
     var all = [BikeStationDiff]()
+    var network: BikeNetwork!
     var searchResults = [BikeStationDiff]()
     {
         didSet
@@ -44,7 +45,7 @@ class StationDiffViewControllerSearchController: UITableViewController
     {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .app_beige
+        self.view.backgroundColor = UIColor.app_beige
         
         let nib = UINib(nibName: "\(StationDiffTableViewCell.self)", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "Cell")
@@ -52,6 +53,8 @@ class StationDiffViewControllerSearchController: UITableViewController
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
+        self.tableView.dragInteractionEnabled = true
+        self.tableView.separatorEffect = UIVibrancyEffect(blurEffect: UIBlurEffect(style: .dark))
     }
     
     //MARK: - TableView
@@ -96,5 +99,16 @@ extension StationDiffViewControllerSearchController: DZNEmptyDataSetSource, DZNE
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage!
     {
         return #imageLiteral(resourceName: "seatedBear")
+    }
+}
+
+extension StationDiffViewControllerSearchController: UITableViewDragDelegate
+{
+    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
+    {
+        let diff = self.searchResults[indexPath.row]
+        guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(self.network.id)/station/\(diff.bikeStation.id)") else { return [] }
+        let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
+        return [dragURLItem]
     }
 }

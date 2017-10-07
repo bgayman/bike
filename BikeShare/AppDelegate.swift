@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         {
             splitViewController.preferredDisplayMode = .primaryHidden
         }
-        splitViewController.maximumPrimaryColumnWidth = 320
+        splitViewController.maximumPrimaryColumnWidth = 400
         self.window?.tintColor = .app_blue
         
         let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as! UINavigationController
