@@ -203,6 +203,12 @@ class StationDiffViewController: UITableViewController
         return cell
     }
     
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let diff = bikeStationDiffs[indexPath.row]
+        self.delegate?.didSelectBikeStation(station: diff.bikeStation)
+    }
 }
 
 //MARK: - UIViewControllerPreviewingDelegate

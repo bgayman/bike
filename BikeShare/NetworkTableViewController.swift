@@ -727,6 +727,8 @@ extension NetworkTableViewController: UIViewControllerPreviewingDelegate
                 let cell = tableView.cellForRow(at: focusedIndexPath)
             {
                 cell.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
+                let network = networks[focusedIndexPath.row]
+                networkMapViewController?.bouncePin(for: network)
             }
         }
         

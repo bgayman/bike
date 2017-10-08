@@ -834,6 +834,7 @@ extension StationsTableViewController: UISearchResultsUpdating
     func updateSearchResults(for searchController: UISearchController)
     {
         guard let controller = searchController.searchResultsController as? StationsSearchController else { return }
+        searchController.becomeFirstResponder()
         guard let text = searchController.searchBar.text else { return }
         controller.searchString = text
         self.mapViewController?.stations = controller.searchResults
@@ -960,9 +961,10 @@ extension StationsTableViewController: TableNavigatorDelegate
            let cell = tableView.cellForRow(at: focusedIndexPath)
         {
             cell.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
+            let station = dataSource[focusedIndexPath.row]
+            mapViewController?.bouncePin(for: station)
         }
     }
-    
 }
     
 // MARK: - UIDropInteractionDelegate

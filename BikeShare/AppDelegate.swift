@@ -38,6 +38,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         WatchSessionManager.sharedManager.startSession()
         HistoryNetworksManager.shared.getHistoryNetworks()
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0)
+        {
+            if let homeNetwork = UserDefaults.bikeShareGroup.homeNetwork
+            {
+                try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [Constants.HomeNetworkKey: homeNetwork.jsonDict as AnyObject])
+                let jsonDicts = UserDefaults.bikeShareGroup.favoriteStations(for: homeNetwork).map { $0.jsonDict }
+                try? WatchSessionManager.sharedManager.updateApplicationContext(applicationContext: [homeNetwork.id: jsonDicts as AnyObject])
+            }
+        }
+        
         return true
     }
     

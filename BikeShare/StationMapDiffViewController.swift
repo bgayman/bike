@@ -274,6 +274,12 @@ class StationMapDiffViewController: UIViewController
         })
     }
     
+    func focusOnStation(with stationID: String)
+    {
+        let annotation = self.mapView.annotations.flatMap { $0 as? MapBikeStation }.first(where: { $0.bikeStation.id == stationID})
+        guard let station = annotation else { return }
+        self.mapView.showAnnotations([station], animated: true)
+    }
 }
 
 // MARK: - MKMapViewDelegate
@@ -317,6 +323,7 @@ extension StationMapDiffViewController: StationDiffViewControllerDelegate
     
     func didSelectBikeStation(station: BikeStation)
     {
+        focusOnStation(with: station.id)
     }
     
     func searchBarDidBecomeActive()
@@ -354,9 +361,7 @@ extension StationMapDiffViewController: UIDropInteractionDelegate
                 case .network:
                     break
                 case let .station(_, stationID):
-                    let annotation = self.mapView.annotations.flatMap { $0 as? MapBikeStation }.first(where: { $0.bikeStation.id == stationID})
-                    guard let station = annotation else { break }
-                    self.mapView.showAnnotations([station], animated: true)
+                    self.focusOnStation(with: stationID)
                 case .systemInfo:
                     break
                 }

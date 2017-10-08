@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xfU-Bp-gAD">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13526" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xfU-Bp-gAD">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13505"/>
     </dependencies>
     <scenes>
         <!--Closeby Stations-->
@@ -14,16 +14,28 @@
             <objects>
                 <controller identifier="Stations" title="Closeby Stations" id="xfU-Bp-gAD" customClass="StationsInterfaceController" customModule="BikeShareWatch_Extension">
                     <items>
-                        <table alignment="left" id="rRG-1v-oER">
+                        <table alignment="left" spacing="8" id="rRG-1v-oER">
                             <items>
                                 <tableRow identifier="StationRow" id="a7H-vE-AEm" customClass="StationRowObject" customModule="BikeShareWatch_Extension">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="fd0-no-pCi">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" spacing="4" id="fd0-no-pCi">
                                         <items>
-                                            <label alignment="left" text="Label" numberOfLines="0" id="k45-2Q-1qc">
-                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                            </label>
-                                            <label alignment="left" text="Label" numberOfLines="0" id="YIz-WI-5IB">
-                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                            <group width="1" alignment="left" spacing="8" id="3MK-sX-oa5">
+                                                <items>
+                                                    <group width="55" height="25" alignment="left" verticalAlignment="center" radius="7" id="Clu-KC-bPB">
+                                                        <items>
+                                                            <label width="1" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" id="k45-2Q-1qc">
+                                                                <fontDescription key="font" type="system" weight="heavy" pointSize="15"/>
+                                                            </label>
+                                                        </items>
+                                                        <color key="backgroundColor" red="0.93183422090000001" green="0.541428566" blue="0.52943354850000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </group>
+                                                    <label alignment="left" verticalAlignment="center" text="Label with a long name" numberOfLines="3" id="f6O-Yk-sj4">
+                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="15"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <label alignment="center" text="Label" textAlignment="center" numberOfLines="0" id="YIz-WI-5IB">
+                                                <fontDescription key="font" type="system" pointSize="19"/>
                                             </label>
                                         </items>
                                         <connections>
@@ -31,8 +43,10 @@
                                         </connections>
                                     </group>
                                     <connections>
-                                        <outlet property="subtitleLabel" destination="YIz-WI-5IB" id="zba-LY-7cF"/>
-                                        <outlet property="titleLabel" destination="k45-2Q-1qc" id="kCc-aD-W3x"/>
+                                        <outlet property="goGroup" destination="Clu-KC-bPB" id="LUi-RF-9ld"/>
+                                        <outlet property="goLabel" destination="k45-2Q-1qc" id="E5j-WM-c3k"/>
+                                        <outlet property="subtitleLabel" destination="YIz-WI-5IB" id="WIB-5F-ZIZ"/>
+                                        <outlet property="titleLabel" destination="f6O-Yk-sj4" id="Lmv-MR-URH"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -40,7 +54,7 @@
                     </items>
                     <menu key="menu" id="SMc-0v-Zh6">
                         <items>
-                            <menuItem title="Update" icon="repeat" id="ncn-rN-4cr">
+                            <menuItem title="Update" image="icRefresh" id="ncn-rN-4cr">
                                 <connections>
                                     <action selector="didPressUpdate" destination="xfU-Bp-gAD" id="olR-lR-Ue7"/>
                                 </connections>
@@ -76,21 +90,34 @@
                     <items>
                         <table alignment="left" id="wkO-kH-v5r">
                             <items>
-                                <tableRow identifier="StationRow" id="zPv-yP-6Us" customClass="StationRowObject" customModule="BikeShareWatch_Extension">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" id="0dc-j2-g5W">
+                                <tableRow identifier="StationRow" id="2F3-oh-coG" customClass="StationRowObject" customModule="BikeShareWatch_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" spacing="4" id="Ign-sf-hqi">
                                         <items>
-                                            <label alignment="left" text="Label" numberOfLines="0" id="ruz-Zk-2qH">
-                                                <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                            </label>
-                                            <label alignment="left" text="Label" numberOfLines="0" id="AQf-aA-B3i">
-                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                            <group width="1" alignment="left" spacing="8" id="tII-g8-exb">
+                                                <items>
+                                                    <group width="55" height="25" alignment="left" verticalAlignment="center" radius="7" id="Lyx-3H-JL4">
+                                                        <items>
+                                                            <label width="1" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" id="TFL-qn-Dog">
+                                                                <fontDescription key="font" type="system" weight="heavy" pointSize="15"/>
+                                                            </label>
+                                                        </items>
+                                                        <color key="backgroundColor" red="0.93183422090000001" green="0.541428566" blue="0.52943354850000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </group>
+                                                    <label alignment="left" verticalAlignment="center" text="Label with a long name" numberOfLines="3" id="ClD-wC-KFT">
+                                                        <fontDescription key="font" type="system" weight="semibold" pointSize="15"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                            <label alignment="center" text="Label" textAlignment="center" numberOfLines="0" id="gFK-eM-svg">
+                                                <fontDescription key="font" type="system" pointSize="19"/>
                                             </label>
                                         </items>
                                     </group>
                                     <connections>
-                                        <outlet property="subtitleLabel" destination="AQf-aA-B3i" id="TGx-Xb-y1P"/>
-                                        <outlet property="titleLabel" destination="ruz-Zk-2qH" id="jXT-jW-qc0"/>
-                                        <segue destination="Erm-bu-fvd" kind="modal" id="bAS-zV-sti"/>
+                                        <outlet property="goGroup" destination="Lyx-3H-JL4" id="dgF-Qi-mCR"/>
+                                        <outlet property="goLabel" destination="TFL-qn-Dog" id="fPA-Wx-Adz"/>
+                                        <outlet property="subtitleLabel" destination="gFK-eM-svg" id="O4q-Ld-tRh"/>
+                                        <outlet property="titleLabel" destination="ClD-wC-KFT" id="Cga-fn-xIi"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -98,7 +125,7 @@
                     </items>
                     <menu key="menu" id="kXS-tD-Qlx">
                         <items>
-                            <menuItem title="Update" icon="repeat" id="UY8-Fx-DW9">
+                            <menuItem title="Update" image="icRefresh" id="UY8-Fx-DW9">
                                 <connections>
                                     <action selector="didPressUpdate" destination="RSm-9Q-vPN" id="KGM-zo-7fw"/>
                                 </connections>
@@ -113,7 +140,4 @@
             <point key="canvasLocation" x="616" y="178"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="bAS-zV-sti"/>
-    </inferredMetricsTieBreakers>
 </document>

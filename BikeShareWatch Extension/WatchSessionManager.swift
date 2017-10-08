@@ -22,6 +22,8 @@ class WatchSessionManager: NSObject, WCSessionDelegate {
     
     @available(iOS 9.3, *)
     func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+        print(error?.localizedDescription ?? "NO ERROR")
     }
     
     #if os(iOS)
@@ -68,6 +70,7 @@ extension WatchSessionManager {
             do {
                 try session.updateApplicationContext(applicationContext)
             } catch let error {
+                print("ERROR: \(error)")
                 throw error
             }
         }

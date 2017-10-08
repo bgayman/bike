@@ -116,18 +116,31 @@ class StationsInterfaceController: WKInterfaceController
                     let network = result.0
                     let stations = result.1
                     strongSelf.network = network
-                    strongSelf.stations = stations
+                    if stations.isEmpty
+                    {
+                        strongSelf.showError(errorMessage: "No closeby stations")
+                    }
+                    else
+                    {
+                        strongSelf.stations = stations
+                    }
+                    
                     UserDefaults.standard.setClosebyStations(with: stations.map { $0.jsonDict })
                 case .error(let errorMessage):
-                    strongSelf.table.removeRows(at: IndexSet(Set(0 ..< strongSelf.stations.count)))
-                    strongSelf.table.setNumberOfRows(1, withRowType: strongSelf.rowType)
-                    guard let controller = strongSelf.table.rowController(at: 0) as? StationRowObject else { return }
-                    controller.errorMessage = errorMessage
+                    strongSelf.showError(errorMessage: errorMessage)
                 }
                 
                 closebyStationsClient.invalidate()
             }
         }
+    }
+    
+    private func showError(errorMessage: String)
+    {
+        table.removeRows(at: IndexSet(Set(0 ..< stations.count)))
+        table.setNumberOfRows(1, withRowType: rowType)
+        guard let controller = table.rowController(at: 0) as? StationRowObject else { return }
+        controller.errorMessage = errorMessage
     }
 }
 

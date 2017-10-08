@@ -12,15 +12,30 @@ class StationRowObject: NSObject
 {
     @IBOutlet var titleLabel: WKInterfaceLabel!
     @IBOutlet var subtitleLabel: WKInterfaceLabel!
+    @IBOutlet var goLabel: WKInterfaceLabel!
+    @IBOutlet var goGroup: WKInterfaceGroup!
+    
+    
     var bikeStation: BikeStation?
     {
         didSet
         {
             guard let bikeStation = bikeStation else { return }
-            let dotString = NSAttributedString(string: " • ", attributes: [NSAttributedStringKey.foregroundColor: bikeStation.pinTintColor])
-            let titleString = NSAttributedString(string: bikeStation.name)
-            self.titleLabel.setAttributedText(dotString + titleString)
-            self.subtitleLabel.setText("\(bikeStation.statusDisplayText) - \(bikeStation.dateComponentText)")
+            goGroup.setBackgroundColor(bikeStation.pinTintColor)
+            switch bikeStation.pinTintColor
+            {
+            case UIColor.app_red:
+                goLabel.setText("Grr!")
+            case UIColor.app_orange:
+                goLabel.setText("Whoa!")
+            case UIColor.app_green:
+                goLabel.setText("Go!")
+            default:
+                goLabel.setText(nil)
+            }
+            self.titleLabel.setText(bikeStation.name)
+            self.subtitleLabel.setText(bikeStation.statusDisplayText)
+            goGroup.setHidden(false)
         }
     }
     
@@ -40,7 +55,8 @@ class StationRowObject: NSObject
         {
             guard self.isEmptyRow else { return }
             self.titleLabel.setText("Updating")
-            self.subtitleLabel.setText("Fetching Stations...")
+            self.subtitleLabel.setText("Fetching Stations")
+            goGroup.setHidden(true)
         }
     }
     
@@ -51,6 +67,7 @@ class StationRowObject: NSObject
             guard let errorMessage = errorMessage else { return }
             self.titleLabel.setText("🙈")
             self.subtitleLabel.setText(errorMessage)
+            goGroup.setHidden(true)
         }
     }
     
@@ -60,6 +77,7 @@ class StationRowObject: NSObject
         {
             self.titleLabel.setText(self.message.0)
             self.subtitleLabel.setText(self.message.1)
+            goGroup?.setHidden(true)
         }
     }
 }

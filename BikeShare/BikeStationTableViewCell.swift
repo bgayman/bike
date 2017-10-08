@@ -107,11 +107,11 @@ class BikeStationTableViewCell: UITableViewCell
         super.dragStateDidChange(dragState)
         switch dragState {
         case .none:
-            contentView.backgroundColor = UIColor.clear
+            backgroundColor = UIColor.clear
         case .lifting:
-            contentView.backgroundColor = UIColor.app_beige.withAlphaComponent(0.8)
+            backgroundColor = UIColor.app_beige
         case .dragging:
-            contentView.backgroundColor = UIColor.app_beige.withAlphaComponent(0.8)
+            backgroundColor = UIColor.app_beige
         }
     }
     

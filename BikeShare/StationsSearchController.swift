@@ -55,6 +55,22 @@ class StationsSearchController: UITableViewController
         }
     }
     
+    lazy var tableNavigator: TableNavigator =
+    {
+        let tableNavigator = TableNavigator(tableView: tableView, delegate: self)
+        return tableNavigator
+    }()
+    
+    override var canBecomeFirstResponder: Bool
+    {
+        return true
+    }
+    
+    override var keyCommands: [UIKeyCommand]?
+    {
+        return tableNavigator.possibleKeyCommands
+    }
+    
     weak var delegate: StationsSearchControllerDelegate?
     
     //MARK: - Lifecycle
@@ -155,6 +171,18 @@ class StationsSearchController: UITableViewController
         
         return UserDefaults.bikeShareGroup.favoriteStations(for: network).contains(where: { $0.id == s.id }) ? [share, unfavorite] : [share, favorite]
     }
+    
+    public override func target(forAction action: Selector, withSender sender: Any?) -> Any?
+    {
+        if let target = self.tableNavigator.target(forKeyCommandAction: action)
+        {
+            return target
+        }
+        else
+        {
+            return super.target(forAction: action, withSender: sender)
+        }
+    }
     #endif
 }
 
@@ -168,6 +196,36 @@ extension StationsSearchController: UITableViewDragDelegate
         let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
         let dragStringItem = UIDragItem(itemProvider: NSItemProvider(object: "\(station.name) \(station.statusDisplayText)" as NSString))
         return [dragURLItem, dragStringItem]
+    }
+}
+
+// MARK: - TableNavigatorDelegate
+extension StationsSearchController: TableNavigatorDelegate
+{
+    func tableNavigator(_ navigator: TableNavigator, commitFocusedRowAt indexPath: IndexPath)
+    {
+        let station = self.searchResults[indexPath.row]
+        self.delegate?.didSelect(station: station)
+    }
+    
+    func tableNavigator(_ navigator: TableNavigator, didUpdateFocus focusUpdate: TableNavigator.FocusUpdate, completedNavigationWith context: TableNavigator.NavigationCompletionContext)
+    {
+        if  let previouslyFocusedIndexPath = focusUpdate.indexPathForPreviouslyFocusedRow,
+            let cell = tableView.cellForRow(at: previouslyFocusedIndexPath)
+        {
+            cell.backgroundColor = .clear
+        }
+        if let focusedIndexPath = focusUpdate.indexPathForFocusedRow,
+            let cell = tableView.cellForRow(at: focusedIndexPath)
+        {
+            cell.backgroundColor = UIColor(white: 0.5, alpha: 0.2)
+            let station = searchResults[focusedIndexPath.row]
+            if let stationsVC = parent as? StationsTableViewController
+            {
+                stationsVC.mapViewController?.bouncePin(for: station)
+            }
+            
+        }
     }
 }
 #endif

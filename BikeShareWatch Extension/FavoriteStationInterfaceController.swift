@@ -106,7 +106,7 @@ class FavoriteStationInterfaceController: WKInterfaceController
         {
             self.tableView.setNumberOfRows(1, withRowType: self.rowType)
             guard let controller = self.tableView.rowController(at: 0) as? StationRowObject else { return }
-            controller.message = ("No favorite stations", "Add a home network and favorite stations on you phone to see their status here.")
+            controller.message = ("No favorite stations", "Add a home network and favorite stations on your phone to see their status here.")
             return
         }
         self.isUpdating = true

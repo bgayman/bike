@@ -1110,18 +1110,24 @@ extension MapViewController
 {
     func bouncePin(for station: BikeStation)
     {
-        let annotations = self.mapView.annotations.filter
+        guard let annotation = self.mapView.annotations.first(where:
         { annotation in
-            guard let annot = annotation as? MapBikeStation,
+            if let annot = annotation as? MapBikeStation,
                 annot.bikeStation.id == station.id
-                else { return false }
-            return true
-        }
-        guard let annotation = annotations.last else { return }
+            {
+                return true
+            }
+            else if let annot = annotation as? MKClusterAnnotation
+            {
+                return annot.memberAnnotations.flatMap { $0 as? MapBikeStation }.contains(where: { $0.bikeStation.id == station.id })
+            }
+            return false
+        }) else { return }
+        
         guard let view = self.mapView.view(for: annotation) else { return }
         let center = view.center
         UIView.animate(withDuration: 0.2, animations: {
-            view.center = CGPoint(x: view.center.x, y: view.center.y - 100.0)
+            view.center = CGPoint(x: view.center.x, y: view.center.y - 50.0)
         }) { (_) in
             UIView.animate(withDuration: 0.2)
             {
@@ -1134,10 +1140,16 @@ extension MapViewController
     {
         let annotations = self.mapView.annotations.filter
         { annotation in
-            guard let annot = annotation as? MapBikeNetwork,
+            if let annot = annotation as? MapBikeNetwork,
                 annot.bikeNetwork.id == network.id
-                else { return false }
-            return true
+            {
+                return true
+            }
+            else if let annot = annotation as? MKClusterAnnotation
+            {
+                return annot.memberAnnotations.flatMap { $0 as? MapBikeNetwork }.contains(where: { $0.bikeNetwork.id == network.id })
+            }
+            return false
         }
         guard let annotation = annotations.last else { return }
         guard let view = self.mapView.view(for: annotation) else { return }
