@@ -21,7 +21,7 @@
                                         <items>
                                             <group width="1" alignment="left" spacing="8" id="3MK-sX-oa5">
                                                 <items>
-                                                    <group width="55" height="25" alignment="left" verticalAlignment="center" radius="7" id="Clu-KC-bPB">
+                                                    <group width="50" height="35" alignment="left" verticalAlignment="center" radius="7" id="Clu-KC-bPB">
                                                         <items>
                                                             <label width="1" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" id="k45-2Q-1qc">
                                                                 <fontDescription key="font" type="system" weight="heavy" pointSize="15"/>
@@ -95,7 +95,7 @@
                                         <items>
                                             <group width="1" alignment="left" spacing="8" id="tII-g8-exb">
                                                 <items>
-                                                    <group width="55" height="25" alignment="left" verticalAlignment="center" radius="7" id="Lyx-3H-JL4">
+                                                    <group width="50" height="35" alignment="left" verticalAlignment="center" radius="7" id="Lyx-3H-JL4">
                                                         <items>
                                                             <label width="1" alignment="center" verticalAlignment="center" text="Label" textAlignment="center" id="TFL-qn-Dog">
                                                                 <fontDescription key="font" type="system" weight="heavy" pointSize="15"/>

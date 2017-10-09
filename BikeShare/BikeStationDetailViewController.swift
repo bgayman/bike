@@ -162,6 +162,7 @@ class BikeStationDetailViewController: UIViewController
     lazy var doneButton: UIBarButtonItem =
     {
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.didPressDone))
+        doneButton.isSpringLoaded = true
         return doneButton
     }()
     
@@ -266,6 +267,8 @@ class BikeStationDetailViewController: UIViewController
                 
         let nib = UINib(nibName: "\(BikeStationCollectionViewCell.self)", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
+        collectionView.dragDelegate = self
+        collectionView.dragInteractionEnabled = true
         scrollView.panGestureRecognizer.require(toFail: collectionView.panGestureRecognizer)
         
         graphContainerView.isHidden = !hasGraph
@@ -279,6 +282,11 @@ class BikeStationDetailViewController: UIViewController
         if !self.traitCollection.isSmallerDevice
         {
             self.navigationItem.leftBarButtonItem = self.doneButton
+        }
+        
+        if self.traitCollection.forceTouchCapability == .available
+        {
+            self.registerForPreviewing(with: self, sourceView: self.view)
         }
     }
     
@@ -541,6 +549,17 @@ extension BikeStationDetailViewController: UICollectionViewDelegate, UICollectio
     }
 }
 
+extension BikeStationDetailViewController: UICollectionViewDragDelegate
+{
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]
+    {
+        let station = self.closebyStations[indexPath.item]
+        guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(self.bikeNetwork.id)/station/\(station.id)") else { return [] }
+        let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
+        return [dragURLItem]
+    }
+}
+
 // MARK: - MKMapViewDelegate
 extension BikeStationDetailViewController: MKMapViewDelegate
 {
@@ -597,6 +616,7 @@ extension BikeStationDetailViewController: UIScrollViewDelegate
     }
 }
 
+// MARK: - Indexing
 private extension BikeStationDetailViewController
 {
     func addToSpotlight()
@@ -646,6 +666,28 @@ private extension BikeStationDetailViewController
         let mapItem = MKMapItem(placemark: placemark)
         mapItem.name = mapBikeStation.title
         mapItem.openInMaps(launchOptions: nil)
+    }
+}
+
+// MARK: - UIViewControllerPreviewingDelegate
+extension BikeStationDetailViewController: UIViewControllerPreviewingDelegate
+{
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController?
+    {
+        let location = view.convert(location, to: collectionView)
+        guard let indexPath = self.collectionView.indexPathForItem(at: location) else { return nil }
+        let station = self.closebyStations[indexPath.row]
+        
+        let bikeStationDetailViewController = BikeStationDetailViewController(with: bikeNetwork, station: station, stations: bikeStations, hasGraph: hasGraph)
+        
+        let rect = view.convert(self.collectionView.collectionViewLayout.layoutAttributesForItem(at: indexPath)?.frame ?? .zero, from: collectionView)
+        previewingContext.sourceRect = rect
+        return bikeStationDetailViewController
+    }
+    
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController)
+    {
+        self.navigationController?.show(viewControllerToCommit, sender: nil)
     }
 }
 

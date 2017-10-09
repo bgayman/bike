@@ -306,6 +306,8 @@
 		CD8C1B891E218427000F9A9D /* Deeplink.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B871E218427000F9A9D /* Deeplink.swift */; };
 		CD8C1B8B1E21BE73000F9A9D /* MenuSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */; };
 		CD8C1B8C1E21BEC9000F9A9D /* MenuSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */; };
+		CD922F091F8AFA7500123D58 /* PanInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD922F071F8AFA7400123D58 /* PanInteractionController.swift */; };
+		CD922F0A1F8AFA7500123D58 /* SlideTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD922F081F8AFA7500123D58 /* SlideTransitionController.swift */; };
 		CD92ED9B1F6B7E630030585A /* DotAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD92ED9A1F6B7E630030585A /* DotAnnotationView.swift */; };
 		CD95F61E1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD95F61C1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift */; };
 		CD95F61F1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD95F61D1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib */; };
@@ -721,6 +723,8 @@
 		CD8C1B6A1E218069000F9A9D /* BikeShareTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BikeShareTV.entitlements; sourceTree = "<group>"; };
 		CD8C1B871E218427000F9A9D /* Deeplink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deeplink.swift; sourceTree = "<group>"; };
 		CD8C1B8A1E21BE73000F9A9D /* MenuSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSplitViewController.swift; sourceTree = "<group>"; };
+		CD922F071F8AFA7400123D58 /* PanInteractionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanInteractionController.swift; sourceTree = "<group>"; };
+		CD922F081F8AFA7500123D58 /* SlideTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideTransitionController.swift; sourceTree = "<group>"; };
 		CD92ED9A1F6B7E630030585A /* DotAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotAnnotationView.swift; sourceTree = "<group>"; };
 		CD95F61C1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDiffTableViewCell.swift; sourceTree = "<group>"; };
 		CD95F61D1F6C6C4A007C0B37 /* StationDiffTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationDiffTableViewCell.xib; sourceTree = "<group>"; };
@@ -1031,6 +1035,8 @@
 			children = (
 				CDF6E7AE1E0DBD7700C3C6CA /* Constants.swift */,
 				CD95F6241F6CB5CC007C0B37 /* SlideUpTransition.swift */,
+				CD922F071F8AFA7400123D58 /* PanInteractionController.swift */,
+				CD922F081F8AFA7500123D58 /* SlideTransitionController.swift */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -2658,6 +2664,7 @@
 				CD95F61E1F6C6C4A007C0B37 /* StationDiffTableViewCell.swift in Sources */,
 				CDC4D8391F65F4D000885E0F /* BikeNetworkTableViewCell.swift in Sources */,
 				CD80AAAB1E6BA81F00C1E9B6 /* MapKeyView.swift in Sources */,
+				CD922F0A1F8AFA7500123D58 /* SlideTransitionController.swift in Sources */,
 				CD4C40AF1F8673A600341964 /* UITableView+IndexPathTraversal.swift in Sources */,
 				CD06F34B1F671DCD00CE3CF4 /* BikeStationDetailScrollView.swift in Sources */,
 				CDF6E7C31E0EBBED00C3C6CA /* ClientResponse.swift in Sources */,
@@ -2706,6 +2713,7 @@
 				CDF6E7C91E0ED8CD00C3C6CA /* UIColor+Application.swift in Sources */,
 				CDEC20201E529E790044D923 /* GBFSSystemAlert.swift in Sources */,
 				CD4C40801F845EF100341964 /* Notifications+Application.swift in Sources */,
+				CD922F091F8AFA7500123D58 /* PanInteractionController.swift in Sources */,
 				CD4C40B91F8673B000341964 /* NavigationRequest.swift in Sources */,
 				CDF6F5BA1E7D7BDA009CBD32 /* WidgetStationClient.swift in Sources */,
 				CDF6E7B81E0DBDA800C3C6CA /* StationsSearchController.swift in Sources */,

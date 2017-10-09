@@ -110,7 +110,6 @@ class StationDiffViewController: UITableViewController
         self.tableView.rowHeight = UITableViewAutomaticDimension
         let nib = UINib(nibName: "\(StationDiffTableViewCell.self)", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "Cell")
-        self.tableView.allowsSelection = false
         self.definesPresentationContext = true
         self.refreshControl = refresh
         self.tableView.dragDelegate = self

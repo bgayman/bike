@@ -269,7 +269,7 @@ class StationMapDiffViewController: UIViewController
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations:
         { [unowned self] in
-            self.tableViewContainerToBottomConstraint.constant = self.view.bounds.height - 40.0
+            self.tableViewContainerToBottomConstraint.constant = self.view.safeAreaLayoutGuide.layoutFrame.height - 40.0
             self.view.layoutIfNeeded()
         })
     }
@@ -324,6 +324,7 @@ extension StationMapDiffViewController: StationDiffViewControllerDelegate
     func didSelectBikeStation(station: BikeStation)
     {
         focusOnStation(with: station.id)
+        animateDown()
     }
     
     func searchBarDidBecomeActive()

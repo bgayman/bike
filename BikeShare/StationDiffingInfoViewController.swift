@@ -38,8 +38,13 @@ class StationDiffingInfoViewController: UIViewController
     
     fileprivate let network: BikeNetwork
     fileprivate var bikeStations: [BikeStation]
-    fileprivate var dismissTransition: SlideUpTransition?
-    fileprivate let presentTransition = SlideUpTransition(isAppearing: true)
+    lazy var dismissTransition: PanInteractionController =
+    {
+        let dismissTransition = PanInteractionController()
+        dismissTransition.delegate = self
+        dismissTransition.panDirection = .down
+        return dismissTransition
+    }()
     
     // MARK: - Outlets
     @IBOutlet fileprivate weak var mapView: MKMapView!
@@ -80,9 +85,7 @@ class StationDiffingInfoViewController: UIViewController
     {
         title = "Heat Map"
         navigationItem.rightBarButtonItem = doneButton
-        
-        dismissTransition = SlideUpTransition(isAppearing: false, view: view, presentedVC: self)
-        
+                
         heatMapDescriptionLabel.font = UIFont.app_font(forTextStyle: .title3, weight: .bold)
         heatMapDescriptionLabel.textColor = .black
 
@@ -93,6 +96,8 @@ class StationDiffingInfoViewController: UIViewController
         mapView.register(DotAnnotationView.self, forAnnotationViewWithReuseIdentifier: "Dot")
         mapView.addAnnotations(annotations)
         mapView.showAnnotations(annotations, animated: true)
+        
+        dismissTransition.attach(to: view)
         
         setupGradientLayer()
     }
@@ -122,22 +127,30 @@ extension StationDiffingInfoViewController: MKMapViewDelegate
     }
 }
 
+extension StationDiffingInfoViewController: PanInteractionControllerDelegate
+{
+    func interactiveAnimationDidStart(controller: PanInteractionController)
+    {
+        dismiss(animated: true)
+    }
+}
+
 // MARK: - UIViewControllerTransitioningDelegate
 extension StationDiffingInfoViewController: UIViewControllerTransitioningDelegate
 {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning?
     {
-        return presentTransition
+        return SlideTransitionController(isAppearing: true, presentingSlideDirection: .up)
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning?
     {
-        return SlideUpTransition(isAppearing: false)
+        return SlideTransitionController(isAppearing: false, presentingSlideDirection: .up)
     }
     
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?
     {
-        return dismissTransition?.panGestureRecognizer?.state != .possible ? dismissTransition : nil
+        return dismissTransition.isActive ? dismissTransition : nil
     }
     
     func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?

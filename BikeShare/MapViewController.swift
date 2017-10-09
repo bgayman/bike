@@ -164,7 +164,6 @@ class MapViewController: BaseMapViewController
         let scrollView = DrawerScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(scrollView)
-        scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         scrollView.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -207,7 +206,9 @@ class MapViewController: BaseMapViewController
         toolbar.setItems(items, animated: false)
         toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
-        toolbar.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        let heightConstraint = toolbar.heightAnchor.constraint(equalToConstant: 44.0)
+        heightConstraint.isActive = true
+        heightConstraint.priority = .defaultHigh
         return toolbar
     }()
     
@@ -406,6 +407,7 @@ class MapViewController: BaseMapViewController
         self.navigationItem.hidesBackButton = false
         self.navigationItem.leftItemsSupplementBackButton = true
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem?.isSpringLoaded = true
         if self.splitViewController?.traitCollection.isSmallerDevice ?? true
         {
             self.setupNotifications()

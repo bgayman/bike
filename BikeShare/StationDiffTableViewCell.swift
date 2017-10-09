@@ -57,6 +57,7 @@ class StationDiffTableViewCell: UITableViewCell
         diffStatusLabel.lineBreakMode = .byWordWrapping
         radiusView.alpha = 0.30
         radiusView.layer.masksToBounds = true
+        selectionStyle = .none
     }
     
     private func configureCell(searchString: String)

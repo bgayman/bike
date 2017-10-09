@@ -33,24 +33,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BikeShare/UserManager.swift"
-            timestampString = "529165500.968747"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "getUserLocation()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "BikeShareWatch Extension/WatchSessionManager.swift"
-            timestampString = "529184631.349404"
+            timestampString = "529203395.854521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "121"
@@ -62,31 +46,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "BikeShareWatch_Extension.WatchSessionManager.session(__ObjC.WCSession, didReceiveUserInfo: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
-                  moduleName = "BikeShareWatch Extension"
+                  symbolName = "BikeShare.WatchSessionManager.session(__ObjC.WCSession, didReceiveUserInfo: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "BikeShare"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bgay/Developer/bike/BikeShareWatch%20Extension/WatchSessionManager.swift"
-                  timestampString = "529184631.383731"
+                  timestampString = "529203396.007807"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "122"
                   endingLineNumber = "122"
-                  offsetFromSymbolStart = "158">
+                  offsetFromSymbolStart = "172">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in BikeShareWatch_Extension.WatchSessionManager.session(__ObjC.WCSession, didReceiveUserInfo: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
-                  moduleName = "BikeShareWatch Extension"
+                  symbolName = "closure #1 () -&gt; () in BikeShare.WatchSessionManager.session(__ObjC.WCSession, didReceiveUserInfo: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "BikeShare"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bgay/Developer/bike/BikeShareWatch%20Extension/WatchSessionManager.swift"
-                  timestampString = "529184631.385053"
+                  timestampString = "529203396.009423"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "122"
                   endingLineNumber = "122"
-                  offsetFromSymbolStart = "3">
+                  offsetFromSymbolStart = "0">
                </Location>
             </Locations>
          </BreakpointContent>

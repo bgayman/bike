@@ -26,7 +26,7 @@ final class WelcomeViewController: UIViewController
         stackView.topAnchor.constraint(equalTo: self.scrollView.topAnchor, constant: 8.0).isActive = true
         stackView.leadingAnchor.constraint(equalTo: self.view.readableContentGuide.leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: self.view.readableContentGuide.trailingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8.0).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0).isActive = true
         stackView.spacing = 8.0
         stackView.distribution = .fillProportionally
         return stackView
