@@ -207,12 +207,12 @@ class BikeStationDetailViewController: UIViewController
         {
             scrollView.contentSize = CGSize(width: view.bounds.width, height: 3 * 150.0)
             scrollView.setContentOffset(CGPoint(x: 0.0, y: 150.0), animated: false)
-            stackView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: (self.view.bounds.height - self.view.safeAreaInsets.top - self.view.safeAreaInsets.bottom) + 300.0)
+            stackView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: (self.view.bounds.height - self.view.safeAreaInsets.top) + 300.0)
         }
         else
         {
             scrollView.contentSize = CGSize(width: view.bounds.width, height: 2 * 150.0)
-            stackView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: (self.view.bounds.height - self.view.safeAreaInsets.top - self.view.safeAreaInsets.bottom) + 150.0)
+            stackView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: (self.view.bounds.height - self.view.safeAreaInsets.top) + 150.0)
         }
         
         if self.traitCollection.isSmallerDevice

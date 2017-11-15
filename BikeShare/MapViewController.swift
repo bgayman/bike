@@ -158,6 +158,7 @@ class MapViewController: BaseMapViewController
     
     @objc var toolbarBottomLayoutConstraint: NSLayoutConstraint?
     @objc var mapBottomLayoutConstraint: NSLayoutConstraint?
+    @objc var scrollViewHeightLayoutConstraint: NSLayoutConstraint?
     
     @objc lazy var scrollView: DrawerScrollView =
     {
@@ -166,7 +167,8 @@ class MapViewController: BaseMapViewController
         self.view.addSubview(scrollView)
         scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        scrollView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        self.scrollViewHeightLayoutConstraint = scrollView.heightAnchor.constraint(equalToConstant: 50)
+        self.scrollViewHeightLayoutConstraint?.isActive = true
         scrollView.clipsToBounds = false
         scrollView.showsVerticalScrollIndicator = false
         #if !os(tvOS)
@@ -460,6 +462,7 @@ class MapViewController: BaseMapViewController
         super.viewDidLayoutSubviews()
         #if !os(tvOS)
         scrollView.contentSize = CGSize(width: view.bounds.width, height: 100.0)
+            scrollViewHeightLayoutConstraint?.constant = scrollView.contentSize.height * 0.5 + self.view.safeAreaInsets.bottom * 0.5
         #endif
     }
     
@@ -955,16 +958,6 @@ extension MapViewController: MKMapViewDelegate
         return annotationView
     }
     
-    #if !os(tvOS)
-    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool)
-    {
-        if self.searchBar.text?.isEmpty == true
-        {
-            self.scrollView.setContentOffset(.zero, animated: true)
-        }
-    }
-    #endif
-    
     #endif
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView])
@@ -978,9 +971,6 @@ extension MapViewController: MKMapViewDelegate
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
     {
         #if !(os(macOS) || os(tvOS))
-            self.searchBar.showsCancelButton = false
-            self.searchBar.resignFirstResponder()
-            self.scrollView.setContentOffset(.zero, animated: true)
             if self.traitCollection.forceTouchCapability == .available, let annotationView = view as? MKMarkerAnnotationView,
                let detailCalloutAccessoryView = annotationView.detailCalloutAccessoryView
             {
