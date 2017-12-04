@@ -209,8 +209,8 @@ class MapViewController: BaseMapViewController
         toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
         let heightConstraint = toolbar.heightAnchor.constraint(equalToConstant: 44.0)
-        heightConstraint.isActive = true
         heightConstraint.priority = .defaultHigh
+        heightConstraint.isActive = true
         return toolbar
     }()
     

@@ -73,8 +73,8 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="djO-a4-euP" secondAttribute="trailing" constant="20" id="TPV-lI-a0B"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="AHL-Km-ATa" secondAttribute="trailing" id="Wpc-zU-1AR"/>
                 <constraint firstItem="djO-a4-euP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="XF2-Bw-ZAb"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="AHL-Km-ATa" secondAttribute="bottom" id="aya-VA-H4t"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ifB-9v-VAY" secondAttribute="bottom" id="dDb-bd-vLy"/>
+                <constraint firstAttribute="bottom" secondItem="AHL-Km-ATa" secondAttribute="bottom" id="aya-VA-H4t"/>
+                <constraint firstAttribute="bottom" secondItem="ifB-9v-VAY" secondAttribute="bottom" id="dDb-bd-vLy"/>
                 <constraint firstAttribute="trailing" secondItem="ifB-9v-VAY" secondAttribute="trailing" id="enw-KJ-Hz2"/>
                 <constraint firstItem="AHL-Km-ATa" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kqM-UD-naX"/>
                 <constraint firstItem="djO-a4-euP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="w4F-kw-fiz"/>

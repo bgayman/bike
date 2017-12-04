@@ -549,6 +549,7 @@ extension BikeStationDetailViewController: UICollectionViewDelegate, UICollectio
     }
 }
 
+// MARK: - UICollectionViewDragDelegate
 extension BikeStationDetailViewController: UICollectionViewDragDelegate
 {
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem]

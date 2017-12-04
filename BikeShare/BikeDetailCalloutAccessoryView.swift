@@ -193,13 +193,11 @@ extension BikeDetailCalloutAccessoryView: UITableViewDragDelegate
         case .mapBikeNetwork(let network):
             guard let url = URL(string: "\(Constants.WebSiteDomain)/stations/\(network.bikeNetwork.id)") else { return [] }
             let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
-            let dragStringItem = UIDragItem(itemProvider: NSItemProvider(object: "\(network.bikeNetwork.name)" as NSString))
-            return [dragURLItem, dragStringItem]
+            return [dragURLItem]
         case .mapBikeStation(let network, let station):
             guard let url = URL(string: "\(Constants.WebSiteDomain)/network/\(network.bikeNetwork.id)/station/\(station.bikeStation.id)") else { return [] }
             let dragURLItem = UIDragItem(itemProvider: NSItemProvider(object: url as NSURL))
-            let dragStringItem = UIDragItem(itemProvider: NSItemProvider(object: "\(station.bikeStation.name) \(station.bikeStation.statusDisplayText)" as NSString))
-            return [dragURLItem, dragStringItem]
+            return [dragURLItem]
         }
     }
 }
